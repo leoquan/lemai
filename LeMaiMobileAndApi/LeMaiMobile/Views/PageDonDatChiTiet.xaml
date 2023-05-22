@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ghView:GhContentPageBase x:Class="LeMaiMobile.Views.PageDonDatChiTiet"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ghModel="clr-namespace:LeMaiMobile.Models"
+    xmlns:ghView="clr-namespace:LeMaiMobile.Views"
+    xmlns:ghViewModel="clr-namespace:LeMaiMobile.ViewModels"
+    xmlns:mtrl="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Name="pageDonDatChiTiet"
+    x:DataType="ghViewModel:PageDonDatChiTietViewModel"
+    Title="{Binding Title}"
+    xmlns:ghDto="clr-namespace:LeMaiDto;assembly=LeMaiDto" NavigationPage.HasNavigationBar="True">
+
+    <ghView:GhContentPageBase.ToolbarItems>
+        <ToolbarItem Text="Lưu"
+            Command="{Binding LuuCommand}" />
+    </ghView:GhContentPageBase.ToolbarItems>
+
+
+    <ScrollView BackgroundColor="White">
+        <StackLayout Margin="{StaticResource PagePadding}">
+
+            <StackLayout Grid.Column="1"
+                Orientation="Horizontal">
+                <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                    Text="Mã đơn đặt:" />
+                <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    Text="{Binding WorkingModel.OrderCode}" />
+                <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                    ClickCommand="{Binding Source={RelativeSource AncestorType={x:Type ghView:PageDonDatChiTiet}}, Path=BindingContext.CopyBillCodeCommand}"
+                    ClickCommandParameter="{Binding WorkingModel.OrderCode}">
+                    <Label Style="{StaticResource GhIconClickStyle}"
+                        FontSize="20"
+                        TextColor="{StaticResource MtrlColorPrimary}"
+                        Text="{x:Static ghModel:FAS.Copy}" />
+                </mtrl:MaterialCard>
+            </StackLayout>
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                Margin="{StaticResource FormMarginInput}"
+                Text="{Binding WorkingModel.AcceptPhone}"
+                Unfocused="txtSoDienThoai_Unfocused"
+                InputType="Telephone" IsMaxLengthCounterVisible="True" MaxLength="11" Placeholder="Số điện thoại" />
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                Margin="{StaticResource FormMarginInput}"
+                Text="{Binding WorkingModel.AcceptName}"
+                IsMaxLengthCounterVisible="True" MaxLength="50" Placeholder="Người nhận" />
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                Margin="{StaticResource FormMarginInput}"
+                SelectedChoice="{Binding SelectedTinh}"
+                Choices="{Binding ListTinh}"
+                ChoicesBindingName="Name"  
+                ChoiceSelectedCommand="{Binding SelectTinhCommand}"
+                InputType="Choice" Placeholder="Tỉnh/TP" />
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                Margin="{StaticResource FormMarginInput}"
+                SelectedChoice="{Binding SelectedHuyen}"
+                Choices="{Binding ListHuyen}"
+                ChoicesBindingName="Name"  
+                ChoiceSelectedCommand="{Binding SelectHuyenCommand}"
+                InputType="Choice" Placeholder="Huyện/Quận" />
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                Margin="{StaticResource FormMarginInput}"
+                SelectedChoice="{Binding SelectedXa}"
+                Choices="{Binding ListXa}"
+                ChoicesBindingName="Name"  
+                InputType="Choice" Placeholder="Phường/Xã" />
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                Margin="{StaticResource FormMarginInput}"
+                Text="{Binding WorkingModel.AcceptAddress}"
+                IsMaxLengthCounterVisible="True" MaxLength="100" Placeholder="Địa chỉ" />
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                Margin="{StaticResource FormMarginInput}"
+                Text="{Binding WorkingModel.GoodsName}"
+                IsMaxLengthCounterVisible="True" MaxLength="25" Placeholder="Tên hàng" />
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                Margin="{StaticResource FormMarginInput}"
+                Text="{Binding WorkingModel.CodStr, FallbackValue=0, TargetNullValue=0, UpdateSourceEventName=TextChanged}"
+                HelperText="{Binding WorkingModel.Cod, StringFormat='{}{0:N0} VNĐ (tối đa 20 triệu)'}"
+                InputType="Numeric" IsMaxLengthCounterVisible="True" MaxLength="10" Placeholder="Số tiền thu hộ (không thu hộ nhập 0)" />
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}" 
+                Margin="{StaticResource FormMarginInput}" Unfocused="txtTrongLuong_Unfocused" ReturnCommand="{Binding FreightCommand}"
+                Text="{Binding WorkingModel.WeightStr, FallbackValue=0, TargetNullValue=0, UpdateSourceEventName=TextChanged}"
+                HelperText="{Binding WorkingModel.Weight, StringFormat='{}{0:N0} gram'}" 
+                InputType="Numeric" IsMaxLengthCounterVisible="True" MaxLength="8" Placeholder="Trọng lượng" />
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}" 
+                Margin="{StaticResource FormMarginInput}" TabIndex="9999"
+                Text="{Binding WorkingModel.FreightStr}"
+                InputType="Numeric" Placeholder="Phí vận chuyển" IsEnabled="False" />
+
+            <mtrl:MaterialRadioButton Text="Gửi trả (Bao ship)"
+                IsSelected="{Binding WorkingModel.IsShopPay, Mode=TwoWay}" />
+            <mtrl:MaterialRadioButton Text="Nhận trả (Không bao ship)"
+                IsSelected="{Binding WorkingModel.IsShopPay, Mode=TwoWay, Converter={xct:InvertedBoolConverter}}" />
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                Margin="{StaticResource FormMarginInput}" 
+                SelectedChoice="{Binding SelectedLoaiKien}"
+                Choices="{Binding ListLoaiKien}"
+                ChoicesBindingName="Name"  
+                InputType="Choice" Placeholder="Kiểm hàng" />
+
+            <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                Text="Ghi chú" />
+            <Editor Text="{Binding WorkingModel.Note}"
+                AutoSize="TextChanges" MaxLength="150" Placeholder="Không bắt buộc" />
+        </StackLayout>
+    </ScrollView>
+</ghView:GhContentPageBase>

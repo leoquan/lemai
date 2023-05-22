@@ -1,0 +1,53 @@
+.container {
+  max-width: 1200px;
+}
+.home_banner_rtl .home-carousel .slide-item .shape {
+  transform: rotateY(180deg);
+}
+.mean-container a.meanmenu-reveal {
+  right: auto !important;
+  left: 0 !important;
+}
+.mean-container .mean-nav ul li {
+  float: right;
+}
+.mean-container .mean-nav ul li a {
+  float: right;
+  text-align: right;
+}
+.mean-container .mean-nav ul li a.mean-expand {
+  right: auto;
+  left: 0;
+}
+@media (max-width: 991px) {
+  .header-style-two .header-wrapper .header-navigation-area.fixed {
+    position: inherit;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    transform: none;
+  }
+}
+.cs-btn-one.has-icon i {
+  padding-right: 10px;
+}
+.header-style-two .header-wrapper .header-navigation-area .main-menu ul li ul.sub-menu li.has-sub-child > a::before {
+  transform: translateY(-12px) rotate(180deg);
+}
+.owl-carousel .owl-nav button i {
+  color: #fff;
+  transform: rotateY(180deg);
+}
+.news-sidebar-widget .widget-categories ul li i,
+.news-sidebar-widget .widget-archives ul li i,
+.single-post-navigation .navigation-links .nav-previous a i,
+.single-post-navigation .navigation-links .nav-next a i,
+.footer-widget-list li a:before,
+.service-link-list li.active a i,
+.service-link-list li a i,
+.pagination-nav .pagination-list > li a i {
+  transform: rotate(180deg);
+}
+.project-info-list li {
+  display: inline-flex;
+}

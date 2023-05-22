@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ghView:GhContentPageBase x:Class="LeMaiMobile.Views.PageDangKy"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ghModel="clr-namespace:LeMaiMobile.Models"
+    xmlns:ghView="clr-namespace:LeMaiMobile.Views"
+    xmlns:ghViewModel="clr-namespace:LeMaiMobile.ViewModels"
+    xmlns:mtrl="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    x:Name="pageDangKy"
+    x:DataType="ghViewModel:PageDangKyViewModel"
+    Title="Đăng ký tài khoản"
+    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" NavigationPage.HasNavigationBar="True">
+
+
+
+    <ScrollView Padding="{StaticResource PagePadding}">
+        <StackLayout Style="{StaticResource GhStackFrmStyle}"
+            WidthRequest="400"
+            Margin="{StaticResource PagePadding}"
+            Padding="{StaticResource PagePadding}"
+            HorizontalOptions="Center">
+
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                Margin="{StaticResource FormMarginInput}"
+                Text="{Binding SoDienThoai, Mode=TwoWay}"
+                HelperText="Số điện thoại sẽ được dùng làm tên đăng nhập" InputType="Telephone" MaxLength="10" Placeholder="Tên đăng nhập">
+                <mtrl:MaterialTextField.LeadingIcon>
+                    <FontImageSource FontFamily="FAS"
+                        Glyph="{x:Static ghModel:FAS.Phone}" />
+                </mtrl:MaterialTextField.LeadingIcon>
+            </mtrl:MaterialTextField>
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                Margin="{StaticResource FormMarginInput}"
+                Text="{Binding HoTen}"
+                MaxLength="50" Placeholder="Họ tên">
+                <mtrl:MaterialTextField.LeadingIcon>
+                    <FontImageSource FontFamily="FAS"
+                        Glyph="{x:Static ghModel:FAS.User}" />
+                </mtrl:MaterialTextField.LeadingIcon>
+            </mtrl:MaterialTextField>
+
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                Margin="{StaticResource FormMarginInput}"
+                Text="{Binding MatKhau}"
+                InputType="Password" MaxLength="50" Placeholder="Mật khẩu">
+                <mtrl:MaterialTextField.LeadingIcon>
+                    <FontImageSource FontFamily="FAS"
+                        Glyph="{x:Static ghModel:FAS.Lock}" />
+                </mtrl:MaterialTextField.LeadingIcon>
+            </mtrl:MaterialTextField>
+
+            <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                Margin="{StaticResource FormMarginInput}"
+                Text="{Binding NhapLaiMatKhau}"
+                InputType="Password" MaxLength="50" Placeholder="Nhập lại mật khẩu" ReturnType="Default">
+                <mtrl:MaterialTextField.LeadingIcon>
+                    <FontImageSource FontFamily="FAS"
+                        Glyph="{x:Static ghModel:FAS.Lock}" />
+                </mtrl:MaterialTextField.LeadingIcon>
+            </mtrl:MaterialTextField>
+
+
+            <mtrl:MaterialButton Style="{StaticResource GhBtnEqualStyle}"
+                Margin="{StaticResource FormMarginInput}"
+                Text="Đăng ký"
+                Command="{Binding DangKyCommand}" />
+        </StackLayout>
+    </ScrollView>
+
+
+
+</ghView:GhContentPageBase>

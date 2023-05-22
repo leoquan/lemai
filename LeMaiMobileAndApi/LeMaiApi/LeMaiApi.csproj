@@ -1,0 +1,398 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows10.0.17763.0</TargetFramework>
+    <!--<Nullable>enable</Nullable>-->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="logs\**" />
+    <Content Remove="logs\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\BannerController.cs" />
+    <Compile Remove="Controllers\FirebaseController.cs" />
+    <Compile Remove="Controllers\GanKetCanHoController.cs" />
+    <Compile Remove="Controllers\GopYController.cs" />
+    <Compile Remove="Controllers\HoaDonController.cs" />
+    <Compile Remove="Controllers\HotlineController.cs" />
+    <Compile Remove="Controllers\OtpController.cs" />
+    <Compile Remove="Controllers\SampleController.cs" />
+    <Compile Remove="Controllers\SmsController.cs" />
+    <Compile Remove="Controllers\ThietLapController.cs" />
+    <Compile Remove="Controllers\ThongBaoController.cs" />
+    <Compile Remove="Controllers\ThongTinCanHoController.cs" />
+    <Compile Remove="Controllers\TinTucController.cs" />
+    <Compile Remove="Controllers\TopMainController.cs" />
+    <Compile Remove="Controllers\WeatherForecastController.cs" />
+    <Compile Remove="Efs\LeMaiEntities\AccountObject.cs" />
+    <Compile Remove="Efs\LeMaiEntities\AccountObjectAndGroup.cs" />
+    <Compile Remove="Efs\LeMaiEntities\AccountObjectBranch.cs" />
+    <Compile Remove="Efs\LeMaiEntities\AccountObjectCommission.cs" />
+    <Compile Remove="Efs\LeMaiEntities\AccountObjectGroup.cs" />
+    <Compile Remove="Efs\LeMaiEntities\AccountObjectImage.cs" />
+    <Compile Remove="Efs\LeMaiEntities\AccountObjectRewardPoint.cs" />
+    <Compile Remove="Efs\LeMaiEntities\AccountObjectType.cs" />
+    <Compile Remove="Efs\LeMaiEntities\Booking.cs" />
+    <Compile Remove="Efs\LeMaiEntities\BookingDetail.cs" />
+    <Compile Remove="Efs\LeMaiEntities\Branch.cs" />
+    <Compile Remove="Efs\LeMaiEntities\CashPay.cs" />
+    <Compile Remove="Efs\LeMaiEntities\CashPayMoneyType.cs" />
+    <Compile Remove="Efs\LeMaiEntities\CashPayType.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ConfigBookingTime.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ContactHistory.cs" />
+    <Compile Remove="Efs\LeMaiEntities\DynamicField.cs" />
+    <Compile Remove="Efs\LeMaiEntities\DynamicFieldType.cs" />
+    <Compile Remove="Efs\LeMaiEntities\DynamicFilledForm.cs" />
+    <Compile Remove="Efs\LeMaiEntities\DynamicFilledFormField.cs" />
+    <Compile Remove="Efs\LeMaiEntities\DynamicForm.cs" />
+    <Compile Remove="Efs\LeMaiEntities\DynamicFormField.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpAccountCustomer.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpAutoReport.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpBalanceDetail.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpBalanceDetailType.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpBill.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpBillProcess.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpBillstatus.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpCachGiao.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpCachThanhToan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpCaLamViec.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpCareSale.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpCareSaleHistory.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpCashPay.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpCheckBalance.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpCheckBalanceDetail.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpChungTu.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpChungTuCt.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpCodck.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpComment.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpCommentType.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpComplainService.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpConsignDelivery.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpConsignment.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpConsignmentCashPay.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpConsignmentCashPayType.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpConsignmentHistory.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpConsignmentObject.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpConsignmentOnDelivery.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpConsignmentQueueNumber.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpConsignmentStatus.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpConsignTransit.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpContact.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpContentMessage.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpCost.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpCustomerAccount.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpCustomerGroup.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpDestination.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpDistance.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpDoiSoat.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpDoiSoatChiTiet.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpDoiSoatChiTietCt.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpDonViHanhChinh.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpFee.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpGroupFee.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpHoaDonDoiSoat.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpHoaDonDoiSoatKl.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpInternal.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpKyKetToan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpLoaiMatHang.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpLoanCod.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpLogErrorCheck.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpLoiNhuanBuuCuc.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpMistake.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpNhapKho.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpNhapKhoCt.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpNote.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpPhatHanhChungTu.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpPostAccount.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpPostFeeProvider.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpProblem.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpProviceProblem.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpProvider.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpProvinceFee.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpProvinceFeeCustomer.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpRecharge.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpReCheck.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpSaleCongNo.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpSaleLoaiThanhToan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpSaleNhapVatTu.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpSaleProduct.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpSaleVatTu.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpSaleXuatKho.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpScan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpScanTt.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpShipper.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpSiteAutoRun.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpType.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpWithDrawal.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpWithdrawRequest.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpWithdrawRequestStatus.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ExpWithdrawRequestType.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GexpBill.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GexpCode.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GexpPaymentType.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GexpProvider.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GexpScanType.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GexpShipNoteType.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsBank.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsCategory.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsCcy.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsCountry.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsCustomerOder.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsKpiaccountTarget.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsKpiaccountTargetRuntime.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsKpitarget.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsKpitargetType.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsPort.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsRequestFindProduct.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsRequestFindProductHistory.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsRequestInstance.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsStepDef.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsStepRequestFindProduct.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsUnit.cs" />
+    <Compile Remove="Efs\LeMaiEntities\GsWorkFlowDef.cs" />
+    <Compile Remove="Efs\LeMaiEntities\Inventory.cs" />
+    <Compile Remove="Efs\LeMaiEntities\Invoice.cs" />
+    <Compile Remove="Efs\LeMaiEntities\InvoiceDetail.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MamNonClass.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MamNonClassHocVien.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MamNonDiemDanh.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MamNonHocVien.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MamNonSoDauBai.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MamNonThangDiem.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MamNonThuHocPhi.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MamNonTruongHoc.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedBacSiCdha.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedBenhNhan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedCapMaSo.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedChiDinh.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedChiDinhSync.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedCoSo.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedCotBaoCao.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedDmDonVi.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedDmKetQua.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedDmMay.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedDmSo.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedDmTen.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedGiaVp.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedHiStory.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedHiStoryCt.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedHoSoNhanBenh.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedKetLuanMau.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedKetQua.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedKetQuaAutoText.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedKetQuaChanDoan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedKetQuaChanDoanHa.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedKetQuaCt.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedKetQuaDcm.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedKetQuaEcg.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedKetQuaMacDinh.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedKetQuaMayXn.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedKetQuaXn.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedKhoaPhong.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedLayMau.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedLayMauCt.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedLoaiKhoaPhong.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedLoaiVp.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedLogin.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedMaSo.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedMauIn.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedMauKetQua.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedMayXn.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedNhomBenhNhan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedNhomVp.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedPhieuNhanBenh.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedPhieuNhanBenhChiTiet.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedServer.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedSetting.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedSoMauXetNghiem.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedThongSoKqmayXn.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedTicCapMaSo.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedWorkSpace.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedXnloai.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedXnloaiMay.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedXnten.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedXnthongSoMay.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MedXnthongSoMayCt.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MenuFunction.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MenuFunctionAccount.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MenuFunctionGroup.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MenuFunctionRole.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MenuImage.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MenuRole.cs" />
+    <Compile Remove="Efs\LeMaiEntities\MenuRoleAccountObject.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ProductQuotum.cs" />
+    <Compile Remove="Efs\LeMaiEntities\QueueNumber.cs" />
+    <Compile Remove="Efs\LeMaiEntities\Room.cs" />
+    <Compile Remove="Efs\LeMaiEntities\RoomGroup.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SaleBalanceDetail.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SaleBangGiaChiTiet.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SaleBangGium.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SaleHoaDon.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SaleHoaDonChiTiet.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SaleKhachHang.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SaleNhomSanPham.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SaleSanPham.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SchoolCapBac.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SchoolGiaoTrinh.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SchoolGiaoTrinhHocPhan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SchoolHocPhan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SchoolHocVien.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SchoolPhongGiaoDuc.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SchoolProgram.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SchoolRoom.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SchoolSoGiaoDuc.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SchoolTrungTamAv.cs" />
+    <Compile Remove="Efs\LeMaiEntities\Service.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ServiceCombo.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ServiceGroup.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ServiceImage.cs" />
+    <Compile Remove="Efs\LeMaiEntities\Setting.cs" />
+    <Compile Remove="Efs\LeMaiEntities\SettingBranch.cs" />
+    <Compile Remove="Efs\LeMaiEntities\Stock.cs" />
+    <Compile Remove="Efs\LeMaiEntities\StockImportExport.cs" />
+    <Compile Remove="Efs\LeMaiEntities\StockImportExportDetail.cs" />
+    <Compile Remove="Efs\LeMaiEntities\TaskActionHistory.cs" />
+    <Compile Remove="Efs\LeMaiEntities\TaskIssue.cs" />
+    <Compile Remove="Efs\LeMaiEntities\TaskIssuePriority.cs" />
+    <Compile Remove="Efs\LeMaiEntities\TaskIssueStatus.cs" />
+    <Compile Remove="Efs\LeMaiEntities\TaskIssueTracker.cs" />
+    <Compile Remove="Efs\LeMaiEntities\VcketToan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\VckhachHang.cs" />
+    <Compile Remove="Efs\LeMaiEntities\VcloaiChiPhi.cs" />
+    <Compile Remove="Efs\LeMaiEntities\VcmatHang.cs" />
+    <Compile Remove="Efs\LeMaiEntities\VcnhaCungCap.cs" />
+    <Compile Remove="Efs\LeMaiEntities\VcnhapHang.cs" />
+    <Compile Remove="Efs\LeMaiEntities\VcxuatHang.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewAccountObject.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewBaoCaoTaiChinh.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewBooking.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewBranch.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewCashPay.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewDoiSoatChiTiet.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpBill.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpBillHoaDonDoiSoat.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpCashPay.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpChungTu.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpChungTuCt.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpChungTuCtReport.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpChungTuPhieuChi.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpCodck.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpComment.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpConsignDelivery.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpConsignment.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpConsignmentCashPay.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpConsignmentHistory.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpConsignmentHistoryMater.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpConsignmentObject.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpConsignTransit.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpCustomer.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpDvhcHuyen.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpDvhcTinh.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpDvhcXa.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpKyKetToan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpLoanCod.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpNhapKho.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpNhapKhoCt.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpProviceProblem.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpRecharge.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpSaleNhapVatTu.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpSaleXuatKho.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpTotalChungTu.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewExpWithdrawRequest.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewGexpBillGhn.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewInvoiceList.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewInvoicePrint.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewMamNonTruongHoc.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewMenuFunction.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewMenuFunctionAccount.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewRole.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewRoom.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewRoomGroup.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewSchoolGiaoTrinh.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewSchoolGiaoTrinhHocPhan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewSchoolHocPhan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewSchoolPhongGiaoDuc.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewSchoolProgram.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewSchoolRoom.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewSchoolSoGiaoDuc.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewSchoolTrungTamAv.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewService.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewServiceGroup.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewSubMenuGroup.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewVcketToan.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewVckhachHang.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewVcmatHang.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewVcnhaCungCap.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewWebBannerSlider.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewWebNews.cs" />
+    <Compile Remove="Efs\LeMaiEntities\ViewWebPage.cs" />
+    <Compile Remove="Efs\LeMaiEntities\Voucher.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebBannerSlider.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebConfig.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebEmployee.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebFaq.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebFaqTopic.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebGallery.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebGalleryImage.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebIcon.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebImage.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebLink.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebNews.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebNewsCategory.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebPage.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebPartner.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebReview.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebSetting.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebShoping.cs" />
+    <Compile Remove="Efs\LeMaiEntities\WebShopingDetail.cs" />
+    <Compile Remove="Models\CommonHelper.cs" />
+    <Compile Remove="Models\OtpHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ngrok.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="6.0.0" />
+    <PackageReference Include="LinqKit.Microsoft.EntityFrameworkCore" Version="7.1.3" />
+    <PackageReference Include="Mapster" Version="7.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.HttpOverrides" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LeMaiDto\LeMaiDto.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Avata\387499D1-282F-455B-BF93-1A584B2BE909.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Avata\d651c686-8c4c-4b01-9c69-7cd174fa9f28.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="HinhTinTuc\{1118ED54-9770-4ABB-9701-2BA4894A88F9}.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="HinhTinTuc\{B91E879D-5DDA-448C-BBF7-12409FB702AE}.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

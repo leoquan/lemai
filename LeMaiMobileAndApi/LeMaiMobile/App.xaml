@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication x:Class="LeMaiMobile.App"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mtrl="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:ghCvts="clr-namespace:LeMaiMobile.Converters" xmlns:mtrlRes="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material" xmlns:mtrltypo="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material" xmlns:vws="clr-namespace:LeMaiMobile.Views">
+    <Application.Resources>
+
+        <!--  Application resource dictionary  -->
+        <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        <ghCvts:FontAwsomeDbConverter x:Key="FontAwsomeDbConverter" />
+
+        <!--Định nghĩa màu cho Tín Đạt Express-->
+        <!--<Color x:Key="MtrlColorBackground">#FFFFFF</Color>
+        <Color x:Key="MtrlColorError">#B00020</Color>
+        <Color x:Key="MtrlColorOnBackground">#000000</Color>
+        <Color x:Key="MtrlColorOnError">#FFFFFF</Color>
+        <Color x:Key="MtrlColorOnPrimary">#FFFFFF</Color>
+        <Color x:Key="MtrlColorOnSecondary">#FFFFFF</Color>
+        <Color x:Key="MtrlColorOnSurface">#000000</Color>
+        <Color x:Key="MtrlColorPrimary">#e57d15</Color>
+        <Color x:Key="MtrlColorPrimaryVariant">#e57d15</Color>
+        <Color x:Key="MtrlColorPrimaryLight">#eaa543</Color>
+        <Color x:Key="MtrlColorTextFeildBackColor">#fef3e7</Color>
+        <Color x:Key="MtrlColorSecondary">#e57d15</Color>
+        <Color x:Key="MtrlColorSecondaryVariant">#e57d15</Color>
+        <Color x:Key="MtrlColorSurface">#FFFFFF</Color>
+        <Color x:Key="MtrlColorDevider">LightGray</Color>
+        <Color x:Key="MtrlColorMenuBar">LightGray</Color>
+        <Color x:Key="MtrlColorTextTopmain">LightGray</Color>-->
+
+        <!--Định nghĩa màu cho Lê Mai Carry-->
+        <Color x:Key="MtrlColorBackground">#FFFFFF</Color>
+        <Color x:Key="MtrlColorError">#B00020</Color>
+        <Color x:Key="MtrlColorOnBackground">#000000</Color>
+        <Color x:Key="MtrlColorOnError">#FFFFFF</Color>
+        <Color x:Key="MtrlColorOnPrimary">#FFFFFF</Color>
+        <Color x:Key="MtrlColorOnSecondary">#FFFFFF</Color>
+        <Color x:Key="MtrlColorOnSurface">#000000</Color>
+        <Color x:Key="MtrlColorPrimary">#EF3300</Color>
+        <Color x:Key="MtrlColorPrimaryVariant">#EF3300</Color>
+        <Color x:Key="MtrlColorPrimaryLight">#ff6c37</Color>
+        <Color x:Key="MtrlColorTextFeildBackColor">#fef3e7</Color>
+        <Color x:Key="MtrlColorSecondary">#EF3300</Color>
+        <Color x:Key="MtrlColorSecondaryVariant">#EF3300</Color>
+        <Color x:Key="MtrlColorSurface">#FFFFFF</Color>
+        <Color x:Key="MtrlColorDevider">LightGray</Color>
+        <Color x:Key="MtrlColorMenuBar">Gray</Color>
+        <Color x:Key="MtrlColorTextTopmain">Gray</Color>
+
+        <!--<OnPlatform x:Key="FontFamily.RobotoRegular"
+            x:TypeArguments="x:String" Android="Fonts/Roboto-Regular.ttf#Roboto-Regular" iOS="Roboto-Regular" />
+        <OnPlatform x:Key="FontFamily.RobotoMedium"
+            x:TypeArguments="x:String" Android="Fonts/Roboto-Medium.ttf#Roboto-Medium" iOS="Roboto-Medium" />-->
+
+        <!--<mtrltypo:MaterialFontConfiguration x:Key="Material.Font"
+            Body1="{StaticResource FontFamily.RobotoRegular}"
+            Body2="{StaticResource FontFamily.RobotoRegular}"
+            Button="{StaticResource FontFamily.RobotoMedium}"
+            Caption="{StaticResource FontFamily.RobotoRegular}"
+            H1="{StaticResource FontFamily.RobotoRegular}"
+            H2="{StaticResource FontFamily.RobotoRegular}"
+            H3="{StaticResource FontFamily.RobotoRegular}"
+            H4="{StaticResource FontFamily.RobotoRegular}"
+            H5="{StaticResource FontFamily.RobotoRegular}"
+            H6="{StaticResource FontFamily.RobotoMedium}"
+            Overline="{StaticResource FontFamily.RobotoRegular}"
+            Subtitle1="{StaticResource FontFamily.RobotoRegular}"
+            Subtitle2="{StaticResource FontFamily.RobotoMedium}" />-->
+        <mtrltypo:MaterialFontConfiguration x:Key="Material.Font"
+            Body1="RobotoRegular" Body2="RobotoRegular" Button="RobotoMedium" Caption="RobotoRegular" H1="RobotoRegular" H2="RobotoRegular" H3="RobotoRegular" H4="RobotoRegular" H5="RobotoRegular" H6="RobotoMedium" Overline="RobotoRegular" Subtitle1="RobotoRegular" Subtitle2="RobotoMedium" />
+
+
+        <mtrlRes:MaterialColorConfiguration x:Key="Material.Color"
+            Background="{StaticResource MtrlColorBackground}"
+            Error="{StaticResource MtrlColorError}"
+            OnBackground="{StaticResource MtrlColorOnBackground}"
+            OnError="{StaticResource MtrlColorOnError}"
+            OnPrimary="{StaticResource MtrlColorOnPrimary}"
+            OnSecondary="{StaticResource MtrlColorOnSecondary}"
+            OnSurface="{StaticResource MtrlColorOnSurface}"
+            Primary="{StaticResource MtrlColorPrimary}"
+            PrimaryVariant="{StaticResource MtrlColorPrimaryVariant}"
+            Secondary="{StaticResource MtrlColorSecondary}"
+            SecondaryVariant="{StaticResource MtrlColorSecondaryVariant}"
+            Surface="{StaticResource MtrlColorSurface}"/>
+
+        <mtrlRes:MaterialConfiguration x:Key="Material.Configuration"
+            ColorConfiguration="{StaticResource Material.Color}"
+            FontConfiguration="{StaticResource Material.Font}" />
+
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{StaticResource MtrlColorPrimary}" />
+            <Setter Property="BarTextColor" Value="{StaticResource MtrlColorOnPrimary}" />
+        </Style>
+        <!--<Style TargetType="vws:GhContentPageBase" ApplyToDerivedTypes="True">
+            <Setter Property="mtrl:MaterialNavigationPage.AppBarTitleTextAlignment" Value="Center" />
+            <Setter Property="mtrl:MaterialNavigationPage.StatusBarColor" Value="{StaticResource MtrlColorPrimary}" />
+        </Style>-->
+
+        <Thickness x:Key="PagePadding">10</Thickness>
+        <Thickness x:Key="PagePaddingX">10,0</Thickness>
+        <Thickness x:Key="PagePaddingY">0,10</Thickness>
+
+
+        <Thickness x:Key="CardPadding">20,10</Thickness>
+
+
+        <Style x:Key="GhButtonStyle" TargetType="mtrl:MaterialButton">
+            <Setter Property="CornerRadius" Value="99" />
+            <Setter Property="BackgroundColor" Value="{StaticResource MtrlColorPrimary}" />
+            <Setter Property="HeightRequest" Value="60" />
+            <Setter Property="MinimumWidthRequest" Value="300" />
+        </Style>
+
+        <x:Single x:Key="CommonCornerRadiusFloat">5</x:Single>
+        <x:Double x:Key="CommonCornerRadiusDouble">5</x:Double>
+        <x:Int32 x:Key="CommonCornerRadiusInt">20</x:Int32>
+
+        <x:Double x:Key="CommonRowSpacing">5</x:Double>
+        <x:Double x:Key="CommonRowSpacing10">10</x:Double>
+
+        <Thickness x:Key="PopupPadding">10</Thickness>
+        <x:Double x:Key="PopupFontSizeTitle">20</x:Double>
+        <Thickness x:Key="PopupMarginTitle">0,0,0,10</Thickness>
+
+        <CornerRadius x:Key="TopRounded">30,30,0,0</CornerRadius>
+        <Thickness x:Key="TopRoundedPadding">30</Thickness>
+
+        <Thickness x:Key="FormMarginInput">0,5,0,5</Thickness>
+        <Thickness x:Key="FormMarginLabel">0,5,0,0</Thickness>
+
+        <Style x:Key="GhPopupWrapperStyle" TargetType="mtrl:MaterialCard">
+            <Setter Property="CornerRadius" Value="15" />
+        </Style>
+        <Style x:Key="GhPopupTitleStyle" TargetType="mtrl:MaterialLabel">
+            <Setter Property="TypeScale" Value="H5" />
+            <Setter Property="Margin" Value="0,0,0,15" />
+        </Style>
+
+
+
+        <Style ApplyToDerivedTypes="True" TargetType="vws:GhContentPageBase">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="BackgroundColor" Value="{StaticResource MtrlColorSurface}" />
+        </Style>
+
+        <Style x:Key="ButtonPopupSylte" TargetType="mtrl:MaterialButton">
+            <Setter Property="HorizontalOptions" Value="End" />
+            <Setter Property="ButtonType" Value="Text" />
+        </Style>
+
+
+
+        <Style x:Key="GhLblStyle" TargetType="mtrl:MaterialLabel">
+            <Setter Property="TypeScale" Value="Subtitle1" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="LineHeight" Value="1" />
+        </Style>
+        <Style x:Key="GhLblTitleStyle" TargetType="mtrl:MaterialLabel">
+            <Setter Property="TypeScale" Value="Subtitle1" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="GhLblRightAlignStyle" BasedOn="{StaticResource GhLblStyle}" TargetType="mtrl:MaterialLabel">
+            <Setter Property="HorizontalOptions" Value="End" />
+            <Setter Property="HorizontalTextAlignment" Value="End" />
+        </Style>
+
+
+
+        <Style x:Key="GhStackFrmStyle" TargetType="StackLayout">
+            <Setter Property="Spacing" Value="10" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+
+        <Style x:Key="GhTxtStyle" TargetType="mtrl:MaterialTextField">
+            <Setter Property="LeadingIconTintColor" Value="{StaticResource MtrlColorPrimary}" />
+            <Setter Property="ReturnType" Value="Next" />
+            <Setter Property="TintColor" Value="{StaticResource MtrlColorPrimary}" />
+            <Setter Property="AlwaysShowUnderline" Value="True" />
+            <Setter Property="MaxLength" Value="50" />
+            <Setter Property="BackgroundColor" Value="{StaticResource MtrlColorTextFeildBackColor}" />
+            <Setter Property="Placeholder" Value="..." />
+        </Style>
+
+        <Style x:Key="GhDtpStyle" TargetType="mtrl:MaterialDateField">
+            <Setter Property="LeadingIconTintColor" Value="{StaticResource MtrlColorPrimary}" />
+            <Setter Property="AlwaysShowUnderline" Value="True" />
+            <Setter Property="Placeholder" Value="..." />
+        </Style>
+
+        <Style x:Key="GhSwStyle" TargetType="mtrl:MaterialSwitch">
+            <Setter Property="ActiveTrackColor" Value="{StaticResource MtrlColorPrimary}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="GhChkStyle" TargetType="CheckBox">
+            <Setter Property="Color" Value="{StaticResource MtrlColorPrimary}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+        <Style x:Key="GhRdoStyle" TargetType="RadioButton">
+            <!--<Setter Property="Color" Value="{StaticResource MtrlColorPrimary}" />
+            <Setter Property="VerticalOptions" Value="Center" />-->
+        </Style>
+
+        <Style x:Key="GhBtnStyle" TargetType="mtrl:MaterialButton">
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Padding" Value="20,0" />
+        </Style>
+
+        <Style x:Key="GhIconStyle" TargetType="mtrl:MaterialLabel">
+            <Setter Property="FontFamily" Value="FAS" />
+            <Setter Property="TypeScale" Value="Subtitle1" />
+            <Setter Property="TextColor" Value="{StaticResource MtrlColorPrimary}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="GhIconClickStyle" TargetType="mtrl:MaterialLabel">
+            <Setter Property="FontFamily" Value="FAS" />
+            <Setter Property="TypeScale" Value="Subtitle1" />
+            <Setter Property="TextColor" Value="{StaticResource MtrlColorPrimary}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="25" />
+        </Style>
+
+
+
+
+
+
+
+
+
+
+        <Style x:Key="GhStackHorizontalBtnStyle" TargetType="StackLayout">
+            <Setter Property="Spacing" Value="0" />
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+        <Style x:Key="GhStackVerticalBtnStyle" TargetType="StackLayout">
+            <Setter Property="Spacing" Value="0" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="GhGridBtnCenterEqualStyle" TargetType="Grid">
+            <Setter Property="ColumnDefinitions" Value="*,Auto,*" />
+        </Style>
+        <Style x:Key="GhGridBtnStyle" TargetType="Grid">
+            <Setter Property="RowSpacing" Value="0" />
+            <Setter Property="ColumnSpacing" Value="0" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Grid.Column" Value="1" />
+        </Style>
+
+
+
+        <Style x:Key="GhBtnEqualStyle" TargetType="mtrl:MaterialButton">
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="HorizontalOptions" Value="Fill" />
+            <Setter Property="Padding" Value="20,0" />
+        </Style>
+
+
+
+
+        <Style x:Key="GhGrid2ColStyle" TargetType="Grid">
+            <Setter Property="ColumnSpacing" Value="10" />
+            <Setter Property="ColumnDefinitions" Value="Auto,*" />
+        </Style>
+        <Style x:Key="GhGrid2ColRightAlignStyle" TargetType="Grid">
+            <Setter Property="ColumnSpacing" Value="10" />
+            <Setter Property="ColumnDefinitions" Value="*,Auto" />
+        </Style>
+
+        <Style x:Key="GhGrid3ColStyle" TargetType="Grid">
+            <Setter Property="ColumnSpacing" Value="10" />
+            <Setter Property="ColumnDefinitions" Value="Auto,*, Auto" />
+        </Style>
+
+        <Style x:Key="GhStackSwitchCheckBoxRadioHorizontalStyle" TargetType="StackLayout">
+            <Setter Property="Spacing" Value="20" />
+            <Setter Property="Orientation" Value="Horizontal" />
+        </Style>
+
+
+
+
+
+
+
+
+
+
+        <Style x:Key="GhIconBtnGridWrapperStyle" TargetType="Grid">
+            <Setter Property="ColumnSpacing" Value="0" />
+            <Setter Property="RowSpacing" Value="0" />
+            <Setter Property="RowDefinitions" Value="Auto,Auto" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="7" />
+        </Style>
+
+        <Style x:Key="GhIconBtnGridChipStyle" TargetType="Grid">
+            <Setter Property="ColumnSpacing" Value="0" />
+            <Setter Property="RowSpacing" Value="0" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+
+        <Style x:Key="GhIconBtnCardClickStyle" TargetType="mtrl:MaterialCard">
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="Elevation" Value="0" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="IsClickable" Value="True" />
+            <Setter Property="IsClippedToBounds" Value="True" />
+        </Style>
+
+        <Style x:Key="GhIconBtnBorderStyle" TargetType="Frame">
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="BorderColor" Value="{StaticResource MtrlColorPrimary}" />
+            <Setter Property="CornerRadius" Value="15" />
+        </Style>
+
+        <Style x:Key="GhIconBtnImageStyle" TargetType="Label">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="FontFamily" Value="FAS" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="TextColor" Value="{StaticResource MtrlColorPrimary}" />
+            <Setter Property="WidthRequest" Value="30" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="GhIconBtnChipStyle" TargetType="mtrl:MaterialChip">
+            <Setter Property="HorizontalOptions" Value="End" />
+            <Setter Property="VerticalOptions" Value="Start" />
+            <Setter Property="BackgroundColor" Value="#e57d15" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Scale" Value="0.8" />
+            <Setter Property="Margin" Value="0,-8,-8,0" />
+        </Style>
+
+        <Style x:Key="GhIconBtnTitleStyle" BasedOn="{StaticResource GhLblStyle}" TargetType="mtrl:MaterialLabel">
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0,5,0,0" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+        </Style>
+
+
+        <Style x:Key="GhClvRowStyle" TargetType="StackLayout">
+            <Setter Property="Spacing" Value="0" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+
+        <Style x:Key="GhClvClickStyle" TargetType="mtrl:MaterialCard">
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="IsClickable" Value="True" />
+            <Setter Property="Elevation" Value="0" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+        </Style>
+
+        <Style x:Key="GhClvLeftIconStyle" BasedOn="{StaticResource GhIconStyle}" TargetType="mtrl:MaterialLabel">
+            <!--  Temp  -->
+        </Style>
+
+        <Style x:Key="GhClvRightIconStyle" BasedOn="{StaticResource GhIconStyle}" TargetType="mtrl:MaterialLabel">
+            <!--  Temp  -->
+        </Style>
+
+        <Style x:Key="GhClvTitleStyle" BasedOn="{StaticResource GhLblStyle}" TargetType="mtrl:MaterialLabel">
+            <!--  Temp  -->
+        </Style>
+
+        <Style x:Key="GhClvDeviderStyle" TargetType="BoxView">
+            <Setter Property="HeightRequest" Value="1" />
+            <Setter Property="Color" Value="LightGray" />
+        </Style>
+
+
+
+        <Style x:Key="GhGridLblFrmStyle" TargetType="Grid">
+            <Setter Property="RowSpacing" Value="10" />
+            <Setter Property="ColumnSpacing" Value="5" />
+            <Setter Property="ColumnDefinitions" Value="Auto,Auto,*" />
+        </Style>
+        <Style x:Key="GhLblFrmLeftStyle" BasedOn="{StaticResource GhLblStyle}" TargetType="mtrl:MaterialLabel">
+            <!--  Temp  -->
+        </Style>
+        <Style x:Key="GhLblFrmColonStyle" BasedOn="{StaticResource GhLblStyle}" TargetType="mtrl:MaterialLabel">
+            <Setter Property="Grid.Column" Value="1" />
+        </Style>
+        <Style x:Key="GhLblFrmRightStyle" BasedOn="{StaticResource GhLblStyle}" TargetType="mtrl:MaterialLabel">
+            <Setter Property="Grid.Column" Value="2" />
+        </Style>
+
+        <Style x:Key="GhIconTextClickStyle" TargetType="mtrl:MaterialCard">
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="Elevation" Value="0" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="IsClickable" Value="True" />
+        </Style>
+
+
+
+    </Application.Resources>
+</prism:PrismApplication>

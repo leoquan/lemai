@@ -1,0 +1,216 @@
+﻿@using LeMaiDomain.Models;
+@{
+    Layout = null;
+    var webConfig = ViewData["webconfig"] as WebOption;
+}
+
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>@ViewData["Title"]</title>
+		<meta name="description" content="Lê Mai Carry - Logistics & Delivery Company">
+		<meta name="keywords" content="cargo, clean, contractor, corporate, freight, industry, localization, logistics, page builder, shipment, transport, transportation, truck, trucking">
+		<meta name="author" content="Themexriver">
+		<link rel="shortcut icon" href="~/assets/img/logo/favicon.png" type="image/x-icon">
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="~/assets/css/fontawesome-all.css">
+		<link rel="stylesheet" href="~/assets/css/flaticon.css">
+		<link rel="stylesheet" href="~/assets/css/animate.css">
+		<link rel="stylesheet" href="~/assets/css/nice-select.css">
+		<link rel="stylesheet" href="~/assets/css/video.min.css">
+		<link rel="stylesheet" href="~/assets/css/animated-slider.css">
+		<link rel="stylesheet" href="~/assets/css/jquery.mCustomScrollbar.min.css">
+		<link rel="stylesheet" href="~/assets/css/slick.css">
+		<link rel="stylesheet" href="~/assets/css/rs6.css">
+		<link rel="stylesheet" href="~/assets/css/slick-theme.css">
+		<link rel="stylesheet" href="~/assets/css/style.css">
+		@RenderSection("css", required: false)
+	</head>
+	<body>
+		<div id="preloader"></div>
+		<div class="up">
+			<a href="#" class="scrollup text-center"><i class="fas fa-chevron-up"></i></a>
+		</div>
+<!-- Start of header section
+	============================================= -->
+	<header id="ft-header" class="ft-header-section header-style-two">
+		<div class="ft-header-top">
+			<div class="container">
+				<div class="ft-header-top-content d-flex justify-content-between align-items-center">
+					<div class="ft-header-top-cta ul-li">
+						<ul>
+							<li><i class="fal fa-envelope"></i>@webConfig.COMPANY_EMAIL</li>
+							<li><i class="fal fa-map-marker-alt"></i>@webConfig.COMPANY_ADDRESS</li>
+						</ul>
+					</div>
+					<div class="ft-header-cta-info d-flex">
+						<div class="ft-header-cta-icon d-flex justify-content-center align-items-center">
+							<i class="flaticon-call"></i>
+						</div>
+						<div class="ft-header-cta-text headline pera-content">
+							<p>Hotline</p>
+							<h3>@webConfig.COMPANY_HOTLINE</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ft-header-main-menu-wrapper">
+			<div class="container">
+				<div class="ft-header-main-menu-area position-relative">
+					<div class="ft-header-main-menu d-flex align-items-center justify-content-between position-relative">
+						<div class="ft-site-logo-area">
+							<div class="ft-site-logo position-relative">
+								<a asp-action="Index" asp-controller="Home"><img src="~/assets/img/logo/logo3.png" alt=""></a>
+							</div>
+						</div>
+						<div class="ft-main-navigation-area">
+							@RenderSection("menu", required: true)
+						</div>
+						<div class="ft-header-cta-btn">
+							<a class="d-flex justify-content-center align-items-center" asp-controller="KhachHang" asp-action="Login">Khách hàng</a>
+						</div>
+					</div>
+					<div class="mobile_menu position-relative">
+						<div class="mobile_menu_button open_mobile_menu">
+							<i class="fal fa-bars"></i>
+						</div>
+						<div class="mobile_menu_wrap">
+							<div class="mobile_menu_overlay open_mobile_menu"></div>
+							<div class="mobile_menu_content">
+								<div class="mobile_menu_close open_mobile_menu">
+									<i class="fal fa-times"></i>
+								</div>
+								<div class="m-brand-logo">
+									<a href="#"><img src="~/assets/img/logo/logo4.png" alt=""></a>
+								</div>
+								@RenderSection("menumobile", required: true)
+							</div>
+						</div>
+						<!-- /Mobile-Menu -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+<!-- End of header section
+	============================================= -->
+
+	@RenderBody()
+
+<!-- Start of Footer   section
+	============================================= -->
+	<footer id="ft-footer-2" class="ft-footer-section-2" data-background="~/assets/img/bg/f-bg.png">
+		<div class="ft-footer-newslatter position-relative">
+			<div class="container">
+				<div class="ft-footer-newslatter-content d-flex justify-content-between align-items-center flex-wrap">
+					<div class="ft-footer-newslatter-text headline">
+						<h2>Nhận tin tức & khuyến mãi</h2>	
+					</div>
+					<div class="ft-footer-newslatter-form position-relative">
+						<form action="#">
+							<input type="text" placeholder="Email">
+							<button type="submit">Đăng ký</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ft-footer-widget-wrapper-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-6">
+						<div class="ft-footer-widget ul-li-block headline pera-content">
+							<div class="logo-widget">
+								<div class="site-logo">
+									<a href="#"><img src="~/assets/img/logo/logo4.png" alt=""></a>
+								</div>
+								<div class="ft-footer-address">
+									<span>@webConfig.COMPANY_FOOTER_ADDRESS</span>
+									<span>Website: www.lemai.vn</span>
+									<span>Email: @webConfig.COMPANY_EMAIL</span>
+									<span>@webConfig.COMPANY_FOOTER_PHONE</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="ft-footer-widget ul-li-block headline pera-content">
+							<div class="menu-widget">
+								<h3 class="widget-title">Thông tin chung</h3>
+								<ul>
+									<li><a asp-controller="Home" asp-action="Contact">Quy định hàng gửi</a></li>
+									<li><a asp-controller="Home" asp-action="Contact">Chính sách bồi thường</a></li>
+									<li><a asp-controller="Home" asp-action="Contact">Danh sách không vận chuyển</a></li>
+									<li><a asp-controller="Home" asp-action="Contact">Bảng giá</a></li>
+                                    <li><a asp-controller="Home" asp-action="Contact">Chính sách bảo mật</a></li>
+									<li><a asp-controller="Home" asp-action="Contact">Liên hệ</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="ft-footer-widget ul-li-block headline pera-content">
+							<div class="menu-widget">
+								<h3 class="widget-title">Dịch vụ</h3>
+								<ul>
+									<li><a asp-controller="Home" asp-action="Contact">Vận chuyển nhanh hàng hóa</a></li>
+									<li><a asp-controller="Home" asp-action="Contact">Vận tải Miền Nam & Miền Trung</a></li>
+									<li><a asp-controller="Home" asp-action="Contact">Vận chuyển đường biển</a></li>
+									<li><a asp-controller="Home" asp-action="Contact">Vận chuyển quốc tế</a></li>
+									<li><a asp-controller="Home" asp-action="Contact">Mua hàng quốc tế</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<div class="ft-footer-widget ul-li-block headline pera-content">
+							<div class="menu-widget">
+								<h3 class="widget-title">Ứng dụng trên điện thoại</h3>
+								<div class="row" style="height:150px !important; width:150px !important; margin-left:10px">
+									<img src="~/assets/qr_LemaiAndroid.png" widt style="height:150px !important; width:150px !important; padding:0px !important;" />
+								</div>
+								<div class="row" style="height:10px"></div>
+								<div class="row" style="height:150px !important; width:150px !important; margin-left:10px">
+									<img src="~/assets/qr_LemaiIos.png" width="100px" height="100px" style="height:150px !important; width:150px !important; padding:0px !important;" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ft-footer-copywrite-2 text-center">
+			<span>Copyright © 2023 Lê Mai.All Rights Reserved</span>
+		</div>
+	</footer>		
+<!-- End of FAQ why choose  section
+	============================================= -->
+	<!-- For Js Library -->
+	@RenderSection("js", required: false)
+	<script src="~/assets/js/jquery.min.js"></script>
+	<script src="~/assets/js/bootstrap.min.js"></script>
+	<script src="~/assets/js/popper.min.js"></script>
+	<script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="~/assets/js/appear.js"></script>
+	<script src="~/assets/js/slick.js"></script>
+	<script src="~/assets/js/jquery.counterup.min.js"></script>
+	<script src="~/assets/js/waypoints.min.js"></script>
+	<script src="~/assets/js/jquery.nice-select.min.js"></script>
+	<script src="~/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="~/assets/js/wow.min.js"></script>
+	<script src="~/assets/js/imagesloaded.pkgd.min.js"></script>
+	<script src="~/assets/js/jquery.filterizr.js"></script>
+	<script src="~/assets/js/rbtools.min.js"></script>
+	<script src="~/assets/js/jquery.cssslider.min.js"></script>
+	<script src="~/assets/js/rs6.min.js"></script>
+	<script src="~/assets/js/knob.js"></script>
+	<script src="~/assets/js/script.js"></script>
+	<script src="~/assets/js/gmaps.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js@key=AIzaSyDk2HrmqE4sWSei0XdKGbOMOHN3Mm2Bf-M&ver=2.1.6"></script>
+</body>
+</html>			

@@ -1,0 +1,34 @@
+﻿@{
+}
+<nav class="ft-main-navigation clearfix ul-li">
+    <ul id="ft-main-nav" class="nav navbar-nav clearfix">
+        <li><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+        <li class="dropdown">
+            <a href="#">Giới thiệu</a>
+            <ul class="dropdown-menu clearfix">
+                <li><a asp-controller="Home" asp-action="About">Giới thiệu</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Quy định hàng gửi</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Chính sách bồi thường</a></li>
+                <li><a asp-controller="Home" asp-action="Privacy">Chính sách bảo mật</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#">Dịch vụ</a>
+            <ul class="dropdown-menu clearfix">
+                <li><a asp-controller="Home" asp-action="Contact">Dịch vụ vận chuyển nhanh</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Dịch vụ vận tải</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Dịch vụ vận tải đường biển</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Dịch vụ vận tải đường không</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Dịch vụ mua hộ hàng quốc tế</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#">Tin tức</a>
+            <ul class="dropdown-menu clearfix">
+                <li><a asp-controller="Home" asp-action="Contact">Tin tức - hoạt động </a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Tuyển dụng</a></li>
+            </ul>
+        </li>
+        <li><a asp-controller="Home" asp-action="Contact">Liên hệ</a></li>
+    </ul>
+</nav>

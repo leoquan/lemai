@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ghView:GhContentPageBase x:Class="LeMaiMobile.Views.PageDonDat"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ghModel="clr-namespace:LeMaiMobile.Models"
+    xmlns:ghView="clr-namespace:LeMaiMobile.Views"
+    xmlns:ghViewModel="clr-namespace:LeMaiMobile.ViewModels"
+    xmlns:mtrl="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    xmlns:prism="http://prismlibrary.com"
+    x:Name="pageDonDat"
+    x:DataType="ghViewModel:PageDonDatViewModel"
+    Title="Kiện vấn đề"
+    xmlns:ghDto="clr-namespace:LeMaiDto;assembly=LeMaiDto" NavigationPage.HasNavigationBar="False">
+    <Grid RowSpacing="0"
+        BackgroundColor="White"
+        RowDefinitions="Auto,Auto,Auto,*,Auto,Auto">
+
+        <Grid ColumnDefinitions="*,Auto">
+            <SearchBar Text="{Binding FilterTextVanDon, Mode=TwoWay}"
+                Placeholder="Họ tên, SĐT, Mã vận đơn"
+                SearchCommand="{Binding FilterVanDonCommand}">
+                <SearchBar.Behaviors>
+                    <prism:EventToCommandBehavior Command="{Binding FilterVanDonCommand}"
+                        EventName="TextChanged" />
+                </SearchBar.Behaviors>
+            </SearchBar>
+
+            <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                Grid.Column="1"
+                Margin="{StaticResource PagePaddingX}"
+                ClickCommand="{Binding TaoMoiDonDatCommand}">
+                <Label Style="{StaticResource GhIconClickStyle}"
+                    TextColor="{StaticResource MtrlColorPrimary}"
+                    Text="{x:Static ghModel:FAS.SquarePlus}" />
+            </mtrl:MaterialCard>
+        </Grid>
+
+        <Grid Grid.Row="1"
+            Margin="{StaticResource PagePaddingX}"
+            ColumnDefinitions="Auto,*,Auto">
+            <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                Grid.Column="0"
+                ClickCommand="{Binding ShowFilterDateCommand}">
+                <Label Style="{StaticResource GhIconClickStyle}"
+                    TextColor="{StaticResource MtrlColorPrimary}"
+                    Text="{x:Static ghModel:FAS.CalendarDays}" />
+            </mtrl:MaterialCard>
+
+
+            <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                Grid.Column="1"
+                Text="{Binding ListDanhSach.Count, StringFormat='{}Số lượng: {0:N0}'}" />
+
+            <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                Grid.Column="2"
+                ClickCommand="{Binding ShowFilterStatusCommand}">
+                <Label Style="{StaticResource GhIconClickStyle}"
+                    TextColor="Gray"
+                    Text="{x:Static ghModel:FAS.FilterList}">
+                    <Label.Triggers>
+                        <DataTrigger Binding="{Binding IsFilterStatusActive}"
+                            TargetType="Label"
+                            Value="True">
+                            <Setter Property="TextColor" Value="{StaticResource MtrlColorPrimary}" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </mtrl:MaterialCard>
+        </Grid>
+        <BoxView Grid.Row="2"
+            HeightRequest="1"
+            BackgroundColor="Gray" />
+
+        <RefreshView Grid.Row="3"
+            Command="{Binding LoadDanhSachCommand}"
+            IsRefreshing="{Binding IsRefeshListVanDon, Mode=TwoWay}">
+            <CollectionView ItemsSource="{Binding ListDanhSach}">
+
+                <CollectionView.Resources>
+                    <Style x:Key="Icon" BasedOn="{StaticResource GhIconStyle}" TargetType="mtrl:MaterialLabel">
+                        <Setter Property="TextColor" Value="Gray" />
+                        <Setter Property="Opacity" Value="0.5" />
+                    </Style>
+                    <Style x:Key="Label" BasedOn="{StaticResource GhLblStyle}" TargetType="mtrl:MaterialLabel">
+                        <Setter Property="Grid.Column" Value="1" />
+                    </Style>
+
+                </CollectionView.Resources>
+                <CollectionView.EmptyView>
+                    <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                        Margin="{StaticResource PagePadding}"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="Không có vận đơn nào." />
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout x:DataType="ghDto:DonDatDanhSachOutput"
+                            Padding="0,0,0,5">
+                            <StackLayout Padding="{StaticResource PagePaddingX}"
+                                BackgroundColor="{Binding StatusBackgroundColor}">
+                                <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                                    Margin="0,10"
+                                    FontAttributes="Bold"
+                                    TextColor="{Binding StatusTextColor}"
+                                    Text="{Binding StatusName}" />
+                            </StackLayout>
+
+                            <Grid Margin="{StaticResource PagePaddingX}"
+                                ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+                                <mtrl:MaterialLabel Style="{StaticResource Icon}"
+                                    Text="{x:Static ghModel:FAS.FileInvoice}" />
+                                <StackLayout Grid.Column="1"
+                                    Orientation="Horizontal">
+                                    <mtrl:MaterialLabel Style="{StaticResource Label}"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        TextColor="Black"
+                                        Text="{Binding OrderCode}" />
+                                    <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                                        Grid.Column="0"
+                                        ClickCommand="{Binding Source={RelativeSource AncestorType={x:Type ghView:PageDonDat}}, Path=BindingContext.CopyBillCodeCommand}"
+                                        ClickCommandParameter="{Binding OrderCode}">
+                                        <Label Style="{StaticResource GhIconClickStyle}"
+                                            FontSize="20"
+                                            TextColor="{StaticResource MtrlColorPrimary}"
+                                            Text="{x:Static ghModel:FAS.Copy}" />
+                                    </mtrl:MaterialCard>
+                                </StackLayout>
+
+
+                                <mtrl:MaterialLabel Style="{StaticResource Icon}"
+                                    Grid.Row="1"
+                                    Text="{x:Static ghModel:FAS.User}" />
+                                <mtrl:MaterialLabel Style="{StaticResource Label}"
+                                    Grid.Row="1">
+                                    <mtrl:MaterialLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding AcceptName}"
+                                                TextTransform="Uppercase" />
+                                            <Span Text=" - " />
+                                            <Span Text="{Binding AcceptPhone}" />
+                                        </FormattedString>
+                                    </mtrl:MaterialLabel.FormattedText>
+                                </mtrl:MaterialLabel>
+
+                                <mtrl:MaterialLabel Style="{StaticResource Icon}"
+                                    Grid.Row="2"
+                                    Text="{x:Static ghModel:FAS.Cube}" />
+                                <mtrl:MaterialLabel Style="{StaticResource Label}"
+                                    Grid.Row="2"
+                                    Text="{Binding GoodsName}" />
+
+                                <mtrl:MaterialLabel Style="{StaticResource Icon}"
+                                    Grid.Row="3"
+                                    Text="{x:Static ghModel:FAS.LocationDot}" />
+                                <mtrl:MaterialLabel Style="{StaticResource Label}"
+                                    Grid.Row="3"
+                                    Text="{Binding AcceptAddress}" />
+
+                                <mtrl:MaterialLabel Style="{StaticResource Icon}"
+                                    Grid.Row="4"
+                                    Text="{x:Static ghModel:FAS.CalendarDay}" />
+                                <mtrl:MaterialLabel Style="{StaticResource Label}"
+                                    Grid.Row="4"
+                                    Text="{Binding CreateDate, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss}'}" />
+
+                                <mtrl:MaterialLabel Style="{StaticResource Icon}"
+                                    Grid.Row="5"
+                                    Text="{x:Static ghModel:FAS.MoneyBill}" />
+                                <mtrl:MaterialLabel Style="{StaticResource Label}"
+                                    Grid.Row="5"
+                                    Text="{Binding Cod, StringFormat='{}{0:#,##0.##} VNĐ'}" />
+                            </Grid>
+
+                            <Grid Padding="{StaticResource PagePaddingX}"
+                                ColumnDefinitions="*,Auto,*,Auto,*">
+
+                                <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                                    Grid.Column="0"
+                                    Margin="0"
+                                    ClickCommand="{Binding Source={RelativeSource AncestorType={x:Type ghView:PageDonDat}}, Path=BindingContext.SaoChepDonDatCommand}"
+                                    ClickCommandParameter="{Binding Id}"
+                                    Elevation="0" HasShadow="False" IsClickable="True">
+                                    <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                                        Margin="0" HorizontalOptions="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="Blue"
+                                        Text="Sao chép" />
+                                </mtrl:MaterialCard>
+
+                                <BoxView Grid.Column="1"
+                                    WidthRequest="1"
+                                    BackgroundColor="Gray" />
+
+                                <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                                    Grid.Column="2"
+                                    Margin="0"
+                                    ClickCommand="{Binding Source={RelativeSource AncestorType={x:Type ghView:PageDonDat}}, Path=BindingContext.CapNhatDonDatCommand}"
+                                    ClickCommandParameter="{Binding Id}"
+                                    Elevation="0" HasShadow="False" IsClickable="True">
+                                    <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                                        Margin="0" HorizontalOptions="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="Blue"
+                                        Text="Sửa" />
+                                </mtrl:MaterialCard>
+
+                                <BoxView Grid.Column="3"
+                                    WidthRequest="1"
+                                    BackgroundColor="Gray" />
+
+                                <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                                    Grid.Column="4"
+                                    Margin="0"
+                                    ClickCommand="{Binding Source={RelativeSource AncestorType={x:Type ghView:PageDonDat}}, Path=BindingContext.XoaDonDatCommand}"
+                                    ClickCommandParameter="{Binding Id}"
+                                    Elevation="0" HasShadow="False" IsClickable="True">
+                                    <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                                        Margin="0" HorizontalOptions="Center"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="Blue"
+                                        Text="Xóa" />
+                                </mtrl:MaterialCard>
+
+
+
+                            </Grid>
+
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <BoxView Grid.Row="4"
+            HeightRequest="1"
+            BackgroundColor="Gray" />
+        <Grid ColumnSpacing="0"
+            Grid.Row="5"
+            Padding="{StaticResource PagePadding}"
+            ColumnDefinitions="*,*,*,*,*">
+
+            <Grid.Resources>
+                <Style x:Key="MaterialCard" TargetType="mtrl:MaterialCard">
+                    <Setter Property="Margin" Value="0" />
+                    <Setter Property="Padding" Value="0" />
+                    <Setter Property="Elevation" Value="0" />
+                    <Setter Property="IsClickable" Value="True" />
+                    <Setter Property="CornerRadius" Value="5" />
+                    <!--<Setter Property="BackgroundColor" Value="{StaticResource bgMnColor}" />-->
+                </Style>
+                <Style x:Key="Label" TargetType="mtrl:MaterialLabel">
+                    <Setter Property="Margin" Value="0" />
+                    <Setter Property="Padding" Value="0" />
+                    <Setter Property="HorizontalOptions" Value="Center" />
+                    <Setter Property="HorizontalTextAlignment" Value="Center" />
+                    <Setter Property="TypeScale" Value="Caption" />
+                    <Setter Property="TextColor" Value="Gray" />
+                </Style>
+                <Style x:Key="Icon" TargetType="mtrl:MaterialIcon">
+                    <Setter Property="WidthRequest" Value="20" />
+                    <Setter Property="TintColor" Value="Gray" />
+                </Style>
+            </Grid.Resources>
+
+
+
+            <mtrl:MaterialCard Style="{StaticResource MaterialCard}"
+                Grid.Column="0"
+                ClickCommand="{Binding ClickHomeCommand}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <mtrl:MaterialIcon Style="{StaticResource Icon}">
+                        <mtrl:MaterialIcon.Source>
+                            <FontImageSource FontFamily="FAS"
+                                Glyph="{x:Static ghModel:FAS.CalendarCircleUser}" />
+                        </mtrl:MaterialIcon.Source>
+                    </mtrl:MaterialIcon>
+                    <mtrl:MaterialLabel Style="{StaticResource Label}"
+                        Grid.Row="1"
+                        Text="Home" />
+                </Grid>
+            </mtrl:MaterialCard>
+
+            <mtrl:MaterialCard Style="{StaticResource MaterialCard}"
+                Grid.Column="1"
+                ClickCommand="{Binding ClickVanDonCommand}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <mtrl:MaterialIcon Style="{StaticResource Icon}">
+                        <mtrl:MaterialIcon.Source>
+                            <FontImageSource FontFamily="FAS"
+                                Glyph="{x:Static ghModel:FAS.CalendarRange}" />
+                        </mtrl:MaterialIcon.Source>
+                    </mtrl:MaterialIcon>
+                    <mtrl:MaterialLabel Style="{StaticResource Label}"
+                        Grid.Row="1"
+                        Text="Vận đơn" />
+                </Grid>
+            </mtrl:MaterialCard>
+
+            <mtrl:MaterialCard Style="{StaticResource MaterialCard}"
+                Grid.Column="2"
+                IsClickable="False">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <mtrl:MaterialIcon Style="{StaticResource Icon}"
+                        TintColor="{StaticResource MtrlColorPrimary}">
+                        <mtrl:MaterialIcon.Source>
+                            <FontImageSource FontFamily="FAS"
+                                Glyph="{x:Static ghModel:FAS.CalendarLinesPen}" />
+                        </mtrl:MaterialIcon.Source>
+                    </mtrl:MaterialIcon>
+                    <mtrl:MaterialLabel Style="{StaticResource Label}"
+                        Grid.Row="1"
+                        TextColor="{StaticResource MtrlColorPrimary}"
+                        Text="Đơn đặt" />
+                </Grid>
+            </mtrl:MaterialCard>
+
+            <mtrl:MaterialCard Style="{StaticResource MaterialCard}"
+                Grid.Column="3"
+                ClickCommand="{Binding ClickCODCommand}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <mtrl:MaterialIcon Style="{StaticResource Icon}">
+                        <mtrl:MaterialIcon.Source>
+                            <FontImageSource FontFamily="FAS"
+                                Glyph="{x:Static ghModel:FAS.CalendarCheck}" />
+                        </mtrl:MaterialIcon.Source>
+                    </mtrl:MaterialIcon>
+                    <mtrl:MaterialLabel Style="{StaticResource Label}"
+                        Grid.Row="1"
+                        Text="COD" />
+                </Grid>
+            </mtrl:MaterialCard>
+
+            <mtrl:MaterialCard Style="{StaticResource MaterialCard}"
+                Grid.Column="4"
+                ClickCommand="{Binding ClickKienVanDeCommand}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <mtrl:MaterialIcon Style="{StaticResource Icon}">
+                        <mtrl:MaterialIcon.Source>
+                            <FontImageSource FontFamily="FAS"
+                                Glyph="{x:Static ghModel:FAS.CalendarCircleExclamation}" />
+                        </mtrl:MaterialIcon.Source>
+                    </mtrl:MaterialIcon>
+                    <mtrl:MaterialLabel Style="{StaticResource Label}"
+                        Grid.Row="1"
+                        Text="Kiện vấn đề" />
+                </Grid>
+            </mtrl:MaterialCard>
+        </Grid>
+
+    </Grid>
+</ghView:GhContentPageBase>

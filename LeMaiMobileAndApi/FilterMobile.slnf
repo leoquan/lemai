@@ -1,0 +1,11 @@
+{
+  "solution": {
+    "path": "LeMaiApp.sln",
+    "projects": [
+      "LeMaiDto\\LeMaiDto.csproj",
+      "LeMaiMobile.Android\\LeMaiMobile.Android.csproj",
+      "LeMaiMobile.iOS\\LeMaiMobile.iOS.csproj",
+      "LeMaiMobile\\LeMaiMobile.csproj"
+    ]
+  }
+}

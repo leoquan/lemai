@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>MinimumOSVersion</key>
+	<string>10.0</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleDisplayName</key>
+	<string>GHome</string>
+	<key>CFBundleName</key>
+	<string>GHome</string>
+	<key>CFBundleIdentifier</key>
+	<string>life.gtech.ghome</string>
+	<key>CFBundleVersion</key>
+	<string>1.0.10</string>
+	<key>CFBundleShortVersionString</key>
+	<string>10</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>GHome cần quyền truy cập máy ảnh để bạn có thể chụp hình thay đổi ảnh đại diện của bạn, hoặc gắn hình đính kèm bạn chọn khi gởi góp ý đến ban quản lý.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>GHome cần quyền truy cập thư mục hình để lưu hình ảnh bạn muốn lưu (đang xem trên chương trình) vào máy điện thoại của bạn.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>GHome cần quyền truy cập thư mục hình để bạn có thể chọn tập tin hình thay đổi ảnh đại diện của bạn, hoặc gắn hình đính kèm bạn chọn khi gởi góp ý đến ban quản lý.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>GHome không thực sự sử dụng chắc năng định vị.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>GHome không thực sự sử dụng chắc năng định vị.</string>
+</dict>
+</plist>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="LeMaiMobile.Views.ViewVanDonFilterStatus"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ghView="clr-namespace:LeMaiMobile.Views"
+    xmlns:ghViewModel="clr-namespace:LeMaiMobile.ViewModels"
+    xmlns:mtrl="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    x:DataType="ghView:ViewVanDonFilterStatus">
+    <ContentView.Content>
+        <Grid RowDefinitions="Auto,*">
+            <Grid ColumnDefinitions="*,Auto,*">
+                <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                    x:Name="cardChonHet" Clicked="cardChonHet_Clicked"
+                    Margin="0"
+                    Elevation="0" HasShadow="False" IsClickable="True">
+                    <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                        Margin="0" HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        TextColor="Blue"
+                        Text="Chọn hết" />
+                </mtrl:MaterialCard>
+
+                <BoxView Grid.Column="1"
+                    WidthRequest="1"
+                    BackgroundColor="Gray" />
+
+                <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                    x:Name="cardBoHet"
+                    Grid.Column="2"
+                    Margin="0" Clicked="cardBoHet_Clicked"
+                    Elevation="0" HasShadow="False" IsClickable="True">
+                    <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                        Margin="0" HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        TextColor="Blue"
+                        Text="Bỏ hết" />
+                </mtrl:MaterialCard>
+            </Grid>
+
+            <CollectionView Grid.Row="1"
+                ItemsSource="{Binding ListStatus}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="ghViewModel:StatusNameModel">
+                        <mtrl:MaterialCheckbox Text="{Binding Name}"
+                            IsSelected="{Binding IsChecked, Mode=TwoWay}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

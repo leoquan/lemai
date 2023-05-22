@@ -1,0 +1,108 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <LangVersion>10.0</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="Enums\**" />
+        <Compile Remove="Sources\**" />
+        <EmbeddedResource Remove="Enums\**" />
+        <EmbeddedResource Remove="Sources\**" />
+        <None Remove="Enums\**" />
+        <None Remove="Sources\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Models\CommonHelper.cs" />
+        <Compile Remove="Models\TemplatedTableView.cs" />
+    </ItemGroup>
+
+
+
+    <ItemGroup>
+        <None Remove="ngrok.txt" />
+        <None Remove="Resources\Fa6ProSolidFont.otf" />
+        <None Remove="Resources\RobotoMedium.ttf" />
+        <None Remove="Resources\RobotoRegular.ttf" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Resources\Fa6ProSolidFont.otf" />
+        <EmbeddedResource Include="Resources\RobotoMedium.ttf" />
+        <EmbeddedResource Include="Resources\RobotoRegular.ttf" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+        <PackageReference Include="Microcharts.Forms" Version="1.0.0-preview1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+        <PackageReference Include="RestSharp" Version="108.0.3" />
+        <PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.3" />
+        <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
+        <PackageReference Include="Xamarin.Essentials" Version="1.7.4" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2545" />
+        <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.7.4" />
+        <PackageReference Include="Prism.DryIoc.Forms" Version="8.1.97" />
+        <PackageReference Include="XF.Material" Version="1.8.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\LeMaiMobileAndApi\LeMaiDto\LeMaiDto.csproj" />
+    </ItemGroup>
+
+
+
+    <ItemGroup>
+        <EmbeddedResource Update="Views\PageCOD.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\PageDangKy.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\PageDangNhap.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\PageDonDat.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\PageDonDatChiTiet.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\PageKienVanDe.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\PageTrangChu.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\PageVanDon.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\PageVanDonChiTiet.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\ViewCODChuaThanhToanFilterDate.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\ViewCODDaThanhToanFilterDate.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\ViewDonDatFilterDate.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\ViewKienVanDeFilterDate.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\ViewTrangChuFilterDate.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\ViewVanDonFilterDate.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\ViewVanDonFilterStatus.xaml">
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+    </ItemGroup>
+
+</Project>

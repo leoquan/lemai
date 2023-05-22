@@ -1,0 +1,32 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+namespace LeMaiDomain
+{
+	[Serializable()]
+	public class view_GExpBalanceDetailPost
+	{
+		//Khai bao các biến
+		public System.String Id { get; set; }
+		public System.String FK_ExtPostFrom { get; set; }
+		public System.Int32 CurrentExtPostFrom { get; set; }
+		public System.Int32 AfterPostFrom { get; set; }
+		public System.String FK_ExtPostTo { get; set; }
+		public System.Int32 CurrentExtPostTo { get; set; }
+		public System.Int32 AfterPostTo { get; set; }
+		public System.Int32 Value { get; set; }
+		public System.DateTime CreateDate { get; set; }
+		public System.String CreateBy { get; set; }
+		public System.String BillCode { get; set; }
+		public System.String Type { get; set; }
+		public System.String Note { get; set; }
+		public System.Int64 EpochTime { get; set; }
+		public System.String FQuanLy { get; set; }
+		public System.String FSoDienThoai { get; set; }
+		public System.String FTenDaiLy { get; set; }
+		public System.String TQuanLy { get; set; }
+		public System.String TSoDienThoai { get; set; }
+		public System.String TTenDaiLy { get; set; }
+		public view_GExpBalanceDetailPost(){}
+	}
+}

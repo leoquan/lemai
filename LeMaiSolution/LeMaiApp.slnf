@@ -1,0 +1,11 @@
+{
+  "solution": {
+	"path": "LeMaiSolution.sln",
+	"projects": [
+	  "LeMaiDomain\\LeMaiDomain.csproj",
+	  "LeMaiLogic\\LeMaiLogic.csproj",
+	  "Common\\Common.csproj",
+	  "LeMaiDesktop\\LeMaiDesktop.csproj",
+	]
+  }
+}

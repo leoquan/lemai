@@ -1,0 +1,264 @@
+{
+  "JNTErrors": [
+    {
+      "id": "S01",
+      "description": "logistics_interface ( Data not correct). Lỗi dữ liệu liên hệ quản trị."
+    },
+    {
+      "id": "S02",
+      "description": "data_digest not correct, please check again. Sai khóa mã hóa dữ liệu, liên hệ quản trị"
+    },
+    {
+      "id": "S03",
+      "description": "eccompanyid Not correct"
+    },
+    {
+      "id": "S04",
+      "description": "Service type msg_type in The value content is not in the scope specified by the document."
+    },
+    {
+      "id": "S05",
+      "description": "logistics_interface Medium content format is incorrect"
+    },
+    {
+      "id": "S06",
+      "description": "If the response is not received within 30 seconds when the order is created, it is considered to be timeout. Máy chủ j&T bị lỗi."
+    },
+    {
+      "id": "S07",
+      "description": "Database exception or other system error. Lỗi dữ liệu"
+    },
+    {
+      "id": "S08",
+      "description": "Eccompanyid Error"
+    },
+    {
+      "id": "S09",
+      "description": "Return prompt information when querying data"
+    },
+    {
+      "id": "S10",
+      "description": "Trùng mã vận đơn."
+    },
+    {
+        "id": "S11",
+        "description": "Trùng mã vận đơn."
+    },
+    {
+      "id": "S12",
+      "description": "Đơn hàng đã được tiếp nhận, không thể hủy."
+    },
+    {
+      "id": "S13",
+      "description": "Địa chỉ hạn chế, không thể giao hàng"
+    },
+    {
+      "id": "S15",
+      "description": "Mã khách hàng không tồn tại, vui lòng kiểm tra lại"
+    },
+    {
+      "id": "B99",
+      "description": "Illegal logistics order number"
+    },
+    {
+      "id": "B01",
+      "description": "Cannot operate, the current status is: waiting for confirmation"
+    },
+    {
+      "id": "B02",
+      "description": "Cannot operate, the current status is: order"
+    },
+    {
+      "id": "B03",
+      "description": "Cannot operate, the current status is: no order"
+    },
+    {
+      "id": "B04",
+      "description": "Can not operate, the current state is: successful"
+    },
+    {
+      "id": "B05",
+      "description": "Can not operate, the current state is: failure to collect"
+    },
+    {
+      "id": "B06",
+      "description": "Cannot operate, the current status is: successful receipt"
+    },
+    {
+      "id": "B07",
+      "description": "Cannot operate, the current status is: sign failure"
+    },
+    {
+      "id": "B08",
+      "description": "Cannot operate, the current status is: the order has been canceled"
+    },
+    {
+      "id": "B09",
+      "description": "Cannot operate, the waybill number is empty"
+    },
+    {
+      "id": "B10",
+      "description": "Cannot operate, the signing information is empty (including the waybill number, signing name, signing time can not be empty)"
+    },
+    {
+      "id": "B001",
+      "description": "eccompanyid Not null"
+    },
+    {
+      "id": "B002",
+      "description": "customerid Not null"
+    },
+    {
+      "id": "B003",
+      "description": "txlogisticid Not null"
+    },
+    {
+      "id": "B004",
+      "description": "ordertype Not null"
+    },
+    {
+      "id": "B005",
+      "description": "servicetype Not Null"
+    },
+    {
+      "id": "B006",
+      "description": "Sender Name sender>name Not Null"
+    },
+    {
+      "id": "B007",
+      "description": "Sender e-mail sender>mailbox Not Null"
+    },
+    {
+      "id": "B008",
+      "description": "Send phone sender>mobile Not Null"
+    },
+    {
+      "id": "B009",
+      "description": "Sender province sender>prov Not Null"
+    },
+    {
+      "id": "B010",
+      "description": "Sender district sender>city Not Null"
+    },
+    {
+      "id": "B011",
+      "description": "Sender area sender>area Not Null"
+    },
+    {
+      "id": "B012",
+      "description": "Sender address sender>address Not Null"
+    },
+    {
+      "id": "B013",
+      "description": "Receiver name receiver>name Not Null"
+    },
+    {
+      "id": "B014",
+      "description": "Receiver Phone receiver>mobile Not Null"
+    },
+    {
+      "id": "B015",
+      "description": "Receiver province receiver>prov Not Null"
+    },
+    {
+      "id": "B016",
+      "description": "Receiver District receiver>city Not Null"
+    },
+    {
+      "id": "B017",
+      "description": "Receiver Area receiver>area Not Null"
+    },
+    {
+      "id": "B018",
+      "description": "Receiver Address receiver>address Not Null"
+    },
+    {
+      "id": "B019",
+      "description": "Created order time createordertime Not Null"
+    },
+    {
+      "id": "B020",
+      "description": "Send start time sendstarttime Not Null"
+    },
+    {
+      "id": "B021",
+      "description": "Send end time sendendtime Not Null"
+    },
+    {
+      "id": "B022",
+      "description": "Payment method paytype Not Null"
+    },
+    {
+      "id": "B023",
+      "description": "Total quantity totalquantity Not Null"
+    },
+    {
+      "id": "B024",
+      "description": "COD amount itemsvalue Not Null"
+    },
+    {
+      "id": "B025",
+      "description": "Chinese Item names items>itemname Not Null"
+    },
+    {
+      "id": "B026",
+      "description": "English Iteam name items>englishName Not Null"
+    },
+    {
+      "id": "B027",
+      "description": "Item number items>number Not Null"
+    },
+    {
+      "id": "B028",
+      "description": "Declared value（IDR）items>itemvalue Not Null"
+    },
+    {
+      "id": "B029",
+      "description": "URL items>itemurl Not Null"
+    },
+    {
+      "id": "B030",
+      "description": "Địa chỉ người gửi bị lỗi. Liên hệ quản trị"
+    },
+    {
+      "id": "B031",
+      "description": "Địa chỉ người nhận bị lỗi. Nếu địa chỉ là Tp Thủ Đức, HCM thì đổi thành Quận thủ đức, Quận 2 và Quận 9."
+    },
+    {
+      "id": "B035",
+      "description": "items Errros"
+    },
+    {
+      "id": "B036",
+      "description": "Receiver email receiver>postcode Errors"
+    },
+    {
+      "id": "B038",
+      "description": "Customerid not null"
+    },
+    {
+      "id": "B041",
+      "description": "Customerid don’t have set up part sign"
+    },
+    {
+      "id": "B042",
+      "description": "Customerid is wrong "
+    },
+    {
+      "id": "B300",
+      "description": "Customerid isn't allowed to be used special EXPRESS"
+    },
+    {
+      "id": "B310",
+      "description": "Customerid has stop working"
+    },
+    {
+      "id": "B030-STOP",
+      "description": "Sender’s address is locked"
+    },
+    {
+      "id": "B031-STOP",
+      "description": "Receiver’s address is locked"
+    }
+  ]
+}

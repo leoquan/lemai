@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ghView:GhContentPageBase x:Class="LeMaiMobile.Views.PageDangNhap"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ghModel="clr-namespace:LeMaiMobile.Models"
+    xmlns:ghView="clr-namespace:LeMaiMobile.Views"
+    xmlns:ghViewModel="clr-namespace:LeMaiMobile.ViewModels"
+    xmlns:mtrl="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    x:DataType="ghViewModel:PageDangNhapViewModel"
+    Title="Đăng nhập"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <ScrollView>
+            <StackLayout Style="{StaticResource GhStackFrmStyle}"
+                WidthRequest="300"
+                Margin="{StaticResource PagePadding}"
+                Padding="{StaticResource PagePadding}"
+                HorizontalOptions="Center" VerticalOptions="Center">
+
+                <Image HorizontalOptions="Center"
+                    Aspect="AspectFit" Source="LeMaiLoginBg.png" />
+
+                <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                    Text="{Binding TenDangNhap}"
+                    InputType="Text" MaxLength="50" Placeholder="Tên đăng nhập" ReturnType="Next">
+                    <mtrl:MaterialTextField.LeadingIcon>
+                        <FontImageSource FontFamily="FAS"
+                            Glyph="{x:Static ghModel:FAS.User}" />
+                    </mtrl:MaterialTextField.LeadingIcon>
+                </mtrl:MaterialTextField>
+
+                <mtrl:MaterialTextField Style="{StaticResource GhTxtStyle}"
+                    Text="{Binding MatKhau}"
+                    InputType="Password" MaxLength="50" Placeholder="Mật khẩu" ReturnType="Done">
+                    <mtrl:MaterialTextField.LeadingIcon>
+                        <FontImageSource FontFamily="FAS"
+                            Glyph="{x:Static ghModel:FAS.Key}" />
+                    </mtrl:MaterialTextField.LeadingIcon>
+                </mtrl:MaterialTextField>
+
+                <mtrl:MaterialCheckbox Text="Ghi nhớ đăng nhập"
+                    IsSelected="{Binding NhoDangNhap, Mode=TwoWay}" />
+                <!--<Grid Style="{StaticResource GhGrid2ColStyle}"
+                Margin="{StaticResource CommonMargin}">
+                <CheckBox IsChecked="{Binding NhoDangNhap}" />
+                <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                    Grid.Column="1"
+                    Text="Ghi nhớ đăng nhập" />
+            </Grid>-->
+
+                <mtrl:MaterialButton Style="{StaticResource GhBtnEqualStyle}"
+                    Text="Đăng nhập"
+                    Command="{Binding DangNhapCommand}" />
+
+                <mtrl:MaterialButton Style="{StaticResource GhBtnEqualStyle}"
+                    Text="Đăng ký tài khoản"
+                    ButtonType="Text"
+                    Command="{Binding GoToPageCommand}"
+                    CommandParameter="PageDangKy"
+                    IsVisible="{Binding IsModeTesting, Mode=OneWay, TargetNullValue=False, FallbackValue=False}" />
+
+
+                <Label Grid.Row="1"
+                    HorizontalOptions="End" VerticalOptions="End"
+                    FontSize="12"
+                    TextColor="Gray"
+                    Text="{Binding Version}" />
+            </StackLayout>
+        </ScrollView>
+
+    </Grid>
+
+</ghView:GhContentPageBase>

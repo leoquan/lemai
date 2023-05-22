@@ -1,0 +1,316 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\MAU_XUAT_DON.xlsx" />
+    <Content Remove="wwwroot\MAU_XUAT_DON_DATT.xlsx" />
+    <Content Remove="wwwroot\MAU_XUAT_DON_ORDER.xlsx" />
+    <Content Remove="wwwroot\MAU_XUAT_DON_PROBLEM.xlsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Admin\js\app.js" />
+    <None Include="wwwroot\Admin\js\views\advanced-forms.js" />
+    <None Include="wwwroot\Admin\js\views\calendar.js" />
+    <None Include="wwwroot\Admin\js\views\charts.js" />
+    <None Include="wwwroot\Admin\js\views\code-editor.js" />
+    <None Include="wwwroot\Admin\js\views\datatables.js" />
+    <None Include="wwwroot\Admin\js\views\draggable-cards.js" />
+    <None Include="wwwroot\Admin\js\views\forms.js" />
+    <None Include="wwwroot\Admin\js\views\google-maps.js" />
+    <None Include="wwwroot\Admin\js\views\loading-buttons.js" />
+    <None Include="wwwroot\Admin\js\views\main.js" />
+    <None Include="wwwroot\Admin\js\views\markdown-editor.js" />
+    <None Include="wwwroot\Admin\js\views\notifications.js" />
+    <None Include="wwwroot\Admin\js\views\popovers.js" />
+    <None Include="wwwroot\Admin\js\views\sliders.js" />
+    <None Include="wwwroot\Admin\js\views\tables.js" />
+    <None Include="wwwroot\Admin\js\views\text-editors.js" />
+    <None Include="wwwroot\Admin\js\views\toastr.js" />
+    <None Include="wwwroot\Admin\js\views\tooltips.js" />
+    <None Include="wwwroot\Admin\js\views\validation.js" />
+    <None Include="wwwroot\Admin\js\views\widgets.js" />
+    <None Include="wwwroot\Admin\scss\core\core.scss" />
+    <None Include="wwwroot\Admin\scss\core\utilities\_background.scss" />
+    <None Include="wwwroot\Admin\scss\core\utilities\_borders.scss" />
+    <None Include="wwwroot\Admin\scss\core\utilities\_display.scss" />
+    <None Include="wwwroot\Admin\scss\core\_animate.scss" />
+    <None Include="wwwroot\Admin\scss\core\_aside.scss" />
+    <None Include="wwwroot\Admin\scss\core\_avatars.scss" />
+    <None Include="wwwroot\Admin\scss\core\_badge.scss" />
+    <None Include="wwwroot\Admin\scss\core\_breadcrumb-menu.scss" />
+    <None Include="wwwroot\Admin\scss\core\_breadcrumb.scss" />
+    <None Include="wwwroot\Admin\scss\core\_buttons.scss" />
+    <None Include="wwwroot\Admin\scss\core\_callout.scss" />
+    <None Include="wwwroot\Admin\scss\core\_card.scss" />
+    <None Include="wwwroot\Admin\scss\core\_charts.scss" />
+    <None Include="wwwroot\Admin\scss\core\_dropdown-menu-right.scss" />
+    <None Include="wwwroot\Admin\scss\core\_dropdown.scss" />
+    <None Include="wwwroot\Admin\scss\core\_footer.scss" />
+    <None Include="wwwroot\Admin\scss\core\_grid.scss" />
+    <None Include="wwwroot\Admin\scss\core\_input-group.scss" />
+    <None Include="wwwroot\Admin\scss\core\_layout.scss" />
+    <None Include="wwwroot\Admin\scss\core\_loading.scss" />
+    <None Include="wwwroot\Admin\scss\core\_mixins.scss" />
+    <None Include="wwwroot\Admin\scss\core\_mobile.scss" />
+    <None Include="wwwroot\Admin\scss\core\_modal.scss" />
+    <None Include="wwwroot\Admin\scss\core\_nav.scss" />
+    <None Include="wwwroot\Admin\scss\core\_navbar.scss" />
+    <None Include="wwwroot\Admin\scss\core\_others.scss" />
+    <None Include="wwwroot\Admin\scss\core\_progress.scss" />
+    <None Include="wwwroot\Admin\scss\core\_rtl.scss" />
+    <None Include="wwwroot\Admin\scss\core\_sidebar.scss" />
+    <None Include="wwwroot\Admin\scss\core\_switches.scss" />
+    <None Include="wwwroot\Admin\scss\core\_tables.scss" />
+    <None Include="wwwroot\Admin\scss\core\_temp.scss" />
+    <None Include="wwwroot\Admin\scss\core\_typography.scss" />
+    <None Include="wwwroot\Admin\scss\core\_utilities.scss" />
+    <None Include="wwwroot\Admin\scss\core\_variables.scss" />
+    <None Include="wwwroot\Admin\scss\core\_widgets.scss" />
+    <None Include="wwwroot\Admin\scss\style.scss" />
+    <None Include="wwwroot\Admin\scss\uikits\email\_email.scss" />
+    <None Include="wwwroot\Admin\scss\uikits\_uikits.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\chart.js\chart.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\daterangepicker\daterangepicker.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\fullcalendar\fullcalendar.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\gauge.js\gauge.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\ionRangeSlider\ionRangeSlider.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\select2\mixins\_gradients.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\select2\select2.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\select2\theme\classic\_defaults.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\select2\theme\classic\_layout.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\select2\theme\classic\_multiple.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\select2\theme\classic\_single.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\select2\theme\default\_layout.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\select2\theme\default\_multiple.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\select2\theme\default\_single.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\select2\_dropdown.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\select2\_multiple.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\select2\_select2-bootstrap.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\select2\_single.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\toastr\toastr.scss" />
+    <None Include="wwwroot\Admin\scss\vendors\_variables.scss" />
+    <None Include="wwwroot\Admin\scss\_bootstrap-variables.scss" />
+    <None Include="wwwroot\Admin\scss\_core-variables.scss" />
+    <None Include="wwwroot\Admin\scss\_custom.scss" />
+    <None Include="wwwroot\Admin\vendors\css\font-awesome.css.map" />
+    <None Include="wwwroot\Admin\vendors\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\Admin\vendors\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\Admin\vendors\fonts\Simple-Line-Icons.svg" />
+    <None Include="wwwroot\Admin\vendors\fonts\Simple-Line-Icons.woff2" />
+    <None Include="wwwroot\Admin\vendors\js\bootstrap.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\Chart.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\codemirror.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\daterangepicker.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\fullcalendar.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\gauge.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\gcal.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\ion.rangeSlider.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\jquery-ui.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\jquery.dataTables.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\jquery.maskedinput.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\jquery.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\jquery.min.map" />
+    <None Include="wwwroot\Admin\vendors\js\jquery.validate.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\ladda.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\markdown.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\moment.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\pace.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\popper.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\popper.min.js.map" />
+    <None Include="wwwroot\Admin\vendors\js\quill.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\quill.min.js.map" />
+    <None Include="wwwroot\Admin\vendors\js\select2.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\spin.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\toastr.min.js" />
+    <None Include="wwwroot\Admin\vendors\js\xml.min.js" />
+    <None Include="wwwroot\MAU_XUAT_DON_ORDER.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\MAU_XUAT_DON_PROBLEM.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\MAU_XUAT_DON_DATT.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\MAU_XUAT_DON.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\tindat\css\Descr.WD3" />
+    <None Include="wwwroot\tindat\fonts\fontawesome\css\Descr.WD3" />
+    <None Include="wwwroot\tindat\fonts\fontawesome\webfonts\Descr.WD3" />
+    <None Include="wwwroot\tindat\fonts\fontawesome\webfonts\fa-brands-400.eot%40" />
+    <None Include="wwwroot\tindat\fonts\fontawesome\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\tindat\fonts\fontawesome\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\tindat\fonts\fontawesome\webfonts\fa-regular-400.eot%40" />
+    <None Include="wwwroot\tindat\fonts\fontawesome\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\tindat\fonts\fontawesome\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\tindat\fonts\fontawesome\webfonts\fa-solid-900.eot%40" />
+    <None Include="wwwroot\tindat\fonts\fontawesome\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\tindat\fonts\fontawesome\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\tindat\fonts\webexflaticon\Descr.WD3" />
+    <None Include="wwwroot\tindat\fonts\webexflaticon\Flaticon.eot%40" />
+    <None Include="wwwroot\tindat\fonts\webexflaticon\Flaticon.svg" />
+    <None Include="wwwroot\tindat\fonts\webexflaticon\Flaticon.woff2" />
+    <None Include="wwwroot\tindat\fonts\webexicon\Descr.WD3" />
+    <None Include="wwwroot\tindat\fonts\webexicon\fonts\Descr.WD3" />
+    <None Include="wwwroot\tindat\fonts\webexicon\fonts\webexicon.eot%40aeef8j" />
+    <None Include="wwwroot\tindat\fonts\webexicon\fonts\webexicon.svg%40aeef8j" />
+    <None Include="wwwroot\tindat\fonts\webexicon\fonts\webexicon.ttf%40aeef8j" />
+    <None Include="wwwroot\tindat\fonts\webexicon\fonts\webexicon.woff%40aeef8j" />
+    <None Include="wwwroot\tindat\images\about\Descr.WD3" />
+    <None Include="wwwroot\tindat\images\bg\Descr.WD3" />
+    <None Include="wwwroot\tindat\images\clients\Descr.WD3" />
+    <None Include="wwwroot\tindat\images\Descr.WD3" />
+    <None Include="wwwroot\tindat\images\footer\Descr.WD3" />
+    <None Include="wwwroot\tindat\images\news\Descr.WD3" />
+    <None Include="wwwroot\tindat\images\objects\Descr.WD3" />
+    <None Include="wwwroot\tindat\images\preloader.svg" />
+    <None Include="wwwroot\tindat\images\project\Descr.WD3" />
+    <None Include="wwwroot\tindat\images\service\Descr.WD3" />
+    <None Include="wwwroot\tindat\images\side-panel\Descr.WD3" />
+    <None Include="wwwroot\tindat\images\team\Descr.WD3" />
+    <None Include="wwwroot\tindat\images\testimonials\Descr.WD3" />
+    <None Include="wwwroot\tindat\js\bootstrap.min.js" />
+    <None Include="wwwroot\tindat\js\Descr.WD3" />
+    <None Include="wwwroot\tindat\js\jquery-core-plugins.js" />
+    <None Include="wwwroot\tindat\js\jquery.v1.12.4.min.js" />
+    <None Include="wwwroot\tindat\js\main.js" />
+    <None Include="wwwroot\vtv\img\certificates\cer1.svg" />
+    <None Include="wwwroot\vtv\img\certificates\cer2.svg" />
+    <None Include="wwwroot\vtv\img\certificates\cer3.svg" />
+    <None Include="wwwroot\vtv\img\certificates\cer4.svg" />
+    <None Include="wwwroot\vtv\img\certificates\Descr.WD3" />
+    <None Include="wwwroot\vtv\img\Descr.WD3" />
+    <None Include="wwwroot\vtv\img\docx.svg" />
+    <None Include="wwwroot\vtv\img\file.svg" />
+    <None Include="wwwroot\vtv\img\mobile\apple.svg" />
+    <None Include="wwwroot\vtv\img\mobile\Descr.WD3" />
+    <None Include="wwwroot\vtv\img\mobile\google.svg" />
+    <None Include="wwwroot\vtv\img\pack_1\Descr.WD3" />
+    <None Include="wwwroot\vtv\img\pack_1\i1.svg" />
+    <None Include="wwwroot\vtv\img\pack_1\i10.svg" />
+    <None Include="wwwroot\vtv\img\pack_1\i2.svg" />
+    <None Include="wwwroot\vtv\img\pack_1\i3.svg" />
+    <None Include="wwwroot\vtv\img\pack_1\i4.svg" />
+    <None Include="wwwroot\vtv\img\pack_1\i5.svg" />
+    <None Include="wwwroot\vtv\img\pack_1\i6.svg" />
+    <None Include="wwwroot\vtv\img\pack_1\i7.svg" />
+    <None Include="wwwroot\vtv\img\pack_1\i8.svg" />
+    <None Include="wwwroot\vtv\img\pack_2\Descr.WD3" />
+    <None Include="wwwroot\vtv\img\pack_2\i1.svg" />
+    <None Include="wwwroot\vtv\img\pack_2\i2.svg" />
+    <None Include="wwwroot\vtv\img\pack_2\i3.svg" />
+    <None Include="wwwroot\vtv\img\pack_2\i4.svg" />
+    <None Include="wwwroot\vtv\img\pack_2\i5.svg" />
+    <None Include="wwwroot\vtv\img\pack_2\i6.svg" />
+    <None Include="wwwroot\vtv\img\pack_2\i7.svg" />
+    <None Include="wwwroot\vtv\img\pack_2\i8.svg" />
+    <None Include="wwwroot\vtv\img\pack_2\i9.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\Descr.WD3" />
+    <None Include="wwwroot\vtv\img\pack_3\i1.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\i10.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\i11.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\i12.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\i13.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\i14.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\i2.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\i3.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\i4.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\i5.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\i6.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\i7.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\i8.svg" />
+    <None Include="wwwroot\vtv\img\pack_3\i9.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\Descr.WD3" />
+    <None Include="wwwroot\vtv\img\pack_4\i1.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i10.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i11.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i12.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i13.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i14.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i15.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i2.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i3.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i4.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i5.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i6.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i7.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i8.svg" />
+    <None Include="wwwroot\vtv\img\pack_4\i9.svg" />
+    <None Include="wwwroot\vtv\img\pack_5\Descr.WD3" />
+    <None Include="wwwroot\vtv\img\pack_5\i1.svg" />
+    <None Include="wwwroot\vtv\img\pack_5\i10.svg" />
+    <None Include="wwwroot\vtv\img\pack_5\i11.svg" />
+    <None Include="wwwroot\vtv\img\pack_5\i12.svg" />
+    <None Include="wwwroot\vtv\img\pack_5\i13.svg" />
+    <None Include="wwwroot\vtv\img\pack_5\i2.svg" />
+    <None Include="wwwroot\vtv\img\pack_5\i3.svg" />
+    <None Include="wwwroot\vtv\img\pack_5\i4.svg" />
+    <None Include="wwwroot\vtv\img\pack_5\i5.svg" />
+    <None Include="wwwroot\vtv\img\pack_5\i6.svg" />
+    <None Include="wwwroot\vtv\img\pack_5\i7.svg" />
+    <None Include="wwwroot\vtv\img\pack_5\i8.svg" />
+    <None Include="wwwroot\vtv\img\pack_5\i9.svg" />
+    <None Include="wwwroot\vtv\img\pack_6\Descr.WD3" />
+    <None Include="wwwroot\vtv\img\pack_6\i1.svg" />
+    <None Include="wwwroot\vtv\img\pack_6\i10.svg" />
+    <None Include="wwwroot\vtv\img\pack_6\i11.svg" />
+    <None Include="wwwroot\vtv\img\pack_6\i12.svg" />
+    <None Include="wwwroot\vtv\img\pack_6\i2.svg" />
+    <None Include="wwwroot\vtv\img\pack_6\i3.svg" />
+    <None Include="wwwroot\vtv\img\pack_6\i4.svg" />
+    <None Include="wwwroot\vtv\img\pack_6\i5.svg" />
+    <None Include="wwwroot\vtv\img\pack_6\i6.svg" />
+    <None Include="wwwroot\vtv\img\pack_6\i7.svg" />
+    <None Include="wwwroot\vtv\img\pack_6\i8.svg" />
+    <None Include="wwwroot\vtv\img\pack_6\i9.svg" />
+    <None Include="wwwroot\vtv\img\pack_7\Descr.WD3" />
+    <None Include="wwwroot\vtv\img\pack_7\i1.svg" />
+    <None Include="wwwroot\vtv\img\pack_7\i10.svg" />
+    <None Include="wwwroot\vtv\img\pack_7\i11.svg" />
+    <None Include="wwwroot\vtv\img\pack_7\i12.svg" />
+    <None Include="wwwroot\vtv\img\pack_7\i2.svg" />
+    <None Include="wwwroot\vtv\img\pack_7\i3.svg" />
+    <None Include="wwwroot\vtv\img\pack_7\i4.svg" />
+    <None Include="wwwroot\vtv\img\pack_7\i5.svg" />
+    <None Include="wwwroot\vtv\img\pack_7\i6.svg" />
+    <None Include="wwwroot\vtv\img\pack_7\i7.svg" />
+    <None Include="wwwroot\vtv\img\pack_7\i8.svg" />
+    <None Include="wwwroot\vtv\img\pack_7\i9.svg" />
+    <None Include="wwwroot\vtv\img\pdf.svg" />
+    <None Include="wwwroot\vtv\img\plane.svg" />
+    <None Include="wwwroot\vtv\img\road_freight.svg" />
+    <None Include="wwwroot\vtv\img\shipping.svg" />
+    <None Include="wwwroot\vtv\img\sl_1.svg" />
+    <None Include="wwwroot\vtv\img\sl_2.svg" />
+    <None Include="wwwroot\vtv\img\sl_3.svg" />
+    <None Include="wwwroot\vtv\img\sl_4.svg" />
+    <None Include="wwwroot\vtv\img\train.svg" />
+    <None Include="wwwroot\vtv\js\common.min.js" />
+    <None Include="wwwroot\vtv\js\Descr.WD3" />
+    <None Include="wwwroot\vtv\js\jquery.min.js" />
+    <None Include="wwwroot\vtv\js\libs.min.js" />
+    <None Include="wwwroot\vtv\_3A\ajax.googleapis.com\ajax\libs\webfont\1.6.26\Descr.WD3" />
+    <None Include="wwwroot\vtv\_3A\ajax.googleapis.com\ajax\libs\webfont\1.6.26\webfont.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.95.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LeMaiDomain\LeMaiDomain.csproj" />
+    <ProjectReference Include="..\LeMaiLogic\LeMaiLogic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\files\" />
+  </ItemGroup>
+
+</Project>

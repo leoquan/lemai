@@ -1,0 +1,1307 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+    Layout = null;
+    var webConfig = ViewData["webconfig"] as WebOption;
+}
+@using LeMaiDomain.Models;
+@model WebHomeIndexModel;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@webConfig.PAGE_TITLE - Home</title>
+    <meta name="description" content="@webConfig.PAGE_DESCRIPTION">
+    <meta name="keywords" content="@webConfig.PAGE_KEYWORD">
+    <meta name="author" content="@webConfig.PAGE_AUTHOR">
+    <link rel="shortcut icon" href="~/assets/img/logo/favicon.png" type="image/x-icon">
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/fontawesome-all.css">
+    <link rel="stylesheet" href="~/assets/css/flaticon.css">
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <link rel="stylesheet" href="~/assets/css/nice-select.css">
+    <link rel="stylesheet" href="~/assets/css/video.min.css">
+    <link rel="stylesheet" href="~/assets/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="~/assets/css/slick.css">
+    <link rel="stylesheet" href="~/assets/css/rs6.css">
+    <link rel="stylesheet" href="~/assets/css/slick-theme.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+<body>
+    <div id="preloader"></div>
+    <div class="up">
+        <a href="#" class="scrollup text-center"><i class="fas fa-chevron-up"></i></a>
+    </div>
+    <!-- Start of header section
+        ============================================= -->
+    <header id="ft-header" class="ft-header-section header-style-one">
+        <div class="ft-header-content-wrapper position-relative">
+            <div class="container">
+                <div class="ft-header-content position-relative">
+                    <div class="ft-brand-logo">
+                        <a href="#"><img src="~/assets/img/logo/logo-white.png" alt=""></a>
+                    </div>
+                    <div class="ft-header-menu-top-cta position-relative">
+                        <div class="ft-header-top ul-li">
+                            <ul>
+                                <li><i class="fal fa-envelope"></i>@webConfig.COMPANY_EMAIL</li>
+                                <li><i class="fal fa-map-marker-alt"></i>@webConfig.COMPANY_ADDRESS</li>
+                            </ul>
+                        </div>
+                        <div class="ft-header-main-menu d-flex justify-content-end align-items-center">
+
+                            <partial name="_LayoutMenu" model="null" data="1254587" />
+
+                            <div class="ft-header-cta-btn">
+                                <a class="d-flex justify-content-center align-items-center" asp-controller="KhachHang" asp-action="Login">Khách hàng</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile_menu position-relative">
+                        <div class="mobile_menu_button open_mobile_menu">
+                            <i class="fal fa-bars"></i>
+                        </div>
+                        <div class="mobile_menu_wrap">
+                            <div class="mobile_menu_overlay open_mobile_menu"></div>
+                            <div class="mobile_menu_content">
+                                <div class="mobile_menu_close open_mobile_menu">
+                                    <i class="fal fa-times"></i>
+                                </div>
+                                <div class="m-brand-logo">
+                                    <a href="!#"><img src="~/assets/img/logo/logo4.png" alt=""></a>
+                                </div>
+
+                                <partial name="_LayoutMenuMobile" model="null" data="123456" />
+                            </div>
+                        </div>
+                        <!-- /Mobile-Menu -->
+                    </div>
+                </div>
+            </div>
+            <div class="ft-header-cta-info d-flex">
+                <div class="ft-header-cta-icon d-flex justify-content-center align-items-center">
+                    <i class="flaticon-call"></i>
+                </div>
+                <div class="ft-header-cta-text headline pera-content">
+                    <p>HOTLINE</p>
+                    <h3>@webConfig.COMPANY_HOTLINE</h3>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End of header section ============================================= -->
+    <!-- Start of Slider section
+        ============================================= -->
+    <rs-module-wrap id="rev_slider_27_1_wrapper" data-alias="slider-7" data-source="gallery" style="visibility:hidden;background:transparent;padding:0;margin:0px auto;margin-top:0;margin-bottom:0;">
+        <rs-module id="rev_slider_27_1" style="" data-version="6.5.8">
+            <rs-slides>
+                <rs-slide style="position: absolute;" data-key="rs-70" data-title="Slide" data-thumb="assets/slide-start-50x100.jpg" data-in="o:0;" data-out="a:false;">
+                    <img src="~/assets/slide-start.jpg" alt="Image" title="slider-1" width="1614" height="908" class="rev-slidebg tp-rs-img" data-parallax="3" data-panzoom="d:10000;ss:100;se:120%;" data-no-retina>
+                    <rs-layer id="slider-27-slide-70-layer-0"
+                              data-type="image"
+                              data-rsp_ch="on"
+                              data-text="w:normal;s:20,16,12,7;l:0,20,15,9;"
+                              data-dim="w:['100%','100%','100%','100%'];h:['100%','100%','100%','100%'];"
+                              data-basealign="slide"
+                              data-frame_999="o:0;st:w;"
+                              style="z-index:8;">
+                        <img src="~/assets/slider-shape1.png" alt="" class="tp-rs-img" width="1903" height="901" data-c="cover-proportional" data-no-retina>
+                    </rs-layer>
+                    <rs-layer id="slider-27-slide-70-layer-1"
+                              data-type="text"
+                              data-rsp_ch="on"
+                              data-xy="xo:15px,12px,9px,5px;yo:340px,280px,212px,124px;"
+                              data-text="w:normal;s:72,59,44,40;l:80,66,50,40;fw:700;"
+                              data-frame_0="o:1;"
+                              data-frame_0_chars="d:5;o:0;rX:-90deg;oZ:-50;"
+                              data-frame_1="sp:1750;"
+                              data-frame_1_chars="e:power4.inOut;d:10;oZ:-50;"
+                              data-frame_999="o:0;st:w;"
+                              style="z-index:9;font-family:'Roboto';">
+                        Lê Mai Carry<br />
+                        Vận chuyển nhanh toàn quốc
+                    </rs-layer>
+                    <rs-layer id="slider-27-slide-70-layer-2"
+                              data-type="text"
+                              data-rsp_ch="on"
+                              data-xy="xo:15px,12px,9px,5px;yo:535px,445px,338px,219px;"
+                              data-text="w:normal;s:18,14,16,16;l:25,20,20,20;fw:500;"
+                              data-frame_0="x:-100%;"
+                              data-frame_0_mask="u:t;"
+                              data-frame_1="e:power4.inOut;st:1000;sp:1300;"
+                              data-frame_1_mask="u:t;"
+                              data-frame_999="o:0;st:w;"
+                              style="z-index:10;font-family:'Roboto';">
+                        Lê Mai Carry cung cấp nhiều loại dịch vụ vận chuyển<br />
+                        với thời gian giao hàng nhanh chóng phù hợp với yêu cầu của khách hàng
+                    </rs-layer>
+                    <a id="slider-27-slide-70-layer-5"
+                       class="rs-layer rev-btn"
+                       asp-controller="Home" asp-action="Contact" target="_blank" rel="noopener"
+                       data-type="button"
+                       data-rsp_ch="on"
+                       data-xy="xo:235px,194px,147px,138px;yo:620px,512px,389px,275px;"
+                       data-text="w:normal;s:18,14,10,14;l:52,42,31,40;fw:500;a:center;"
+                       data-dim="w:200px,165px,125px,120px;h:55px,45px,34px,45px;minh:0px,none,none,none;"
+                       data-padding="r:40,33,25,15;l:40,33,25,15;"
+                       data-border="bos:solid;boc:#ffffff;bow:2px,2px,2px,2px;bor:3px,3px,3px,3px;"
+                       data-frame_0="x:175%;o:1;"
+                       data-frame_0_mask="u:t;x:-100%;"
+                       data-frame_1="e:power3.out;st:1500;sp:1000;"
+                       data-frame_1_mask="u:t;"
+                       data-frame_999="o:0;st:w;"
+                       data-frame_hover="bgc:#ea1e00;boc:#ea1e00;bor:3px,3px,3px,3px;bos:solid;bow:2px,2px,2px,2px;sp:100;e:power1.inOut;bri:120%;"
+                       style="z-index:12;background-color:#00044b;font-family:'Roboto';">
+                        Giới thiệu
+                    </a>
+                    <a id="slider-27-slide-70-layer-6"
+                       class="rs-layer rev-btn"
+                       asp-controller="Home" asp-action="Contact" target="_blank" rel="noopener"
+                       data-type="button"
+                       data-rsp_ch="on"
+                       data-xy="xo:15px,12px,9px,5px;yo:620px,512px,389px,274px;"
+                       data-text="w:normal;s:18,14,10,14;l:52,42,31,40;fw:500;a:center;"
+                       data-dim="w:200px,165px,125px,120px;h:55px,45px,34px,45px;minh:0px,none,none,none;"
+                       data-padding="r:40,33,25,15;l:40,33,25,15;"
+                       data-border="bos:solid;boc:#ffffff;bow:2px,2px,2px,2px;bor:3px,3px,3px,3px;"
+                       data-frame_0="x:-175%;o:1;"
+                       data-frame_0_mask="u:t;x:100%;"
+                       data-frame_1="e:power3.out;st:1200;sp:1000;"
+                       data-frame_1_mask="u:t;"
+                       data-frame_999="o:0;st:w;"
+                       data-frame_hover="bgc:#ea1e00;boc:#ea1e00;bor:3px,3px,3px,3px;bos:solid;bow:2px,2px,2px,2px;sp:100;e:power1.inOut;bri:120%;"
+                       style="z-index:11;background-color:#00044b;font-family:'Roboto';">
+                        Bảng giá
+                    </a>
+                </rs-slide>
+                <rs-slide style="position: absolute;" data-key="rs-72" data-title="Slide" data-thumb="assets/slider-1-50x100.jpg" data-in="o:0;" data-out="a:false;">
+                    <img src="~/assets/slider-1.jpg" title="slider-1" width="1606" height="815" class="rev-slidebg tp-rs-img" data-parallax="3" data-panzoom="d:10000;ss:100;se:120%;" data-no-retina>
+                    <rs-layer id="slider-27-slide-72-layer-0"
+                              data-type="image"
+                              data-rsp_ch="on"
+                              data-text="w:normal;s:20,16,12,7;l:0,20,15,9;"
+                              data-dim="w:['100%','100%','100%','100%'];h:['100%','100%','100%','100%'];"
+                              data-basealign="slide"
+                              data-frame_999="o:0;st:w;"
+                              style="z-index:8;">
+                        <img src="~/assets/slider-shape1.png" alt="" class="tp-rs-img" width="1903" height="901" data-c="cover-proportional" data-no-retina>
+                    </rs-layer>
+                    <rs-layer id="slider-27-slide-72-layer-1"
+                              data-type="text"
+                              data-rsp_ch="on"
+                              data-xy="xo:15px,12px,9px,5px;yo:340px,280px,212px,124px;"
+                              data-text="w:normal;s:72,59,44,40;l:80,66,50,40;fw:700;"
+                              data-frame_0="o:1;"
+                              data-frame_0_chars="d:5;o:0;rX:-90deg;oZ:-50;"
+                              data-frame_1="sp:1750;"
+                              data-frame_1_chars="e:power4.inOut;d:10;oZ:-50;"
+                              data-frame_999="o:0;st:w;"
+                              style="z-index:9;font-family:'Roboto';">
+                        Vận tải hàng hóa<br />
+                        Miền tây & miền trung
+                    </rs-layer>
+                    <rs-layer id="slider-27-slide-72-layer-2"
+                              data-type="text"
+                              data-rsp_ch="on"
+                              data-xy="xo:15px,12px,9px,5px;yo:535px,445px,338px,219px;"
+                              data-text="w:normal;s:18,14,16,16;l:25,20,20,20;fw:500;"
+                              data-frame_0="x:-100%;"
+                              data-frame_0_mask="u:t;"
+                              data-frame_1="e:power4.inOut;st:1000;sp:1300;"
+                              data-frame_1_mask="u:t;"
+                              data-frame_999="o:0;st:w;"
+                              style="z-index:10;font-family:'Roboto';">
+                        Lê Mai Carry cung cấp dịch vụ vận tải các tỉnh miền tây và miền trung<br />
+                        Có nhiều loại xe vận tải từ 900kg - 5 tấn phù hợp nhiều loại hàng hóa.
+                    </rs-layer>
+                    <a id="slider-27-slide-72-layer-5"
+                       class="rs-layer rev-btn"
+                       asp-controller="Home" asp-action="Contact" target="_blank" rel="noopener"
+                       data-type="button"
+                       data-rsp_ch="on"
+                       data-xy="xo:235px,194px,147px,138px;yo:620px,512px,389px,275px;"
+                       data-text="w:normal;s:18,14,10,14;l:52,42,31,40;fw:500;a:center;"
+                       data-dim="w:200px,165px,125px,120px;h:55px,45px,34px,45px;minh:0px,none,none,none;"
+                       data-padding="r:40,33,25,15;l:40,33,25,15;"
+                       data-border="bos:solid;boc:#ffffff;bow:2px,2px,2px,2px;bor:3px,3px,3px,3px;"
+                       data-frame_0="x:175%;o:1;"
+                       data-frame_0_mask="u:t;x:-100%;"
+                       data-frame_1="e:power3.out;st:1500;sp:1000;"
+                       data-frame_1_mask="u:t;"
+                       data-frame_999="o:0;st:w;"
+                       data-frame_hover="bgc:#ea1e00;boc:#ea1e00;bor:3px,3px,3px,3px;bos:solid;bow:2px,2px,2px,2px;sp:100;e:power1.inOut;bri:120%;"
+                       style="z-index:12;background-color:#00044b;font-family:'Roboto';">
+                        Giới thiệu
+                    </a>
+                    <a id="slider-27-slide-72-layer-6"
+                       class="rs-layer rev-btn"
+                       asp-controller="Home" asp-action="Contact" target="_blank" rel="noopener"
+                       data-type="button"
+                       data-rsp_ch="on"
+                       data-xy="xo:15px,12px,9px,5px;yo:620px,512px,389px,274px;"
+                       data-text="w:normal;s:18,14,10,14;l:52,42,31,40;fw:500;a:center;"
+                       data-dim="w:200px,165px,125px,120px;h:55px,45px,34px,45px;minh:0px,none,none,none;"
+                       data-padding="r:40,33,25,15;l:40,33,25,15;"
+                       data-border="bos:solid;boc:#ffffff;bow:2px,2px,2px,2px;bor:3px,3px,3px,3px;"
+                       data-frame_0="x:-175%;o:1;"
+                       data-frame_0_mask="u:t;x:100%;"
+                       data-frame_1="e:power3.out;st:1200;sp:1000;"
+                       data-frame_1_mask="u:t;"
+                       data-frame_999="o:0;st:w;"
+                       data-frame_hover="bgc:#ea1e00;boc:#ea1e00;bor:3px,3px,3px,3px;bos:solid;bow:2px,2px,2px,2px;sp:100;e:power1.inOut;bri:120%;"
+                       style="z-index:11;background-color:#00044b;font-family:'Roboto';">
+                        Bảng giá
+                    </a>
+                </rs-slide>
+                <rs-slide style="position: absolute;" data-key="rs-73" data-title="Slide" data-thumb="assets/slider1-50x100.jpg" data-in="o:0;" data-out="a:false;">
+                    <img src="~/assets/slider1.jpg" alt="Image" title="slider-1" width="1614" height="908" class="rev-slidebg tp-rs-img" data-parallax="3" data-panzoom="d:10000;ss:100;se:120%;" data-no-retina>
+                    <rs-layer id="slider-27-slide-73-layer-0"
+                              data-type="image"
+                              data-rsp_ch="on"
+                              data-text="w:normal;s:20,16,12,7;l:0,20,15,9;"
+                              data-dim="w:['100%','100%','100%','100%'];h:['100%','100%','100%','100%'];"
+                              data-basealign="slide"
+                              data-frame_999="o:0;st:w;"
+                              style="z-index:8;">
+                        <img src="~/assets/slider-shape1.png" alt="" class="tp-rs-img" width="1903" height="901" data-c="cover-proportional" data-no-retina>
+                    </rs-layer>
+                    <rs-layer id="slider-27-slide-73-layer-1"
+                              data-type="text"
+                              data-rsp_ch="on"
+                              data-xy="xo:15px,12px,9px,5px;yo:340px,280px,212px,124px;"
+                              data-text="w:normal;s:72,59,44,40;l:80,66,50,40;fw:700;"
+                              data-frame_0="o:1;"
+                              data-frame_0_chars="d:5;o:0;rX:-90deg;oZ:-50;"
+                              data-frame_1="sp:1750;"
+                              data-frame_1_chars="e:power4.inOut;d:10;oZ:-50;"
+                              data-frame_999="o:0;st:w;"
+                              style="z-index:9;font-family:'Roboto';">
+                        Lê Mai Carry<br />
+                        Xuất nhập khẩu hàng hóa quốc tế
+                    </rs-layer>
+                    <rs-layer id="slider-27-slide-73-layer-2"
+                              data-type="text"
+                              data-rsp_ch="on"
+                              data-xy="xo:15px,12px,9px,5px;yo:535px,445px,338px,219px;"
+                              data-text="w:normal;s:18,14,16,16;l:25,20,20,20;fw:500;"
+                              data-frame_0="x:-100%;"
+                              data-frame_0_mask="u:t;"
+                              data-frame_1="e:power4.inOut;st:1000;sp:1300;"
+                              data-frame_1_mask="u:t;"
+                              data-frame_999="o:0;st:w;"
+                              style="z-index:10;font-family:'Roboto';">
+                        Lê Mai cung cấp dịch vụ vận tải và thực hiện các thủ tục xuất nhập khẩu<br />
+                        khách hàng chỉ cần cung cấp các chứng từ cơ bản cần thiết.
+                    </rs-layer>
+                    <a id="slider-27-slide-73-layer-5"
+                       class="rs-layer rev-btn"
+                       asp-controller="Home" asp-action="Contact" target="_blank" rel="noopener"
+                       data-type="button"
+                       data-rsp_ch="on"
+                       data-xy="xo:235px,194px,147px,138px;yo:620px,512px,389px,275px;"
+                       data-text="w:normal;s:18,14,10,14;l:52,42,31,40;fw:500;a:center;"
+                       data-dim="w:200px,165px,125px,120px;h:55px,45px,34px,45px;minh:0px,none,none,none;"
+                       data-padding="r:40,33,25,15;l:40,33,25,15;"
+                       data-border="bos:solid;boc:#ffffff;bow:2px,2px,2px,2px;bor:3px,3px,3px,3px;"
+                       data-frame_0="x:175%;o:1;"
+                       data-frame_0_mask="u:t;x:-100%;"
+                       data-frame_1="e:power3.out;st:1500;sp:1000;"
+                       data-frame_1_mask="u:t;"
+                       data-frame_999="o:0;st:w;"
+                       data-frame_hover="bgc:#ea1e00;boc:#ea1e00;bor:3px,3px,3px,3px;bos:solid;bow:2px,2px,2px,2px;sp:100;e:power1.inOut;bri:120%;"
+                       style="z-index:12;background-color:#00044b;font-family:'Roboto';">
+                        Giới thiệu
+                    </a>
+                    <a id="slider-27-slide-73-layer-6"
+                       class="rs-layer rev-btn"
+                       asp-controller="Home" asp-action="Contact" target="_blank" rel="noopener"
+                       data-type="button"
+                       data-rsp_ch="on"
+                       data-xy="xo:15px,12px,9px,5px;yo:620px,512px,389px,274px;"
+                       data-text="w:normal;s:18,14,10,14;l:52,42,31,40;fw:500;a:center;"
+                       data-dim="w:200px,165px,125px,120px;h:55px,45px,34px,45px;minh:0px,none,none,none;"
+                       data-padding="r:40,33,25,15;l:40,33,25,15;"
+                       data-border="bos:solid;boc:#ffffff;bow:2px,2px,2px,2px;bor:3px,3px,3px,3px;"
+                       data-frame_0="x:-175%;o:1;"
+                       data-frame_0_mask="u:t;x:100%;"
+                       data-frame_1="e:power3.out;st:1200;sp:1000;"
+                       data-frame_1_mask="u:t;"
+                       data-frame_999="o:0;st:w;"
+                       data-frame_hover="bgc:#ea1e00;boc:#ea1e00;bor:3px,3px,3px,3px;bos:solid;bow:2px,2px,2px,2px;sp:100;e:power1.inOut;bri:120%;"
+                       style="z-index:11;background-color:#00044b;font-family:'Roboto';">
+                        Bảng giá
+                    </a>
+                </rs-slide>
+                <rs-slide style="position: absolute;" data-key="rs-74" data-title="Slide" data-thumb="assets/slide-ecom-50x100.jpg" data-in="o:0;" data-out="a:false;">
+                    <img src="~/assets/slide-ecom.jpg" alt="Image" title="slider-1" width="1614" height="908" class="rev-slidebg tp-rs-img" data-parallax="3" data-panzoom="d:10000;ss:100;se:120%;" data-no-retina>
+                    <rs-layer id="slider-27-slide-74-layer-0"
+                              data-type="image"
+                              data-rsp_ch="on"
+                              data-text="w:normal;s:20,16,12,7;l:0,20,15,9;"
+                              data-dim="w:['100%','100%','100%','100%'];h:['100%','100%','100%','100%'];"
+                              data-basealign="slide"
+                              data-frame_999="o:0;st:w;"
+                              style="z-index:8;">
+                        <img src="~/assets/slider-shape1.png" alt="" class="tp-rs-img" width="1903" height="901" data-c="cover-proportional" data-no-retina>
+                    </rs-layer>
+                    <rs-layer id="slider-27-slide-74-layer-1"
+                              data-type="text"
+                              data-rsp_ch="on"
+                              data-xy="xo:15px,12px,9px,5px;yo:340px,280px,212px,124px;"
+                              data-text="w:normal;s:72,59,44,40;l:80,66,50,40;fw:700;"
+                              data-frame_0="o:1;"
+                              data-frame_0_chars="d:5;o:0;rX:-90deg;oZ:-50;"
+                              data-frame_1="sp:1750;"
+                              data-frame_1_chars="e:power4.inOut;d:10;oZ:-50;"
+                              data-frame_999="o:0;st:w;"
+                              style="z-index:9;font-family:'Roboto';">
+                        Lê Mai Carry<br />
+                        Mua hộ hàng hóa quốc tế theo yêu cầu
+                    </rs-layer>
+                    <rs-layer id="slider-27-slide-74-layer-2"
+                              data-type="text"
+                              data-rsp_ch="on"
+                              data-xy="xo:15px,12px,9px,5px;yo:535px,445px,338px,219px;"
+                              data-text="w:normal;s:18,14,16,16;l:25,20,20,20;fw:500;"
+                              data-frame_0="x:-100%;"
+                              data-frame_0_mask="u:t;"
+                              data-frame_1="e:power4.inOut;st:1000;sp:1300;"
+                              data-frame_1_mask="u:t;"
+                              data-frame_999="o:0;st:w;"
+                              style="z-index:10;font-family:'Roboto';">
+                        Lê Mai cung cấp dịch vụ mua hộ hàng hóa từ các nhà cung cấp quốc tế với số lượng lớn<br />
+                        khách hàng chỉ cần cung cấp thông tin sản phẩm chúng tôi sẽ mua hộ và vận chuyển hàng hóa đến tận tay khách hàng.
+                    </rs-layer>
+                    <a id="slider-27-slide-74-layer-5"
+                       class="rs-layer rev-btn"
+                       asp-controller="Home" asp-action="Contact" target="_blank" rel="noopener"
+                       data-type="button"
+                       data-rsp_ch="on"
+                       data-xy="xo:235px,194px,147px,138px;yo:620px,512px,389px,275px;"
+                       data-text="w:normal;s:18,14,10,14;l:52,42,31,40;fw:500;a:center;"
+                       data-dim="w:200px,165px,125px,120px;h:55px,45px,34px,45px;minh:0px,none,none,none;"
+                       data-padding="r:40,33,25,15;l:40,33,25,15;"
+                       data-border="bos:solid;boc:#ffffff;bow:2px,2px,2px,2px;bor:3px,3px,3px,3px;"
+                       data-frame_0="x:175%;o:1;"
+                       data-frame_0_mask="u:t;x:-100%;"
+                       data-frame_1="e:power3.out;st:1500;sp:1000;"
+                       data-frame_1_mask="u:t;"
+                       data-frame_999="o:0;st:w;"
+                       data-frame_hover="bgc:#ea1e00;boc:#ea1e00;bor:3px,3px,3px,3px;bos:solid;bow:2px,2px,2px,2px;sp:100;e:power1.inOut;bri:120%;"
+                       style="z-index:12;background-color:#00044b;font-family:'Roboto';">
+                        Giới thiệu
+                    </a>
+                    <a id="slider-27-slide-74-layer-6"
+                       class="rs-layer rev-btn"
+                       asp-controller="Home" asp-action="Contact" target="_blank" rel="noopener"
+                       data-type="button"
+                       data-rsp_ch="on"
+                       data-xy="xo:15px,12px,9px,5px;yo:620px,512px,389px,274px;"
+                       data-text="w:normal;s:18,14,10,14;l:52,42,31,40;fw:500;a:center;"
+                       data-dim="w:200px,165px,125px,120px;h:55px,45px,34px,45px;minh:0px,none,none,none;"
+                       data-padding="r:40,33,25,15;l:40,33,25,15;"
+                       data-border="bos:solid;boc:#ffffff;bow:2px,2px,2px,2px;bor:3px,3px,3px,3px;"
+                       data-frame_0="x:-175%;o:1;"
+                       data-frame_0_mask="u:t;x:100%;"
+                       data-frame_1="e:power3.out;st:1200;sp:1000;"
+                       data-frame_1_mask="u:t;"
+                       data-frame_999="o:0;st:w;"
+                       data-frame_hover="bgc:#ea1e00;boc:#ea1e00;bor:3px,3px,3px,3px;bos:solid;bow:2px,2px,2px,2px;sp:100;e:power1.inOut;bri:120%;"
+                       style="z-index:11;background-color:#00044b;font-family:'Roboto';">
+                        Bảng giá
+                    </a>
+                </rs-slide>
+            </rs-slides>
+        </rs-module>
+    </rs-module-wrap>
+    <!-- End of Slider section
+        ============================================= -->
+    <!-- Start of Booking form section
+        ============================================= -->
+    <section id="ft-booking-form" class="ft-booking-form-section">
+        <div class="container">
+            <div class="ft-booking-form-content position-relative">
+                <form asp-controller="Home" asp-action="Index" method="post">
+                    <div class="booking-form-input-wrapper d-flex flex-wrap">
+                        <label class="booking-form-input position-relative">
+                            <span class="booking-form-icon"><i class="fas fa-barcode-read"></i></span>
+                            <input name="code" type="text" placeholder="Mã vận đơn dạng 2302000012..." value="@Model.billCode">
+                        </label>
+                        <button class="ft-sb-button" type="submit">Tra cứu đơn</button>
+                    </div>
+                </form>
+                <div class="containerTracking" style=" color:black; @Model.display">
+                    <div style="@Model.displayInfo">
+                        <div class="titleTracking" style="font-size: 18px;color:#00044B;padding-top: 10px;padding-bottom: 5px;font-weight: bold;font-style: italic;">Thông tin đơn hàng</div>
+                        <div style="padding:0px 0px 10px 5px"><span style="font-weight:bold">Người nhận:</span> @Model.AcceptMan - <span style="font-weight:bold">SĐT:</span> @Model.AcceptManPhone</div>
+                        <div style="padding:0px 0px 10px 5px"><span style="font-weight:bold">Tên hàng:</span> @Model.GoodsName - <span style="font-weight:bold">Cân nặng:</span> @Model.BillWeight.ToString("N0") gram - <span style="font-weight:bold">Tổng tiền phải thu:</span> @Model.Total.ToString("N0") (COD: @Model.COD.ToString("N0") + SHIP: @Model.Freight.ToString("N0"))</div>
+                    </div>
+                    <div class="titleTracking" style="font-size: 18px;color:#00044B;padding-top: 10px;padding-bottom: 5px;font-weight: bold;font-style: italic;">@Model.message</div>
+                    <div id="listTracking">
+                        @foreach (var item in Model.listTracking)
+                        {
+                            if (item == Model.listTracking[0])
+                            {
+                                <div class="_item" style="color:red"><i class="fa-solid fa-road-circle-check"></i> @string.Format("{0:dd/MM/yyyy HH:mm}", item.CreateDate)</div>
+                                <div class="_more" style="padding-left:20px;">
+                                    <div><i class="fa-solid fa-signs-post"></i> @item.Note</div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="_item" style="color:dodgerblue"><i class="fa-solid fa-road-circle-check"></i> @string.Format("{0:dd/MM/yyyy HH:mm}", item.CreateDate)</div>
+                                <div class="_more" style="padding-left:20px;">
+                                    <div><i class="fa-solid fa-signs-post"></i> @item.Note</div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- End of Booking form section
+        ============================================= -->
+    <!-- Start of About section
+        ============================================= -->
+    <section id="ft-about" class="ft-about-section">
+        <div class="container">
+            <div class="ft-about-content">
+                <div class="row">
+                    <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="ft-about-img-exp position-relative">
+                            <div class="ft-about-exp-area headline pera-content position-absolute">
+                                <div class="ft-about-exp-img">
+                                    <img src="~/assets/img/shape/exp-sh1.png" alt="">
+                                </div>
+                                <div class="ft-about-exp-text position-absolute">
+                                    <h3><span class="counter">2</span><b>+</b> Years</h3>
+                                    <p>
+                                        Chúng tôi có nhiều năm kinh nghiệm trong ngành vận tải
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="ft-about-img">
+                                <img src="~/assets/img/about/ab1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ft-about-text-wrapper">
+                            <div class="ft-section-title headline pera-content">
+                                <span class="sub-title">Lê Mai Carry</span>
+                                <h2>
+                                    Vận chuyển hàng hóa
+                                    Toàn quốc nhanh chóng và tin cậy
+                                </h2>
+                                <p style="text-align: justify;">
+                                    Công ty Lê Mai là đơn vị chuyên vận chuyển hàng hóa đi các tất cả các tỉnh thành trong cả nước. Công ty Lê Mai có hệ thống các điểm giao nhận hàng hàng, với hệ thống xe vận tải nhiều loại khác nhau phù hợp cho nhu cầu vận chuyển theo yêu cầu chuyên biệt của khách hàng.Ngoài hệ thống vận tải trực thuộc công ty, chúng tôi còn nhượng quyền khai thác thương hiệu, là đối tác kinh doanh của các đơn vị vận chuyển ZTO Express, Golden Sea, BEST INC, GHN. Với nhiều loại hình vận chuyển khác nhau từ những đơn hàng vài gram cho đến loại hình vận chuyển bằng xe tải, xuất cảng container. Chúng tôi tự tin có thể đáp ứng đầy đủ mong muốn của khách hàng, mang sản phẩm từ người bán đến tận tay người tiêu dùng.
+                                </p>
+                            </div>
+                            <div class="ft-about-feature-list-warpper">
+                                <div class="ft-about-feature-list-item d-flex align-items-center wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                                    <div class="ft-about-feature-icon d-flex align-items-center justify-content-center">
+                                        <i class="flaticon-worldwide"></i>
+                                    </div>
+                                    <div class="ft-about-feature-text headline pera-content">
+                                        <h3>Dịch vụ quốc tế</h3>
+                                        <p>
+                                            Chúng tôi luôn cung cấp cho mọi người một giải pháp hoàn chỉnh vào bất kỳ doanh nghiệp nào.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="ft-about-feature-list-item d-flex align-items-center wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+                                    <div class="ft-about-feature-icon d-flex align-items-center justify-content-center">
+                                        <i class="flaticon-place"></i>
+                                    </div>
+                                    <div class="ft-about-feature-text headline pera-content">
+                                        <h3>Dịch vụ trong nước</h3>
+                                        <p>
+                                            Chúng tôi nhận vận chuyển hàng hóa bằng nhiều loại khác nhau toàn quốc.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="ft-btn wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
+                                    <a class="d-flex justify-content-center align-items-center" asp-controller="Home" asp-action="Contact">Xem thêm</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of About section
+        ============================================= -->
+    <!-- Start of Service section
+        ============================================= -->
+    <section id="ft-service" class="ft-service-section">
+        <div class="container">
+            <div class="ft-service-content">
+                <div class="row">
+                    <div class="col-lg-3 wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="ft-service-text-area">
+                            <div class="ft-section-title headline pera-content">
+                                <span class="sub-title">Lê Mai CR</span>
+                                <h2>
+                                    Chúng tôi là những con người chăm chỉ và cẩn thận
+                                </h2>
+                            </div>
+                            <div class="ft-btn">
+                                <a class="d-flex justify-content-center align-items-center" href="#">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="ft-service-slider-area">
+                            <div class="ft-service-slider-wrapper">
+                                <div class="ft-item-innerbox wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">
+                                    <div class="ft-service-slider-item">
+                                        <div class="ft-service-inner-img">
+                                            <img src="~/assets/img/service/ser1.jpg" alt="">
+                                        </div>
+                                        <div class="ft-service-inner-text headline pera-content position-relative">
+                                            <h3><a asp-controller="Home" asp-action="Contact">Vận chuyển hàng không</a></h3>
+                                            <p>Vận chuyển siêu nhanh hàng hóa bằng hàng không. HCM - Hà Nội: 4 giờ. </p>
+                                            <a class="service-more" asp-controller="Home" asp-action="Contact">Xem thêm<span>+</span></a>
+                                            <div class="ft-service-serial position-absolute">
+                                                1
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ft-item-innerbox wow fadeInLeft" data-wow-delay="400ms" data-wow-duration="1500ms">
+                                    <div class="ft-service-slider-item">
+                                        <div class="ft-service-inner-img">
+                                            <img src="~/assets/img/service/ser2.jpg" alt="">
+                                        </div>
+                                        <div class="ft-service-inner-text headline pera-content position-relative">
+                                            <h3><a asp-controller="Home" asp-action="Contact">Vận chuyển đường biển</a></h3>
+                                            <p>Vận chuyển khối lượng hàng hóa lớn bằng tàu biển </p>
+                                            <a class="service-more" asp-controller="Home" asp-action="Contact">Xem thêm<span>+</span></a>
+                                            <div class="ft-service-serial position-absolute">
+                                                2
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ft-item-innerbox wow fadeInLeft" data-wow-delay="600ms" data-wow-duration="1500ms">
+                                    <div class="ft-service-slider-item">
+                                        <div class="ft-service-inner-img">
+                                            <img src="~/assets/img/service/ser1.jpg" alt="">
+                                        </div>
+                                        <div class="ft-service-inner-text headline pera-content position-relative">
+                                            <h3><a asp-controller="Home" asp-action="Contact">Vận chuyển đường bộ</a></h3>
+                                            <p>Vận chuyển hàng hóa bằng xe tải đi các tỉnh miền tây và trung</p>
+                                            <a class="service-more" asp-controller="Home" asp-action="Contact">Xem thêm<span>+</span></a>
+                                            <div class="ft-service-serial position-absolute">
+                                                3
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ft-item-innerbox" data-wow-duration="1500ms">
+                                    <div class="ft-service-slider-item">
+                                        <div class="ft-service-inner-img">
+                                            <img src="~/assets/img/service/ser1.jpg" alt="">
+                                        </div>
+                                        <div class="ft-service-inner-text headline pera-content position-relative">
+                                            <h3><a asp-controller="Home" asp-action="Contact">Vận chuyển đường sắt</a></h3>
+                                            <p>Vận chuyển hàng hóa có kích thước và khối lượng lớn với cước phí rẻ.</p>
+                                            <a class="service-more" asp-controller="Home" asp-action="Contact">Xem thêm<span>+</span></a>
+                                            <div class="ft-service-serial position-absolute">
+                                                4
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ft-item-innerbox">
+                                    <div class="ft-service-slider-item">
+                                        <div class="ft-service-inner-img">
+                                            <img src="~/assets/img/service/ser2.jpg" alt="">
+                                        </div>
+                                        <div class="ft-service-inner-text headline pera-content position-relative">
+                                            <h3><a asp-controller="Home" asp-action="Contact">Vận chuyển nhanh</a></h3>
+                                            <p>Nhận hàng và vận chuyển hàng hóa bằng xe máy hàng hóa từ shop đến khách hàng</p>
+                                            <a class="service-more" asp-controller="Home" asp-action="Contact">Xem thêm<span>+</span></a>
+                                            <div class="ft-service-serial position-absolute">
+                                                5
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ft-item-innerbox">
+                                    <div class="ft-service-slider-item">
+                                        <div class="ft-service-inner-img">
+                                            <img src="~/assets/img/service/ser1.jpg" alt="">
+                                        </div>
+                                        <div class="ft-service-inner-text headline pera-content position-relative">
+                                            <h3><a asp-controller="Home" asp-action="Contact">Mua hộ hàng sàn thương mại</a></h3>
+                                            <p>Mua hộ và vận chuyển hàng hóa từ Aliexpress, taobao, ebay... </p>
+                                            <a class="service-more" asp-controller="Home" asp-action="Contact">Xem thêm<span>+</span></a>
+                                            <div class="ft-service-serial position-absolute">
+                                                6
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Service section
+        ============================================= -->
+    <!-- Start of counterup section
+        ============================================= -->
+    <section id="ft-counterup" class="ft-counterup-section position-relative">
+        <div class="container">
+            <div class="ft-counterup-content">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ft-counterup-innerbox d-flex align-items-center position-relative">
+                            <div class="ft-counterup-icon d-flex align-items-center justify-content-center">
+                                <i class="flaticon-delivery-truck"></i>
+                            </div>
+                            <div class="ft-counterup-text headline pera-content">
+                                <h3><span class="counter">65</span>k</h3>
+                                <p>Đơn hàng thực hiện</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ft-counterup-innerbox d-flex align-items-center position-relative">
+                            <div class="ft-counterup-icon d-flex align-items-center justify-content-center">
+                                <i class="flaticon-office"></i>
+                            </div>
+                            <div class="ft-counterup-text headline pera-content">
+                                <h3><span class="counter">5</span>+</h3>
+                                <p>Chi nhánh</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ft-counterup-innerbox d-flex align-items-center position-relative">
+                            <div class="ft-counterup-icon d-flex align-items-center justify-content-center">
+                                <i class="flaticon-community"></i>
+                            </div>
+                            <div class="ft-counterup-text headline pera-content">
+                                <h3><span class="counter">200</span></h3>
+                                <p>Khách hàng thân thiết</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ft-counterup-innerbox d-flex align-items-center position-relative">
+                            <div class="ft-counterup-icon d-flex align-items-center justify-content-center">
+                                <i class="flaticon-free-shipping"></i>
+                            </div>
+                            <div class="ft-counterup-text headline pera-content">
+                                <h3><span class="counter">5</span>M</h3>
+                                <p>Khối lượng hàng hóa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of counterup section
+        ============================================= -->
+    <!-- Start of why choose section
+        ============================================= -->
+    <section id="ft-why-choose" class="ft-why-choose-section position-relative" data-background="assets/img/bg/wc-bg.jpg">
+        <div class="container">
+            <div class="ft-why-choose-content">
+                <div class="row justify-content-end">
+                    <div class="col-lg-7">
+                        <div class="ft-why-choose-text-area">
+                            <div class="ft-section-title headline pera-content wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                                <span class="sub-title">Why Choose Us</span>
+                                <h2>
+                                    Sứ mệnh của chúng tôi là đóng góp những điều tốt đẹp đến với khách hàng.
+                                </h2>
+                            </div>
+                            <div class="ft-why-choose-feature-wrapper">
+                                <div class="ft-why-choose-feature-item d-flex align-items-center wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+                                    <div class="ft-why-choose-feature-icon d-flex align-items-center justify-content-center position-relative">
+                                        <i class="flaticon-logistics"></i>
+                                    </div>
+                                    <div class="ft-why-choose-feature-text headline pera-content">
+                                        <h3>Vận chuyển nhanh chóng</h3>
+                                        <p>Thời gian là điều mà chúng tôi luôn luôn đặt lên hàng đầu.</p>
+                                    </div>
+                                </div>
+                                <div class="ft-why-choose-feature-item d-flex align-items-center wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
+                                    <div class="ft-why-choose-feature-icon d-flex align-items-center justify-content-center position-relative">
+                                        <i class="flaticon-shield-1"></i>
+                                    </div>
+                                    <div class="ft-why-choose-feature-text headline pera-content">
+                                        <h3>An toàn và tin cậy</h3>
+                                        <p>Lê Mai Carry luôn cố gắng vận chuyển hàng hóa của khách hàng một cách an toàn nhất, đảm bảo hàng hóa ít bị hư hỏng.</p>
+                                    </div>
+                                </div>
+                                <div class="ft-why-choose-feature-item d-flex align-items-center wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+                                    <div class="ft-why-choose-feature-icon d-flex align-items-center justify-content-center position-relative">
+                                        <i class="flaticon-global-shipping"></i>
+                                    </div>
+                                    <div class="ft-why-choose-feature-text headline pera-content">
+                                        <h3>Dịch vụ đa dạng</h3>
+                                        <p>Dịch vụ đa dạng từ việc vận chuyển những đơn hàng nhỏ lẻ cho đến những dịch vụ vận chuyển bằng xe tải, tàu biển, đường sắt và cả đường hàng không.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of of why choose section
+        ============================================= -->
+    <!-- Start of Team section
+        ============================================= -->
+    <section id="ft-team" class="ft-team-section">
+        <div class="container">
+            <div class="ft-team-content">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                        <div class="ft-team-text-area">
+                            <div class="ft-section-title headline pera-content">
+                                <span class="sub-title">Đối tác</span>
+                                <h2>
+                                    Đối tác của chúng tôi
+                                </h2>
+                                <p>Đối tác nhượng quyền khai thác thương hiệu, đối tác khai thác thị trường.</p>
+                            </div>
+                            <div class="ft-btn">
+                                <a class="d-flex justify-content-center align-items-center" asp-controller="Home" asp-action="Contact">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+                        <div class="ft-team-inner-itembox position-relative">
+                            <span class="hover-shape position-absolute"><img src="~/assets/img/shape/tm-sh.png" alt=""></span>
+                            <div class="ft-team-inner-item-img">
+                                <img src="~/assets/img/team/tm1.jpg" alt="">
+                            </div>
+                            <div class="ft-team-inner-item-text headline">
+                                <h3><a asp-controller="Home" asp-action="Contact">ZTO Express</a></h3>
+                                <span>Nhượng quyền thương hiệu</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+                        <div class="ft-team-inner-itembox position-relative">
+                            <span class="hover-shape position-absolute"><img src="~/assets/img/shape/tm-sh.png" alt=""></span>
+                            <div class="ft-team-inner-item-img">
+                                <img src="~/assets/img/team/tm2.jpg" alt="">
+                            </div>
+                            <div class="ft-team-inner-item-text headline">
+                                <h3><a href="https://vanthongviet.com/">VTV Express</a></h3>
+                                <span>Đối tác thương mại</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+                        <div class="ft-team-inner-itembox position-relative">
+                            <span class="hover-shape position-absolute"><img src="~/assets/img/shape/tm-sh.png" alt=""></span>
+                            <div class="ft-team-inner-item-img">
+                                <img src="~/assets/img/team/tm4.jpg" alt="">
+                            </div>
+                            <div class="ft-team-inner-item-text headline">
+                                <h3><a asp-controller="Home" asp-action="Contact">Helen Express</a></h3>
+                                <span>Đại lý thương mại</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+                        <div class="ft-team-inner-itembox position-relative">
+                            <span class="hover-shape position-absolute"><img src="~/assets/img/shape/tm-sh.png" alt=""></span>
+                            <div class="ft-team-inner-item-img">
+                                <img src="~/assets/img/team/tm3.jpg" alt="">
+                            </div>
+                            <div class="ft-team-inner-item-text headline">
+                                <h3><a asp-controller="Home" asp-action="Contact">Golden Sea</a></h3>
+                                <span>Ủy quyền dịch vụ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Team section
+        ============================================= -->
+    <!-- Start of Project section
+        ============================================= -->
+    <section id="ft-project" class="ft-project-section position-relative">
+        <div class="container">
+            <div class="ft-project-content d-flex justify-content-between align-items-end flex-wrap">
+                <div class="ft-section-title headline pera-content">
+                    <span class="sub-title">Dự án</span>
+                    <h2>
+                        Dự án gần đây
+                    </h2>
+                </div>
+                <div class="ft-btn">
+                    <a class="d-flex justify-content-center align-items-center" asp-controller="Home" asp-action="Contact">Tất cả dự án</a>
+                </div>
+            </div>
+        </div>
+        <div class="ft-project-slider-wrapper">
+            <div class="ft-project-slider-area">
+                <div class="ft-item-innerbox">
+                    <div class="ft-project-itembox position-relative">
+                        <div class="ft-project-img">
+                            <img src="~/assets/img/project/pro1.jpg" alt="">
+                        </div>
+                        <div class="ft-project-text headline pera-content">
+                            <h3>
+                                <a asp-controller="Home" asp-action="Contact">
+                                    Vận chuyển nguyên liệu sản xuất thức ăn cho cá
+                                </a>
+                            </h3>
+                            <p>Lê Mai Carry thực hiện vận chuyển 125 tấn hàng nguyên liệu cho dây truyền sản xuất thức ăn thủy sản cho Công ty Cổ Phần MFC.</p>
+                            <div class="ft-btn">
+                                <a class="d-flex justify-content-center align-items-center" asp-controller="Home" asp-action="Contact">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ft-item-innerbox">
+                    <div class="ft-project-itembox position-relative">
+                        <div class="ft-project-img">
+                            <img src="~/assets/img/project/pro1.jpg" alt="">
+                        </div>
+                        <div class="ft-project-text headline pera-content">
+                            <h3>
+                                <a asp-controller="Home" asp-action="Contact">
+                                    Vận tải vải nhập từ trung quốc
+                                </a>
+                            </h3>
+                            <p>Vận chuyển 12 tấn hàng từ TP HCM về Thanh Bình - Đồng Tháp </p>
+                            <div class="ft-btn">
+                                <a class="d-flex justify-content-center align-items-center" asp-controller="Home" asp-action="Contact">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ft-item-innerbox">
+                    <div class="ft-project-itembox position-relative">
+                        <div class="ft-project-img">
+                            <img src="~/assets/img/project/pro1.jpg" alt="">
+                        </div>
+                        <div class="ft-project-text headline pera-content">
+                            <h3>
+                                <a asp-controller="Home" asp-action="Contact">
+                                    Xuất cảng sữa hạt sen
+                                </a>
+                            </h3>
+                            <p>Vận chuyển 8 tấn khối lượng bột sữa hạt sen cho việc xuất cảng sang Hàn Quốc.</p>
+                            <div class="ft-btn">
+                                <a class="d-flex justify-content-center align-items-center" asp-controller="Home" asp-action="Contact">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ft-item-innerbox">
+                    <div class="ft-project-itembox position-relative">
+                        <div class="ft-project-img">
+                            <img src="~/assets/img/project/pro1.jpg" alt="">
+                        </div>
+                        <div class="ft-project-text headline pera-content">
+                            <h3>
+                                <a asp-controller="Home" asp-action="Contact">
+                                    Vận chuyển nhanh hàng online
+                                </a>
+                            </h3>
+                            <p>Vận chuyển đơn hàng online đi toàn quốc</p>
+                            <div class="ft-btn">
+                                <a class="d-flex justify-content-center align-items-center" asp-controller="Home" asp-action="Contact">Chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Project section
+        ============================================= -->
+    <!-- Start of Testimonial section
+        ============================================= -->
+    <section id="ft-testimonial" class="ft-testimonial-section position-relative">
+        <span class="ft-testimonial-map text-center position-absolute"><img src="~/assets/img/shape/map.png" alt=""></span>
+        <div class="container">
+            <div class="ft-section-title headline pera-content text-center">
+                <span class="sub-title">Chứng nhận</span>
+                <h2>
+                    Khách hàng nói gì về chúng tôi?
+                </h2>
+            </div>
+            <div class="ft-testimonial-slider-wrapper">
+                <div class="ft-testimonial-slider-area">
+                    <div class="ft-item-innerbox wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="ft-testimonial-item-innerbox">
+                            <div class="ft-testimonial-item-img-wrapper position-relative">
+                                <div class="ft-testimonial-item-img">
+                                    <img src="~/assets/img/testimonial/tst1.jpg" alt="">
+                                </div>
+                                <div class="ft-testimonial-quote d-flex align-items-center justify-content-center position-absolute">
+                                    <img src="~/assets/img/shape/quote.png" alt="">
+                                </div>
+                            </div>
+                            <div class="ft-testimonial-text-item text-center">
+                                Lê Mai Carry cung cấp dịch vụ với giá thấp và dịch vụ vận chuyển tốt, hàng hóa không bị hư hỏng.
+                            </div>
+                            <div class="ft-testimonial-name headline position-relative">
+                                <span class="ft-testimonial-shape"></span>
+                                <h3>Chị Vân</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ft-item-innerbox wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+                        <div class="ft-testimonial-item-innerbox">
+                            <div class="ft-testimonial-item-img-wrapper position-relative">
+                                <div class="ft-testimonial-item-img">
+                                    <img src="~/assets/img/testimonial/tst2.jpg" alt="">
+                                </div>
+                                <div class="ft-testimonial-quote d-flex align-items-center justify-content-center position-absolute">
+                                    <img src="~/assets/img/shape/quote.png" alt="">
+                                </div>
+                            </div>
+                            <div class="ft-testimonial-text-item text-center">
+                                Dịch vụ của Lê Mai đa dạng, tôi dễ dàng lựa chọn phù hợp với nhu cầu theo từng đơn hàng của tôi.
+                            </div>
+                            <div class="ft-testimonial-name headline position-relative">
+                                <span class="ft-testimonial-shape"></span>
+                                <h3>Anh Trí</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ft-item-innerbox wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+                        <div class="ft-testimonial-item-innerbox">
+                            <div class="ft-testimonial-item-img-wrapper position-relative">
+                                <div class="ft-testimonial-item-img">
+                                    <img src="~/assets/img/testimonial/tst1.jpg" alt="">
+                                </div>
+                                <div class="ft-testimonial-quote d-flex align-items-center justify-content-center position-absolute">
+                                    <img src="~/assets/img/shape/quote.png" alt="">
+                                </div>
+                            </div>
+                            <div class="ft-testimonial-text-item text-center">
+                                Tôi hoàn toàn có thể yên tâm về Lê Mai, các khâu nhận hàng, vận chuyển thủ tục... Lê Mai luôn đảm bảo cho tôi.
+                            </div>
+                            <div class="ft-testimonial-name headline position-relative">
+                                <span class="ft-testimonial-shape"></span>
+                                <h3>Chị Thu</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ft-item-innerbox">
+                        <div class="ft-testimonial-item-innerbox">
+                            <div class="ft-testimonial-item-img-wrapper position-relative">
+                                <div class="ft-testimonial-item-img">
+                                    <img src="~/assets/img/testimonial/tst2.jpg" alt="">
+                                </div>
+                                <div class="ft-testimonial-quote d-flex align-items-center justify-content-center position-absolute">
+                                    <img src="~/assets/img/shape/quote.png" alt="">
+                                </div>
+                            </div>
+                            <div class="ft-testimonial-text-item text-center">
+                                Dù khách hàng lớn hay nhỏ, đến với Lê Mai bạn sẽ được đối xử như nhau, nhân viên luôn thân thiện và hướng dẫn bạn một cách nhiệt tình nhất.
+                            </div>
+                            <div class="ft-testimonial-name headline position-relative">
+                                <span class="ft-testimonial-shape"></span>
+                                <h3>Anh Thiên</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ft-item-innerbox">
+                        <div class="ft-testimonial-item-innerbox">
+                            <div class="ft-testimonial-item-img-wrapper position-relative">
+                                <div class="ft-testimonial-item-img">
+                                    <img src="~/assets/img/testimonial/tst1.jpg" alt="">
+                                </div>
+                                <div class="ft-testimonial-quote d-flex align-items-center justify-content-center position-absolute">
+                                    <img src="~/assets/img/shape/quote.png" alt="">
+                                </div>
+                            </div>
+                            <div class="ft-testimonial-text-item text-center">
+                                Ứng dụng quản lý đơn hàng đơn giản, dễ sử dụng, toàn bộ đơn hàng của nhiều loại dịch vụ được hiển thị trên cùng một ứng dụng.
+                            </div>
+                            <div class="ft-testimonial-name headline position-relative">
+                                <span class="ft-testimonial-shape"></span>
+                                <h3>Cty DOTHA</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Testimonial section
+        ============================================= -->
+    <!-- Start of Contact section
+        ============================================= -->
+    <section id="ft-contact" class="ft-contact-section position-relative" data-background="assets/img/bg/c-bg.jpg">
+        <div class="container">
+            <div class="ft-contact-content">
+                <div class="ft-section-title headline pera-content">
+                    <span class="sub-title">Đặt hàng</span>
+                    <h2>
+                        Yêu cầu một đơn đặt hàng
+                    </h2>
+                    <p>Khi bạn có một nhu cầu vận chuyển, vui lòng điền đầy đủ các thông tin và gửi về chúng tôi, chúng tôi sẽ liên hệ với bạn ngay tức thì.</p>
+                </div>
+                <div class="ft-contact-form-wrapper">
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" placeholder="Tên của bạn">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" placeholder="Địa chỉ của bạn">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" placeholder="Địa chỉ email">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" placeholder="Điện thoại của bạn">
+                            </div>
+                            <div class="col-md-12">
+                                <textarea name="#" placeholder="Nội dung yêu cầu"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="ft-sb-button">Gửi yêu cầu</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Contact section
+        ============================================= -->
+    <!-- Start of Blog section
+        ============================================= -->
+    <section id="ft-blog" class="ft-blog-section">
+        <div class="container">
+            <div class="ft-blog-top-content d-flex justify-content-between align-items-end flex-wrap">
+                <div class="ft-section-title headline pera-content">
+                    <span class="sub-title">Tin tức</span>
+                    <h2>
+                        Tin tức và hoạt động của Lê Mai Carry
+                    </h2>
+                </div>
+                <div class="ft-btn">
+                    <a class="d-flex justify-content-center align-items-center" asp-controller="Home" asp-action="Contact">Xem thêm</a>
+                </div>
+            </div>
+            <div class="ft-blog-feed-content">
+                <div class="row">
+                    <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="ft-blog-feed-wrapper">
+                            <div class="ft-blog-news-feed-innerbox">
+                                <div class="ft-blog-feed-img">
+                                    <img src="~/assets/img/blog/blg1.jpg" alt="">
+                                </div>
+                                <div class="ft-blog-feed-text headline pera-content">
+                                    <div class="ft-blog-meta d-flex justify-content-between flex-wrap">
+                                        <div class="ft-blog-data">
+                                            <a href="#"><i class="far fa-calendar-alt"></i> 28 Aug, 2022</a>
+                                        </div>
+                                        <div class="ft-blog-comment-view">
+                                            <a href="#"><i class="far fa-comments"></i> 80</a>
+                                            <a href="#"><i class="far fa-eye"></i> 300</a>
+                                        </div>
+                                    </div>
+                                    <h3>
+                                        <a asp-controller="Home" asp-action="Contact">
+                                            Tương lai ngành vận tải trong năm 2023
+                                        </a>
+                                    </h3>
+                                    <p>Sau đại dịch Covid, ngành vận tải đang tăng trưởng, dự đoán trong năm 2023 mức tăng trưởng đạt 235 tỷ USD</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ft-blog-feed-wrapper-2">
+                            <div class="ft-blog-news-feed-innerbox wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+                                <div class="ft-blog-feed-img">
+                                    <img src="~/assets/img/blog/blg2.jpg" alt="">
+                                </div>
+                                <div class="ft-blog-feed-text headline pera-content">
+                                    <div class="ft-blog-meta d-flex justify-content-between flex-wrap">
+                                        <div class="ft-blog-data">
+                                            <a href="#"><i class="far fa-calendar-alt"></i> 28 Jan, 2023</a>
+                                        </div>
+                                        <div class="ft-blog-comment-view">
+                                            <a href="#"><i class="far fa-comments"></i> 80</a>
+                                            <a href="#"><i class="far fa-eye"></i> 300</a>
+                                        </div>
+                                    </div>
+                                    <h3>
+                                        <a asp-controller="Home" asp-action="Contact">
+                                            Tại sao giá cước vận chuyển tăng
+                                        </a>
+                                    </h3>
+                                    <p>Đầu năm 2023, tất cả các đơn vị vận chuyển đều đồng loạt tăng giá nguyên nhân và giải pháp</p>
+                                </div>
+                            </div>
+                            <div class="ft-blog-news-feed-innerbox wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
+                                <div class="ft-blog-feed-img">
+                                    <img src="~/assets/img/blog/blg3.jpg" alt="">
+                                </div>
+                                <div class="ft-blog-feed-text headline pera-content">
+                                    <div class="ft-blog-meta d-flex justify-content-between flex-wrap">
+                                        <div class="ft-blog-data">
+                                            <a href="#"><i class="far fa-calendar-alt"></i> 28 Aug, 2021</a>
+                                        </div>
+                                        <div class="ft-blog-comment-view">
+                                            <a href="#"><i class="far fa-comments"></i> 80</a>
+                                            <a href="#"><i class="far fa-eye"></i> 300</a>
+                                        </div>
+                                    </div>
+                                    <h3>
+                                        <a asp-controller="Home" asp-action="Contact">
+                                            Khủng hoảng kinh tế toàn cầu
+                                        </a>
+                                    </h3>
+                                    <p>Vận chuyển là ngành chiếm tỷ trọng từ 20-30% trong phân đoạn phân phối sản phẩm... </p>
+                                </div>
+                            </div>
+                            <div class="ft-blog-news-feed-innerbox wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+                                <div class="ft-blog-feed-img">
+                                    <img src="~/assets/img/blog/blg4.jpg" alt="">
+                                </div>
+                                <div class="ft-blog-feed-text headline pera-content">
+                                    <div class="ft-blog-meta d-flex justify-content-between flex-wrap">
+                                        <div class="ft-blog-data">
+                                            <a href="#"><i class="far fa-calendar-alt"></i> 28 Aug, 2021</a>
+                                        </div>
+                                        <div class="ft-blog-comment-view">
+                                            <a href="#"><i class="far fa-comments"></i> 80</a>
+                                            <a href="#"><i class="far fa-eye"></i> 300</a>
+                                        </div>
+                                    </div>
+                                    <h3>
+                                        <a asp-controller="Home" asp-action="Contact">
+                                            Vận chuyển đường biển tại sao không?
+                                        </a>
+                                    </h3>
+                                    <p>Vận chuyển đường biển là một lĩnh vực vận tải lâu đời với khối lượng vận chuyển đứng đầu trong ngành vận chuyển </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Blog section
+        ============================================= -->
+    <!-- Start of Footer section
+        ============================================= -->
+    <footer id="ft-footer" class="ft-footer-section">
+        <div class="container">
+            <div class="ft-footer-widget-wrapper">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ft-footer-widget ul-li-block headline pera-content">
+                            <div class="logo-widget">
+                                <div class="site-logo">
+                                    <a href="#"><img src="~/assets/img/logo/logo2.png" alt=""></a>
+                                </div>
+                                <div style="font-size:16px; font-weight:bold; color:white">@webConfig.COMPANY_NAME</div>
+                                <p>
+                                    @webConfig.COMPANY_FOOTER_ADDRESS <br />
+                                    @webConfig.COMPANY_FOOTER_PHONE
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ft-footer-widget ul-li-block headline pera-content">
+                            <div class="menu-widget">
+                                <h3 class="widget-title">Thông tin chung</h3>
+                                <ul>
+                                    <li><a asp-controller="Home" asp-action="Contact">Tài liệu kết nối API</a></li>
+                                    <li><a asp-controller="Home" asp-action="Contact">Quy định hàng gửi</a></li>
+                                    <li><a asp-controller="Home" asp-action="Contact">Chính sách bồi thường</a></li>
+                                     <li><a asp-controller="Home" asp-action="Contact">Danh sách không vận chuyển</a></li>
+                                    <li><a asp-controller="Home" asp-action="Contact">Bảng giá</a></li>
+                                    <li><a asp-controller="Home" asp-action="Contact">Chính sách bảo mật</a></li>
+                                    <li><a asp-controller="Home" asp-action="Contact">Liên hệ</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ft-footer-widget ul-li-block headline pera-content">
+                            <div class="menu-widget">
+                                <h3 class="widget-title">Ứng dụng trên điện thoại</h3>
+                                <div class="row" style="height:150px !important; width:150px !important; margin-left:10px">
+                                    <img src="~/assets/qr_LemaiAndroid.png" widt style="height:150px !important; width:150px !important; padding:0px !important;" />
+                                </div>
+                                <div class="row" style="height:10px"></div>
+                                <div class="row" style="height:150px !important; width:150px !important; margin-left:10px">
+                                    <img src="~/assets/qr_LemaiIos.png" width="100px" height="100px" style="height:150px !important; width:150px !important; padding:0px !important;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="ft-footer-widget ul-li-block headline pera-content">
+                            <div class="gallery-widget clearfix">
+                                <h3 class="widget-title">Thư viện ảnh</h3>
+                                <ul class="zoom-gallery">
+                                    <li><a href="~/assets/img/gallery/gl1.jpg" data-source="~/assets/img/gallery/gl1.jpg"><img src="~/assets/img/gallery/gl1.jpg" alt=""></a></li>
+                                    <li><a href="~/assets/img/gallery/gl2.jpg" data-source="~/assets/img/gallery/gl2.jpg"><img src="~/assets/img/gallery/gl2.jpg" alt=""></a></li>
+                                    <li><a href="~/assets/img/gallery/gl3.jpg" data-source="~/assets/img/gallery/gl3.jpg"><img src="~/assets/img/gallery/gl3.jpg" alt=""></a></li>
+                                    <li><a href="~/assets/img/gallery/gl4.jpg" data-source="~/assets/img/gallery/gl4.jpg"><img src="~/assets/img/gallery/gl4.jpg" alt=""></a></li>
+                                    <li><a href="~/assets/img/gallery/gl5.jpg" data-source="~/assets/img/gallery/gl4.jpg"><img src="~/assets/img/gallery/gl5.jpg" alt=""></a></li>
+                                    <li><a href="~/assets/img/gallery/gl6.jpg" data-source="~/assets/img/gallery/gl4.jpg"><img src="~/assets/img/gallery/gl6.jpg" alt=""></a></li>
+                                </ul>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ft-footer-copywrite-1 text-center">
+                <span>Copyright © 2023 Lê Mai.All Rights Reserved</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer section
+        ============================================= -->
+    <!-- For Js Library -->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/assets/js/appear.js"></script>
+    <script src="~/assets/js/slick.js"></script>
+    <script src="~/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/assets/js/waypoints.min.js"></script>
+    <script src="~/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/assets/js/jquery.filterizr.js"></script>
+    <script src="~/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/assets/js/wow.min.js"></script>
+    <script src="~/assets/js/jquery.cssslider.min.js"></script>
+    <script src="~/assets/js/rbtools.min.js"></script>
+    <script src="~/assets/js/rs6.min.js"></script>
+    <script src="~/assets/js/script.js"></script>
+</body>
+</html>
+

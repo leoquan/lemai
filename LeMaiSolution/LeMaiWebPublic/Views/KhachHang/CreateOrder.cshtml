@@ -1,0 +1,223 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Tạo đơn đặt hàng";
+    Layout = "_LayoutKhachHang";
+}
+@model WebKhachHangOrderModel;
+@using LeMaiDomain.Models;
+@section css
+    {
+
+}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Đơn đặt hàng</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a asp-controller="KhachHang" asp-action="Orders">Đơn đặt hàng</a></li>
+            <li class="breadcrumb-item active">Tạo đơn đặt hàng</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-cart-plus me-1"></i>
+                Tạo/cập nhật đơn đặt hàng
+            </div>
+            <div class="card-body">
+                <form asp-action="CreateOrder" asp-controller="KhachHang" method="post">
+                    <div class="form-floating mb-3 col-md-4">
+                        <input type="text" class="form-control" name="OrderCode" readonly="readonly" value="@Model.OrderDetail.OrderCode">
+                        <label>Mã đặt hàng</label>
+                    </div>
+                    <div class="form-floating mb-3 col-md-4">
+                        <input type="text" class="form-control" name="AcceptName" value="@Model.OrderDetail.AcceptName">
+                        <label>Tên người nhận</label>
+                    </div>
+                    <div class="form-floating mb-3 col-md-4">
+                        <input type="text" class="form-control" name="AcceptPhone" placeholder="Số điện thoại người nhận" value="@Model.OrderDetail.AcceptPhone">
+                        <label for="floatingPassword">Điện thoại người nhận</label>
+                    </div>
+                    <div class="form-floating mb-3 col-md-4">
+                        <select class="form-select" name="Province" id="ProvinceList">
+                            @foreach (var item in Model.ProvinderList)
+                            {
+                                if (Model.ProvinceCodeSelect == item.ProvinceID)
+                                {
+                                    <option selected value="@item.ProvinceID">@item.ProvinceName</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.ProvinceID">@item.ProvinceName</option>
+                                }
+                            }
+                        </select>
+                        <label>Tỉnh nhận</label>
+                    </div>
+                    <div class="form-floating mb-3 col-md-4">
+                        <select class="form-select" name="District" id="DisctrictList">
+                            @foreach (var item in Model.DistrictList)
+                            {
+                                if (Model.DistrictCodeSelect == item.DistrictID)
+                                {
+                                    <option selected value="@item.DistrictID">@item.DistrictName</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.DistrictID">@item.DistrictName</option>
+                                }
+                            }
+                        </select>
+                        <label>Huyện nhận</label>
+                    </div>
+                    <div class="form-floating mb-3 col-md-4">
+                        <select class="form-select" name="Ward" id="WardList">
+                            @foreach (var item in Model.WardList)
+                            {
+                                if (Model.WardCodeSelect == item.WardId)
+                                {
+                                    <option selected value="@item.WardId">@item.WardName</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.WardId">@item.WardName</option>
+                                }
+                            }
+                        </select>
+                        <label>Xã nhận</label>
+                    </div>
+                    <div class="form-floating mb-3 col-md-4">
+                        <input type="text" class="form-control" name="AcceptAddress" placeholder="Địa chỉ" value="@Model.OrderDetail.AcceptAddress">
+                        <label for="floatingInput">Địa chỉ</label>
+                    </div>
+                    <div class="form-floating mb-3 col-md-4">
+                        <input type="text" class="form-control" name="GoodsName" placeholder="Tên hàng hóa" value="@Model.OrderDetail.GoodsName">
+                        <label for="floatingInput">Tên hàng</label>
+                    </div>
+                    <div class="form-floating mb-3 col-md-2">
+                        <input type="number" class="form-control" name="COD" min="0" max="100000000" maxlength="10" placeholder="Thu hộ" value="@Model.OrderDetail.COD">
+                        <label for="floatingInput">Tiền thu hộ</label>
+                    </div>
+                    <div class="form-floating mb-3 col-md-2">
+                        <input type="number" class="form-control" name="Weight" min="0" max="100000" maxlength="4" placeholder="Cân nặng" value="@Model.OrderDetail.Weight" id="Weight">
+                        <label for="floatingInput">Cân nặng (Gram)</label>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        @if (Model.OrderDetail.IsShopPay == true)
+                        {
+                            <input class="form-check-input" type="radio" value="true" id="IsShopPay" name="IsShopPay" checked="checked" /> <span>Gửi trả(Bao ship)</span>
+                        }
+                        else
+                        {
+                            <input class="form-check-input" type="radio" value="true" id="IsShopPay" name="IsShopPay" />
+                            <span>Gửi trả(Bao ship)</span>
+                        }
+
+                    </div>
+                    <div class="form-check mb-3">
+                        @if (Model.OrderDetail.IsShopPay == true)
+                        {
+                            <input class="form-check-input" type="radio" value="false" id="IsShopPay" name="IsShopPay" />
+                            <span>Nhận trả(Không bao ship)</span>
+                        }
+                        else
+                        {
+                            <input class="form-check-input" type="radio" value="false" id="IsShopPay" name="IsShopPay" checked="checked" />
+                            <span>Nhận trả(Không bao ship)</span>
+                        }
+
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea type="text" class="form-control" name="Note" placeholder="Ghi chú" rows="5">@Model.OrderDetail.Note</textarea>
+                        <label for="ghichu">Ghi chú</label>
+                    </div>
+                    <div class="form-floating mb-3 col-md-2">
+                        <input type="text" readonly class="form-control" name="Freight" value="@Model.OrderDetail.Freight" id="feeOut">
+                        <label for="ghichu">Phí vận chuyển (tạm tính)</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <label style="color:red">@Model.ErrorMessage</label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <button type="submit" class="btn btn-primary">Lưu đơn đặt hàng</button>
+                        <a type="button" class="btn btn-danger" asp-action="Orders" asp-controller="KhachHang">Quay trở về</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section js{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#ProvinceList").on("change", function () {
+                var _Tinh = $('#ProvinceList').val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetHuyen", "KhachHang")',
+                    data: { IdTinh: _Tinh },
+                    success: function (json) {
+                        console.log(json);
+                        $('#DisctrictList').html('');
+                        for (let i = 0; i < json.dist.length; i++) {
+                            var emlHTML = '<option value="' + json.dist[i].districtID + '">' + json.dist[i].districtName + '</option>';
+                            $("#DisctrictList").append(emlHTML);
+                        }
+                        //Clear combobox XA
+                        $('#WardList').html('');
+                        for (let j = 0; j < json.ward.length; j++) {
+                            $("#WardList").append('<option value="' + json.ward[j].wardId + '">' + json.ward[j].wardName + '</option>');
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            });
+
+            $("#DisctrictList").on("change", function () {
+                var _Huyen = $('#DisctrictList').val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetXa", "KhachHang")',
+                    data: { IdHuyen: _Huyen },
+                    success: function (json) {
+                        // Load Xã
+                        $('#WardList').html('');
+                        for (let j = 0; j < json.length; j++) {
+                            $("#WardList").append('<option value="' + json[j].wardId + '">' + json[j].wardName + '</option>');
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            });
+
+            $("#Weight").on("focusout", function () {
+                var _Tinh = $('#ProvinceList').val();
+                var _Huyen = $('#DisctrictList').val();
+                var _Weight = $('#Weight').val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCalculator", "KhachHang")',
+                    data: { IdTinh: _Tinh, IdHuyen: _Huyen, Weight: _Weight },
+                    success: function (json) {
+                        // Set giá
+                        $('#feeOut').val(json);
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            });
+
+
+        });
+    </script>
+}
+
+

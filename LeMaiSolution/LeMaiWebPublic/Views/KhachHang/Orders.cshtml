@@ -1,0 +1,137 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Danh sách đơn đặt hàng";
+    Layout = "_LayoutKhachHang";
+}
+@model WebKhachHangBillModel;
+@using LeMaiDomain.Models;
+
+@section css{
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css">
+}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Đơn đặt hàng</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a asp-controller="KhachHang" asp-action="Index">Thống kê</a></li>
+            <li class="breadcrumb-item active">Đơn đặt hàng</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Tạo đơn đặt từ file excel
+            </div>
+            <div class="card-body">
+                <form asp-action="ExcelOrder" asp-controller="KhachHang" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Chọn file excel</label>
+                        <input class="form-control" type="file" accept=".xlsx" name="formFile">
+                    </div>
+                    <div class="form-check mb-3" style="">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-newspaper"></i>  Đặt hàng</button>
+                        <button type="button" class="btn btn-success" id="btnTemplateExcel"><i class="fas fa-file-excel"></i>  Xuất file mẫu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Danh sách đơn đặt hàng
+            </div>
+            <div class="card-body">
+                <form asp-action="Orders" asp-controller="KhachHang">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Từ</span>
+                        <input type="date" name="datefrom" class="form-control" value="@Model.dateFrom" id="TuNgay">
+                        <span class="input-group-text">Đến</span>
+                        <input type="date" name="dateto" class="form-control" value="@Model.dateTo" id="DenNgay">
+                    </div>
+                    <div class="input-group mb-3 col-md-3">
+                        <span class="input-group-text">Trạng thái</span>
+                        <select class="form-select" name="status" id="status">
+                            @foreach (var item in Model.listOrderStatus)
+                            {
+                                if (item.Id == Model.status)
+                                {
+                                    <option selected value="@item.Id" va>@item.StatusName</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Id" va>@item.StatusName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-check mb-3" style="">
+                        <button type="submit" class="btn btn-primary" id="btnfilter"><i class="fas fa-filter"></i>  Lọc danh sách</button>
+                        <button type="button" class="btn btn-success" id="btnExportExcel"><i class="fas fa-file-excel"></i>  Xuất excel</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple" data-mobile-responsive="true" data-check-on-init="true"
+                       data-pagination="true" data-search="true" data-show-columns="true" data-page-list="[10, 25, 50, 100, 200, All]">
+                    <thead>
+                        <tr>
+                            <th data-sortable="true">Mã đặt hàng</th>
+                            <th>Người nhận</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
+                            <th>Thu hộ</th>
+                            <th>Cân nặng</th>
+                            <th>Loại TT</th>
+                            <th>Tình trạng</th>
+                            <th>TT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListOrder)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.ActionLink(item.OrderCode,"CreateOrder", "KhachHang", new { OrderCode = item.OrderCode, CustomerId = Model.customerId},new { @style="font-weight:bold; color:#244a6e; text-decoration: none;" })
+                                </td>
+                                <td>@item.AcceptName</td>
+                                <td>@item.AcceptPhone</td>
+                                <td>@item.AcceptAddress</td>
+                                <td style="text-align:right;">@item.COD.ToString("N0")</td>
+                                <td style="text-align:right;">@item.Weight.ToString("N0")</td>
+                                @if (item.IsShopPay)
+                                {
+                                    <td>Gửi thanh toán</td>
+                                }
+                                else
+                                {
+                                    <td>Nhận thanh toán</td>
+                                }
+                                <td>@item.StatusName</td>
+                                <td>
+                                    @Html.ActionLink("Sửa","CreateOrder", "KhachHang", new { OrderCode = item.OrderCode, CustomerId = Model.customerId},new { @class="btn btn-outline-info btn-sm", @style="margin:2px;" })
+                                    <a class="btn btn-outline-danger btn-sm deleteItem" data-orderid="@item.Id" data-ordercode="@item.OrderCode" style="margin:2px;">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section js{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        var linkExport = '@Url.Action("ExportOrders", "KhachHang")';
+        var linkDelete = '@Url.Action("DeleteOrder", "KhachHang")';
+        $(function () {
+            $('#datatablesSimple').bootstrapTable()
+        });
+    </script>
+    <script src="~/khachhang/js/orderscript.js"></script>
+}

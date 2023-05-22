@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ghView:GhContentPageBase x:Class="LeMaiMobile.Views.PageTrangChu"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ghModel="clr-namespace:LeMaiMobile.Models"
+    xmlns:ghView="clr-namespace:LeMaiMobile.Views"
+    xmlns:ghViewModel="clr-namespace:LeMaiMobile.ViewModels"
+    xmlns:mtrl="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    x:Name="pageTrangChu"
+    x:DataType="ghViewModel:PageTrangChuViewModel"
+    Title="Home"
+    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" NavigationPage.HasNavigationBar="False">
+
+    <ghView:GhContentPageBase.Resources>
+        <Style x:Key="lblHeaderWrapper" TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="{StaticResource MtrlColorPrimaryLight}" />
+            <Setter Property="Padding" Value="{StaticResource PagePaddingX}" />
+        </Style>
+        <Style x:Key="lblHeader" BasedOn="{StaticResource GhLblStyle}" TargetType="mtrl:MaterialLabel">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="Margin" Value="0,10" />
+        </Style>
+
+    </ghView:GhContentPageBase.Resources>
+
+    <Grid RowSpacing="0"
+        BackgroundColor="White"
+        RowDefinitions="Auto,Auto,Auto,Auto,*,Auto,Auto,Auto,Auto">
+        <Grid ColumnSpacing="10"
+            Padding="{StaticResource PagePadding}"
+            ColumnDefinitions="Auto,*,Auto">
+
+            <Grid Style="{StaticResource GhIconBtnGridChipStyle}">
+                <Frame Style="{StaticResource GhIconBtnBorderStyle}"
+                    WidthRequest="30" HeightRequest="30"
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    BackgroundColor="{StaticResource MtrlColorPrimary}"
+                    BorderColor="{StaticResource MtrlColorPrimaryLight}" CornerRadius="30">
+                    <Label Style="{StaticResource GhIconBtnImageStyle}"
+                        TextColor="White"
+                        Text="{x:Static ghModel:FAS.User}" />
+                </Frame>
+            </Grid>
+
+            <StackLayout Grid.Column="1"
+                VerticalOptions="Center">
+                <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                    TextColor="{StaticResource MtrlColorPrimary}">
+                    <mtrl:MaterialLabel.FormattedText>
+                        <FormattedString>
+                            <Span Text="Tài khoản: " />
+                            <Span FontAttributes="Bold"
+                                Text="{Binding TaiKhoan}" />
+                        </FormattedString>
+                    </mtrl:MaterialLabel.FormattedText>
+                </mtrl:MaterialLabel>
+
+                <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                    TextColor="{StaticResource MtrlColorPrimary}">
+                    <mtrl:MaterialLabel.FormattedText>
+                        <FormattedString>
+                            <Span Text="Tên: " />
+                            <Span FontAttributes="Bold"
+                                Text="{Binding HoTen}" />
+                        </FormattedString>
+                    </mtrl:MaterialLabel.FormattedText>
+                </mtrl:MaterialLabel>
+
+                <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                    TextColor="{StaticResource MtrlColorPrimary}">
+                    <mtrl:MaterialLabel.FormattedText>
+                        <FormattedString>
+                            <Span Text="SĐT: " />
+                            <Span FontAttributes="Bold"
+                                Text="{Binding SoDienThoai}" />
+                        </FormattedString>
+                    </mtrl:MaterialLabel.FormattedText>
+                </mtrl:MaterialLabel>
+            </StackLayout>
+
+            <Grid Grid.Column="2">
+                <Grid>
+                    <Label Style="{StaticResource GhIconClickStyle}"
+                        Grid.Row="0" Grid.Column="0"
+                        HorizontalOptions="Center" VerticalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource MtrlColorPrimary}"
+                        Text="{x:Static ghModel:FAS.Gear}" />
+                    <mtrl:MaterialMenuButton Grid.Row="0" Grid.Column="0"
+                        HorizontalOptions="Center" VerticalOptions="Center"
+                        BackgroundColor="Transparent" MenuSelected="MaterialMenuButton_MenuSelected"
+                        ButtonType="Text"
+                        Choices="{Binding ListMenu}"
+                        CornerRadius="24" />
+                </Grid>
+
+
+                <!--<mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                        Grid.Column="2"
+                        ClickCommand="{Binding DangXuatCommand}">
+                        <Label Style="{StaticResource GhIconClickStyle}"
+                            FontAttributes="Bold"
+                            TextColor="Red"
+                            Text="{x:Static ghModel:FAS.Gear}" />
+                    </mtrl:MaterialCard>-->
+            </Grid>
+
+        </Grid>
+        <BoxView Grid.Row="1"
+            HeightRequest="1"
+            BackgroundColor="Gray" />
+
+
+        <Grid Grid.Row="2"
+            Margin="{StaticResource PagePaddingX}"
+            ColumnDefinitions="Auto,*">
+            <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                Grid.Column="0"
+                ClickCommand="{Binding ShowFilterDateCommand}">
+                <Label Style="{StaticResource GhIconClickStyle}"
+                    TextColor="{StaticResource MtrlColorPrimary}"
+                    Text="{x:Static ghModel:FAS.CalendarDays}" />
+            </mtrl:MaterialCard>
+
+
+            <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                Grid.Column="1"
+                Text="{Binding SelectDateTypeDisplay}" />
+        </Grid>
+        <!--<BoxView Grid.Row="3"
+            HeightRequest="1"
+            BackgroundColor="Gray" />-->
+
+        <StackLayout Style="{StaticResource lblHeaderWrapper}"
+            Grid.Row="3">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <mtrl:MaterialLabel Style="{StaticResource lblHeader}"
+                    Text="Lượng đơn" />
+                <mtrl:MaterialLabel Style="{StaticResource lblHeader}"
+                    Grid.Column="2"
+                    Text="{Binding ThongKe.TongCanNang, StringFormat='{}Tổng cân nặng: {0:#,##0.##} gram'}" />
+            </Grid>
+        </StackLayout>
+
+        <!--<microcharts:ChartView x:Name="chartView"
+            Grid.Row="4" Grid.Column="0"
+            Chart="{Binding ChartVanDon}" />-->
+        <Grid Grid.Row="4"
+            Margin="{StaticResource PagePadding}"
+            ColumnDefinitions="*,Auto">
+
+            <microcharts:ChartView x:Name="chartView"
+                Chart="{Binding ChartVanDon}"
+                IsVisible="True" />
+
+            <StackLayout Grid.Column="1"
+                HorizontalOptions="End" VerticalOptions="Center"
+                BindableLayout.ItemsSource="{Binding ListChartStatusModel}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="ghViewModel:ChartStatusModel">
+                        <StackLayout HorizontalOptions="End"
+                            Orientation="Horizontal">
+                            <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                FontSize="12"
+                                TextColor="Gray"
+                                Text="{Binding Ten}" />
+                            <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                FontSize="14" FontAttributes="Bold"
+                                TextColor="Black"
+                                Text="{Binding SoLuong, StringFormat='{}{0:N0}'}" />
+                            <BoxView WidthRequest="10" HeightRequest="10"
+                                HorizontalOptions="Center" VerticalOptions="Center"
+                                BackgroundColor="{Binding Mau}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+
+        </Grid>
+
+
+
+        <StackLayout Style="{StaticResource lblHeaderWrapper}"
+            Grid.Row="5">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <mtrl:MaterialLabel Style="{StaticResource lblHeader}"
+                    Text="Thống kê COD" />
+                <mtrl:MaterialLabel Style="{StaticResource lblHeader}"
+                    Grid.Column="2"
+                    Text="{Binding ThongKe.TongDon, StringFormat='{}Tổng đơn: {0:#,##0.##}'}" />
+            </Grid>
+        </StackLayout>
+        <Grid Grid.Row="6"
+            Margin="{StaticResource PagePadding}"
+            HorizontalOptions="StartAndExpand"
+            ColumnDefinitions="Auto,Auto,*" RowDefinitions="Auto,Auto,Auto">
+            <mtrl:MaterialLabel Style="{StaticResource GhLblFrmLeftStyle}"
+                Grid.Row="0"
+                TextColor="Green"
+                Text="Đã thanh toán" />
+            <mtrl:MaterialLabel Style="{StaticResource GhLblFrmLeftStyle}"
+                Grid.Row="0" Grid.Column="1"
+                Text=":" />
+            <mtrl:MaterialLabel Style="{StaticResource GhLblFrmRightStyle}"
+                Grid.Row="0" Grid.Column="2"
+                HorizontalOptions="End"
+                HorizontalTextAlignment="End"
+                TextColor="Green"
+                Text="{Binding ThongKe.DaThanhToan, StringFormat='{}{0:#,##0.##} VNĐ'}" />
+
+            <mtrl:MaterialLabel Style="{StaticResource GhLblFrmLeftStyle}"
+                Grid.Row="1"
+                TextColor="Red"
+                Text="Chưa thanh toán" />
+            <mtrl:MaterialLabel Style="{StaticResource GhLblFrmLeftStyle}"
+                Grid.Row="1" Grid.Column="1"
+                Text=":" />
+            <mtrl:MaterialLabel Style="{StaticResource GhLblFrmRightStyle}"
+                Grid.Row="1" Grid.Column="2"
+                HorizontalOptions="End"
+                HorizontalTextAlignment="End"
+                TextColor="Red"
+                Text="{Binding ThongKe.ChuaThanhToan, StringFormat='{}{0:#,##0.##} VNĐ'}" />
+
+            <mtrl:MaterialLabel Style="{StaticResource GhLblFrmLeftStyle}"
+                Grid.Row="2"
+                Text="Tổng tiền" />
+            <mtrl:MaterialLabel Style="{StaticResource GhLblFrmLeftStyle}"
+                Grid.Row="2" Grid.Column="1"
+                Text=":" />
+            <mtrl:MaterialLabel Style="{StaticResource GhLblFrmRightStyle}"
+                Grid.Row="2" Grid.Column="2"
+                HorizontalOptions="End"
+                HorizontalTextAlignment="End"
+                Text="{Binding ThongKe.TongTien, StringFormat='{}{0:#,##0.##} VNĐ'}" />
+        </Grid>
+
+        <BoxView Grid.Row="7"
+            HeightRequest="1"
+            BackgroundColor="Gray" />
+        <Grid ColumnSpacing="0"
+            Grid.Row="8"
+            Padding="{StaticResource PagePadding}"
+            ColumnDefinitions="*,*,*,*,*">
+
+            <Grid.Resources>
+                <Style x:Key="MaterialCard" TargetType="mtrl:MaterialCard">
+                    <Setter Property="Margin" Value="0" />
+                    <Setter Property="Padding" Value="0" />
+                    <Setter Property="Elevation" Value="0" />
+                    <Setter Property="IsClickable" Value="True" />
+                    <Setter Property="CornerRadius" Value="5" />
+                    <!--<Setter Property="BackgroundColor" Value="{StaticResource bgMnColor}" />-->
+                </Style>
+                <Style x:Key="Label" TargetType="mtrl:MaterialLabel">
+                    <Setter Property="Margin" Value="0" />
+                    <Setter Property="Padding" Value="0" />
+                    <Setter Property="HorizontalOptions" Value="Center" />
+                    <Setter Property="HorizontalTextAlignment" Value="Center" />
+                    <Setter Property="TypeScale" Value="Caption" />
+                    <Setter Property="TextColor" Value="Gray" />
+                </Style>
+                <Style x:Key="Icon" TargetType="mtrl:MaterialIcon">
+                    <Setter Property="WidthRequest" Value="20" />
+                    <Setter Property="TintColor" Value="Gray" />
+                </Style>
+            </Grid.Resources>
+
+
+
+            <mtrl:MaterialCard Style="{StaticResource MaterialCard}"
+                Grid.Column="0"
+                IsClickable="False">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <mtrl:MaterialIcon Style="{StaticResource Icon}"
+                        TintColor="{StaticResource MtrlColorPrimary}">
+                        <mtrl:MaterialIcon.Source>
+                            <FontImageSource FontFamily="FAS"
+                                Glyph="{x:Static ghModel:FAS.House}" />
+                        </mtrl:MaterialIcon.Source>
+                    </mtrl:MaterialIcon>
+                    <mtrl:MaterialLabel Style="{StaticResource Label}"
+                        Grid.Row="1"
+                        TextColor="{StaticResource MtrlColorPrimary}"
+                        Text="Home" />
+                </Grid>
+            </mtrl:MaterialCard>
+
+            <mtrl:MaterialCard Style="{StaticResource MaterialCard}"
+                Grid.Column="1"
+                ClickCommand="{Binding ClickVanDonCommand}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <mtrl:MaterialIcon Style="{StaticResource Icon}">
+                        <mtrl:MaterialIcon.Source>
+                            <FontImageSource FontFamily="FAS"
+                                Glyph="{x:Static ghModel:FAS.TruckPickup}" />
+                        </mtrl:MaterialIcon.Source>
+                    </mtrl:MaterialIcon>
+                    <mtrl:MaterialLabel Style="{StaticResource Label}"
+                        Grid.Row="1"
+                        Text="Giao hàng" />
+                </Grid>
+            </mtrl:MaterialCard>
+
+            <mtrl:MaterialCard Style="{StaticResource MaterialCard}"
+                Grid.Column="2"
+                ClickCommand="{Binding ClickDonDatCommand}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <mtrl:MaterialIcon Style="{StaticResource Icon}">
+                        <mtrl:MaterialIcon.Source>
+                            <FontImageSource FontFamily="FAS"
+                                Glyph="{x:Static ghModel:FAS.TruckBolt}" />
+                        </mtrl:MaterialIcon.Source>
+                    </mtrl:MaterialIcon>
+                    <mtrl:MaterialLabel Style="{StaticResource Label}"
+                        Grid.Row="1"
+                        Text="Nhận hàng" />
+                </Grid>
+            </mtrl:MaterialCard>
+
+            <mtrl:MaterialCard Style="{StaticResource MaterialCard}"
+                Grid.Column="3"
+                ClickCommand="{Binding ClickCODCommand}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <mtrl:MaterialIcon Style="{StaticResource Icon}">
+                        <mtrl:MaterialIcon.Source>
+                            <FontImageSource FontFamily="FAS"
+                                Glyph="{x:Static ghModel:FAS.MoneyFromBracket}" />
+                        </mtrl:MaterialIcon.Source>
+                    </mtrl:MaterialIcon>
+                    <mtrl:MaterialLabel Style="{StaticResource Label}"
+                        Grid.Row="1"
+                        Text="COD" />
+                </Grid>
+            </mtrl:MaterialCard>
+
+            <mtrl:MaterialCard Style="{StaticResource MaterialCard}"
+                Grid.Column="4"
+                ClickCommand="{Binding ClickKienVanDeCommand}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <mtrl:MaterialIcon Style="{StaticResource Icon}">
+                        <mtrl:MaterialIcon.Source>
+                            <FontImageSource FontFamily="FAS"
+                                Glyph="{x:Static ghModel:FAS.WindWarning}" />
+                        </mtrl:MaterialIcon.Source>
+                    </mtrl:MaterialIcon>
+                    <mtrl:MaterialLabel Style="{StaticResource Label}"
+                        Grid.Row="1"
+                        Text="Kiện vấn đề" />
+                </Grid>
+            </mtrl:MaterialCard>
+        </Grid>
+    </Grid>
+</ghView:GhContentPageBase>

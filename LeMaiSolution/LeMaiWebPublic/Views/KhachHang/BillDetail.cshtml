@@ -1,0 +1,102 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+    Layout = "_LayoutKhachHang";
+}
+@section css{
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css">
+}
+@model WebKhachHangBillDetailModel;
+@using LeMaiDomain.Models;
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">HÀNG GỬI</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a asp-controller="KhachHang" asp-action="Index">Thống kê</a></li>
+            <li class="breadcrumb-item"><a asp-controller="KhachHang" asp-action="Bills">Đơn hàng</a></li>
+            <li class="breadcrumb-item active">Chi tiết đơn hàng</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header" style="font-weight:bold !important">
+                <i class="fas fa-cart-plus me-1"></i>
+                Thông tin đơn hàng
+            </div>
+            <div class="card-body">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="Mã đơn hàng" value="@Model.Bill.BillCode">
+                    <label for="floatingInput">Mã đơn hàng</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="Ngày gửi" value="@string.Format("{0:dd/MM/yyyy HH:mm}",Model.Bill.RegisterDate)">
+                    <label for="floatingInput">Ngày gửi</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="Tên người nhận" value="@Model.Bill.AcceptMan">
+                    <label for="floatingInput">Tên người nhận</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingPassword" placeholder="Số điện thoại người nhận" value="@Model.Bill.AcceptManPhone">
+                    <label for="floatingPassword">Điện thoại người nhận</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="Địa chỉ" value="@Model.Bill.FullAddress">
+                    <label for="floatingInput">Địa chỉ</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="Tên hàng hóa" value="@Model.Bill.GoodsName">
+                    <label for="floatingInput">Tên hàng</label>
+                </div>
+                <div class="form-floating mb-3 col-md-2">
+                    <input type="text" class="form-control" maxlength="10" placeholder="Thu hộ" value="@Model.Bill.COD.ToString("N0")">
+                    <label for="floatingInput">Tiền thu hộ</label>
+                </div>
+                <div class="form-floating mb-3 col-md-2">
+                    <input type="text" class="form-control" maxlength="4" placeholder="Cân nặng" value="@Model.Bill.FeeWeight.ToString("N0")">
+                    <label for="floatingInput">Cân nặng (gram)</label>
+                </div>
+                <div class="form-floating mb-3 col-md-2">
+                    <input type="text" class="form-control" maxlength="10" placeholder="Phí vận chuyển" value="@Model.Bill.Freight.ToString("N0")">
+                    <label for="floatingInput">Phí vận chuyển</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="Loại thanh toán" value="@Model.Bill.PaymentTypeName">
+                    <label for="floatingInput">Loại thanh toán</label>
+                </div>
+                <div class="form-check mb-3">
+                    <a type="button" class="btn btn-danger" asp-action="@Model.backAction" asp-controller="KhachHang">Quay trở về</a>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header" style="font-weight:bold !important">
+                <i class="fas fa-search me-1"></i>
+                Chi tiết hành trình
+            </div>
+            <div class="card-body">
+                @foreach (var item in Model.scanList)
+                {
+                    if (item == Model.scanList[0])
+                    {
+                        <div class="_item" style="color:red"><i class="fa-solid fa-road-circle-check"></i> @string.Format("{0:dd/MM/yyyy HH:mm}", item.CreateDate)</div>
+                        <div class="_more" style="padding-left:20px;">
+                            <div><i class="fa-solid fa-signs-post"></i> @item.Note</div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="_item" style="color:dodgerblue"><i class="fa-solid fa-road-circle-check"></i> @string.Format("{0:dd/MM/yyyy HH:mm}", item.CreateDate)</div>
+                        <div class="_more" style="padding-left:20px;">
+                            <div><i class="fa-solid fa-signs-post"></i> @item.Note</div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</main>
+
+@section js{
+
+}

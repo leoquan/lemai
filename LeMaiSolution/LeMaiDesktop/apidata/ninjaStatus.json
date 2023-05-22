@@ -1,0 +1,112 @@
+{
+  "NinjaEvent": [
+    {
+      "id": "Pending Pickup",
+      "description": "Quá trình tạo đơn hàng đã được xử lý hoàn chỉnh trong hệ thống của chúng tôi và đơn hàng đang chờ được lấy."
+    },
+    {
+      "id": "Successful Pickup",
+      "description": "Tài xế đã lấy hàng."
+    },
+    {
+      "id": "En-route to Sorting Hub",
+      "description": "Đơn hàng đã được lấy và đang trên đường đến trung tâm phân loại."
+    },
+    {
+      "id": "Arrived at Sorting Hub",
+      "description": "Đơn hàng đã đến trung tâm phân loại để được xử lý tiếp."
+    },
+    {
+      "id": "Transferred to 3PL",
+      "description": "Đơn hàng đã được chuyển giao cho đối tác 3PL để giao hàng."
+    },
+    {
+      "id": "Arrived at Origin Hub",
+      "description": "Đơn hàng đã đến trung tâm xuất phát để được xử lý tiếp."
+    },
+    {
+      "id": "On Vehicle for Delivery",
+      "description": "Tài xế đã lấy hàng từ trung tâm phân loại để giao hàng."
+    },
+    {
+      "id": "Pending Reschedule",
+      "description": "Tài xế đánh dấu đơn hàng giao không thành công và đang chờ được lên lịch giao lại."
+    },
+    {
+      "id": "Pickup Fail",
+      "description": "Tài xế không thể lấy hàng. Đơn hàng đang chờ được lên lịch giao lại."
+    },
+    {
+      "id": "First Attempt Delivery Fail",
+      "description": "Tài xế không thể giao hàng và đánh dấu đơn hàng giao không thành công."
+    },
+    {
+      "id": "On Vehicle for Delivery (RTS)",
+      "description": "Đơn hàng đang được đưa vào xe và trên đường trở về cho người gửi sau khi giao không thành công."
+    },
+    {
+      "id": "Returned to Sender",
+      "description": "Sau nhiều lần giao không thành công, đơn hàng được trả về cho người gửi."
+    },
+    {
+      "id": "Arrived at Distribution Point",
+      "description": "Hàng được đặt tại điểm Ninja Point để khách hàng đến nhận."
+    },
+    {
+      "id": "Return to Sender Triggered",
+      "description": "Sau nhiều lần giao không thành công, Ninja Van bắt đầu quy trình trả hàng cho đơn hàng."
+    },
+    {
+      "id": "Pending Pickup at Distribution Point",
+      "description": "Đơn hàng đã được nhận tại điểm Ninja Point và đang chờ được lấy."
+    },
+    {
+      "id": "Van En-route to Pickup",
+      "description": "Một chiếc xe tải đã được gửi đi để lấy hàng trả về."
+    },
+    {
+      "id": "Parcel Size",
+      "description": "Kích thước kiện hàng đã bị thay đổi."
+    },
+    {
+      "id": "Parcel Weight",
+      "description": "Trọng lượng kiện hàng đã bị thay đổi."
+    },
+    {
+      "id": "Parcel Measurements Update",
+      "description": "Kích thước kiện hàng, trọng lượng kiện hàng, hoặc các kích thước của kiện hàng đã được thay đổi."
+    },
+    {
+      "id": "Staging",
+      "description": "Đơn hàng được tạo ra và đang ở giai đoạn chuẩn bị."
+    },
+    {
+      "id": "Cross Border Transit",
+      "description": "Đơn hàng đang ở đoạn vận chuyển qua biên giới hoặc, nếu cần thiết, đang chờ thanh toán thuế từ người nhận hàng."
+    },
+    {
+      "id": "Customs Cleared",
+      "description": "Đơn hàng đã sẵn sàng để lấy hàng từ kho hải quan."
+    },
+    {
+      "id": "Customs Held",
+      "description": "Đơn hàng đang ở trong một trường hợp ngoại lệ về thông quan hải quan."
+    },
+    {
+      "id": "Completed",
+      "description": "Tài xế đánh dấu kiện hàng đã được giao."
+    },
+    {
+      "id": "Successful Delivery",
+      "description": "Tài xế đánh dấu kiện hàng đã được giao thành công."
+    },
+    {
+      "id": "Returned to Sender",
+      "description": "Sau nhiều lần giao hàng không thành công, đơn hàng được trả lại cho người gửi."
+    },
+    {
+      "id": "Cancelled",
+      "description": "Đơn hàng đã được hủy thành công."
+    }
+  ]
+}

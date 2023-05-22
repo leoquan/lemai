@@ -1,0 +1,54 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeMaiDomain", "LeMaiDomain\LeMaiDomain.csproj", "{E9748BB2-D0AF-457E-ADBC-88D2FC376515}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeMaiDesktop", "LeMaiDesktop\LeMaiDesktop.csproj", "{88FC4B55-AD86-40F0-B54D-66233EB3BBA9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeMaiApi", "LeMaiApi\LeMaiApi.csproj", "{51575A93-6502-4AFF-BC4D-82AE278C0AF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{A6F9638A-96D0-4255-8B0E-63AE1D09F7BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeMaiLogic", "LeMaiLogic\LeMaiLogic.csproj", "{AC2B7B34-4DBA-4663-88F6-1654F3F9BA57}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeMaiWebPublic", "LeMaiWebPublic\LeMaiWebPublic.csproj", "{A6040840-AC7C-4829-A6B6-B8D19060338C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9748BB2-D0AF-457E-ADBC-88D2FC376515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9748BB2-D0AF-457E-ADBC-88D2FC376515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9748BB2-D0AF-457E-ADBC-88D2FC376515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9748BB2-D0AF-457E-ADBC-88D2FC376515}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88FC4B55-AD86-40F0-B54D-66233EB3BBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88FC4B55-AD86-40F0-B54D-66233EB3BBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88FC4B55-AD86-40F0-B54D-66233EB3BBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88FC4B55-AD86-40F0-B54D-66233EB3BBA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51575A93-6502-4AFF-BC4D-82AE278C0AF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51575A93-6502-4AFF-BC4D-82AE278C0AF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51575A93-6502-4AFF-BC4D-82AE278C0AF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51575A93-6502-4AFF-BC4D-82AE278C0AF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6F9638A-96D0-4255-8B0E-63AE1D09F7BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6F9638A-96D0-4255-8B0E-63AE1D09F7BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6F9638A-96D0-4255-8B0E-63AE1D09F7BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6F9638A-96D0-4255-8B0E-63AE1D09F7BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC2B7B34-4DBA-4663-88F6-1654F3F9BA57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC2B7B34-4DBA-4663-88F6-1654F3F9BA57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC2B7B34-4DBA-4663-88F6-1654F3F9BA57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC2B7B34-4DBA-4663-88F6-1654F3F9BA57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6040840-AC7C-4829-A6B6-B8D19060338C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6040840-AC7C-4829-A6B6-B8D19060338C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6040840-AC7C-4829-A6B6-B8D19060338C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6040840-AC7C-4829-A6B6-B8D19060338C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {72DFB0C8-CC75-47A8-BE59-08BB7D64B264}
+	EndGlobalSection
+EndGlobal

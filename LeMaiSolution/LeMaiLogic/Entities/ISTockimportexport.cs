@@ -1,0 +1,77 @@
+using LeMaiDomain;
+using System;
+using System.Collections.Generic;
+using System.Data;
+namespace LeMaiLogic
+{
+	public interface ISTockimportexport
+	{
+		/// <summary>
+		/// Lấy một DataTable StockImportExport từ Database
+		/// </summary>
+		DataTable GetDataTable(string schema);
+		/// <summary>
+		/// Lấy một DataTable StockImportExport từ Database có kèm theo điều kiện where, order by, group by
+		/// </summary>
+		DataTable GetDataTable(string schema, string condition, params Object[] parameters);
+		/// <summary>
+		/// Lấy danh sách StockImportExport từ Database
+		/// </summary>
+		List<StockImportExport> GetListObject(string schema);
+		/// <summary>
+		/// Lấy danh sách StockImportExport từ Database có kèm theo điều kiện where, order by, group by
+		/// </summary>
+		List<StockImportExport> GetListObjectCon(string schema, string condition,  params Object[] parameters);
+		List<StockImportExport> GetListObjectLimitCon(string schema, string columns, string condition, int take, int skip, params Object[] parameters);
+		/// <summary>
+		/// Lấy một StockImportExport từ Database
+		/// </summary>
+		StockImportExport GetObject(string schema, String Id);
+		/// <summary>
+		/// Lấy một StockImportExport đầu tiên từ Database thỏa điền kiện của condition
+		/// </summary>
+		StockImportExport GetObjectCon(string schema, string condition, params Object[] parameters);
+		StockImportExport GetObjectLimitCon(string schema, string columns, string condition, params Object[] parameters);
+		/// <summary>
+		/// Thêm mới StockImportExport vào Database
+		/// </summary>
+		bool InsertOnSubmit(string schema, StockImportExport _StockImportExport);
+		/// <summary>
+		/// Insert danh sách đối tượng StockImportExport vào database
+		/// </summary>
+		/// <returns></returns>
+		void InsertAllSubmit(string schema, List<StockImportExport> _StockImportExports);
+		/// <summary>
+		/// Cập nhật StockImportExport vào Database. Cho phép cập nhật khóa chính.
+		/// </summary>
+		int Update(string schema, StockImportExport _StockImportExport, String Id);
+		/// <summary>
+		/// Cập nhật StockImportExport vào Database với chính đối tượng được truyền vào. Không cho phép cập nhật khóa chính
+		/// </summary>
+		int Update(string schema, StockImportExport _StockImportExport);
+		/// <summary>
+		/// Cập nhật danh sách StockImportExport vào Database. Cho phép cập nhật khóa chính.
+		/// </summary>
+		void UpdateAllSubmit(string schema, List<StockImportExport> _StockImportExports);
+		/// <summary>
+		/// Cập nhật StockImportExport vào Database với điều kiện where truyền vào condition. Cho phép cập nhật khóa chính.
+		/// </summary>
+		int UpdateCon(string schema, StockImportExport _StockImportExport, string condition);
+		/// <summary>
+		/// Xóa StockImportExport trong Database
+		/// </summary>
+		int DeleteOnSubmit(string schema, String Id);
+		/// <summary>
+		/// Xóa StockImportExport trong Database
+		/// </summary>
+		int DeleteOnSubmit(string schema, StockImportExport _StockImportExport);
+		/// <summary>
+		/// Xóa StockImportExport trong Database với điều kiện condition.
+		/// </summary>
+		int DeleteOnSubmitCon(string schema, string condition, params Object[] parameters);
+		/// <summary>
+		/// Xóa StockImportExport trong Database
+		/// </summary>
+		void DeleteAllSubmit(string schema, List<StockImportExport> _StockImportExports);
+	}
+}

@@ -1,0 +1,181 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+    Layout = null;
+    var webConfig = ViewData["webconfig"] as WebOption;
+}
+@using LeMaiDomain.Models;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="description" />
+    <meta name="keywords" content="keywords" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="~/vtv/img/favicon.ico" />
+    <title>VTV Express - @ViewData["Title"]</title>
+    <!-- styles-->
+    <link rel="stylesheet" href="~/vtv/css/styles.min.css" />
+    <link rel="stylesheet" href="~/vtv/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/vtv/css/fontawesome-all.css">
+    <link rel="stylesheet" href="~/vtv/css/flaticon.css">
+    @RenderSection("css", required: false)
+    <!-- web-font loader-->
+    <script>
+        WebFontConfig = {
+            google: {
+
+                families: ['Inter:300,400,500,700', 'Open+Sans:700'],
+
+            }
+        }
+        function font() {
+            var wf = document.createElement('script')
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js'
+            wf.type = 'text/javascript'
+            wf.async = 'true'
+
+            var s = document.getElementsByTagName('script')[0]
+
+            s.parentNode.insertBefore(wf, s)
+        }
+        font()
+    </script>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- menu dropdown start-->
+        <partial name="_MenuVTVMobile" model="null" data="1254587" />
+        <!-- menu dropdown end-->
+        <!-- header start-->
+        <header class="page-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-8 col-md-6 col-lg-3 d-flex align-items-center">
+                        <!-- menu-trigger start-->
+                        <div class="hamburger d-none d-md-inline-block">
+                            <div class="hamburger-inner"></div>
+                        </div>
+                        <!-- menu-trigger end-->
+                        <div class="page-header__logo"><a href="index.html"><img src="~/vtv/img/logo_black.png" alt="logo" /></a></div>
+                    </div>
+                    <partial name="_MenuVTV" model="null" data="1254587" />
+                    <div class="col-4 col-md-6 col-lg-4 d-flex justify-content-end align-items-center">
+                        <div class="lang-block">
+                            @*<div class="lang-icon"><img class="img--contain" src="~/vtv/img/gbr.png" alt ="img"/></div>*@
+                            <!-- lang select start-->
+                            @*								<ul class="lang-select">
+                            <li class="lang-select__item lang-select__item--active"><span>En</span>
+                            <ul class="lang-select__sub-list">
+                            <li><a href="#">Việt Nam</a></li>
+                            <li><a href="#">English</a></li>
+                            <li><a href="#">中国</a></li>
+                            </ul>
+                            </li>
+                            </ul>*@
+                            <!-- lang select end-->
+                        </div>
+                        <a class="button button--filled" asp-action="Login" asp-controller="KhachHang">Khách hàng</a>
+                        <!-- menu-trigger start-->
+                        <div class="hamburger d-inline-block d-md-none">
+                            <div class="hamburger-inner"></div>
+                        </div>
+                        <!-- menu-trigger end-->
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header end-->
+        @RenderBody()
+        <!-- footer start-->
+        <footer class="page-footer">
+            <img class="section--bg b0 r0" src="~/vtv/img/footer-bg.png" alt="bg" />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <h6 class="page-footer__title title--white">Discover</h6>
+                        <ul class="page-footer__menu list--reset">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Pricing plan</a></li>
+                            <li><a href="#">Elements</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Warehouse</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Calculator</a></li>
+                            <li><a href="#">Site map</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-5 col-xl-4 offset-xl-1 top-40 top-md-0">
+                        <h6 class="page-footer__title title--white">@webConfig.COMPANY_NAME</h6>
+                        <div class="page-footer__details">
+                            <p><strong>Địa chỉ:</strong> <span>@webConfig.COMPANY_FOOTER_ADDRESS</span></p>
+                            <p><strong>Điện thoại:</strong><a href="tel_3A+84934090231">@webConfig.COMPANY_FOOTER_PHONE</a></p>
+                            <p><strong>Email:</strong> <a href="mailto:@webConfig.COMPANY_EMAIL">@webConfig.COMPANY_EMAIL</a></p>
+                            <p><strong>Hotline:</strong> <span>@webConfig.COMPANY_HOTLINE</span></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 d-flex flex-column justify-content-between align-items-sm-center align-items-lg-end top-40 top-lg-0">
+                        <div class="page-footer__logo"><a href="index.html"><img src="~/vtv/img/logo_white.png" alt="logo" /></a></div>
+                        <ul class="socials list--reset">
+                            <li class="socials__item">
+                                <a class="socials__link" href="#">
+                                    <svg class="icon">
+                                        <use xlink:href="#youtube"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="socials__item">
+                                <a class="socials__link" href="#">
+                                    <svg class="icon">
+                                        <use xlink:href="#facebook"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="socials__item">
+                                <a class="socials__link" href="#">
+                                    <svg class="icon">
+                                        <use xlink:href="#twitter"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="socials__item">
+                                <a class="socials__link" href="#">
+                                    <svg class="icon">
+                                        <use xlink:href="#linkedin"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="socials__item">
+                                <a class="socials__link" href="#">
+                                    <svg class="icon">
+                                        <use xlink:href="#inst"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row top-50">
+                    <div class="col-lg-6 text-sm-center text-lg-left">
+                        <div class="page-footer__privacy"><a href="#">Terms and conditions</a><a href="#">Privacy policy</a><a href="#">Cookies</a></div>
+                    </div>
+                    <div class="col-lg-6 text-sm-center text-lg-right">
+                        <div class="page-footer__copyright">Copyright © 2023 VTV Express. All rights reserved</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end-->
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="~/vtv/js/libs.min.js"></script>
+    <script src="~/vtv/js/common.min.js"></script>
+    @RenderSection("js", required: false)
+</body>
+</html>

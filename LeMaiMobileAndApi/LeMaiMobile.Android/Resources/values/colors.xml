@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--<color name="colorPrimary">#2196F3</color>
+    <color name="colorAccent">#FF4081</color>-->
+
+    <!--mau xanh-->
+    <!--<color name="launcher_background">#2196F3</color>-->
+    <!--Màu background và plashscreen-->
+    <!--Tín Đạt Express e57d15--> 
+    <!--<color name="launcher_background">#e57d15</color>
+    <color name="colorPrimaryDark">#e57d15</color>
+    <color name="colorAccent">#e57d15</color>-->
+    <!--Lê Mai Carry EF3300-->
+    <color name="launcher_background">#EF3300</color>
+    <color name="colorPrimaryDark">#EF3300</color>
+    <color name="colorAccent">#EF3300</color>
+
+</resources>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView x:Class="LeMaiMobile.Views.ViewVanDonFilterDate"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ghView="clr-namespace:LeMaiMobile.Views"
+    xmlns:ghViewModel="clr-namespace:LeMaiMobile.ViewModels"
+    xmlns:mtrl="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    x:DataType="ghViewModel:PageVanDonViewModel">
+    <ContentView.Content>
+
+        <ScrollView>
+            <StackLayout>
+                <mtrl:MaterialRadioButtonGroup Choices="{Binding ListDateType}"
+                    SelectedIndex="{Binding SelectedDateTypeIndex, Mode=TwoWay}" />
+
+                <mtrl:MaterialDateField Style="{StaticResource GhDtpStyle}"
+                    ClearIcon="{x:Null}" 
+                    Date="{Binding SelectedDateFrom, Mode=TwoWay}"
+                    Placeholder="Tùy chọn từ ngày" />
+                <mtrl:MaterialDateField Style="{StaticResource GhDtpStyle}"
+                    ClearIcon="{x:Null}"
+                    Date="{Binding SelectedDateTo, Mode=TwoWay}"
+                    Placeholder="Tùy chọn đến ngày" />
+
+                <mtrl:MaterialLabel Style="{StaticResource GhLblStyle}"
+                    Text="Tùy chọn từ ngày/đến ngày là bắt buộc nhập. Nếu không nhập sẽ lấy ngày hiện tại. Thời gian từ ngày và đến ngày không quá 180 ngày" />
+            </StackLayout>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

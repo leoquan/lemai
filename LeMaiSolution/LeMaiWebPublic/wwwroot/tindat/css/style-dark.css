@@ -1,0 +1,71 @@
+/*========================================*/
+/*-------------- [Style_Dark] ------------*/
+/*========================================*/
+body {
+  background-color: #151a33;
+  color: #ccc;
+}
+p,
+.header-style-two .header-wrapper .header-navigation-area .main-menu ul li a {
+  color: #ccc;
+}
+h1,h2,h3,h4,h5,h6,
+.funfact .counter {
+  color: #fff;
+}
+.bg-secondary-color,
+.bg-silver-light,
+.header-style-two .header-wrapper .header-navigation-area,
+.header-style-two .header-wrapper .header-navigation-area .main-menu ul li ul.sub-menu,
+.header-searchbox-style-two .toggle-searchbox.show {
+  background: #0e1225;
+}
+.border-top,
+.news-bottom-part,
+.footer-border-top {
+  border-top: 1px solid #35384b !important;
+}
+.header-style-two .header-wrapper .header-navigation-area .main-menu ul li ul.sub-menu li {
+  border-bottom: 1px solid #222537 !important;
+}
+.client-item img,
+.signature img {
+  filter: invert(1);
+}
+.news-wrapper {
+  box-shadow: none;
+}
+.side-panel-content {
+  height: 102vh;
+}
+.person-object:after {
+  z-index: 1;
+}
+.social-list li a {
+  background: #212641;
+}
+.about-image-box .experience,
+.service-item-box .service-item-content,
+.request-a-call-back-form,
+.funfact,
+.team-block .team-bottom-part,
+.testimonial-item,
+.news-description,
+.news-description,
+.news-bottom-part,
+.side-panel-content {
+  background-color: #2B3352;
+}
+.form-control,
+.form-control:focus,
+.request-a-call-back-form .custom-select-categories,
+.header-searchbox-style-two .toggle-searchbox #searchform-all #s {
+  border: 1px solid #383c5d;
+  background: #262c4b;
+  color: #ccc;
+}
+.footer-main-area,
+.footer-bottom-area {
+  background: #0e1225;
+}
+/*# sourceMappingURL=style-dark.css.map */

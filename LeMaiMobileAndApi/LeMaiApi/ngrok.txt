@@ -1,0 +1,11 @@
+﻿Đăng ký tài khoản free ngrok version 3.xxx
+    https://ngrok.com/
+
+Chạy ngrok với đoạn code bên dưới, chỉnh lại port cho phù hợp
+    ngrok http https://localhost:7185 --scheme http
+
+
+Không cần thiết tắt ngrok khi stop debug
+
+Sett đường dẫn http (không dùng https) trả ra từ ngrok set vào api url trong fiel App.xaml.cs
+    appSetting.ApiUrl = "http://3cad-2402-800-6311-d2e0-e46f-9cc3-beaa-77a2.ngrok.io";

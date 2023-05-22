@@ -1,0 +1,816 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+     Layout = "_Layout_VTV";
+}
+@using LeMaiDomain.Models;
+@model WebHomeIndexModel;
+
+<main class="main">
+    <!-- promo start-->
+    <div class="promo">
+        <div class="promo-slider">
+            <div class="promo-slider__item">
+                <div class="promo-slider__layout"></div>
+                <picture>
+                    <source srcset="~/vtv/img/promo_1.jpg" media="(min-width: 992px)" /><img class="img--bg" src="~/vtv/img/promo_1.jpg" alt="img" />
+                </picture>
+                <div class="align-container">
+                    <div class="align-container__item">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-9 col-xl-7">
+                                    <div class="promo-slider__wrapper-1">
+                                        <span class="promo-slider__overlay">VTV</span>
+                                        <h2 class="promo-slider__title">Vận chuyển hàng hóa quốc tế</h2>
+                                    </div>
+                                    <div class="promo-slider__wrapper-2">
+                                        <p class="promo-slider__subtitle">Vận Thông Việt nhận vận chuyển hàng hóa đi tất cả các quốc gia trên toàn thế giới với thời gian nhanh chóng, giá vận chuyện cực kỳ thấp sẽ đáp ứng sự hài lòng của quý khách hàng.</p>
+                                    </div>
+                                    <div class="promo-slider__wrapper-3">
+                                        <a class="button button--promo" href="#">
+                                            <span>Chi tiết</span>
+                                            <svg class="icon">
+                                                <use xlink:href="#arrow"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="promo-slider__item text-center">
+                <div class="promo-slider__layout"></div>
+                <picture>
+                    <source srcset="~/vtv/img/promo_2.jpg" media="(min-width: 992px)" /><img class="img--bg" src="~/vtv/img/promo_2.jpg" alt="img" />
+                </picture>
+                <div class="align-container">
+                    <div class="align-container__item">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="promo-slider__wrapper-1">
+                                        <span class="promo-slider__overlay position-center">VTV</span>
+                                        <h2 class="promo-slider__title">Chuyển phát nhanh toàn quốc</h2>
+                                    </div>
+                                    <div class="promo-slider__wrapper-2">
+                                        <p class="promo-slider__subtitle">VTV Express là đơn vị chuyển phát nhanh đi 63 tỉnh thành trong cả nước với thời gian siêu tốc và giá cước phải chăng. Chúng tôi có những đối tác vận chuyển chuyên nghiệp và mạng lưới phủ khắp.</p>
+                                    </div>
+                                    <div class="promo-slider__wrapper-3">
+                                        <a class="button button--promo" href="#">
+                                            <span>Chi tiết</span>
+                                            <svg class="icon">
+                                                <use xlink:href="#arrow"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="promo-slider__item">
+                <div class="promo-slider__layout"></div>
+                <picture>
+                    <source srcset="~/vtv/img/promo_3.jpg" media="(min-width: 992px)" /><img class="img--bg" src="~/vtv/img/promo_3.jpg" alt="img" />
+                </picture>
+                <div class="align-container">
+                    <div class="align-container__item">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-9 col-xl-7">
+                                    <div class="promo-slider__wrapper-1">
+                                        <span class="promo-slider__overlay">VTV</span>
+                                        <h2 class="promo-slider__title"> <br />in any Way</h2>
+                                    </div>
+                                    <div class="promo-slider__wrapper-2">
+                                        <p class="promo-slider__subtitle">Rockling Devario deep sea bonefish cutthroat trout streamer fish kaluga sailback scorpionfish sand dab, turkeyfish golden loach sand diver. Leopard danio píntano bonnetmouth; blue whiting, suckermouth armored catfish luderick blackchin kingfish.</p>
+                                    </div>
+                                    <div class="promo-slider__wrapper-3">
+                                        <a class="button button--promo" href="#">
+                                            <span>Chi tiết</span>
+                                            <svg class="icon">
+                                                <use xlink:href="#arrow"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="promo__lower">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-5 col-lg-7 col-xl-8 d-flex align-items-start">
+                        <div class="promo-slider__nav"></div>
+                        <div class="promo-slider__count"></div>
+                    </div>
+                    <div class="col-md-7 col-lg-5 col-xl-4 top-20 top-md-0">
+                        <form class="tracking-form" asp-action="Index" asp-controller="VTV" autocomplete="off" method="post">
+                            <label class="tracking-form__label">
+                                <input class="tracking-form__input" type="text" value="@Model.billCode" name="code" required="required" /><span class="tracking-form__placeholder">@ViewData["tracuulable"]</span>
+                            </label>
+                            <button class="tracking-form__submit" type="submit">
+                                <svg class="icon">
+                                    <use xlink:href="#arrow"></use>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- promo end-->
+    <!-- section start-->
+    <section class="section">
+        <div class="container">
+            <div class="row" style="background-color:#e8f6fb">
+                <div class="containerTracking" style="color:black; @Model.display">
+                    <div style="@Model.displayInfo">
+                        <div class="titleTracking" style="font-size: 18px;color:#00044B;padding-top: 10px;padding-bottom: 5px;font-weight: bold;font-style: italic;">Thông tin đơn hàng</div>
+                        <div style="padding:0px 0px 10px 5px"><span style="font-weight:bold">Người nhận:</span> @Model.AcceptMan - <span style="font-weight:bold">SĐT:</span> @Model.AcceptManPhone</div>
+                        <div style="padding:0px 0px 10px 5px"><span style="font-weight:bold">Tên hàng:</span> @Model.GoodsName - <span style="font-weight:bold">Cân nặng:</span> @Model.BillWeight.ToString("N0") gram - <span style="font-weight:bold">Tổng tiền phải thu:</span> @Model.Total.ToString("N0") (COD: @Model.COD.ToString("N0") + SHIP: @Model.Freight.ToString("N0"))</div>
+                    </div>
+                    <div class="titleTracking" style="font-size: 18px;color:#00044B;padding-top: 10px;padding-bottom: 5px;font-weight: bold;font-style: italic;">@Model.message</div>
+                    <div id="listTracking" style="padding:10px !important">
+                        @foreach (var item in Model.listTracking)
+                        {
+                            if (item == Model.listTracking[0])
+                            {
+                                <div class="_item" style="color:red"><i class="fa-solid fa-road-circle-check"></i> @string.Format("{0:dd/MM/yyyy HH:mm}", item.CreateDate)</div>
+                                <div class="_more" style="padding-left:20px;">
+                                    <div><i class="fa-solid fa-signs-post"></i> @item.Note</div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="_item" style="color:dodgerblue"><i class="fa-solid fa-road-circle-check"></i> @string.Format("{0:dd/MM/yyyy HH:mm}", item.CreateDate)</div>
+                                <div class="_more" style="padding-left:20px;">
+                                    <div><i class="fa-solid fa-signs-post"></i> @item.Note</div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row bottom-70">
+                <div class="col-lg-4">
+                    <div class="heading bottom-40">
+                        <span class="heading__pre-title">Dịch vụ</span>
+                        <h3 class="heading__title">Chuyển phát nhanh</h3><span class="heading__layout">Services</span>
+                    </div><a class="button button--green d-none d-lg-inline-block" href="#">
+                        <span>Chi tiết</span>
+                        <svg class="icon">
+                            <use xlink:href="#arrow"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="col-lg-8">
+                    <p><strong>VTV Express cung cấp nhiều loại dịch vụ vận chuyển đa dạng như: Chuyển phát nhanh trong nước, quốc tế, chuyên chở hàng hóa bằng xe tải, tàu biển và đường hàng không.</strong></p>
+                    <p class="bottom-0">
+                        Với nhiều năm kinh nghiệm trong lĩnh vực vận chuyển, chúng tôi cung cấp đến quý khách hàng những dịch vụ chuyên nghiệp nhất, nhanh nhất với giá cước rẻ nhất. Ngoài dịch vụ vận chuyển
+                        VTV Express còn cung cấp dịch vụ mua hộ hàng hóa nội địa trung quốc từ các nhà cung cấp sản phẩm uy tín, chất lượng cao phù hợp cho các shop cần nguồn hàng tốt giá rẻ.
+                    </p>
+                </div>
+            </div>
+            <div class="row offset-50">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="count-item">
+                        <div class="count-item__img"><img src="~/vtv/img/front-serv_1.png" alt="icon" /></div>
+                        <h6 class="count-item__title"><span class="count-item__count">01</span> <span>Chuyển phát nhanh trong nước</span></h6>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="count-item">
+                        <div class="count-item__img"><img src="~/vtv/img/front-serv_3.png" alt="icon" /></div>
+                        <h6 class="count-item__title"><span class="count-item__count">03</span> <span>Chuyển phát nhanh quốc tế</span></h6>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="count-item">
+                        <div class="count-item__img"><img src="~/vtv/img/front-serv_2.png" alt="icon" /></div>
+                        <h6 class="count-item__title"><span class="count-item__count">02</span> <span>Vận chuyển đường biển</span></h6>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-xl-3">
+                    <div class="count-item">
+                        <div class="count-item__img"><img src="~/vtv/img/front-serv_4.png" alt="icon" /></div>
+                        <h6 class="count-item__title"><span class="count-item__count">04</span> <span>Mua hàng trung quốc</span></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="row top-70 d-flex d-lg-none">
+                <div class="col-12 text-center">
+                    <a class="button button--green" href="#">
+                        <span>Tất cả dịch vụ</span>
+                        <svg class="icon">
+                            <use xlink:href="#arrow"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end-->
+    <!-- section start-->
+    <section class="section front-about">
+        <div class="front-about__bg"><img class="section--bg t50 r0" src="~/vtv/img/testimonials-bg.png" alt="img" /></div>
+        <div class="front-about__img">
+            <img class="img--bg" src="~/vtv/img/about_img.jpg" alt="img" /><a class="js-video front-about__video" href="https://www.youtube.com/watch?v=Of7qg0MiR2I">
+                <svg class="icon">
+                    <use xlink:href="#play"></use>
+                </svg> <span>Video giới thiệu</span>
+            </a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 offset-xl-1 d-none d-xl-flex offset-50">
+                    <div class="counter counter--filled">
+                        <div class="counter__top"><span class="js-counter counter__count">8</span><span class="counter__subject">năm</span></div>
+                        <div class="counter__lower"><span class="counter__details">Kinh nghiệm trong ngành vận chuyển</span></div>
+                    </div>
+                </div>
+                <div class="col-xl-7">
+                    <div class="heading heading--white">
+                        <span class="heading__pre-title">Giới thiệu VTV</span>
+                        <h3 class="heading__title">VTV Express là đơn vị <span class="color--green">vận chuyển</span> đa nền tảng dịch vụ</h3>
+                    </div>
+                    <p>
+                        VTV Express là đơn vị chuyển phát nhanh trên đa nền tảng dịch vụ với hệ thống mạng lưới bưu cục
+                        phủ khắp 63 tỉnh thành trên cả nước. Cùng với nhiều loại dịch vụ vận chuyển khác đáp ứng mọi nhu cầu của khách hàng
+                    </p>
+                    <p>
+                        Với nhiều năm kinh nghiệm trong lĩnh vực vận chuyển, khác với các đơn vị vận chuyển hiện có tại thị trường chỉ chăm lo đơn hàng từ
+                        những sàn thương mại điện tử lớn. Với VTV Express khách hàng là những shop tự bán hàng, đến với chúng tôi kháchh hàng sẽ được
+                        nhân viên chăm sóc đơn hàng, xem đơn hàng của shop như là đơn hàng của chính mình. Chăm chút từ việc đóng gói cho đến vận chuyển, giao hàng...
+                    </p>
+                    <a class="button button--white" href="#">
+                        <span>Xem thêm</span>
+                        <svg class="icon">
+                            <use xlink:href="#arrow"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end-->
+    <!-- section start-->
+    <section class="section bg--lgray">
+        <div class="container">
+            <div class="row align-items-end bottom-70">
+                <div class="col-lg-5 col-xl-4">
+                    <div class="heading">
+                        <span class="heading__pre-title">Thế mạnh</span>
+                        <h3 class="heading__title"> Thế mạnh của <span class="color--green">VTV</span> Express</h3><span class="heading__layout layout--lgray">Features</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row offset-50">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="icon-item">
+                        <div class="icon-item__img">
+                            <svg class="icon">
+                                <use xlink:href="#warehouse"></use>
+                            </svg>
+                        </div>
+                        <h6 class="icon-item__title">Mạng lưới bưu cục</h6>
+                        <p class="icon-item__text">Là đơn vị vận chuyển đa nền tảng nên chúng tôi có một mạng lưới bưu cục phủ khắp cả nước.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="icon-item">
+                        <div class="icon-item__img">
+                            <svg class="icon">
+                                <use xlink:href="#support"></use>
+                            </svg>
+                        </div>
+                        <h6 class="icon-item__title">Hoạt động xuyên suốt 24/7</h6>
+                        <p class="icon-item__text"> Hệ thống hoạt động xuyên suốt 24/7, đảm bảo đơn hàng được giao trong thời gian nhanh nhất.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="icon-item">
+                        <div class="icon-item__img">
+                            <svg class="icon">
+                                <use xlink:href="#location"></use>
+                            </svg>
+                        </div>
+                        <h6 class="icon-item__title">Kiểm tra trực tuyến</h6>
+                        <p class="icon-item__text">Khách hàng có thể tra cứu tình trạng đơn hàng một cách nhanh trong bằng nhiều cách như zalo, website, app trên mobile.</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="icon-item">
+                        <div class="icon-item__img">
+                            <svg class="icon">
+                                <use xlink:href="#insurance"></use>
+                            </svg>
+                        </div>
+                        <h6 class="icon-item__title">Hàng hóa an toàn</h6>
+                        <p class="icon-item__text">Đến với dịch vụ của VTV hàng hóa của quý khách hàng luôn được nâng niu trong suốt quá trình vận chuyển</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end-->
+    <!-- section start-->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12"><img src="~/vtv/img/map-transx.png" alt="img" /></div>
+            </div>
+            <div class="row offset-50">
+                <div class="col-md-6 col-lg-4 text-center">
+                    <div class="counter counter--blue">
+                        <div class="counter__top"><span class="js-counter counter__count">15</span><span class="counter__subject">triệu</span></div>
+                        <div class="counter__lower"><span class="counter__details">Đơn giao thành công</span></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 text-center">
+                    <div class="counter counter--blue">
+                        <div class="counter__top"><span class="js-counter counter__count">2</span><span class="counter__subject">nghìn</span></div>
+                        <div class="counter__lower"><span class="counter__details">Số lượt vận tải mỗi năm</span></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 text-center">
+                    <div class="counter counter--blue">
+                        <div class="counter__top"><span class="js-counter counter__count">600</span><span class="counter__subject">điểm</span></div>
+                        <div class="counter__lower"><span class="counter__details">Tổng số bưu cục</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end-->
+    <!-- section start-->
+    <section class="section qoute-section bg--lgray pb-0">
+        <div class="quote-section__bg"><img class="img--bg" src="~/vtv/img/quote-bg.jpg" alt="bg" /></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 d-flex flex-column justify-content-between">
+                    <div class="heading heading--white">
+                        <span class="heading__pre-title">Yêu cầu vận chuyển</span>
+                        <h3 class="heading__title">Cung cấp nhanh thông tin yêu cầu vận chuyển</h3><span class="heading__layout layout--white">Yêu cầu</span>
+                        <p class="heading__text color--white">Điền thông tin vào form bên cạnh về yêu cầu vận chuyển của bạn, chúng tôi sẽ tư vấn cho bạn ngay lập tức.</p>
+                    </div>
+                    <div class="contact-trigger top-50 top-lg-0">
+                        <img class="contact-trigger__img" src="~/vtv/img/contact_background.png" alt="img" />
+                        <h4 class="contact-trigger__title">How we can help you!</h4><a class="button button--white" href="#">
+                            <span>Contact us</span>
+                            <svg class="icon">
+                                <use xlink:href="#arrow"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7 top-50 top-lg-0">
+                    <div class="form-wrapper">
+                        <form class="form quote-form" action="javascript:void(0);">
+                            <h6 class="quote-form__title">Yêu cầu vận chuyển</h6>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input class="form__field" type="text" name="name" placeholder="Tên của bạn" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <input class="form__field" type="email" name="email" placeholder="Email" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <input class="form__field" type="tel" name="phone-number" placeholder="Số điện thoại" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <input class="form__field" type="text" name="subject" placeholder="Subject" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <input class="form__field" type="text" name="delivery" placeholder="Điểm nhận hàng" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <input class="form__field" type="text" name="departure" placeholder="Điểm đến" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <select class="form__select" name="freight">
+                                        <option data-display="Freight type">Loại hàng hóa</option>
+                                        <option value="value">Thông thường</option>
+                                        <option value="value2">Đông lạnh</option>
+                                        <option value="value3">Điện tử (dễ vỡ)</option>
+                                        <option value="value3">Nông sản</option>
+                                        <option value="value3">Chất lỏng</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select class="form__select" name="incoterms">
+                                        <option data-display="Incoterms">Loại dịch vụ</option>
+                                        <option value="value">Chuyển phát nhanh</option>
+                                        <option value="value2">Vận chuyển bằng xe</option>
+                                        <option value="value3">Vận chuyển bằng tàu</option>
+                                        <option value="value3">Vận chuyển bằng máy bay</option>
+                                        <option value="value3">Vận chuyển bằng đường sắt</option>
+                                    </select>
+                                </div>
+                                <div class="col-6 col-sm-3">
+                                    <input class="form__field" type="number" name="weight" placeholder="Cân nặng" />
+                                </div>
+                                <div class="col-6 col-sm-3">
+                                    <input class="form__field" type="number" name="height" placeholder="Cao" />
+                                </div>
+                                <div class="col-6 col-sm-3">
+                                    <input class="form__field" type="number" name="width" placeholder="Rộng" />
+                                </div>
+                                <div class="col-6 col-sm-3">
+                                    <input class="form__field" type="number" name="lenght" placeholder="Dài" />
+                                </div>
+                                <div class="col-12 offset-20">
+                                    <label class="form__checkbox-label bottom-20">
+                                        <span class="form__label-text">Dễ vỡ</span>
+                                        <input class="form__input-checkbox" type="checkbox" name="size-select" value="Size L" /><span class="form__checkbox-mask"></span>
+                                    </label>
+                                    <label class="form__checkbox-label bottom-20">
+                                        <span class="form__label-text">Cần gấp</span>
+                                        <input class="form__input-checkbox" type="checkbox" name="size-select" value="Size S" /><span class="form__checkbox-mask"></span>
+                                    </label>
+                                    <label class="form__radio-label bottom-20">
+                                        <span class="form__label-text">Mua bảo hiểm</span>
+                                        <input class="form__input-radio" type="radio" name="option-select" value="option-3" checked="checked" /><span class="form__radio-mask"></span>
+                                    </label>
+                                    <label class="form__radio-label bottom-20">
+                                        <span class="form__label-text">Đóng gói</span>
+                                        <input class="form__input-radio" type="radio" name="option-select" value="option-4" /><span class="form__radio-mask"></span>
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <button class="quote-form__submit" type="submit">Gửi yêu cầu</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end-->
+    <!-- section start-->
+    <section class="section bg--lgray">
+        <div class="container">
+            <div class="row bottom-50">
+                <div class="col-12">
+                    <div class="heading heading--center">
+                        <span class="heading__pre-title">Pricing</span>
+                        <h3 class="heading__title">The right price for you, <span class="color--green">whoever</span> you are</h3><span class="heading__layout layout--lgray">Pricing</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row offset-50">
+                <div class="col-sm-9 col-md-6 col-xl-3">
+                    <div class="pricing-plan pricing-plan--bordered pricing-plan--small">
+                        <div class="pricing-plan__inner">
+                            <h5 class="pricing-plan__title">One pack</h5>
+                            <div class="pricing-plan__price"><span>95</span> <span>usd</span></div>
+                            <ul class="list list--check list--reset">
+                                <li class="list__item">1 warehouse</li>
+                                <li class="list__item">Custom business rules</li>
+                                <li class="list__item item--disabled">Real-time rate shopping</li>
+                                <li class="list__item item--disabled">100 freight shipments</li>
+                            </ul><a class="button button--green" href="#">
+                                <span>Get started</span>
+                                <svg class="icon">
+                                    <use xlink:href="#arrow"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9 col-md-6 col-xl-3">
+                    <div class="pricing-plan pricing-plan--bordered pricing-plan--small">
+                        <div class="pricing-plan__inner">
+                            <h5 class="pricing-plan__title">Starter pack</h5>
+                            <div class="pricing-plan__price"><span>100</span> <span>usd</span></div>
+                            <ul class="list list--check list--reset">
+                                <li class="list__item">1 warehouse</li>
+                                <li class="list__item">Custom business rules</li>
+                                <li class="list__item item--disabled">Real-time rate shopping</li>
+                                <li class="list__item item--disabled">100 freight shipments</li>
+                            </ul><a class="button button--green" href="#">
+                                <span>Get started</span>
+                                <svg class="icon">
+                                    <use xlink:href="#arrow"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9 col-md-6 col-xl-3">
+                    <div class="pricing-plan pricing-plan--bordered pricing-plan--small">
+                        <div class="pricing-plan__inner">
+                            <h5 class="pricing-plan__title">Regular <span class="color--green">pack</span></h5>
+                            <div class="pricing-plan__price"><span>150</span> <span>usd</span></div>
+                            <ul class="list list--check list--reset">
+                                <li class="list__item">1 warehouse</li>
+                                <li class="list__item">Custom business rules</li>
+                                <li class="list__item">Real-time rate shopping</li>
+                                <li class="list__item item--disabled">100 freight shipments</li>
+                            </ul><a class="button button--green" href="#">
+                                <span>Get started</span>
+                                <svg class="icon">
+                                    <use xlink:href="#arrow"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9 col-md-6 col-xl-3">
+                    <div class="pricing-plan pricing-plan--blue pricing-plan--small">
+                        <img class="pricing-plan__bg" src="~/vtv/img/price_background.png" alt="img" />
+                        <div class="pricing-plan__inner">
+                            <h5 class="pricing-plan__title">Premium pack</h5>
+                            <div class="pricing-plan__price"><span>255</span> <span>usd</span></div>
+                            <ul class="list list--check list--reset">
+                                <li class="list__item">1 warehouse</li>
+                                <li class="list__item">Custom business rules</li>
+                                <li class="list__item">Real-time rate shopping</li>
+                                <li class="list__item">100 freight shipments</li>
+                            </ul><a class="button button--white" href="#">
+                                <span>Get started</span>
+                                <svg class="icon">
+                                    <use xlink:href="#arrow"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end-->
+    <!-- section start-->
+    <section class="section front-gallery">
+        <div class="container">
+            <div class="row align-items-end bottom-60">
+                <div class="col-lg-8">
+                    <div class="heading">
+                        <span class="heading__pre-title">Gallery</span>
+                        <h3 class="heading__title">Our stunning gallery</h3><span class="heading__layout">Gallery</span>
+                        <p class="heading__text">Pacific hake false trevally queen parrotfish Black prickleback humuhumunukunukuapua'a mosshead warbonnet sweeper! Greenling sleeper; Owens pupfish large-eye bream kokanee sprat.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-right d-none d-lg-block">
+                    <a class="button button--green" href="#">
+                        <span>View all gallery</span>
+                        <svg class="icon">
+                            <use xlink:href="#arrow"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="gallery">
+            <div class="row no-gutters">
+                <div class="col-md-6 col-lg-4 col-xl-3"><a class="gallery__item" href="~/vtv/img/gallery_1.jpg" data-fancybox="gallery"><span class="overlay"></span><img class="img--bg" src="~/vtv/img/gallery_1.jpg" alt="img" /><span class="gallery__description">Sea port</span></a></div>
+                <div class="col-md-6 col-lg-4 col-xl-3"><a class="gallery__item" href="~/vtv/img/gallery_2.jpg" data-fancybox="gallery"><span class="overlay"></span><img class="img--bg" src="~/vtv/img/gallery_2.jpg" alt="img" /><span class="gallery__description">Sea port</span></a></div>
+                <div class="col-md-6 col-lg-4 col-xl-3"><a class="gallery__item" href="~/vtv/img/gallery_3.jpg" data-fancybox="gallery"><span class="overlay"></span><img class="img--bg" src="~/vtv/img/gallery_3.jpg" alt="img" /><span class="gallery__description">Sea port</span></a></div>
+                <div class="col-md-6 col-lg-4 col-xl-3"><a class="gallery__item" href="~/vtv/img/gallery_4.jpg" data-fancybox="gallery"><span class="overlay"></span><img class="img--bg" src="~/vtv/img/gallery_4.jpg" alt="img" /><span class="gallery__description">Sea port</span></a></div>
+                <div class="col-md-6 col-lg-4 col-xl-3"><a class="gallery__item" href="~/vtv/img/gallery_5.jpg" data-fancybox="gallery"><span class="overlay"></span><img class="img--bg" src="~/vtv/img/gallery_5.jpg" alt="img" /><span class="gallery__description">Sea port</span></a></div>
+                <div class="col-md-6 col-lg-4 col-xl-3"><a class="gallery__item" href="~/vtv/img/gallery_6.jpg" data-fancybox="gallery"><span class="overlay"></span><img class="img--bg" src="~/vtv/img/gallery_6.jpg" alt="img" /><span class="gallery__description">Sea port</span></a></div>
+                <div class="col-md-6 col-lg-4 col-xl-3"><a class="gallery__item" href="~/vtv/img/gallery_7.jpg" data-fancybox="gallery"><span class="overlay"></span><img class="img--bg" src="~/vtv/img/gallery_7.jpg" alt="img" /><span class="gallery__description">Sea port</span></a></div>
+                <div class="col-md-6 col-lg-4 col-xl-3"><a class="gallery__item" href="~/vtv/img/gallery_8.jpg" data-fancybox="gallery"><span class="overlay"></span><img class="img--bg" src="~/vtv/img/gallery_8.jpg" alt="img" /><span class="gallery__description">Sea port</span></a></div>
+            </div>
+            <div class="row top-50 d-block d-lg-none">
+                <div class="col-12 text-center">
+                    <a class="button button--green" href="#">
+                        <span>View all gallery</span>
+                        <svg class="icon">
+                            <use xlink:href="#arrow"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end-->
+    <!-- section start-->
+    <section class="section testimonials bg--lgray">
+        <div class="testimonials__bg"><img class="section--bg t50 r0" src="~/vtv/img/testimonials-bg.png" alt="img" /></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="heading heading--white">
+                        <span class="heading__pre-title">Testimonials</span>
+                        <h3 class="heading__title">Excellent company <span class="color--green">quality</span> services</h3><span class="heading__layout layout--dgray">People</span>
+                    </div>
+                    <div class="testimonials__nav"></div><img class="testimonials__img" src="~/vtv/img/testimonials_img.png" alt="img" />
+                </div>
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="testimonials-slider">
+                        <div class="testimonials-slider__item">
+                            <p>“Rockling Devario deep sea bonefish cutthroat trout streamer fish kaluga sailback scorpionfish sand dab, turkeyfish golden loach sand diver. Leopard danio píntano bonnetmouth; blue whiting, suckermouth armored catfish luderick blackchin kingfish.</p>
+                            <p>Midshipman, lightfish longfin smelt pickerel houndshark whiptail. Barracuda archerfish slimehead broadband dogfish, Pacific hake false trevally queen parrotfish Black prickleback blenny, bigeye squaretail nurseryfish yellowtail barracuda. Halibut: Blacksmelt”</p>
+                            <div class="testimonials-slider__author">
+                                <img src="~/vtv/img/quotes.png" alt="img" />
+                                <h6>Well Singer</h6><span>Manager of Westwood</span>
+                            </div>
+                        </div>
+                        <div class="testimonials-slider__item">
+                            <p>“Rockling Devario deep sea bonefish cutthroat trout streamer fish kaluga sailback scorpionfish sand dab, turkeyfish golden loach sand diver. Leopard danio píntano bonnetmouth; blue whiting, suckermouth armored catfish luderick blackchin kingfish.</p>
+                            <p>Midshipman, lightfish longfin smelt pickerel houndshark whiptail. Barracuda archerfish slimehead broadband dogfish, Pacific hake false trevally queen parrotfish Black prickleback blenny, bigeye squaretail nurseryfish yellowtail barracuda. Halibut: Blacksmelt”</p>
+                            <div class="testimonials-slider__author">
+                                <img src="~/vtv/img/quotes.png" alt="img" />
+                                <h6>Well Singer</h6><span>Manager of Westwood</span>
+                            </div>
+                        </div>
+                        <div class="testimonials-slider__item">
+                            <p>“Rockling Devario deep sea bonefish cutthroat trout streamer fish kaluga sailback scorpionfish sand dab, turkeyfish golden loach sand diver. Leopard danio píntano bonnetmouth; blue whiting, suckermouth armored catfish luderick blackchin kingfish.</p>
+                            <p>Midshipman, lightfish longfin smelt pickerel houndshark whiptail. Barracuda archerfish slimehead broadband dogfish, Pacific hake false trevally queen parrotfish Black prickleback blenny, bigeye squaretail nurseryfish yellowtail barracuda. Halibut: Blacksmelt”</p>
+                            <div class="testimonials-slider__author">
+                                <img src="~/vtv/img/quotes.png" alt="img" />
+                                <h6>Well Singer</h6><span>Manager of Westwood</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end-->
+    <!-- section start-->
+    <section class="section bg--lgray front-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 d-flex flex-column align-items-start">
+                    <div class="heading">
+                        <span class="heading__pre-title">Blog</span>
+                        <h3 class="heading__title">Our latest articles <span class="color--green">daily</span> update</h3><span class="heading__layout layout--lgray">Blog</span>
+                    </div><a class="d-none d-xl-inline-block button button--green" href="#">
+                        <span>Viev more</span>
+                        <svg class="icon">
+                            <use xlink:href="#arrow"></use>
+                        </svg>
+                    </a>
+                    <div class="articles-slider__nav"></div>
+                </div>
+                <div class="col-xl-8">
+                    <div class="articles-slider-wrapper">
+                        <div class="articles-slider">
+                            <div class="articles-slider__item">
+                                <div class="article">
+                                    <div class="article__img"><img class="img--bg" src="~/vtv/img/bl_1.jpg" alt="img" /></div>
+                                    <div class="article__lower">
+                                        <h6 class="article__title"><a href="#">What is 3D printing ?</a></h6>
+                                        <p class="article__text">Yellowfin surgeonfish bonefish Australasian salmon tenuis, barreleye brook lamprey European chub ridgehead, sea catfish filefish sea chub</p>
+                                        <div class="article__details"><span>20 October, 2019</span><span>12 comments</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="articles-slider__item">
+                                <div class="article">
+                                    <div class="article__img"><img class="img--bg" src="~/vtv/img/article_2.jpg" alt="img" /></div>
+                                    <div class="article__lower">
+                                        <h6 class="article__title"><a href="#">New subway line</a></h6>
+                                        <p class="article__text">Bramble shark slickhead archerfish Black angelfish marblefish bigeye walleye fire bar danio silver driftfish pelagic cod. Wolf-herring spaghetti eel</p>
+                                        <div class="article__details"><span>20 October, 2019</span><span>12 comments</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="articles-slider__item">
+                                <div class="article">
+                                    <div class="article__img"><img class="img--bg" src="~/vtv/img/article_3.jpg" alt="img" /></div>
+                                    <div class="article__lower">
+                                        <h6 class="article__title"><a href="#">Importers achieve cost savings</a></h6>
+                                        <p class="article__text">Kokanee sprat shrimpfish. Pacific hake false trevally queen parrotfish Black prickleback humuhumunukunukuapua'a mosshead warbonnet !</p>
+                                        <div class="article__details"><span>20 October, 2019</span><span>12 comments</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="articles-slider__item">
+                                <div class="article">
+                                    <div class="article__img"><img class="img--bg" src="~/vtv/img/article_2.jpg" alt="img" /></div>
+                                    <div class="article__lower">
+                                        <h6 class="article__title"><a href="#">What is 3D printing ?</a></h6>
+                                        <p class="article__text">Yellowfin surgeonfish bonefish Australasian salmon tenuis, barreleye brook lamprey European chub ridgehead, sea catfish filefish sea chub</p>
+                                        <div class="article__details"><span>20 October, 2019</span><span>12 comments</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row top-50 d-block d-xl-none">
+                        <div class="col-12 text-center">
+                            <a class="button button--green" href="#">
+                                <span>View more</span>
+                                <svg class="icon">
+                                    <use xlink:href="#arrow"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end-->
+    <!-- section start-->
+    <section class="section pt-0 bg--lgray">
+        <div class="container">
+            <div class="row bottom-70">
+                <div class="col-12">
+                    <div class="heading heading--center">
+                        <span class="heading__pre-title">Partners</span>
+                        <h3 class="heading__title">Companies who <span class="color--green">Trust</span> us</h3><span class="heading__layout layout--lgray">Partners</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <!-- logos slider start-->
+                    <div class="logos-slider">
+                        <div class="logos-slider__item"><img src="~/vtv/img/logo_1.png" alt="logo" /></div>
+                        <div class="logos-slider__item"><img src="~/vtv/img/logo_2.png" alt="logo" /></div>
+                        <div class="logos-slider__item"><img src="~/vtv/img/logo_3.png" alt="logo" /></div>
+                        <div class="logos-slider__item"><img src="~/vtv/img/logo_4.png" alt="logo" /></div>
+                    </div>
+                    <div class="logos-slider__dots"></div>
+                    <!-- logos slider end-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end-->
+    <!-- section start-->
+    <section class="section">
+        <img class="img--bg" src="~/vtv/img/action-bg.jpg" alt="bg" />
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="form-wrapper">
+                        <!-- contact form start-->
+                        <form class="form contact-form" id="ajax-form" action="javascript:void(0);" method="post" autocomplete="off">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="contact-form__title">Get in Touch</h3>
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="form__field" type="text" name="name" placeholder="Your Name" />
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="form__field" type="email" name="email" placeholder="Your Email" />
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="form__field" type="tel" name="phone" placeholder="Your Phone" />
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="form__field" type="text" name="subject" placeholder="Subject" />
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form__field form__message" name="message" placeholder="Text"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="button button--green" type="submit">
+                                        <span>Send message</span>
+                                        <svg class="icon">
+                                            <use xlink:href="#arrow"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="col-12">
+                                    <div class="alert alert--success alert--filled">
+                                        <div class="alert__icon">
+                                            <svg class="icon">
+                                                <use xlink:href="#check"></use>
+                                            </svg>
+                                        </div>
+                                        <p class="alert__text"><strong>Well done!</strong> Your form has been sent</p><span class="alert__close">
+                                            <svg class="icon">
+                                                <use xlink:href="#close"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="alert alert--error alert--filled">
+                                        <div class="alert__icon">
+                                            <svg class="icon">
+                                                <use xlink:href="#close"></use>
+                                            </svg>
+                                        </div>
+                                        <p class="alert__text"><strong>Oh snap!</strong> Your form has not been sent</p><span class="alert__close">
+                                            <svg class="icon">
+                                                <use xlink:href="#close"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- contact form end-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section end-->
+</main>

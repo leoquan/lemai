@@ -1,0 +1,138 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Đơn hàng có vấn đề";
+    Layout = "_LayoutKhachHang";
+}
+
+@model WebKhachHangBillModel;
+@using LeMaiDomain.Models;
+
+@section css{
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css">
+}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Đơn hàng có vấn đề</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a asp-controller="KhachHang" asp-action="Index">Thống kê</a></li>
+            <li class="breadcrumb-item active">Đơn hàng có vấn đề</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Danh sách đơn hàng có vấn đề
+            </div>
+            <div class="card-body">
+                <form asp-action="Problems" asp-controller="KhachHang">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Từ</span>
+                        <input type="date" name="datefrom" class="form-control" value="@Model.dateFrom" id="TuNgay">
+                        <span class="input-group-text">Đến</span>
+                        <input type="date" name="dateto" class="form-control" value="@Model.dateTo" id="DenNgay">
+                    </div>
+                    <div class="form-check mb-3" style="">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-filter"></i>  Lọc danh sách</button>
+                        <button type="button" class="btn btn-success" id="btnExportExcel"><i class="fas fa-file-excel"></i>  Xuất excel</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple" data-mobile-responsive="true" data-check-on-init="true"
+                       data-pagination="true" data-search="true" data-show-columns="true" data-page-list="[10, 25, 50, 100, 200, All]">
+                    <thead>
+                        <tr>
+                            <th data-sortable="true">Mã đơn</th>
+                            <th>Ngày</th>
+                            <th>Người nhận</th>
+                            <th>Số điện thoại</th>
+                            <th>Tỉnh nhận</th>
+                            <th>Cân nặng</th>
+                            <th>Nội dung</th>
+                            <th>Tình trạng hiện tại</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListProblem)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.ActionLink(item.BillCode,"BillDetail", "KhachHang", new { BillCode = item.BillCode, backAction = "Problems"},new { @style="font-weight:bold; color:#244a6e; text-decoration: none;" })
+                                </td>
+                                <td>@string.Format("{0:dd/MM/yyyy}", item.RegisterDate)</td>
+                                <td>@item.AcceptMan</td>
+                                <td>@item.AcceptManPhone</td>
+                                <td>@item.AcceptProvince</td>
+                                <td style="text-align:right;">@item.FeeWeight.ToString("N0")</td>
+                                <td>@item.Note</td>
+                                <td>@item.StatusName</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section js{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(function () {
+            $('#datatablesSimple').bootstrapTable()
+        });
+        $(document).ready(function () {
+            $("#btnExportExcel").on("click", function () {
+                var _TuNgay = $('#TuNgay').val();
+                var _DenNgay = $('#DenNgay').val();
+                var currentdate = new Date();
+                var inputModel = {
+                    datefrom: _TuNgay,
+                    dateto: _DenNgay,
+                    status: 0
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ExportProblems", "KhachHang")',
+                    data: JSON.stringify(inputModel),
+                    success: function (filedata) {
+                        var bytes = Base64ToBytes(filedata);
+                        var blob = new Blob([bytes], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+                        var isIE = false || !!document.documentMode;
+                        if (isIE) {
+                            window.navigator.msSaveBlob(blob, "KVD." + _TuNgay + "." + _DenNgay + ".xlsx");
+                        } else {
+                            var url = window.URL || window.webkitURL;
+                            link = url.createObjectURL(blob);
+                            var a = $("<a />");
+                            a.attr("download", "KVD." + _TuNgay + "." + _DenNgay + ".xlsx");
+                            a.attr("href", link);
+                            $("body").append(a);
+                            a[0].click();
+                            $("body").remove(a);
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                });
+            });
+            function Base64ToBytes(base64) {
+                var binary_string = window.atob(base64);
+                var len = binary_string.length;
+                var bytes = new Uint8Array(len);
+                for (var i = 0; i < len; i++) {
+                    bytes[i] = binary_string.charCodeAt(i);
+                }
+                return bytes.buffer;
+            }
+        });
+    </script>
+}
