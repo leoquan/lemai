@@ -74,7 +74,7 @@ public partial class PageVanDonChiTietViewModel : GhViewModelBase<PageVanDonChiT
             await ShowLoading();
 
             // Call api lay thong tin can ho
-            var request = new RestRequest("/VanDon/ChiTiet", Method.Get);
+            var request = new RestRequest("/Shipper/ChiTietVanDon", Method.Get);
             request.AddParameter("billCode", _billCode);
 
             var response = await ExecuteApiAsync<VanDonChiTietOutput>(request);

@@ -98,7 +98,7 @@ public partial class PageDangNhapViewModel : GhViewModelBase<Views.PageDangNhap>
             CanCommandRun = false;
             await ShowLoading();
 
-            var request = new RestRequest("/TaiKhoan/DangNhap", Method.Post);
+            var request = new RestRequest("/Shipper/DangNhap", Method.Post);
             request.AddJsonBody(new
             {
                 TenDangNhap = TenDangNhap,

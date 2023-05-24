@@ -303,9 +303,7 @@ public partial class LeMaiDbContext : DbContext
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnName("FK_ShipperId");
-            entity.Property(e => e.Note)
-                .IsRequired()
-                .HasMaxLength(500);
+            entity.Property(e => e.Note).HasMaxLength(500);
             entity.Property(e => e.PickupDate).HasColumnType("datetime");
         });
 

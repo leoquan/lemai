@@ -79,7 +79,7 @@
                         Margin="{StaticResource PagePadding}"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
-                        Text="Không có vận đơn nào." />
+                        Text="Không có kiện vấn đề nào." />
                 </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

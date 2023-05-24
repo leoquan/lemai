@@ -109,7 +109,7 @@ public partial class PageDangKyViewModel : GhViewModelBase<PageDangKy>
 
             await ShowLoading();
 
-            var request = new RestRequest("/TaiKhoan/DangKy", Method.Post);
+            var request = new RestRequest("/Shipper/DangKy", Method.Post);
             request.AddJsonBody(new
             {
                 SoDienThoai,

@@ -611,8 +611,8 @@ public partial class PageDonDatViewModel : GhViewModelBase<PageDonDat>
             showLoading = true;
 
 
-            // Call api lay thong tin can ho
-            var request = new RestRequest("/DonDat/Xoa", Method.Delete);
+            // Call api xóa đơn đặt
+            var request = new RestRequest("/DonDat/Xoa", Method.Post);
             request.AddQueryParameter("id", id);
 
             var response = await ExecuteApiAsync<bool>(request);

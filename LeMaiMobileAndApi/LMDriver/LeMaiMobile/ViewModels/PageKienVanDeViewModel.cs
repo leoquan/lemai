@@ -71,7 +71,7 @@ public partial class PageKienVanDeViewModel : GhViewModelBase<PageKienVanDe>
             if (!_isLoadListStatus)
             {
                 // Call api lay thong tin can ho
-                var request = new RestRequest("/KienVanDe/ListMaster", Method.Get);
+                var request = new RestRequest("/Shipper/ListMasterKienVanDe", Method.Get);
 
                 var response = await ExecuteApiAsync<VanDonListMasterOutput>(request);
                 if (!response.isOk || response.data == null)
@@ -92,7 +92,7 @@ public partial class PageKienVanDeViewModel : GhViewModelBase<PageKienVanDe>
 
             {
                 // Call api lay thong tin can ho
-                var request = new RestRequest("/KienVanDe/DanhSach", Method.Get);
+                var request = new RestRequest("/Shipper/DanhSachKienVanDe", Method.Get);
 
                 var dateType = _listDateType[_selectedFilterDateTypeIndex];
                 request.AddQueryParameter("registerDateType", dateType);

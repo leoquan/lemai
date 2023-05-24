@@ -490,7 +490,7 @@ public class DonDatController : GhControllerBase<DonDatController>
     }
 
 
-    [HttpDelete]
+    [HttpPost]
     public async Task<ApiResult<bool>> Xoa([Required] string id)
     {
         try
@@ -500,8 +500,7 @@ public class DonDatController : GhControllerBase<DonDatController>
             {
                 throw new LogicException("Đơn đặt hàng không tồn tại");
             }
-
-            _dbCtx.GexpOrders.Remove(dbItem);
+            dbItem.StatusOrder = 2; // Xóa
             await _dbCtx.SaveChangesAsync();
 
             return CreateOk(true);
