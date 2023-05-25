@@ -98,7 +98,7 @@
             <Setter Property="mtrl:MaterialNavigationPage.AppBarTitleTextAlignment" Value="Center" />
             <Setter Property="mtrl:MaterialNavigationPage.StatusBarColor" Value="{StaticResource MtrlColorPrimary}" />
         </Style>-->
-
+        <Thickness x:Key="RowPadding">5</Thickness>
         <Thickness x:Key="PagePadding">10</Thickness>
         <Thickness x:Key="PagePaddingX">10,0</Thickness>
         <Thickness x:Key="PagePaddingY">0,10</Thickness>

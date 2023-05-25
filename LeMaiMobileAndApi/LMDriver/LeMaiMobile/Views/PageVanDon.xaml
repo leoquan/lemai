@@ -124,58 +124,96 @@
                                         ClickCommandParameter="{Binding BillCode}">
                                         <Label Style="{StaticResource GhIconClickStyle}"
                                             FontSize="20"
-                                            TextColor="Blue"
+                                            TextColor="{StaticResource MtrlColorPrimary}"
                                             Text="{x:Static ghModel:FAS.Copy}" />
                                     </mtrl:MaterialCard>
                                 </StackLayout>
-
-
                                 <mtrl:MaterialLabel Style="{StaticResource Icon}"
                                     Grid.Row="1"
-                                    Text="{x:Static ghModel:FAS.User}" />
-                                <mtrl:MaterialLabel Style="{StaticResource Label}"
-                                    Grid.Row="1">
-                                    <mtrl:MaterialLabel.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding AcceptMan}"
+                                    Text="{x:Static ghModel:FAS.Shop}" />
+                                <StackLayout Grid.Row="1"  Grid.Column="1" Orientation="Horizontal">
+                                    <mtrl:MaterialLabel Style="{StaticResource Label}"
+                                    Grid.Row="0">
+                                        <mtrl:MaterialLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding SendMan}"
                                                 TextTransform="Uppercase" />
-                                            <Span Text=" - " />
-                                            <Span Text="{Binding AcceptManPhone}" />
-                                        </FormattedString>
-                                    </mtrl:MaterialLabel.FormattedText>
-                                </mtrl:MaterialLabel>
-
+                                                <Span Text=" - " />
+                                                <Span Text="{Binding SendManPhone}" />
+                                            </FormattedString>
+                                        </mtrl:MaterialLabel.FormattedText>
+                                    </mtrl:MaterialLabel>
+                                    <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                                        Grid.Column="0"
+                                        ClickCommand="{Binding Source={RelativeSource AncestorType={x:Type ghView:PageVanDon}}, Path=BindingContext.MakePhoneCallCommand}"
+                                        ClickCommandParameter="{Binding SendManPhone}">
+                                        <Label Style="{StaticResource GhIconClickStyle}"
+                                            FontSize="20"
+                                            TextColor="{StaticResource MtrlColorPrimary}"
+                                            Text="{x:Static ghModel:FAS.Phone}" />
+                                    </mtrl:MaterialCard>
+                                </StackLayout>
+                                
                                 <mtrl:MaterialLabel Style="{StaticResource Icon}"
                                     Grid.Row="2"
+                                    Text="{x:Static ghModel:FAS.User}" />
+                                <StackLayout Grid.Row="2"  Grid.Column="1" Orientation="Horizontal">
+                                    <mtrl:MaterialLabel Style="{StaticResource Label}"
+                                    Grid.Row="0">
+                                        <mtrl:MaterialLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding AcceptMan}"
+                                                TextTransform="Uppercase" />
+                                                <Span Text=" - " />
+                                                <Span Text="{Binding AcceptManPhone}" />
+                                            </FormattedString>
+                                        </mtrl:MaterialLabel.FormattedText>
+                                    </mtrl:MaterialLabel>
+                                    <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
+                                        Grid.Column="0"
+                                        ClickCommand="{Binding Source={RelativeSource AncestorType={x:Type ghView:PageVanDon}}, Path=BindingContext.MakePhoneCallCommand}"
+                                        ClickCommandParameter="{Binding AcceptManPhone}">
+                                    <Label Style="{StaticResource GhIconClickStyle}"
+                                            FontSize="20"
+                                            TextColor="{StaticResource MtrlColorPrimary}"
+                                            Text="{x:Static ghModel:FAS.Phone}" />
+                                    </mtrl:MaterialCard>
+                                </StackLayout>
+                                
+
+                                <mtrl:MaterialLabel Style="{StaticResource Icon}"
+                                    Grid.Row="3"
                                     Text="{x:Static ghModel:FAS.Cube}" />
                                 <mtrl:MaterialLabel Style="{StaticResource Label}"
-                                    Grid.Row="2"
+                                    Grid.Row="3"
                                     Text="{Binding GoodsName}" />
 
                                 <mtrl:MaterialLabel Style="{StaticResource Icon}"
-                                    Grid.Row="3"
+                                    Grid.Row="4"
                                     Text="{x:Static ghModel:FAS.LocationDot}" />
                                 <mtrl:MaterialLabel Style="{StaticResource Label}"
-                                    Grid.Row="3"
-                                    Text="{Binding AcceptProvince}" />
-
-                                <mtrl:MaterialLabel Style="{StaticResource Icon}"
                                     Grid.Row="4"
-                                    Text="{x:Static ghModel:FAS.CalendarDay}" />
-                                <mtrl:MaterialLabel Style="{StaticResource Label}"
-                                    Grid.Row="4"
-                                    Text="{Binding RegisterDate, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss}'}" />
+                                    Text="{Binding Address}" />
 
                                 <mtrl:MaterialLabel Style="{StaticResource Icon}"
                                     Grid.Row="5"
+                                    Text="{x:Static ghModel:FAS.CalendarDay}" />
+                                <mtrl:MaterialLabel Style="{StaticResource Label}"
+                                    Grid.Row="5"
+                                    Text="{Binding RegisterDate, StringFormat='{}{0:dd/MM/yyyy}'}" />
+
+                                <mtrl:MaterialLabel Style="{StaticResource Icon}"
+                                    Grid.Row="6"
                                     Text="{x:Static ghModel:FAS.MoneyBill}" />
                                 <mtrl:MaterialLabel Style="{StaticResource Label}"
-                                    Grid.Row="5">
+                                    Grid.Row="6">
                                     <mtrl:MaterialLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{Binding Cod, StringFormat='{}{0:#,##0.##} VNĐ'}" />
                                             <Span Text=" - " />
-                                            <Span Text="{Binding FeeWeight, StringFormat='{}{0:#,##0.##} gram'}" />
+                                            <Span Text="{Binding FeeWeight, StringFormat='{}{0:#,##0.##} Kg'}" />
+                                            <Span Text=" - " />
+                                            <Span Text="{Binding GoodsNumber, StringFormat='{}{0:#,##0} Kiện'}" />
                                         </FormattedString>
                                     </mtrl:MaterialLabel.FormattedText>
                                 </mtrl:MaterialLabel>
@@ -192,7 +230,7 @@
                                         Margin="0" HorizontalOptions="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="Blue"
-                                        Text="Tra cứu chi tiết" />
+                                        Text="Xem chi tiết" />
                                 </mtrl:MaterialCard>
 
                                 <BoxView Grid.Column="1"
@@ -211,8 +249,6 @@
                                         TextColor="Blue"
                                         Text="Chi tiết hành trình" />
                                 </mtrl:MaterialCard>
-
-
                             </Grid>
 
 

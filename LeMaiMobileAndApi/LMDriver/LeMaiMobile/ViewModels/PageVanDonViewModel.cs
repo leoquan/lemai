@@ -114,8 +114,6 @@ public partial class PageVanDonViewModel : GhViewModelBase<PageVanDon>
                 {
                     return;
                 }
-
-
                 _listDanhSachAll = response.data;
                 foreach (var item in _listDanhSachAll)
                 {
@@ -474,6 +472,36 @@ public partial class PageVanDonViewModel : GhViewModelBase<PageVanDon>
             _ = MaterialDialog.Instance.SnackbarAsync(
                "Đã sao chép mã vận đơn vào bộ nhớ tạm",
                msDuration: 2000);
+        }
+        catch (Exception ex)
+        {
+            await HandleExceptionAsync(ex);
+        }
+        finally
+        {
+            CanCommandRun = true;
+        }
+    }
+    [RelayCommand]
+    private async Task MakePhoneCallAsync(string phone)
+    {
+        if (CopyBillCodeCommand.IsRunning || !CanCommandRun || string.IsNullOrWhiteSpace(phone))
+        {
+            return;
+        }
+
+        try
+        {
+            CanCommandRun = false;
+            try
+            {
+                PhoneDialer.Open(phone);
+            }
+            catch (Exception err)
+            {
+                await Clipboard.SetTextAsync(phone);
+                _ = MaterialDialog.Instance.SnackbarAsync("Đã sao chép số điện thoại vào bộ nhớ tạm", msDuration: 2000);
+            }
         }
         catch (Exception ex)
         {

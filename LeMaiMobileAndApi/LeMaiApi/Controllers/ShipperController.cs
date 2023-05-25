@@ -397,8 +397,15 @@ namespace LeMaiApi.Controllers
                 GoodsName = h.GoodsName,
                 StatusBackgroundColor = h.StatusBackgroundColor,
                 StatusTextColor = h.StatusTextColor,
-                FeeWeight = h.FeeWeight,
-                Cod = h.Cod
+                FeeWeight = h.BillWeight / 1000,
+                Cod = h.FkPaymentType == "GTT" ? h.Cod : h.Cod + h.Freight,
+                GoodsNumber = h.GoodsNumber,
+                Address = h.FullAddress,
+                Payment = h.FkPaymentType,
+                Freight = h.Freight,
+                SendMan = h.SendMan,
+                SendManPhone= h.SendManPhone
+
             })
                 .OrderByDescending(h => h.RegisterDate)
                 .ToListAsync();
