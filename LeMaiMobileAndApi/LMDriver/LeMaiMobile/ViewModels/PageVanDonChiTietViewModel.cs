@@ -17,6 +17,7 @@ using Xamarin.Essentials;
 using System.Collections.ObjectModel;
 using XF.Material.Forms.UI.Dialogs;
 using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs.Configurations;
 
 namespace LeMaiMobile.ViewModels;
 
@@ -60,6 +61,9 @@ public partial class PageVanDonChiTietViewModel : GhViewModelBase<PageVanDonChiT
     [ObservableProperty]
     private VanDonChiTietOutput _vanDon = null;
 
+    [ObservableProperty]
+    private decimal _ToTalCOD = 0;
+
     [RelayCommand]
     private async Task LoadChiTietAsync()
     {
@@ -82,21 +86,11 @@ public partial class PageVanDonChiTietViewModel : GhViewModelBase<PageVanDonChiT
             {
                 return;
             }
-
-            //// for test
-            //var noiDung = "laksdf s;dlfk jsdf ";
-            //var listHanhTrinh = new List<VanDonChitietGexpScan>(20);
-            //for (int i = 0; i < listHanhTrinh.Capacity; i++)
-            //{
-            //    listHanhTrinh.Add(new VanDonChitietGexpScan
-            //    {
-            //        CreateDate = DateTime.Now.AddDays(i),
-            //        Note = noiDung
-            //    });
-            //    noiDung += noiDung;
-            //}
-            //response.data.ListHanhTrinh = listHanhTrinh;
-
+            ToTalCOD = response.data.ChiTiet.Cod;
+            if (response.data.ChiTiet.PayType != "Gửi thanh toán")
+            {
+                ToTalCOD = ToTalCOD + response.data.ChiTiet.Freight;
+            }
             if (response.data.ListHanhTrinh != null && response.data.ListHanhTrinh.Count > 0)
             {
                 response.data.ListHanhTrinh[0].IsFirst = true;
@@ -146,7 +140,7 @@ public partial class PageVanDonChiTietViewModel : GhViewModelBase<PageVanDonChiT
     [RelayCommand]
     private async Task MakePhoneCallAsync(string phone)
     {
-        if (CopyBillCodeCommand.IsRunning || !CanCommandRun || string.IsNullOrWhiteSpace(phone))
+        if (MakePhoneCallCommand.IsRunning || !CanCommandRun || string.IsNullOrWhiteSpace(phone))
         {
             return;
         }
@@ -171,6 +165,128 @@ public partial class PageVanDonChiTietViewModel : GhViewModelBase<PageVanDonChiT
         finally
         {
             CanCommandRun = true;
+        }
+    }
+    [RelayCommand]
+    private async Task KienVanDeAsync(string billcode)
+    {
+        var showLoading = false;
+        if (KienVanDeCommand.IsRunning || !CanCommandRun || string.IsNullOrWhiteSpace(billcode))
+        {
+            return;
+        }
+
+        try
+        {
+            CanCommandRun = false;
+            // Kiện vấn đề
+            var matKhauMoi = await MaterialDialog.Instance.InputAsync(
+                title: "Thêm kiện vấn đề",
+                message: "Nhập nội dung kiện vấn đề",
+                confirmingText: "Đồng ý",
+                dismissiveText: "Hủy bỏ",
+                inputPlaceholder: "",
+                configuration: new MaterialInputDialogConfiguration()
+                {
+                    InputMaxLength = 250,
+                    InputType = XF.Material.Forms.UI.MaterialTextFieldInputType.Text,
+                }
+            );
+
+            showLoading = true;
+            await ShowLoading();
+
+            // Call api đăng ký kiện vấn đề
+            var request = new RestRequest("/Shipper/AddKienVanDe", Method.Post);
+            request.AddJsonBody(new TaiKhoanDoiMatKhauInput
+            {
+                MatKhauMoi = matKhauMoi
+            });
+
+            var response = await ExecuteApiAsync<bool>(request);
+            if (!response.isOk || !response.data)
+            {
+                return;
+            }
+
+            await AlertAsync("Lập kiện vấn đề thành công");
+
+        }
+        catch (Exception ex)
+        {
+            await HandleExceptionAsync(ex);
+        }
+        finally
+        {
+            CanCommandRun = true;
+            if (showLoading)
+            {
+                await HideLoading();
+            }
+        }
+    }
+    [RelayCommand]
+    private async Task KyNhanAsync(string billcode)
+    {
+        var showLoading = false;
+        if (KyNhanCommand.IsRunning || !CanCommandRun)
+        {
+            return;
+        }
+        try
+        {
+            CanCommandRun = false;
+
+            var result = await MaterialDialog.Instance.ConfirmAsync(
+                message: "Bạn có chắc muốn ký nhận đơn hàng này?",
+                title: "Ký nhận",
+                confirmingText: "Đồng ý",
+                dismissiveText: GetTextForIos("Hủy bỏ")
+            );
+
+            if (!(result.HasValue && result.Value))
+            {
+                return;
+            }
+            result = await MaterialDialog.Instance.ConfirmAsync(
+                message: "Đơn hàng ký nhận khi giao thành công, thu tiền COD đầy đủ",
+                title: "Ký nhận",
+                confirmingText: "Đồng ý",
+                dismissiveText: GetTextForIos("Hủy bỏ")
+            );
+
+            if (!(result.HasValue && result.Value))
+            {
+                return;
+            }
+
+            showLoading = true;
+            await ShowLoading();
+            // Call api ký nhận
+            var request = new RestRequest("/Shipper/KyNhan", Method.Post);
+            request.AddJsonBody(new TaiKhoanDoiMatKhauInput
+            {
+                MatKhauMoi = billcode
+            });
+
+            var response = await ExecuteApiAsync<bool>(request);
+            if (!response.isOk || !response.data)
+            {
+                return;
+            }
+            await AlertAsync("Ký nhận đơn hàng thành công");
+        }
+        catch (Exception ex)
+        {
+            await HandleExceptionAsync(ex);
+        }
+        finally
+        {
+            CanCommandRun = true;
+            if (showLoading)
+            {
+                await HideLoading();
+            }
         }
     }
 }

@@ -485,7 +485,7 @@ public partial class PageVanDonViewModel : GhViewModelBase<PageVanDon>
     [RelayCommand]
     private async Task MakePhoneCallAsync(string phone)
     {
-        if (CopyBillCodeCommand.IsRunning || !CanCommandRun || string.IsNullOrWhiteSpace(phone))
+        if (MakePhoneCallCommand.IsRunning || !CanCommandRun || string.IsNullOrWhiteSpace(phone))
         {
             return;
         }
