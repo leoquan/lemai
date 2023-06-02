@@ -88,6 +88,14 @@ namespace LeMaiLogic
 					{
 						item.FK_Account = Convert.ToString(dr["FK_Account"]);
 					}
+					if (dr["GoodsNumber"] != null && dr["GoodsNumber"] != DBNull.Value)
+					{
+						item.GoodsNumber = Convert.ToInt32(dr["GoodsNumber"]);
+					}
+					if (dr["HaveReturn"] != null && dr["HaveReturn"] != DBNull.Value)
+					{
+						item.HaveReturn = Convert.ToBoolean(dr["HaveReturn"]);
+					}
 					if (dr["Note"] != null && dr["Note"] != DBNull.Value)
 					{
 						item.Note = Convert.ToString(dr["Note"]);
@@ -150,6 +158,14 @@ namespace LeMaiLogic
 					if (dr["FK_Account"] != null && dr["FK_Account"] != DBNull.Value)
 					{
 						item.FK_Account = Convert.ToString(dr["FK_Account"]);
+					}
+					if (dr["GoodsNumber"] != null && dr["GoodsNumber"] != DBNull.Value)
+					{
+						item.GoodsNumber = Convert.ToInt32(dr["GoodsNumber"]);
+					}
+					if (dr["HaveReturn"] != null && dr["HaveReturn"] != DBNull.Value)
+					{
+						item.HaveReturn = Convert.ToBoolean(dr["HaveReturn"]);
 					}
 					if (dr["Note"] != null && dr["Note"] != DBNull.Value)
 					{
@@ -237,6 +253,14 @@ namespace LeMaiLogic
 						{
 							item.FK_Account = Convert.ToString(dr["FK_Account"]);
 						}
+						if (dr["GoodsNumber"] != null && dr["GoodsNumber"] != DBNull.Value)
+						{
+							item.GoodsNumber = Convert.ToInt32(dr["GoodsNumber"]);
+						}
+						if (dr["HaveReturn"] != null && dr["HaveReturn"] != DBNull.Value)
+						{
+							item.HaveReturn = Convert.ToBoolean(dr["HaveReturn"]);
+						}
 						if (dr["Note"] != null && dr["Note"] != DBNull.Value)
 						{
 							item.Note = Convert.ToString(dr["Note"]);
@@ -306,6 +330,14 @@ namespace LeMaiLogic
 						{
 							item.FK_Account = Convert.ToString(dr["FK_Account"]);
 						}
+						if (dr["GoodsNumber"] != null && dr["GoodsNumber"] != DBNull.Value)
+						{
+							item.GoodsNumber = Convert.ToInt32(dr["GoodsNumber"]);
+						}
+						if (dr["HaveReturn"] != null && dr["HaveReturn"] != DBNull.Value)
+						{
+							item.HaveReturn = Convert.ToBoolean(dr["HaveReturn"]);
+						}
 						if (dr["Note"] != null && dr["Note"] != DBNull.Value)
 						{
 							item.Note = Convert.ToString(dr["Note"]);
@@ -364,13 +396,15 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpReceiveTask](Id, FK_CustomerId, FK_ShipperId, CreateDate, FK_Post, FK_Account, Note, ReceiveStatus, FK_PickupShipper, PickupDate) VALUES(@Id, @FK_CustomerId, @FK_ShipperId, @CreateDate, @FK_Post, @FK_Account, @Note, @ReceiveStatus, @FK_PickupShipper, @PickupDate)", 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpReceiveTask](Id, FK_CustomerId, FK_ShipperId, CreateDate, FK_Post, FK_Account, GoodsNumber, HaveReturn, Note, ReceiveStatus, FK_PickupShipper, PickupDate) VALUES(@Id, @FK_CustomerId, @FK_ShipperId, @CreateDate, @FK_Post, @FK_Account, @GoodsNumber, @HaveReturn, @Note, @ReceiveStatus, @FK_PickupShipper, @PickupDate)", 
 					"@Id",  _GExpReceiveTask.Id, 
 					"@FK_CustomerId",  _GExpReceiveTask.FK_CustomerId, 
 					"@FK_ShipperId",  _GExpReceiveTask.FK_ShipperId, 
 					"@CreateDate", this._dataContext.ConvertDateString( _GExpReceiveTask.CreateDate), 
 					"@FK_Post",  _GExpReceiveTask.FK_Post, 
 					"@FK_Account",  _GExpReceiveTask.FK_Account, 
+					"@GoodsNumber",  _GExpReceiveTask.GoodsNumber, 
+					"@HaveReturn",  _GExpReceiveTask.HaveReturn, 
 					"@Note",  _GExpReceiveTask.Note, 
 					"@ReceiveStatus",  _GExpReceiveTask.ReceiveStatus, 
 					"@FK_PickupShipper",  _GExpReceiveTask.FK_PickupShipper, 
@@ -402,13 +436,15 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpReceiveTask] SET Id=@Id, FK_CustomerId=@FK_CustomerId, FK_ShipperId=@FK_ShipperId, CreateDate=@CreateDate, FK_Post=@FK_Post, FK_Account=@FK_Account, Note=@Note, ReceiveStatus=@ReceiveStatus, FK_PickupShipper=@FK_PickupShipper, PickupDate=@PickupDate WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpReceiveTask] SET Id=@Id, FK_CustomerId=@FK_CustomerId, FK_ShipperId=@FK_ShipperId, CreateDate=@CreateDate, FK_Post=@FK_Post, FK_Account=@FK_Account, GoodsNumber=@GoodsNumber, HaveReturn=@HaveReturn, Note=@Note, ReceiveStatus=@ReceiveStatus, FK_PickupShipper=@FK_PickupShipper, PickupDate=@PickupDate WHERE Id=@Id", 
 					"@Id",  _GExpReceiveTask.Id, 
 					"@FK_CustomerId",  _GExpReceiveTask.FK_CustomerId, 
 					"@FK_ShipperId",  _GExpReceiveTask.FK_ShipperId, 
 					"@CreateDate", this._dataContext.ConvertDateString( _GExpReceiveTask.CreateDate), 
 					"@FK_Post",  _GExpReceiveTask.FK_Post, 
 					"@FK_Account",  _GExpReceiveTask.FK_Account, 
+					"@GoodsNumber",  _GExpReceiveTask.GoodsNumber, 
+					"@HaveReturn",  _GExpReceiveTask.HaveReturn, 
 					"@Note",  _GExpReceiveTask.Note, 
 					"@ReceiveStatus",  _GExpReceiveTask.ReceiveStatus, 
 					"@FK_PickupShipper",  _GExpReceiveTask.FK_PickupShipper, 
@@ -428,12 +464,14 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpReceiveTask] SET FK_CustomerId=@FK_CustomerId, FK_ShipperId=@FK_ShipperId, CreateDate=@CreateDate, FK_Post=@FK_Post, FK_Account=@FK_Account, Note=@Note, ReceiveStatus=@ReceiveStatus, FK_PickupShipper=@FK_PickupShipper, PickupDate=@PickupDate WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpReceiveTask] SET FK_CustomerId=@FK_CustomerId, FK_ShipperId=@FK_ShipperId, CreateDate=@CreateDate, FK_Post=@FK_Post, FK_Account=@FK_Account, GoodsNumber=@GoodsNumber, HaveReturn=@HaveReturn, Note=@Note, ReceiveStatus=@ReceiveStatus, FK_PickupShipper=@FK_PickupShipper, PickupDate=@PickupDate WHERE Id=@Id", 
 					"@FK_CustomerId",  _GExpReceiveTask.FK_CustomerId, 
 					"@FK_ShipperId",  _GExpReceiveTask.FK_ShipperId, 
 					"@CreateDate", this._dataContext.ConvertDateString( _GExpReceiveTask.CreateDate), 
 					"@FK_Post",  _GExpReceiveTask.FK_Post, 
 					"@FK_Account",  _GExpReceiveTask.FK_Account, 
+					"@GoodsNumber",  _GExpReceiveTask.GoodsNumber, 
+					"@HaveReturn",  _GExpReceiveTask.HaveReturn, 
 					"@Note",  _GExpReceiveTask.Note, 
 					"@ReceiveStatus",  _GExpReceiveTask.ReceiveStatus, 
 					"@FK_PickupShipper",  _GExpReceiveTask.FK_PickupShipper, 
@@ -464,13 +502,15 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpReceiveTask] SET Id=@Id, FK_CustomerId=@FK_CustomerId, FK_ShipperId=@FK_ShipperId, CreateDate=@CreateDate, FK_Post=@FK_Post, FK_Account=@FK_Account, Note=@Note, ReceiveStatus=@ReceiveStatus, FK_PickupShipper=@FK_PickupShipper, PickupDate=@PickupDate "+ condition, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpReceiveTask] SET Id=@Id, FK_CustomerId=@FK_CustomerId, FK_ShipperId=@FK_ShipperId, CreateDate=@CreateDate, FK_Post=@FK_Post, FK_Account=@FK_Account, GoodsNumber=@GoodsNumber, HaveReturn=@HaveReturn, Note=@Note, ReceiveStatus=@ReceiveStatus, FK_PickupShipper=@FK_PickupShipper, PickupDate=@PickupDate "+ condition, 
 					"@Id",  _GExpReceiveTask.Id, 
 					"@FK_CustomerId",  _GExpReceiveTask.FK_CustomerId, 
 					"@FK_ShipperId",  _GExpReceiveTask.FK_ShipperId, 
 					"@CreateDate", this._dataContext.ConvertDateString( _GExpReceiveTask.CreateDate), 
 					"@FK_Post",  _GExpReceiveTask.FK_Post, 
 					"@FK_Account",  _GExpReceiveTask.FK_Account, 
+					"@GoodsNumber",  _GExpReceiveTask.GoodsNumber, 
+					"@HaveReturn",  _GExpReceiveTask.HaveReturn, 
 					"@Note",  _GExpReceiveTask.Note, 
 					"@ReceiveStatus",  _GExpReceiveTask.ReceiveStatus, 
 					"@FK_PickupShipper",  _GExpReceiveTask.FK_PickupShipper, 

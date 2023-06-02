@@ -1713,6 +1713,7 @@ namespace LeMaiLogic.Logic
                     dc.GExpscandelivery.InsertOnSubmit(base.ConnectionData.Schema, scan);
                     // Update status
                     bill.BillStatus = (int)enumGExpBillStatus.DANG_PHAT_5;
+                    bill.ShipperStatus = 0;
                     dc.GExpbill.Update(base.ConnectionData.Schema, bill);
                     dc.SubmitChanges();
                     return string.Empty;

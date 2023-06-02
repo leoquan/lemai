@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace LeMaiDto
@@ -27,6 +28,7 @@ namespace LeMaiDto
         public string StatusTextColor { get; set; }
         public decimal FeeWeight { get; set; }
         public decimal Cod { get; set; }
+        public decimal TotalCod { get; set; }
         public string Address { get; set; }
         public string Payment { get; set; }
         public int GoodsNumber { get; set; }
@@ -35,6 +37,10 @@ namespace LeMaiDto
         public string AcceptManUpper { get; set; }
         [JsonIgnore]
         public string AcceptManNonUnicodeUpper { get; set; }
+        [JsonIgnore]
+        public string SendPhoneWithBill { get; set; }
+        [JsonIgnore]
+        public string AcceptPhoneWithBill { get; set; }
     }
 
     public class VanDonChiTietOutput
@@ -99,5 +105,23 @@ namespace LeMaiDto
         public decimal DaThanhToan { get; set; }
         public decimal ChuaThanhToan { get; set; }
         public decimal TongTien { get; set; }
+    }
+    public class BillCodeInput
+    {
+        [Required]
+        [StringLength(50)]
+        public string BillCode { get; set; }
+
+        [Required]
+        [StringLength(250)]
+        public string Content { get; set; }
+    }
+    public class PickupInput
+    {
+        [Required]
+        public string Id { get; set; }
+
+        [Required]
+        public int Status { get; set; }
     }
 }

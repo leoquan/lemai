@@ -17,6 +17,8 @@ public partial class LeMaiDbContext : DbContext
 
     public virtual DbSet<GexpAccept> GexpAccepts { get; set; }
 
+    public virtual DbSet<GexpBill> GexpBills { get; set; }
+
     public virtual DbSet<GexpBillStatus> GexpBillStatuses { get; set; }
 
     public virtual DbSet<GexpDistrict> GexpDistricts { get; set; }
@@ -24,6 +26,8 @@ public partial class LeMaiDbContext : DbContext
     public virtual DbSet<GexpOrder> GexpOrders { get; set; }
 
     public virtual DbSet<GexpOrderStatus> GexpOrderStatuses { get; set; }
+
+    public virtual DbSet<GexpProblem> GexpProblems { get; set; }
 
     public virtual DbSet<GexpProvince> GexpProvinces { get; set; }
 
@@ -34,6 +38,10 @@ public partial class LeMaiDbContext : DbContext
     public virtual DbSet<GexpScan> GexpScans { get; set; }
 
     public virtual DbSet<GexpShipper> GexpShippers { get; set; }
+
+    public virtual DbSet<GexpShipperBillStatus> GexpShipperBillStatuses { get; set; }
+
+    public virtual DbSet<GexpShipperDevivery> GexpShipperDeviveries { get; set; }
 
     public virtual DbSet<GexpWard> GexpWards { get; set; }
 
@@ -168,6 +176,130 @@ public partial class LeMaiDbContext : DbContext
                 .HasMaxLength(50);
         });
 
+        modelBuilder.Entity<GexpBill>(entity =>
+        {
+            entity.HasKey(e => e.BillCode);
+
+            entity.ToTable("GExpBill");
+
+            entity.Property(e => e.BillCode).HasMaxLength(50);
+            entity.Property(e => e.AcceptDistrict)
+                .IsRequired()
+                .HasMaxLength(250);
+            entity.Property(e => e.AcceptMan)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.AcceptManAddress)
+                .IsRequired()
+                .HasMaxLength(500);
+            entity.Property(e => e.AcceptManPhone)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.AcceptManUs)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.AcceptProvince)
+                .IsRequired()
+                .HasMaxLength(250);
+            entity.Property(e => e.AcceptWard)
+                .IsRequired()
+                .HasMaxLength(250);
+            entity.Property(e => e.AcceptWardCode)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.AddressPickup).HasMaxLength(150);
+            entity.Property(e => e.BillWeight).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.Bt3cod)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("BT3COD");
+            entity.Property(e => e.Bt3code)
+                .HasMaxLength(50)
+                .HasColumnName("BT3Code");
+            entity.Property(e => e.Bt3codeSub)
+                .HasMaxLength(50)
+                .HasColumnName("BT3CodeSub");
+            entity.Property(e => e.Bt3freight)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("BT3Freight");
+            entity.Property(e => e.Bt3lastMess)
+                .HasMaxLength(250)
+                .HasColumnName("BT3LastMess");
+            entity.Property(e => e.Bt3payType)
+                .HasMaxLength(50)
+                .HasColumnName("BT3PayType");
+            entity.Property(e => e.Bt3status)
+                .HasMaxLength(250)
+                .HasColumnName("BT3Status");
+            entity.Property(e => e.Bt3type)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("BT3Type");
+            entity.Property(e => e.Cod)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("COD");
+            entity.Property(e => e.DistricPickup).HasMaxLength(50);
+            entity.Property(e => e.FeeWeight).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.FkCustomer)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("FK_Customer");
+            entity.Property(e => e.FkPaymentType)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("FK_PaymentType");
+            entity.Property(e => e.FkProviderAccount)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("FK_ProviderAccount");
+            entity.Property(e => e.FkShipType)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("FK_ShipType");
+            entity.Property(e => e.Freight).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.GoodsCode).HasMaxLength(150);
+            entity.Property(e => e.GoodsName)
+                .IsRequired()
+                .HasMaxLength(150);
+            entity.Property(e => e.LastUpdateDate).HasColumnType("datetime");
+            entity.Property(e => e.LastUpdateUser)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.Note).HasMaxLength(250);
+            entity.Property(e => e.PayCustomerDate).HasColumnType("datetime");
+            entity.Property(e => e.PayType)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.PrintData).HasMaxLength(250);
+            entity.Property(e => e.ProvincePickup).HasMaxLength(50);
+            entity.Property(e => e.RegisterDate).HasColumnType("datetime");
+            entity.Property(e => e.RegisterSiteCode)
+                .IsRequired()
+                .HasMaxLength(250);
+            entity.Property(e => e.RegisterUser)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.SendMan)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.SendManAddress)
+                .IsRequired()
+                .HasMaxLength(500);
+            entity.Property(e => e.SendManPhone)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.SendManUs)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.ShipperPhoneNumber).HasMaxLength(50);
+            entity.Property(e => e.ShopIdPickup).HasMaxLength(50);
+            entity.Property(e => e.SignedDate).HasColumnType("datetime");
+            entity.Property(e => e.SiteCode)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.SystemDate).HasColumnType("datetime");
+            entity.Property(e => e.WardPickup).HasMaxLength(50);
+        });
+
         modelBuilder.Entity<GexpBillStatus>(entity =>
         {
             entity.ToTable("GExpBillStatus");
@@ -257,6 +389,26 @@ public partial class LeMaiDbContext : DbContext
                 .HasMaxLength(50);
         });
 
+        modelBuilder.Entity<GexpProblem>(entity =>
+        {
+            entity.ToTable("GExpProblem");
+
+            entity.Property(e => e.Id).HasMaxLength(50);
+            entity.Property(e => e.BillCode)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.FullName)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.Note)
+                .IsRequired()
+                .HasMaxLength(500);
+            entity.Property(e => e.RegisterDate).HasColumnType("datetime");
+            entity.Property(e => e.UserId)
+                .IsRequired()
+                .HasMaxLength(50);
+        });
+
         modelBuilder.Entity<GexpProvince>(entity =>
         {
             entity.HasKey(e => e.ProvinceId);
@@ -312,9 +464,11 @@ public partial class LeMaiDbContext : DbContext
             entity.ToTable("GExpReceiveTaskStatus");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.StatusBackgroundColor).HasMaxLength(50);
             entity.Property(e => e.StatusReceiveName)
                 .IsRequired()
                 .HasMaxLength(50);
+            entity.Property(e => e.StatusTextColor).HasMaxLength(50);
         });
 
         modelBuilder.Entity<GexpScan>(entity =>
@@ -365,6 +519,47 @@ public partial class LeMaiDbContext : DbContext
             entity.Property(e => e.UserName)
                 .IsRequired()
                 .HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<GexpShipperBillStatus>(entity =>
+        {
+            entity.ToTable("GExpShipperBillStatus");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.StatusBackgroundColor)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.StatusName)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.StatusTextColor)
+                .IsRequired()
+                .HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<GexpShipperDevivery>(entity =>
+        {
+            entity.ToTable("GExpShipperDevivery");
+
+            entity.Property(e => e.Id).HasMaxLength(50);
+            entity.Property(e => e.BillCode)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.CashTime).HasColumnType("datetime");
+            entity.Property(e => e.FkAccountCash)
+                .HasMaxLength(50)
+                .HasColumnName("FK_AccountCash");
+            entity.Property(e => e.FkCashId)
+                .HasMaxLength(50)
+                .HasColumnName("FK_CashId");
+            entity.Property(e => e.Note).HasMaxLength(250);
+            entity.Property(e => e.ShipperId)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.SignDate).HasColumnType("datetime");
+            entity.Property(e => e.TotalCod)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("TotalCOD");
         });
 
         modelBuilder.Entity<GexpWard>(entity =>
@@ -631,9 +826,6 @@ public partial class LeMaiDbContext : DbContext
             entity.Property(e => e.GoodsName)
                 .IsRequired()
                 .HasMaxLength(150);
-            entity.Property(e => e.GroupProvider)
-                .IsRequired()
-                .HasMaxLength(50);
             entity.Property(e => e.LastUpdateDate).HasColumnType("datetime");
             entity.Property(e => e.LastUpdateUser)
                 .IsRequired()
@@ -644,13 +836,6 @@ public partial class LeMaiDbContext : DbContext
                 .IsRequired()
                 .HasMaxLength(50);
             entity.Property(e => e.PaymentTypeName)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.PrintLable).HasMaxLength(50);
-            entity.Property(e => e.ProviderName)
-                .IsRequired()
-                .HasMaxLength(150);
-            entity.Property(e => e.ProviderTypeCode)
                 .IsRequired()
                 .HasMaxLength(50);
             entity.Property(e => e.RegisterDate).HasColumnType("datetime");
@@ -899,9 +1084,7 @@ public partial class LeMaiDbContext : DbContext
             entity.Property(e => e.Id)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.Note)
-                .IsRequired()
-                .HasMaxLength(500);
+            entity.Property(e => e.Note).HasMaxLength(500);
             entity.Property(e => e.Nvgiao)
                 .IsRequired()
                 .HasMaxLength(250)
@@ -913,9 +1096,11 @@ public partial class LeMaiDbContext : DbContext
             entity.Property(e => e.ShipperPhone)
                 .IsRequired()
                 .HasMaxLength(50);
+            entity.Property(e => e.StatusBackgroundColor).HasMaxLength(50);
             entity.Property(e => e.StatusReceiveName)
                 .IsRequired()
                 .HasMaxLength(50);
+            entity.Property(e => e.StatusTextColor).HasMaxLength(50);
             entity.Property(e => e.TenDaiLy)
                 .IsRequired()
                 .HasMaxLength(50);

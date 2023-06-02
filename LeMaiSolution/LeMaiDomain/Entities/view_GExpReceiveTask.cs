@@ -14,6 +14,8 @@ namespace LeMaiDomain
 		public System.String FK_Post { get; set; }
 		public System.String FK_Account { get; set; }
 		public System.String Note { get; set; }
+		public System.Int32 GoodsNumber { get; set; }
+		public System.Boolean HaveReturn { get; set; }
 		public System.String ShipperName { get; set; }
 		public System.String ShipperPhone { get; set; }
 		public System.String TenDaiLy { get; set; }
@@ -23,6 +25,8 @@ namespace LeMaiDomain
 		public System.String DiaChi { get; set; }
 		public System.String NVGiao { get; set; }
 		public System.String StatusReceiveName { get; set; }
+		public System.String StatusTextColor { get; set; }
+		public System.String StatusBackgroundColor { get; set; }
 		public System.String CustomerCode { get; set; }
 		public System.String FK_PickupShipper { get; set; }
 		public System.DateTime? PickupDate { get; set; }

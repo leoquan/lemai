@@ -30,13 +30,13 @@ namespace LeMaiDesktop
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelcomtrol = new System.Windows.Forms.Panel();
             this.btnExportExcel = new DevComponents.DotNetBar.ButtonX();
@@ -47,6 +47,8 @@ namespace LeMaiDesktop
             this.txtMaDonHang = new System.Windows.Forms.TextBox();
             this.lblMaDonHang = new System.Windows.Forms.Label();
             this.grpDangKyKienVanDe = new System.Windows.Forms.GroupBox();
+            this.btnDanhSachChoKN = new DevComponents.DotNetBar.ButtonX();
+            this.btnKyNhan = new DevComponents.DotNetBar.ButtonX();
             this.cmbShipper = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -73,7 +75,6 @@ namespace LeMaiDesktop
             this.btnFilter = new DevComponents.DotNetBar.ButtonX();
             this.label1 = new System.Windows.Forms.Label();
             this.ucBillMain = new LeMaiDesktop.ucBill();
-            this.btnKyNhan = new DevComponents.DotNetBar.ButtonX();
             this.panelcomtrol.SuspendLayout();
             this.grpDangKyKienVanDe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridBills)).BeginInit();
@@ -178,10 +179,10 @@ namespace LeMaiDesktop
             // 
             this.txtMaDonHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(245)))), ((int)(((byte)(176)))));
             this.txtMaDonHang.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaDonHang.Location = new System.Drawing.Point(416, 20);
+            this.txtMaDonHang.Location = new System.Drawing.Point(412, 20);
             this.txtMaDonHang.MaxLength = 12;
             this.txtMaDonHang.Name = "txtMaDonHang";
-            this.txtMaDonHang.Size = new System.Drawing.Size(205, 27);
+            this.txtMaDonHang.Size = new System.Drawing.Size(180, 27);
             this.txtMaDonHang.TabIndex = 0;
             this.txtMaDonHang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaDonHang_KeyPress);
             // 
@@ -190,7 +191,7 @@ namespace LeMaiDesktop
             this.lblMaDonHang.AutoSize = true;
             this.lblMaDonHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaDonHang.ForeColor = System.Drawing.Color.Black;
-            this.lblMaDonHang.Location = new System.Drawing.Point(323, 25);
+            this.lblMaDonHang.Location = new System.Drawing.Point(319, 25);
             this.lblMaDonHang.Name = "lblMaDonHang";
             this.lblMaDonHang.Size = new System.Drawing.Size(95, 17);
             this.lblMaDonHang.TabIndex = 78;
@@ -200,6 +201,7 @@ namespace LeMaiDesktop
             // 
             this.grpDangKyKienVanDe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpDangKyKienVanDe.Controls.Add(this.btnDanhSachChoKN);
             this.grpDangKyKienVanDe.Controls.Add(this.btnKyNhan);
             this.grpDangKyKienVanDe.Controls.Add(this.cmbShipper);
             this.grpDangKyKienVanDe.Controls.Add(this.label2);
@@ -208,10 +210,42 @@ namespace LeMaiDesktop
             this.grpDangKyKienVanDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpDangKyKienVanDe.Location = new System.Drawing.Point(14, 33);
             this.grpDangKyKienVanDe.Name = "grpDangKyKienVanDe";
-            this.grpDangKyKienVanDe.Size = new System.Drawing.Size(727, 59);
+            this.grpDangKyKienVanDe.Size = new System.Drawing.Size(894, 59);
             this.grpDangKyKienVanDe.TabIndex = 0;
             this.grpDangKyKienVanDe.TabStop = false;
             this.grpDangKyKienVanDe.Text = "Máy quét";
+            // 
+            // btnDanhSachChoKN
+            // 
+            this.btnDanhSachChoKN.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDanhSachChoKN.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDanhSachChoKN.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDanhSachChoKN.Image = global::LeMaiDesktop.Properties.Resources.icoUserManager;
+            this.btnDanhSachChoKN.ImageTextSpacing = 3;
+            this.btnDanhSachChoKN.Location = new System.Drawing.Point(691, 17);
+            this.btnDanhSachChoKN.Name = "btnDanhSachChoKN";
+            this.btnDanhSachChoKN.Size = new System.Drawing.Size(193, 30);
+            this.btnDanhSachChoKN.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDanhSachChoKN.TabIndex = 88;
+            this.btnDanhSachChoKN.Text = "Đơn hàng đã giao của shipper";
+            this.btnDanhSachChoKN.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Left;
+            this.btnDanhSachChoKN.Click += new System.EventHandler(this.btnDanhSachChoKN_Click);
+            // 
+            // btnKyNhan
+            // 
+            this.btnKyNhan.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnKyNhan.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnKyNhan.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKyNhan.Image = global::LeMaiDesktop.Properties.Resources.Done;
+            this.btnKyNhan.ImageTextSpacing = 3;
+            this.btnKyNhan.Location = new System.Drawing.Point(598, 18);
+            this.btnKyNhan.Name = "btnKyNhan";
+            this.btnKyNhan.Size = new System.Drawing.Size(86, 30);
+            this.btnKyNhan.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnKyNhan.TabIndex = 87;
+            this.btnKyNhan.Text = "Ký nhận";
+            this.btnKyNhan.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Left;
+            this.btnKyNhan.Click += new System.EventHandler(this.btnKyNhan_Click);
             // 
             // cmbShipper
             // 
@@ -349,19 +383,19 @@ namespace LeMaiDesktop
             // gridBills
             // 
             this.gridBills.AllowUserToAddRows = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(233)))), ((int)(((byte)(248)))));
-            this.gridBills.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(233)))), ((int)(((byte)(248)))));
+            this.gridBills.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridBills.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridBills.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridBills.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gridBills.ColumnHeadersHeight = 25;
             this.gridBills.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_Id,
@@ -373,14 +407,14 @@ namespace LeMaiDesktop
             this.col_RegisterDate,
             this.col_LastUpdateUser,
             this.col_Note});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridBills.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridBills.DefaultCellStyle = dataGridViewCellStyle5;
             this.gridBills.EnableHeadersVisualStyles = false;
             this.gridBills.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.gridBills.HighlightSelectedColumnHeaders = false;
@@ -388,16 +422,16 @@ namespace LeMaiDesktop
             this.gridBills.MultiSelect = false;
             this.gridBills.Name = "gridBills";
             this.gridBills.PaintEnhancedSelection = false;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridBills.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridBills.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.gridBills.RowHeadersVisible = false;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(106)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            this.gridBills.RowsDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(106)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            this.gridBills.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.gridBills.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridBills.RowTemplate.Height = 25;
             this.gridBills.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -449,9 +483,9 @@ namespace LeMaiDesktop
             // 
             this.col_BillWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.col_BillWeight.DataPropertyName = "BillWeight";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N0";
-            this.col_BillWeight.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            this.col_BillWeight.DefaultCellStyle = dataGridViewCellStyle3;
             this.col_BillWeight.HeaderText = "TL Ghi đơn";
             this.col_BillWeight.Name = "col_BillWeight";
             this.col_BillWeight.ReadOnly = true;
@@ -461,9 +495,9 @@ namespace LeMaiDesktop
             // 
             this.col_RegisterDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.col_RegisterDate.DataPropertyName = "CreateDate";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.Format = "dd/MM HH:mm";
-            this.col_RegisterDate.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Format = "dd/MM HH:mm";
+            this.col_RegisterDate.DefaultCellStyle = dataGridViewCellStyle4;
             this.col_RegisterDate.HeaderText = "Ngày tạo";
             this.col_RegisterDate.Name = "col_RegisterDate";
             this.col_RegisterDate.ReadOnly = true;
@@ -515,9 +549,9 @@ namespace LeMaiDesktop
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(827, 42);
+            this.label1.Location = new System.Drawing.Point(914, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(409, 49);
+            this.label1.Size = new System.Drawing.Size(344, 49);
             this.label1.TabIndex = 1420;
             this.label1.Text = "Bưu cục cân kiểm tra đối chiếu thông tin trước khi ký nhận đơn hàng";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -530,23 +564,6 @@ namespace LeMaiDesktop
             this.ucBillMain.Name = "ucBillMain";
             this.ucBillMain.Size = new System.Drawing.Size(1242, 168);
             this.ucBillMain.TabIndex = 1214;
-            // 
-            // btnKyNhan
-            // 
-            this.btnKyNhan.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnKyNhan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnKyNhan.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnKyNhan.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKyNhan.Image = global::LeMaiDesktop.Properties.Resources.Done;
-            this.btnKyNhan.ImageTextSpacing = 3;
-            this.btnKyNhan.Location = new System.Drawing.Point(632, 18);
-            this.btnKyNhan.Name = "btnKyNhan";
-            this.btnKyNhan.Size = new System.Drawing.Size(86, 30);
-            this.btnKyNhan.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnKyNhan.TabIndex = 87;
-            this.btnKyNhan.Text = "Ký nhận";
-            this.btnKyNhan.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Left;
-            this.btnKyNhan.Click += new System.EventHandler(this.btnKyNhan_Click);
             // 
             // frmQuetHangKyNhan
             // 
@@ -624,5 +641,6 @@ namespace LeMaiDesktop
         private System.Windows.Forms.DataGridViewTextBoxColumn col_LastUpdateUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Note;
         private DevComponents.DotNetBar.ButtonX btnKyNhan;
+        private DevComponents.DotNetBar.ButtonX btnDanhSachChoKN;
     }
 }

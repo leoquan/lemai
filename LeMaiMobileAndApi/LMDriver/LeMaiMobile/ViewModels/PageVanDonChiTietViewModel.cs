@@ -64,6 +64,9 @@ public partial class PageVanDonChiTietViewModel : GhViewModelBase<PageVanDonChiT
     [ObservableProperty]
     private decimal _ToTalCOD = 0;
 
+    [ObservableProperty]
+    private string _BillCodeCT = "";
+
     [RelayCommand]
     private async Task LoadChiTietAsync()
     {
@@ -87,6 +90,7 @@ public partial class PageVanDonChiTietViewModel : GhViewModelBase<PageVanDonChiT
                 return;
             }
             ToTalCOD = response.data.ChiTiet.Cod;
+            BillCodeCT = response.data.ChiTiet.BillCode;
             if (response.data.ChiTiet.PayType != "Gửi thanh toán")
             {
                 ToTalCOD = ToTalCOD + response.data.ChiTiet.Freight;
@@ -151,6 +155,19 @@ public partial class PageVanDonChiTietViewModel : GhViewModelBase<PageVanDonChiT
             try
             {
                 PhoneDialer.Open(phone);
+                // Call api gọi điện
+                var request = new RestRequest("/Shipper/MakePhoneCall", Method.Post);
+                request.AddJsonBody(new BillCodeInput
+                {
+                    BillCode = BillCodeCT,
+                    Content = phone
+                });
+
+                var response = await ExecuteApiAsync<bool>(request);
+                if (!response.isOk || !response.data)
+                {
+                    return;
+                }
             }
             catch (Exception err)
             {
@@ -167,6 +184,7 @@ public partial class PageVanDonChiTietViewModel : GhViewModelBase<PageVanDonChiT
             CanCommandRun = true;
         }
     }
+
     [RelayCommand]
     private async Task KienVanDeAsync(string billcode)
     {
@@ -180,7 +198,7 @@ public partial class PageVanDonChiTietViewModel : GhViewModelBase<PageVanDonChiT
         {
             CanCommandRun = false;
             // Kiện vấn đề
-            var matKhauMoi = await MaterialDialog.Instance.InputAsync(
+            var noidungKienVanDe = await MaterialDialog.Instance.InputAsync(
                 title: "Thêm kiện vấn đề",
                 message: "Nhập nội dung kiện vấn đề",
                 confirmingText: "Đồng ý",
@@ -198,9 +216,10 @@ public partial class PageVanDonChiTietViewModel : GhViewModelBase<PageVanDonChiT
 
             // Call api đăng ký kiện vấn đề
             var request = new RestRequest("/Shipper/AddKienVanDe", Method.Post);
-            request.AddJsonBody(new TaiKhoanDoiMatKhauInput
+            request.AddJsonBody(new BillCodeInput
             {
-                MatKhauMoi = matKhauMoi
+                BillCode = billcode,
+                Content = noidungKienVanDe
             });
 
             var response = await ExecuteApiAsync<bool>(request);
@@ -248,13 +267,27 @@ public partial class PageVanDonChiTietViewModel : GhViewModelBase<PageVanDonChiT
             {
                 return;
             }
-            result = await MaterialDialog.Instance.ConfirmAsync(
-                message: "Đơn hàng ký nhận khi giao thành công, thu tiền COD đầy đủ",
+            if (ToTalCOD > 0)
+            {
+                result = await MaterialDialog.Instance.ConfirmAsync(
+
+                message: "Đơn hàng ký nhận khi giao thành công + thu tiền " + ToTalCOD.ToString("N0") + " đầy đủ",
                 title: "Ký nhận",
                 confirmingText: "Đồng ý",
                 dismissiveText: GetTextForIos("Hủy bỏ")
             );
+            }
+            else
+            {
+                result = await MaterialDialog.Instance.ConfirmAsync(
 
+                message: "Đơn hàng ký nhận khi giao thành công cho khách hàng",
+                title: "Ký nhận",
+                confirmingText: "Đồng ý",
+                dismissiveText: GetTextForIos("Hủy bỏ")
+            );
+            }
+            
             if (!(result.HasValue && result.Value))
             {
                 return;
@@ -264,9 +297,10 @@ public partial class PageVanDonChiTietViewModel : GhViewModelBase<PageVanDonChiT
             await ShowLoading();
             // Call api ký nhận
             var request = new RestRequest("/Shipper/KyNhan", Method.Post);
-            request.AddJsonBody(new TaiKhoanDoiMatKhauInput
+            request.AddJsonBody(new BillCodeInput
             {
-                MatKhauMoi = billcode
+                BillCode = billcode,
+                Content = "Ký nhận đơn hàng"
             });
 
             var response = await ExecuteApiAsync<bool>(request);

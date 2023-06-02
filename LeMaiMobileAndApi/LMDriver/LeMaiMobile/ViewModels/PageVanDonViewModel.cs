@@ -122,6 +122,8 @@ public partial class PageVanDonViewModel : GhViewModelBase<PageVanDon>
                     item.AcceptMan = item.AcceptMan.NormlizeWhitespace();
                     //item.AcceptManUpper = item.AcceptMan.ToUpper();
                     item.AcceptManNonUnicodeUpper = item.AcceptMan.NonUnicodeUpper();
+                    item.SendPhoneWithBill = item.BillCode + ";" + item.SendManPhone;
+                    item.AcceptPhoneWithBill = item.BillCode + ";" + item.AcceptManPhone;
                 }
 
                 needFilter = true;
@@ -466,7 +468,7 @@ public partial class PageVanDonViewModel : GhViewModelBase<PageVanDon>
         try
         {
             CanCommandRun = false;
-           
+
             await Clipboard.SetTextAsync(billCode);
 
             _ = MaterialDialog.Instance.SnackbarAsync(
@@ -483,9 +485,9 @@ public partial class PageVanDonViewModel : GhViewModelBase<PageVanDon>
         }
     }
     [RelayCommand]
-    private async Task MakePhoneCallAsync(string phone)
+    private async Task MakePhoneCallAsync(string phoneWithBillCode)
     {
-        if (MakePhoneCallCommand.IsRunning || !CanCommandRun || string.IsNullOrWhiteSpace(phone))
+        if (MakePhoneCallCommand.IsRunning || !CanCommandRun || string.IsNullOrWhiteSpace(phoneWithBillCode))
         {
             return;
         }
@@ -495,11 +497,29 @@ public partial class PageVanDonViewModel : GhViewModelBase<PageVanDon>
             CanCommandRun = false;
             try
             {
-                PhoneDialer.Open(phone);
+                string[] split = phoneWithBillCode.Split(';');
+                if (split.Length > 1)
+                {
+                    PhoneDialer.Open(split[1]);
+                    // Call api gọi điện
+                    var request = new RestRequest("/Shipper/MakePhoneCall", Method.Post);
+                    request.AddJsonBody(new BillCodeInput
+                    {
+                        BillCode = split[0],
+                        Content = split[1]
+                    });
+
+                    var response = await ExecuteApiAsync<bool>(request);
+                    if (!response.isOk || !response.data)
+                    {
+                        return;
+                    }
+                }
+
             }
             catch (Exception err)
             {
-                await Clipboard.SetTextAsync(phone);
+                await Clipboard.SetTextAsync(phoneWithBillCode);
                 _ = MaterialDialog.Instance.SnackbarAsync("Đã sao chép số điện thoại vào bộ nhớ tạm", msDuration: 2000);
             }
         }

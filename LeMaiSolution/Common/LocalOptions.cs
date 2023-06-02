@@ -58,6 +58,8 @@ namespace Common
 
         public string PrintSizeReceipt { get; set; }
 
+        public string CustomerCare { get; set; }
+
         // Kết thúc phần thêm các options
         /// <summary>
         /// Đọc file option from local machine

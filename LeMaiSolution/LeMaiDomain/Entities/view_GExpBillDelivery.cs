@@ -61,17 +61,12 @@ namespace LeMaiDomain
 		public System.String FK_PaymentType { get; set; }
 		public System.String FK_ShipType { get; set; }
 		public System.String FullAddress { get; set; }
-		public System.String ProviderName { get; set; }
-		public System.String ProviderTypeCode { get; set; }
-		public System.String GroupProvider { get; set; }
 		public System.String CustomerCode { get; set; }
 		public System.String PaymentTypeName { get; set; }
 		public System.String ShipNoteType { get; set; }
 		public System.String StatusName { get; set; }
 		public System.String StatusBackgroundColor { get; set; }
 		public System.String StatusTextColor { get; set; }
-		public System.String PrintLable { get; set; }
-		public System.Int32 RunMode { get; set; }
 		public System.String FK_ShipperId { get; set; }
 		public System.DateTime DeliveryDate { get; set; }
 		public view_GExpBillDelivery(){}

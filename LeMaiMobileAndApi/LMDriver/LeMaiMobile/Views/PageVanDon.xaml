@@ -25,11 +25,10 @@
                     EventName="TextChanged" />
                 </SearchBar.Behaviors>
             </SearchBar>
-            
+
             <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
                 Grid.Column="1"
-                Margin="{StaticResource PagePaddingX}"
-                ClickCommand="{Binding ChiTietHanhTrinhCommand}">
+                Margin="{StaticResource PagePaddingX}">
                 <Label Style="{StaticResource GhIconClickStyle}"
                     TextColor="{StaticResource MtrlColorPrimary}"
                     Text="{x:Static ghModel:FAS.BarcodeScan}" />
@@ -146,7 +145,7 @@
                                     <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
                                         Grid.Column="0"
                                         ClickCommand="{Binding Source={RelativeSource AncestorType={x:Type ghView:PageVanDon}}, Path=BindingContext.MakePhoneCallCommand}"
-                                        ClickCommandParameter="{Binding SendManPhone}">
+                                        ClickCommandParameter="{Binding SendPhoneWithBill}">
                                         <Label Style="{StaticResource GhIconClickStyle}"
                                             FontSize="20"
                                             TextColor="{StaticResource MtrlColorPrimary}"
@@ -172,7 +171,7 @@
                                     <mtrl:MaterialCard Style="{StaticResource GhIconTextClickStyle}"
                                         Grid.Column="0"
                                         ClickCommand="{Binding Source={RelativeSource AncestorType={x:Type ghView:PageVanDon}}, Path=BindingContext.MakePhoneCallCommand}"
-                                        ClickCommandParameter="{Binding AcceptManPhone}">
+                                        ClickCommandParameter="{Binding AcceptPhoneWithBill}">
                                     <Label Style="{StaticResource GhIconClickStyle}"
                                             FontSize="20"
                                             TextColor="{StaticResource MtrlColorPrimary}"

@@ -26,7 +26,7 @@ namespace LeMaiDto
 
         //public bool IsShopPay { get; set; }
 
-        //public string Note { get; set; }
+       // public string Note { get; set; }
 
         public DateTime CreateDate { get; set; }
 

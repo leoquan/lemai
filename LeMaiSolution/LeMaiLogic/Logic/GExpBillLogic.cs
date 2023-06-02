@@ -815,7 +815,34 @@ namespace LeMaiLogic.Logic
                     accept.AcceptProvince = input.AcceptProvinceCode;
                     accept.AcceptDistrict = input.AcceptDistrictCode;
                     accept.AcceptWard = input.AcceptWardCode;
-                    dc.GExpaccept.Update(base.ConnectionData.Schema, accept);
+                    if (accept.AcceptMan != input.AcceptMan || accept.AcceptAddress != input.AcceptManAddress ||
+                        accept.AcceptProvince != input.AcceptProvinceCode || accept.AcceptDistrict != input.AcceptDistrictCode || accept.AcceptWard != input.AcceptWardCode)
+                    {
+                        dc.GExpaccept.Update(base.ConnectionData.Schema, accept);
+                    }
+
+                }
+                // Tạo danh bạ sender
+                GExpSender sender = dc.GExpsender.GetObjectCon(base.ConnectionData.Schema, "WHERE SendManPhone=@SendManPhone", "@SendManPhone", input.SendManPhone.Trim());
+                if (sender == null)
+                {
+                    sender = new GExpSender();
+                    sender.Id = Guid.NewGuid().ToString();
+                    sender.SendMan = input.SendMan;
+                    sender.SendManPhone = input.SendManPhone;
+                    sender.SendAddress = input.SendManAddress;
+                    dc.GExpsender.InsertOnSubmit(base.ConnectionData.Schema, sender);
+                }
+                else
+                {
+                    sender.SendMan = input.SendMan;
+                    sender.SendManPhone = input.SendManPhone;
+                    sender.SendAddress = input.SendManAddress;
+                    if (sender.SendMan != input.SendMan || sender.SendManPhone != input.SendManPhone || sender.SendAddress != input.SendManAddress)
+                    {
+                        dc.GExpsender.Update(base.ConnectionData.Schema, sender);
+                    }
+
                 }
                 // If ORDER
                 if (!string.IsNullOrEmpty(input.IdOrder))
@@ -1451,6 +1478,23 @@ namespace LeMaiLogic.Logic
             {
                 dc.Open();
                 return dc.EXpcustomer.GetObjectCon(ConnectionData.Schema, "WHERE CustomerPhone=@CustomerPhone AND FK_Post=@FK_Post", "@CustomerPhone", SoDienThoai, "@FK_Post", post);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dc.Close();
+            }
+        }
+        public GExpSender GetThongTinKhachHangLe(string SoDienThoai, string post)
+        {
+            IDataContext dc = new dcDataContextM(ConnectionData.ConnectionString);
+            try
+            {
+                dc.Open();
+                return dc.GExpsender.GetObjectCon(ConnectionData.Schema, "WHERE SendManPhone=@SendManPhone", "@SendManPhone", SoDienThoai);
             }
             catch (Exception)
             {

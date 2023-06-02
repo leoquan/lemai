@@ -127,7 +127,7 @@ namespace LeMaiDesktop
             try
             {
                 int index = gridChild.SelectedRows[0].Index;
-                string Id = Convert.ToString(gridChild.Rows[index].Cells["col_Id"].Value);
+                string Id = Convert.ToString(gridChild.Rows[index].Cells["col_SubId"].Value);
                 var del = listFee.FirstOrDefault(u => u.Id == Id);
                 if (del != null)
                 {

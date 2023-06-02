@@ -19,6 +19,7 @@ using XF.Material.Forms.UI.Dialogs;
 using Xamarin.Forms;
 using LeMaiMobile.Models;
 using XF.Material.Forms.UI;
+using static Xamarin.Essentials.Permissions;
 
 namespace LeMaiMobile.ViewModels;
 
@@ -36,12 +37,6 @@ public partial class PageDonDatViewModel : GhViewModelBase<PageDonDat>
         switch (parameters.GetNavigationMode())
         {
             case Prism.Navigation.NavigationMode.Back:
-                if (_tranferModel != null 
-                    && !string.IsNullOrWhiteSpace(_tranferModel.Id)
-                    && _tranferModel.IsSave)
-                {
-                    LoadChiTietCommand.Execute(null);
-                }
                 break;
             case Prism.Navigation.NavigationMode.New:
                 LoadDanhSachCommand.Execute(null);
@@ -77,7 +72,7 @@ public partial class PageDonDatViewModel : GhViewModelBase<PageDonDat>
             if (!_isLoadListStatus)
             {
                 // Call api lay thong tin can ho
-                var request = new RestRequest("/DonDat/ListMaster", Method.Get);
+                var request = new RestRequest("/Shipper/ListMasterPickup", Method.Get);
 
                 var response = await ExecuteApiAsync<VanDonListMasterOutput>(request);
                 if (!response.isOk || response.data == null)
@@ -98,7 +93,7 @@ public partial class PageDonDatViewModel : GhViewModelBase<PageDonDat>
 
             {
                 // Call api lay thong tin can ho
-                var request = new RestRequest("/DonDat/DanhSach", Method.Get);
+                var request = new RestRequest("/Shipper/DanhSachPickup", Method.Get);
 
                 var dateType = _listDateType[_selectedFilterDateTypeIndex];
                 request.AddQueryParameter("registerDateType", dateType);
@@ -127,10 +122,8 @@ public partial class PageDonDatViewModel : GhViewModelBase<PageDonDat>
                 _listDanhSachAll = response.data;
                 foreach (var item in _listDanhSachAll)
                 {
-                    item.OrderCode = item.OrderCode.NormlizeWhitespace().ToUpper();
                     item.AcceptPhone = item.AcceptPhone.NormlizeWhitespace().ToUpper();
                     item.AcceptName = item.AcceptName.NormlizeWhitespace();
-                    //item.AcceptManUpper = item.AcceptMan.ToUpper();
                     item.AcceptManNonUnicodeUpper = item.AcceptName.NonUnicodeUpper();
                 }
 
@@ -150,87 +143,6 @@ public partial class PageDonDatViewModel : GhViewModelBase<PageDonDat>
         if (needFilter)
         {
             FilterVanDonCommand.Execute(null);
-        }
-    }
-
-
-
-    [RelayCommand]
-    private async Task LoadChiTietAsync()
-    {
-        if (LoadChiTietCommand.IsRunning || !CanCommandRun)
-        {
-            return;
-        }
-
-        try
-        {
-            CanCommandRun = false;
-            await ShowLoading();
-
-
-            // Call api lay thong tin can ho
-            var request = new RestRequest("/DonDat/DanhSach", Method.Get);
-            request.AddQueryParameter("id", _tranferModel.Id);
-
-            var response = await ExecuteApiAsync<List<DonDatDanhSachOutput>>(request);
-            if (!response.isOk || response.data == null || response.data.Count == 0)
-            {
-                return;
-            }
-
-            foreach (var item in response.data)
-            {
-                item.OrderCode = item.OrderCode.NormlizeWhitespace().ToUpper();
-                item.AcceptPhone = item.AcceptPhone.NormlizeWhitespace().ToUpper();
-                item.AcceptName = item.AcceptName.NormlizeWhitespace();
-                //item.AcceptManUpper = item.AcceptMan.ToUpper();
-                item.AcceptManNonUnicodeUpper = item.AcceptName.NonUnicodeUpper();
-            }
-
-            {
-                var modelItemIndex = _listDanhSachAll.FindIndex(h => h.Id == _tranferModel.Id);
-                if (modelItemIndex == -1)
-                {
-                    _listDanhSachAll.Insert(0, response.data[0]);
-                }
-                else
-                {
-                    _listDanhSachAll.RemoveAt(modelItemIndex);
-                    _listDanhSachAll.Insert(modelItemIndex, response.data[0]);
-                }
-            }
-
-            {
-                var modelItem = ListDanhSach.FirstOrDefault(h => h.Id == _tranferModel.Id);
-                if (modelItem != null)
-                {
-                    var modelItemIndex = ListDanhSach.IndexOf(modelItem);
-                    if (modelItemIndex == -1)
-                    {
-                        ListDanhSach.Insert(0, response.data[0]);
-                    }
-                    else
-                    {
-                        ListDanhSach.RemoveAt(modelItemIndex);
-                        ListDanhSach.Insert(modelItemIndex, response.data[0]);
-                    }
-                }
-                else
-                {
-                    ListDanhSach.Insert(0, response.data[0]);
-                }
-            }
-
-        }
-        catch (Exception ex)
-        {
-            await HandleExceptionAsync(ex);
-        }
-        finally
-        {
-            CanCommandRun = true;
-            await HideLoading();
         }
     }
 
@@ -383,7 +295,7 @@ public partial class PageDonDatViewModel : GhViewModelBase<PageDonDat>
 
     [ObservableProperty]
     private List<string> _listDateType = new List<string> {
-            "Trước 7 ngày",
+            "Trong ngày",
             "Trước 30 ngày",
             "Tuần này",
             "Tháng này",
@@ -487,9 +399,9 @@ public partial class PageDonDatViewModel : GhViewModelBase<PageDonDat>
 
 
     [RelayCommand]
-    private async Task CopyBillCodeAsync(string billCode)
+    private async Task MakePhoneCallAsync(string phone)
     {
-        if (CopyBillCodeCommand.IsRunning || !CanCommandRun || string.IsNullOrWhiteSpace(billCode))
+        if (MakePhoneCallCommand.IsRunning || !CanCommandRun || string.IsNullOrWhiteSpace(phone))
         {
             return;
         }
@@ -497,12 +409,15 @@ public partial class PageDonDatViewModel : GhViewModelBase<PageDonDat>
         try
         {
             CanCommandRun = false;
-
-            await Clipboard.SetTextAsync(billCode);
-
-            _ = MaterialDialog.Instance.SnackbarAsync(
-               "Đã sao chép mã đặt hàng vào bộ nhớ tạm",
-               msDuration: 2000);
+            try
+            {
+                await Clipboard.SetTextAsync(phone);
+                _ = MaterialDialog.Instance.SnackbarAsync("Đã sao chép số điện thoại vào bộ nhớ tạm", msDuration: 2000);
+                PhoneDialer.Open(phone);
+            }
+            catch
+            {
+            }
         }
         catch (Exception ex)
         {
@@ -517,164 +432,21 @@ public partial class PageDonDatViewModel : GhViewModelBase<PageDonDat>
 
     private DonDatDanhSachOutput _tranferModel = null;
 
+
     [RelayCommand]
-    private async Task TaoMoiDonDatAsync()
+    private async Task NhanHangAsync(string id)
     {
-        if (TaoMoiDonDatCommand.IsRunning || !CanCommandRun)
+        if (NhanHangCommand.IsRunning || !CanCommandRun)
         {
             return;
         }
-
-        try
-        {
-            CanCommandRun = false;
-            await ShowLoading();
-
-            _tranferModel = new DonDatDanhSachOutput();
-
-            var navParam = new NavigationParameters();
-            navParam.Add("model", _tranferModel);
-            await NavigationService.NavigateAsync($"{nameof(Views.PageDonDatChiTiet)}", navParam);
-        }
-        catch (Exception ex)
-        {
-            await HandleExceptionAsync(ex);
-        }
-        finally
-        {
-            await HideLoading();
-            CanCommandRun = true;
-        }
-    }
-
-    [RelayCommand]
-    private async Task CapNhatDonDatAsync(string id)
-    {
-        if (CapNhatDonDatCommand.IsRunning || !CanCommandRun)
-        {
-            return;
-        }
-
-        try
-        {
-            CanCommandRun = false;
-            await ShowLoading();
-
-
-            _tranferModel = new DonDatDanhSachOutput();
-            _tranferModel.Id = id;
-            _tranferModel.IsEdit = true;
-
-            var navParam = new NavigationParameters();
-            navParam.Add("model", _tranferModel);
-            await NavigationService.NavigateAsync($"{nameof(Views.PageDonDatChiTiet)}", navParam);
-        }
-        catch (Exception ex)
-        {
-            await HandleExceptionAsync(ex);
-        }
-        finally
-        {
-            await HideLoading();
-            CanCommandRun = true;
-        }
-    }
-
-
-    [RelayCommand]
-    private async Task XoaDonDatAsync(string id)
-    {
-        if (XoaDonDatCommand.IsRunning || !CanCommandRun)
-        {
-            return;
-        }
-
         var showLoading = false;
         try
         {
             CanCommandRun = false;
-
             var result = await MaterialDialog.Instance.ConfirmAsync(
-               message: "Bạn có chắc muốn xóa đơn đặt này?",
-               title: "Xác nhận xóa",
-               confirmingText: "Đồng ý",
-               dismissiveText: GetTextForIos("Hủy bỏ")
-           );
-
-            if (!(result.HasValue && result.Value))
-            {
-                return;
-            }
-
-            
-            await ShowLoading();
-            showLoading = true;
-
-
-            // Call api lay thong tin can ho
-            var request = new RestRequest("/DonDat/Xoa", Method.Delete);
-            request.AddQueryParameter("id", id);
-
-            var response = await ExecuteApiAsync<bool>(request);
-            if (!response.isOk || !response.data)
-            {
-                return;
-            }
-
-            {
-                var modelItemIndex = _listDanhSachAll.FindIndex(h => h.Id == id);
-                if (modelItemIndex > -1)
-                {
-                    _listDanhSachAll.RemoveAt(modelItemIndex);
-                }
-            }
-
-            {
-                var modelItem = ListDanhSach.FirstOrDefault(h => h.Id == id);
-                if (modelItem != null)
-                {
-                    ListDanhSach.Remove(modelItem);
-                }
-            }
-
-            await AlertAsync(
-               message: "Xóa thành công đơn đặt.",
-               title: "Thông báo",
-               acknowledgementText: "Đóng"
-               );
-        }
-        catch (Exception ex)
-        {
-            await HandleExceptionAsync(ex);
-        }
-        finally
-        {
-            CanCommandRun = true;
-            if (showLoading)
-            {
-                await HideLoading();
-            }
-            
-        }
-    }
-
-
-    [RelayCommand]
-    private async Task SaoChepDonDatAsync(string id)
-    {
-        if (CapNhatDonDatCommand.IsRunning || !CanCommandRun)
-        {
-            return;
-        }
-
-        try
-        {
-            CanCommandRun = false;
-
-            var maDonDat = _listDanhSachAll.FirstOrDefault(h => h.Id == id).OrderCode;
-            var result = await MaterialDialog.Instance.ConfirmAsync(
-              message: $"Bạn có muốn tạo thêm một đơn đặt hàng giống đơn hàng mã [{maDonDat}] hay không?",
-              title: "Xác nhận thêm",
+              message: "Bạn đã nhận hàng thành công khách hàng này?",
+              title: "Xác nhận lấy hàng thành công",
               confirmingText: "Đồng ý",
               dismissiveText: GetTextForIos("Hủy bỏ")
           );
@@ -683,26 +455,22 @@ public partial class PageDonDatViewModel : GhViewModelBase<PageDonDat>
             {
                 return;
             }
-
             await ShowLoading();
-
-            // Call api lay thong tin can ho
-            var request = new RestRequest("/DonDat/SaoChep", Method.Post);
-            request.AddJsonBody(new { Id = id });
+            showLoading = true;
+            // Gọi Api
+            var request = new RestRequest("/Shipper/CapNhatPickup", Method.Post);
+            request.AddJsonBody(new PickupInput
+            {
+                Id = id,
+                Status = 1
+            });
 
             var response = await ExecuteApiAsync<DonDatDanhSachOutput>(request);
             if (!response.isOk || response.data == null)
             {
                 return;
             }
-
             var item = response.data;
-            item.OrderCode = item.OrderCode.NormlizeWhitespace().ToUpper();
-            item.AcceptPhone = item.AcceptPhone.NormlizeWhitespace().ToUpper();
-            item.AcceptName = item.AcceptName.NormlizeWhitespace();
-            //item.AcceptManUpper = item.AcceptMan.ToUpper();
-            item.AcceptManNonUnicodeUpper = item.AcceptName.NonUnicodeUpper();
-
             {
                 var modelItemIndex = _listDanhSachAll.FindIndex(h => h.Id == item.Id);
                 if (modelItemIndex == -1)
@@ -744,8 +512,191 @@ public partial class PageDonDatViewModel : GhViewModelBase<PageDonDat>
         }
         finally
         {
-            await HideLoading();
             CanCommandRun = true;
+            if (showLoading)
+            {
+                await HideLoading();
+            }
+        }
+    }
+    [RelayCommand]
+    private async Task HoanNhanHangAsync(string id)
+    {
+        if (HoanNhanHangCommand.IsRunning || !CanCommandRun)
+        {
+            return;
+        }
+        var showLoading = false;
+        try
+        {
+            CanCommandRun = false;
+            var result = await MaterialDialog.Instance.ConfirmAsync(
+               message: "Bạn có chắc muốn hoãn nhận hàng khách hàng này?",
+               title: "Xác nhận hoãn",
+               confirmingText: "Đồng ý",
+               dismissiveText: GetTextForIos("Hủy bỏ")
+           );
+
+            if (!(result.HasValue && result.Value))
+            {
+                return;
+            }
+            await ShowLoading();
+            showLoading = true;
+            // Gọi api
+            var request = new RestRequest("/Shipper/CapNhatPickup", Method.Post);
+            request.AddJsonBody(new PickupInput
+            {
+                Id = id,
+                Status = 2
+            });
+
+            var response = await ExecuteApiAsync<DonDatDanhSachOutput>(request);
+            if (!response.isOk || response.data == null)
+            {
+                return;
+            }
+            var item = response.data;
+            {
+                var modelItemIndex = _listDanhSachAll.FindIndex(h => h.Id == item.Id);
+                if (modelItemIndex == -1)
+                {
+                    _listDanhSachAll.Insert(0, item);
+                }
+                else
+                {
+                    _listDanhSachAll.RemoveAt(modelItemIndex);
+                    _listDanhSachAll.Insert(modelItemIndex, item);
+                }
+            }
+
+            {
+                var modelItem = ListDanhSach.FirstOrDefault(h => h.Id == item.Id);
+                if (modelItem != null)
+                {
+                    var modelItemIndex = ListDanhSach.IndexOf(modelItem);
+                    if (modelItemIndex == -1)
+                    {
+                        ListDanhSach.Insert(0, item);
+                    }
+                    else
+                    {
+                        ListDanhSach.RemoveAt(modelItemIndex);
+                        ListDanhSach.Insert(modelItemIndex, item);
+                    }
+                }
+                else
+                {
+                    ListDanhSach.Insert(0, item);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            await HandleExceptionAsync(ex);
+        }
+        finally
+        {
+            CanCommandRun = true;
+            if (showLoading)
+            {
+                await HideLoading();
+            }
+
+        }
+    }
+
+    [RelayCommand]
+    private async Task HuyNhanHangAsync(string id)
+    {
+        if (HuyNhanHangCommand.IsRunning || !CanCommandRun)
+        {
+            return;
+        }
+
+        var showLoading = false;
+        try
+        {
+            CanCommandRun = false;
+
+            var result = await MaterialDialog.Instance.ConfirmAsync(
+               message: "Bạn có chắc muốn hủy nhận hàng khách hàng này?",
+               title: "Xác nhận hủy",
+               confirmingText: "Đồng ý",
+               dismissiveText: GetTextForIos("Hủy bỏ")
+           );
+
+            if (!(result.HasValue && result.Value))
+            {
+                return;
+            }
+
+
+            await ShowLoading();
+            showLoading = true;
+
+
+            // Gọi Api
+            var request = new RestRequest("/Shipper/CapNhatPickup", Method.Post);
+            request.AddJsonBody(new PickupInput
+            {
+                Id = id,
+                Status = 3
+            });
+
+            var response = await ExecuteApiAsync<DonDatDanhSachOutput>(request);
+            if (!response.isOk || response.data == null)
+            {
+                return;
+            }
+
+            var item = response.data;
+            {
+                var modelItemIndex = _listDanhSachAll.FindIndex(h => h.Id == item.Id);
+                if (modelItemIndex == -1)
+                {
+                    _listDanhSachAll.Insert(0, item);
+                }
+                else
+                {
+                    _listDanhSachAll.RemoveAt(modelItemIndex);
+                    _listDanhSachAll.Insert(modelItemIndex, item);
+                }
+            }
+
+            {
+                var modelItem = ListDanhSach.FirstOrDefault(h => h.Id == item.Id);
+                if (modelItem != null)
+                {
+                    var modelItemIndex = ListDanhSach.IndexOf(modelItem);
+                    if (modelItemIndex == -1)
+                    {
+                        ListDanhSach.Insert(0, item);
+                    }
+                    else
+                    {
+                        ListDanhSach.RemoveAt(modelItemIndex);
+                        ListDanhSach.Insert(modelItemIndex, item);
+                    }
+                }
+                else
+                {
+                    ListDanhSach.Insert(0, item);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            await HandleExceptionAsync(ex);
+        }
+        finally
+        {
+            CanCommandRun = true;
+            if (showLoading)
+            {
+                await HideLoading();
+            }
+
         }
     }
 

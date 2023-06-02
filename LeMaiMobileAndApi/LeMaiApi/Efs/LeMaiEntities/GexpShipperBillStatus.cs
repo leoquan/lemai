@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 namespace LeMai.Efs;
 
-public partial class GexpReceiveTaskStatus
+public partial class GexpShipperBillStatus
 {
     public int Id { get; set; }
 
-    public string StatusReceiveName { get; set; }
+    public string StatusName { get; set; }
+
+    public bool IsShowMobile { get; set; }
 
     public string StatusBackgroundColor { get; set; }
 

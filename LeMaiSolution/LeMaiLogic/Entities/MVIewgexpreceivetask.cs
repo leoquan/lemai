@@ -92,6 +92,14 @@ namespace LeMaiLogic
 					{
 						item.Note = Convert.ToString(dr["Note"]);
 					}
+					if (dr["GoodsNumber"] != null && dr["GoodsNumber"] != DBNull.Value)
+					{
+						item.GoodsNumber = Convert.ToInt32(dr["GoodsNumber"]);
+					}
+					if (dr["HaveReturn"] != null && dr["HaveReturn"] != DBNull.Value)
+					{
+						item.HaveReturn = Convert.ToBoolean(dr["HaveReturn"]);
+					}
 					if (dr["ShipperName"] != null && dr["ShipperName"] != DBNull.Value)
 					{
 						item.ShipperName = Convert.ToString(dr["ShipperName"]);
@@ -127,6 +135,14 @@ namespace LeMaiLogic
 					if (dr["StatusReceiveName"] != null && dr["StatusReceiveName"] != DBNull.Value)
 					{
 						item.StatusReceiveName = Convert.ToString(dr["StatusReceiveName"]);
+					}
+					if (dr["StatusTextColor"] != null && dr["StatusTextColor"] != DBNull.Value)
+					{
+						item.StatusTextColor = Convert.ToString(dr["StatusTextColor"]);
+					}
+					if (dr["StatusBackgroundColor"] != null && dr["StatusBackgroundColor"] != DBNull.Value)
+					{
+						item.StatusBackgroundColor = Convert.ToString(dr["StatusBackgroundColor"]);
 					}
 					if (dr["CustomerCode"] != null && dr["CustomerCode"] != DBNull.Value)
 					{
@@ -191,6 +207,14 @@ namespace LeMaiLogic
 					{
 						item.Note = Convert.ToString(dr["Note"]);
 					}
+					if (dr["GoodsNumber"] != null && dr["GoodsNumber"] != DBNull.Value)
+					{
+						item.GoodsNumber = Convert.ToInt32(dr["GoodsNumber"]);
+					}
+					if (dr["HaveReturn"] != null && dr["HaveReturn"] != DBNull.Value)
+					{
+						item.HaveReturn = Convert.ToBoolean(dr["HaveReturn"]);
+					}
 					if (dr["ShipperName"] != null && dr["ShipperName"] != DBNull.Value)
 					{
 						item.ShipperName = Convert.ToString(dr["ShipperName"]);
@@ -226,6 +250,14 @@ namespace LeMaiLogic
 					if (dr["StatusReceiveName"] != null && dr["StatusReceiveName"] != DBNull.Value)
 					{
 						item.StatusReceiveName = Convert.ToString(dr["StatusReceiveName"]);
+					}
+					if (dr["StatusTextColor"] != null && dr["StatusTextColor"] != DBNull.Value)
+					{
+						item.StatusTextColor = Convert.ToString(dr["StatusTextColor"]);
+					}
+					if (dr["StatusBackgroundColor"] != null && dr["StatusBackgroundColor"] != DBNull.Value)
+					{
+						item.StatusBackgroundColor = Convert.ToString(dr["StatusBackgroundColor"]);
 					}
 					if (dr["CustomerCode"] != null && dr["CustomerCode"] != DBNull.Value)
 					{
@@ -312,6 +344,14 @@ namespace LeMaiLogic
 						{
 							item.Note = Convert.ToString(dr["Note"]);
 						}
+						if (dr["GoodsNumber"] != null && dr["GoodsNumber"] != DBNull.Value)
+						{
+							item.GoodsNumber = Convert.ToInt32(dr["GoodsNumber"]);
+						}
+						if (dr["HaveReturn"] != null && dr["HaveReturn"] != DBNull.Value)
+						{
+							item.HaveReturn = Convert.ToBoolean(dr["HaveReturn"]);
+						}
 						if (dr["ShipperName"] != null && dr["ShipperName"] != DBNull.Value)
 						{
 							item.ShipperName = Convert.ToString(dr["ShipperName"]);
@@ -347,6 +387,14 @@ namespace LeMaiLogic
 						if (dr["StatusReceiveName"] != null && dr["StatusReceiveName"] != DBNull.Value)
 						{
 							item.StatusReceiveName = Convert.ToString(dr["StatusReceiveName"]);
+						}
+						if (dr["StatusTextColor"] != null && dr["StatusTextColor"] != DBNull.Value)
+						{
+							item.StatusTextColor = Convert.ToString(dr["StatusTextColor"]);
+						}
+						if (dr["StatusBackgroundColor"] != null && dr["StatusBackgroundColor"] != DBNull.Value)
+						{
+							item.StatusBackgroundColor = Convert.ToString(dr["StatusBackgroundColor"]);
 						}
 						if (dr["CustomerCode"] != null && dr["CustomerCode"] != DBNull.Value)
 						{

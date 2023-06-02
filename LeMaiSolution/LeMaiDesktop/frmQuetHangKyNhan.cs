@@ -206,5 +206,12 @@ namespace LeMaiDesktop
                 MessageBox.Show("Vui lòng chọn shipper", PBean.MESSAGE_TITLE);
             }
         }
+
+        private void btnDanhSachChoKN_Click(object sender, EventArgs e)
+        {
+            frmQuanLyDonHangGiao frm = new frmQuanLyDonHangGiao();
+            frm.ShowDialog();
+
+        }
     }
 }

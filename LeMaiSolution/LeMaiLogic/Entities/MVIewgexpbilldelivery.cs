@@ -280,18 +280,6 @@ namespace LeMaiLogic
 					{
 						item.FullAddress = Convert.ToString(dr["FullAddress"]);
 					}
-					if (dr["ProviderName"] != null && dr["ProviderName"] != DBNull.Value)
-					{
-						item.ProviderName = Convert.ToString(dr["ProviderName"]);
-					}
-					if (dr["ProviderTypeCode"] != null && dr["ProviderTypeCode"] != DBNull.Value)
-					{
-						item.ProviderTypeCode = Convert.ToString(dr["ProviderTypeCode"]);
-					}
-					if (dr["GroupProvider"] != null && dr["GroupProvider"] != DBNull.Value)
-					{
-						item.GroupProvider = Convert.ToString(dr["GroupProvider"]);
-					}
 					if (dr["CustomerCode"] != null && dr["CustomerCode"] != DBNull.Value)
 					{
 						item.CustomerCode = Convert.ToString(dr["CustomerCode"]);
@@ -315,14 +303,6 @@ namespace LeMaiLogic
 					if (dr["StatusTextColor"] != null && dr["StatusTextColor"] != DBNull.Value)
 					{
 						item.StatusTextColor = Convert.ToString(dr["StatusTextColor"]);
-					}
-					if (dr["PrintLable"] != null && dr["PrintLable"] != DBNull.Value)
-					{
-						item.PrintLable = Convert.ToString(dr["PrintLable"]);
-					}
-					if (dr["RunMode"] != null && dr["RunMode"] != DBNull.Value)
-					{
-						item.RunMode = Convert.ToInt32(dr["RunMode"]);
 					}
 					if (dr["FK_ShipperId"] != null && dr["FK_ShipperId"] != DBNull.Value)
 					{
@@ -571,18 +551,6 @@ namespace LeMaiLogic
 					{
 						item.FullAddress = Convert.ToString(dr["FullAddress"]);
 					}
-					if (dr["ProviderName"] != null && dr["ProviderName"] != DBNull.Value)
-					{
-						item.ProviderName = Convert.ToString(dr["ProviderName"]);
-					}
-					if (dr["ProviderTypeCode"] != null && dr["ProviderTypeCode"] != DBNull.Value)
-					{
-						item.ProviderTypeCode = Convert.ToString(dr["ProviderTypeCode"]);
-					}
-					if (dr["GroupProvider"] != null && dr["GroupProvider"] != DBNull.Value)
-					{
-						item.GroupProvider = Convert.ToString(dr["GroupProvider"]);
-					}
 					if (dr["CustomerCode"] != null && dr["CustomerCode"] != DBNull.Value)
 					{
 						item.CustomerCode = Convert.ToString(dr["CustomerCode"]);
@@ -606,14 +574,6 @@ namespace LeMaiLogic
 					if (dr["StatusTextColor"] != null && dr["StatusTextColor"] != DBNull.Value)
 					{
 						item.StatusTextColor = Convert.ToString(dr["StatusTextColor"]);
-					}
-					if (dr["PrintLable"] != null && dr["PrintLable"] != DBNull.Value)
-					{
-						item.PrintLable = Convert.ToString(dr["PrintLable"]);
-					}
-					if (dr["RunMode"] != null && dr["RunMode"] != DBNull.Value)
-					{
-						item.RunMode = Convert.ToInt32(dr["RunMode"]);
 					}
 					if (dr["FK_ShipperId"] != null && dr["FK_ShipperId"] != DBNull.Value)
 					{
@@ -884,18 +844,6 @@ namespace LeMaiLogic
 						{
 							item.FullAddress = Convert.ToString(dr["FullAddress"]);
 						}
-						if (dr["ProviderName"] != null && dr["ProviderName"] != DBNull.Value)
-						{
-							item.ProviderName = Convert.ToString(dr["ProviderName"]);
-						}
-						if (dr["ProviderTypeCode"] != null && dr["ProviderTypeCode"] != DBNull.Value)
-						{
-							item.ProviderTypeCode = Convert.ToString(dr["ProviderTypeCode"]);
-						}
-						if (dr["GroupProvider"] != null && dr["GroupProvider"] != DBNull.Value)
-						{
-							item.GroupProvider = Convert.ToString(dr["GroupProvider"]);
-						}
 						if (dr["CustomerCode"] != null && dr["CustomerCode"] != DBNull.Value)
 						{
 							item.CustomerCode = Convert.ToString(dr["CustomerCode"]);
@@ -919,14 +867,6 @@ namespace LeMaiLogic
 						if (dr["StatusTextColor"] != null && dr["StatusTextColor"] != DBNull.Value)
 						{
 							item.StatusTextColor = Convert.ToString(dr["StatusTextColor"]);
-						}
-						if (dr["PrintLable"] != null && dr["PrintLable"] != DBNull.Value)
-						{
-							item.PrintLable = Convert.ToString(dr["PrintLable"]);
-						}
-						if (dr["RunMode"] != null && dr["RunMode"] != DBNull.Value)
-						{
-							item.RunMode = Convert.ToInt32(dr["RunMode"]);
 						}
 						if (dr["FK_ShipperId"] != null && dr["FK_ShipperId"] != DBNull.Value)
 						{

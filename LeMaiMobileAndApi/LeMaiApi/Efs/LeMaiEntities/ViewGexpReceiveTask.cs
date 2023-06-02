@@ -19,6 +19,10 @@ public partial class ViewGexpReceiveTask
 
     public string Note { get; set; }
 
+    public int GoodsNumber { get; set; }
+
+    public bool HaveReturn { get; set; }
+
     public string ShipperName { get; set; }
 
     public string ShipperPhone { get; set; }
@@ -36,6 +40,10 @@ public partial class ViewGexpReceiveTask
     public string Nvgiao { get; set; }
 
     public string StatusReceiveName { get; set; }
+
+    public string StatusTextColor { get; set; }
+
+    public string StatusBackgroundColor { get; set; }
 
     public string CustomerCode { get; set; }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LeMai.Efs;
 
-public partial class ViewGexpBillDelivery
+public partial class GexpBill
 {
     public string BillCode { get; set; }
 
@@ -69,9 +69,9 @@ public partial class ViewGexpBillDelivery
 
     public string Bt3type { get; set; }
 
-    public string Bt3code { get; set; }
-
     public string Bt3codeSub { get; set; }
+
+    public string Bt3code { get; set; }
 
     public string Bt3status { get; set; }
 
@@ -111,21 +111,23 @@ public partial class ViewGexpBillDelivery
 
     public string FkShipType { get; set; }
 
-    public string FullAddress { get; set; }
+    public bool? Pickup { get; set; }
 
-    public string CustomerCode { get; set; }
+    public string AddressPickup { get; set; }
 
-    public string PaymentTypeName { get; set; }
+    public string ProvincePickup { get; set; }
 
-    public string ShipNoteType { get; set; }
+    public string DistricPickup { get; set; }
 
-    public string StatusName { get; set; }
+    public string WardPickup { get; set; }
 
-    public string StatusBackgroundColor { get; set; }
+    public string ShopIdPickup { get; set; }
 
-    public string StatusTextColor { get; set; }
+    public string SiteCode { get; set; }
 
-    public string FkShipperId { get; set; }
+    public bool? IsReceiveBill { get; set; }
 
-    public DateTime DeliveryDate { get; set; }
+    public string PrintData { get; set; }
+
+    public int? ShipperStatus { get; set; }
 }

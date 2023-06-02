@@ -993,6 +993,12 @@ namespace LeMaiLogic
 			get { return _GExpshipper; }
 		}
 
+		private IGExpshipperbillstatus _GExpshipperbillstatus;
+		public IGExpshipperbillstatus GExpshipperbillstatus
+		{
+			get { return _GExpshipperbillstatus; }
+		}
+
 		private IGExpshippercash _GExpshippercash;
 		public IGExpshippercash GExpshippercash
 		{
@@ -1003,6 +1009,12 @@ namespace LeMaiLogic
 		public IGExpshippercashdetail GExpshippercashdetail
 		{
 			get { return _GExpshippercashdetail; }
+		}
+
+		private IGExpshipperdevivery _GExpshipperdevivery;
+		public IGExpshipperdevivery GExpshipperdevivery
+		{
+			get { return _GExpshipperdevivery; }
 		}
 
 		private IGExpward _GExpward;
@@ -2716,8 +2728,10 @@ namespace LeMaiLogic
 			this._GExpsender = new MGExpsender(this);
 			this._GExpshipnotetype = new MGExpshipnotetype(this);
 			this._GExpshipper = new MGExpshipper(this);
+			this._GExpshipperbillstatus = new MGExpshipperbillstatus(this);
 			this._GExpshippercash = new MGExpshippercash(this);
 			this._GExpshippercashdetail = new MGExpshippercashdetail(this);
+			this._GExpshipperdevivery = new MGExpshipperdevivery(this);
 			this._GExpward = new MGExpward(this);
 			this._GExpwardghsv = new MGExpwardghsv(this);
 			this._GExpwardjnt = new MGExpwardjnt(this);

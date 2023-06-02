@@ -134,7 +134,6 @@
     <Compile Remove="Efs\LeMaiEntities\ExpWithdrawRequest.cs" />
     <Compile Remove="Efs\LeMaiEntities\ExpWithdrawRequestStatus.cs" />
     <Compile Remove="Efs\LeMaiEntities\ExpWithdrawRequestType.cs" />
-    <Compile Remove="Efs\LeMaiEntities\GexpBill.cs" />
     <Compile Remove="Efs\LeMaiEntities\GexpCode.cs" />
     <Compile Remove="Efs\LeMaiEntities\GexpPaymentType.cs" />
     <Compile Remove="Efs\LeMaiEntities\GexpProvider.cs" />

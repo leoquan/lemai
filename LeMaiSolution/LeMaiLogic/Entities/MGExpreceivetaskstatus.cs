@@ -72,6 +72,14 @@ namespace LeMaiLogic
 					{
 						item.StatusReceiveName = Convert.ToString(dr["StatusReceiveName"]);
 					}
+					if (dr["StatusBackgroundColor"] != null && dr["StatusBackgroundColor"] != DBNull.Value)
+					{
+						item.StatusBackgroundColor = Convert.ToString(dr["StatusBackgroundColor"]);
+					}
+					if (dr["StatusTextColor"] != null && dr["StatusTextColor"] != DBNull.Value)
+					{
+						item.StatusTextColor = Convert.ToString(dr["StatusTextColor"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -102,6 +110,14 @@ namespace LeMaiLogic
 					if (dr["StatusReceiveName"] != null && dr["StatusReceiveName"] != DBNull.Value)
 					{
 						item.StatusReceiveName = Convert.ToString(dr["StatusReceiveName"]);
+					}
+					if (dr["StatusBackgroundColor"] != null && dr["StatusBackgroundColor"] != DBNull.Value)
+					{
+						item.StatusBackgroundColor = Convert.ToString(dr["StatusBackgroundColor"]);
+					}
+					if (dr["StatusTextColor"] != null && dr["StatusTextColor"] != DBNull.Value)
+					{
+						item.StatusTextColor = Convert.ToString(dr["StatusTextColor"]);
 					}
 					items.Add(item);
 				}
@@ -157,6 +173,14 @@ namespace LeMaiLogic
 						{
 							item.StatusReceiveName = Convert.ToString(dr["StatusReceiveName"]);
 						}
+						if (dr["StatusBackgroundColor"] != null && dr["StatusBackgroundColor"] != DBNull.Value)
+						{
+							item.StatusBackgroundColor = Convert.ToString(dr["StatusBackgroundColor"]);
+						}
+						if (dr["StatusTextColor"] != null && dr["StatusTextColor"] != DBNull.Value)
+						{
+							item.StatusTextColor = Convert.ToString(dr["StatusTextColor"]);
+						}
 
 						break;
 					}
@@ -193,6 +217,14 @@ namespace LeMaiLogic
 						if (dr["StatusReceiveName"] != null && dr["StatusReceiveName"] != DBNull.Value)
 						{
 							item.StatusReceiveName = Convert.ToString(dr["StatusReceiveName"]);
+						}
+						if (dr["StatusBackgroundColor"] != null && dr["StatusBackgroundColor"] != DBNull.Value)
+						{
+							item.StatusBackgroundColor = Convert.ToString(dr["StatusBackgroundColor"]);
+						}
+						if (dr["StatusTextColor"] != null && dr["StatusTextColor"] != DBNull.Value)
+						{
+							item.StatusTextColor = Convert.ToString(dr["StatusTextColor"]);
 						}
 
 						break;
@@ -236,9 +268,11 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpReceiveTaskStatus](Id, StatusReceiveName) VALUES(@Id, @StatusReceiveName)", 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpReceiveTaskStatus](Id, StatusReceiveName, StatusBackgroundColor, StatusTextColor) VALUES(@Id, @StatusReceiveName, @StatusBackgroundColor, @StatusTextColor)", 
 					"@Id",  _GExpReceiveTaskStatus.Id, 
-					"@StatusReceiveName",  _GExpReceiveTaskStatus.StatusReceiveName);
+					"@StatusReceiveName",  _GExpReceiveTaskStatus.StatusReceiveName, 
+					"@StatusBackgroundColor",  _GExpReceiveTaskStatus.StatusBackgroundColor, 
+					"@StatusTextColor",  _GExpReceiveTaskStatus.StatusTextColor);
 				return true;
 			}
 			catch
@@ -266,9 +300,11 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpReceiveTaskStatus] SET Id=@Id, StatusReceiveName=@StatusReceiveName WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpReceiveTaskStatus] SET Id=@Id, StatusReceiveName=@StatusReceiveName, StatusBackgroundColor=@StatusBackgroundColor, StatusTextColor=@StatusTextColor WHERE Id=@Id", 
 					"@Id",  _GExpReceiveTaskStatus.Id, 
 					"@StatusReceiveName",  _GExpReceiveTaskStatus.StatusReceiveName, 
+					"@StatusBackgroundColor",  _GExpReceiveTaskStatus.StatusBackgroundColor, 
+					"@StatusTextColor",  _GExpReceiveTaskStatus.StatusTextColor, 
 					"@Id", Id);
 			}
 			catch
@@ -284,8 +320,10 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpReceiveTaskStatus] SET StatusReceiveName=@StatusReceiveName WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpReceiveTaskStatus] SET StatusReceiveName=@StatusReceiveName, StatusBackgroundColor=@StatusBackgroundColor, StatusTextColor=@StatusTextColor WHERE Id=@Id", 
 					"@StatusReceiveName",  _GExpReceiveTaskStatus.StatusReceiveName, 
+					"@StatusBackgroundColor",  _GExpReceiveTaskStatus.StatusBackgroundColor, 
+					"@StatusTextColor",  _GExpReceiveTaskStatus.StatusTextColor, 
 					"@Id", _GExpReceiveTaskStatus.Id);
 			}
 			catch
@@ -312,9 +350,11 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpReceiveTaskStatus] SET Id=@Id, StatusReceiveName=@StatusReceiveName "+ condition, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpReceiveTaskStatus] SET Id=@Id, StatusReceiveName=@StatusReceiveName, StatusBackgroundColor=@StatusBackgroundColor, StatusTextColor=@StatusTextColor "+ condition, 
 					"@Id",  _GExpReceiveTaskStatus.Id, 
-					"@StatusReceiveName",  _GExpReceiveTaskStatus.StatusReceiveName);
+					"@StatusReceiveName",  _GExpReceiveTaskStatus.StatusReceiveName, 
+					"@StatusBackgroundColor",  _GExpReceiveTaskStatus.StatusBackgroundColor, 
+					"@StatusTextColor",  _GExpReceiveTaskStatus.StatusTextColor);
 			}
 			catch
 			{

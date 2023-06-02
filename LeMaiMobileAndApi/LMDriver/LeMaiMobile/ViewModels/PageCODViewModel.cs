@@ -74,7 +74,7 @@ public partial class PageCODViewModel : GhViewModelBase<PageCOD>
             if (!_isLoadListStatusDaThanhToan)
             {
                 // Call api lay thong tin can ho
-                var request = new RestRequest("/VanDon/ListMaster", Method.Get);
+                var request = new RestRequest("/Shipper/ListMasterVanDon", Method.Get);
 
                 var response = await ExecuteApiAsync<VanDonListMasterOutput>(request);
                 if (!response.isOk || response.data == null)
@@ -95,9 +95,8 @@ public partial class PageCODViewModel : GhViewModelBase<PageCOD>
 
             {
                 // Call api lay thong tin can ho
-                var request = new RestRequest("/VanDon/DanhSach", Method.Get);
-                request.AddQueryParameter("isSigned", true);
-                request.AddQueryParameter("isPayCustomer", true);
+                var request = new RestRequest("/Shipper/DanhSachVanDon", Method.Get);
+                request.AddQueryParameter("isCash", true);
 
                 var dateType = _listDateTypeDaThanhToan[_selectedFilterDateTypeIndexDaThanhToan];
                 request.AddQueryParameter("registerDateType", dateType);
@@ -426,7 +425,7 @@ public partial class PageCODViewModel : GhViewModelBase<PageCOD>
             if (!_isLoadListStatusChuaThanhToan)
             {
                 // Call api lay thong tin can ho
-                var request = new RestRequest("/VanDon/ListMaster", Method.Get);
+                var request = new RestRequest("/Shipper/ListMasterVanDon", Method.Get);
 
                 var response = await ExecuteApiAsync<VanDonListMasterOutput>(request);
                 if (!response.isOk || response.data == null)
@@ -447,9 +446,8 @@ public partial class PageCODViewModel : GhViewModelBase<PageCOD>
 
             {
                 // Call api lay thong tin can ho
-                var request = new RestRequest("/VanDon/DanhSach", Method.Get);
-                request.AddQueryParameter("isSigned", true);
-                request.AddQueryParameter("isPayCustomer", false);
+                var request = new RestRequest("/Shipper/DanhSachVanDon", Method.Get);
+                request.AddQueryParameter("isCash", false);
 
                 var dateType = _listDateTypeChuaThanhToan[_selectedFilterDateTypeIndexChuaThanhToan];
                 request.AddQueryParameter("registerDateType", dateType);

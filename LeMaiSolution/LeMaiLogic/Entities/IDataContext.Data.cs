@@ -336,9 +336,13 @@ namespace LeMaiLogic
 
 		IGExpshipper GExpshipper { get; }
 
+		IGExpshipperbillstatus GExpshipperbillstatus { get; }
+
 		IGExpshippercash GExpshippercash { get; }
 
 		IGExpshippercashdetail GExpshippercashdetail { get; }
+
+		IGExpshipperdevivery GExpshipperdevivery { get; }
 
 		IGExpward GExpward { get; }
 

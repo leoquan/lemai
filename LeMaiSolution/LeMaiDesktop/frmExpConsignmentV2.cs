@@ -1300,15 +1300,33 @@ namespace LeMaiDesktop
                 }
                 else
                 {
+                    // Tìm Số điện thoại trong Sender
+                    var khachLe = _logic.GetThongTinKhachHangLe(txtSoDienThoaiNguoiGui.Text.Trim(), PBean.USER.CardId);
+                    if (khachLe != null)
+                    {
+                        txtNguoiGui.Text = khachLe.SendMan;
+                        txtSoNhaNguoiGui.Text = khachLe.SendAddress;
+                        txtSoDienThoaiNguoiNhan.Focus();
+                    }
+                    else
+                    {
+                        txtNguoiGui.Focus();
+                        txtSoNhaNguoiGui.Text = PBean.USER.Address;
+                    }
                     if (Gitem != null)
                     {
                         Gitem.FK_Customer = string.Empty;
                     }
-                    txtNguoiGui.Focus();
-                    txtSoNhaNguoiGui.Text = PBean.USER.Address;
                 }
                 // Cập nhật câu ghi chú thần thánh
-                txtYeuCauKhac.Text = "Đơn hàng có vấn đề vui lòng liên hệ số điện thoại " + txtSoDienThoaiNguoiGui.Text + " để được xử lý. Xin cám ơn!";
+                if (string.IsNullOrEmpty(PBean.LOCAL_OPTIONS.CustomerCare))
+                {
+                    txtYeuCauKhac.Text = "Đơn hàng có vấn đề vui lòng liên hệ số điện thoại " + txtSoDienThoaiNguoiGui.Text + " để được xử lý. Xin cám ơn!";
+                }
+                else
+                {
+                    txtYeuCauKhac.Text = PBean.LOCAL_OPTIONS.CustomerCare.Replace("{0}", txtSoDienThoaiNguoiGui.Text);
+                }
 
             }
             else

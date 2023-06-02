@@ -154,6 +154,7 @@ namespace LeMaiApi.Controllers
 
         #region Tổng Hợp Thống Kê Page
         [HttpGet]
+        [Authorize]
         public async Task<ApiResult<VanDonThongKeOutput>> ThongKeVanDon(
          string registerDateType
         , DateTime? registerDateFrom
@@ -211,15 +212,18 @@ namespace LeMaiApi.Controllers
                 query = query.Where(h => h.DeliveryDate < compareDate);
             }
 
-
-            var list = await query.Select(h => new
-            {
-                h.StatusName,
-                h.Cod,
-                h.IsPayCustomer,
-                h.FeeWeight
-            })
-                .ToListAsync();
+            var list = await (from b in query
+                              join d in _dbCtx.GexpShipperDeviveries on b.BillCode equals d.BillCode into left_join
+                              from z in left_join.DefaultIfEmpty()
+                              select new
+                              {
+                                  StatusName = b.StatusName,
+                                  Cod = b.Cod,
+                                  TotalCod = b.FkPaymentType == "GTT" ? b.Cod : b.Cod + b.Freight,
+                                  IsDelivery = z == null ? false : true,
+                                  IsCash = z == null ? false : z.IsCash,
+                                  FeeWeight = b.FeeWeight
+                              }).ToListAsync();
 
             var group = list.GroupBy(h => h.StatusName).ToList();
             var listStatusName = new List<string>(group.Count);
@@ -236,11 +240,11 @@ namespace LeMaiApi.Controllers
                 TongDon = list.Count,
                 ListStatusName = listStatusName,
                 ListCountStatusName = listCountStatusName,
-                TongTien = list.Sum(h => h.Cod),
-                DaThanhToan = list.Where(h => h.IsPayCustomer).Sum(h => h.Cod),
+                DaThanhToan = list.Where(h => h.IsDelivery == true && h.IsCash == true).Sum(h => h.TotalCod),
+                ChuaThanhToan = list.Where(h => h.IsDelivery == true && h.IsCash == false).Sum(h => h.TotalCod),
                 TongCanNang = list.Sum(h => h.FeeWeight)
             };
-            result.ChuaThanhToan = result.TongTien - result.DaThanhToan;
+            result.TongTien = result.DaThanhToan + result.ChuaThanhToan;
 
             return CreateOk(result);
         }
@@ -256,7 +260,7 @@ namespace LeMaiApi.Controllers
         {
 
 
-            var listStatusName = await _dbCtx.GexpBillStatuses
+            var listStatusName = await _dbCtx.GexpShipperBillStatuses
                 .Where(h => h.IsShowMobile)
                 .Select(h => new
                 {
@@ -277,23 +281,15 @@ namespace LeMaiApi.Controllers
         /// <summary>
         /// Danh sách đơn hàng giao
         /// </summary>
-        /// <param name="findItem"></param>
-        /// <param name="registerDateType"></param>
-        /// <param name="registerDateFrom"></param>
-        /// <param name="registerDateTo"></param>
-        /// <param name="listStatusName"></param>
-        /// <param name="isSigned"></param>
-        /// <param name="isPayCustomer"></param>
-        /// <returns></returns>
         [HttpGet]
+        [Authorize]
         public async Task<ApiResult<List<VanDonDanhSachOutput>>> DanhSachVanDon(
             string findItem
             , string registerDateType
             , DateTime? registerDateFrom
             , DateTime? registerDateTo
             , [FromQuery] List<string> listStatusName
-            , bool? isSigned
-            , bool? isPayCustomer
+            , bool? isCash
             )
         {
             var fkShipperId = GetLoginUserId();
@@ -301,13 +297,14 @@ namespace LeMaiApi.Controllers
             var query = _dbCtx.ViewGexpBillDeliveries.AsNoTracking()
                 .Where(h => h.FkShipperId == fkShipperId);
 
-            if (isSigned.HasValue)
+            if (isCash.HasValue)
             {
-                query = query.Where(h => h.IsSigned == isSigned.Value);
-            }
-            if (isPayCustomer.HasValue)
-            {
-                query = query.Where(h => h.IsPayCustomer == isPayCustomer.Value);
+                var deliList = (from d in _dbCtx.GexpShipperDeviveries
+                                join b in query on d.BillCode equals b.BillCode
+                                where d.IsCash == isCash.GetValueOrDefault()
+                                select b.BillCode).ToList();
+
+                query = query.Where(h => deliList.Contains(h.BillCode));
             }
 
             if (listStatusName != null)
@@ -398,13 +395,14 @@ namespace LeMaiApi.Controllers
                 StatusBackgroundColor = h.StatusBackgroundColor,
                 StatusTextColor = h.StatusTextColor,
                 FeeWeight = h.BillWeight / 1000,
-                Cod = h.FkPaymentType == "GTT" ? h.Cod : h.Cod + h.Freight,
+                Cod = h.Cod,
+                TotalCod = h.FkPaymentType == "GTT" ? h.Cod : h.Cod + h.Freight,
                 GoodsNumber = h.GoodsNumber,
                 Address = h.FullAddress,
                 Payment = h.FkPaymentType,
                 Freight = h.Freight,
                 SendMan = h.SendMan,
-                SendManPhone= h.SendManPhone
+                SendManPhone = h.SendManPhone
 
             })
                 .OrderByDescending(h => h.RegisterDate)
@@ -703,6 +701,29 @@ namespace LeMaiApi.Controllers
 
         #region Danh Sách Pickup
         [HttpGet]
+        public async Task<ApiResult<VanDonListMasterOutput>> ListMasterPickup()
+        {
+
+
+            var listStatusName = await _dbCtx.GexpReceiveTaskStatuses
+                .Select(h => new
+                {
+                    h.StatusReceiveName,
+                    h.StatusBackgroundColor,
+                    h.StatusTextColor
+                })
+                //.OrderBy(h => h)
+                .ToListAsync();
+
+            return CreateOk(new VanDonListMasterOutput
+            {
+                ListStatusName = listStatusName.Select(h => h.StatusReceiveName).ToList(),
+                ListStatusBgColor = listStatusName.Select(h => h.StatusBackgroundColor).ToList(),
+                ListStatusTextColor = listStatusName.Select(h => h.StatusTextColor).ToList(),
+            });
+        }
+        [HttpGet]
+        [Authorize]
         public async Task<ApiResult<List<DonDatDanhSachOutput>>> DanhSachPickup(
         string id
         , string findItem
@@ -713,9 +734,9 @@ namespace LeMaiApi.Controllers
         )
         {
             var fkShipperId = GetLoginUserId();
-
+            var taiKhoan = await _dbCtx.GexpShippers.FirstOrDefaultAsync(h => h.Id == fkShipperId);
             var query = _dbCtx.ViewGexpReceiveTasks.AsNoTracking()
-                .Where(h => h.FkShipperId == fkShipperId);
+                .Where(h => h.FkShipperId == fkShipperId || (h.FkPost == taiKhoan.FkPost && h.FkShipperId == "0000" && (string.IsNullOrEmpty(h.FkPickupShipper)==true || h.FkPickupShipper == fkShipperId)));
 
             if (!string.IsNullOrWhiteSpace(id))
             {
@@ -740,10 +761,10 @@ namespace LeMaiApi.Controllers
                 }
             }
 
-            if (registerDateType == "Trước 7 ngày")
+            if (registerDateType == "Trong ngày")
             {
-                registerDateTo = GetDateNow().Date;
-                registerDateFrom = registerDateTo.Value.AddDays(-7);
+                registerDateTo = GetDateNow().Date.AddDays(1);
+                registerDateFrom = GetDateNow().Date;
             }
             else if (registerDateType == "Trước 30 ngày")
             {
@@ -799,12 +820,17 @@ namespace LeMaiApi.Controllers
             var list = await query.Select(h => new DonDatDanhSachOutput
             {
                 Id = h.Id,
-                OrderCode = h.CustomerCode,
+                OrderCode = h.HaveReturn == true ? " - Có hàng hoàn" : "",
                 AcceptName = h.CustomerName,
                 AcceptPhone = h.CustomerPhone,
                 AcceptAddress = h.DiaChi,
                 CreateDate = h.CreateDate,
-                StatusName = h.StatusReceiveName
+                StatusName = h.StatusReceiveName,
+                StatusBackgroundColor = h.StatusBackgroundColor,
+                StatusTextColor = h.StatusTextColor,
+                Cod = h.GoodsNumber,
+                GoodsName = h.Note
+
             })
                 .OrderByDescending(h => h.CreateDate)
                 .ToListAsync();
@@ -813,7 +839,8 @@ namespace LeMaiApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ApiResult<GexpOrderDto>> CapNhatPickup(DonDatEditInput input)
+        [Authorize]
+        public async Task<ApiResult<DonDatDanhSachOutput>> CapNhatPickup(PickupInput input)
         {
             var dbItem = await _dbCtx.GexpReceiveTasks.FirstOrDefaultAsync(h => h.Id == input.Id);
             if (dbItem == null)
@@ -823,11 +850,131 @@ namespace LeMaiApi.Controllers
             var fkShipperId = GetLoginUserId();
             dbItem.PickupDate = DateTime.Now;
             dbItem.FkPickupShipper = fkShipperId;
-            dbItem.ReceiveStatus = input.StatusOrder;
+            dbItem.ReceiveStatus = input.Status;
+            await _dbCtx.SaveChangesAsync();
+            var h = _dbCtx.ViewGexpReceiveTasks.FirstOrDefault(u => u.Id == input.Id);
+            var result = new DonDatDanhSachOutput
+            {
+                Id = h.Id,
+                OrderCode = h.HaveReturn == true ? " - Có hàng hoàn" : "",
+                AcceptName = h.CustomerName,
+                AcceptPhone = h.CustomerPhone,
+                AcceptAddress = h.DiaChi,
+                CreateDate = h.CreateDate,
+                StatusName = h.StatusReceiveName,
+                StatusBackgroundColor = h.StatusBackgroundColor,
+                StatusTextColor = h.StatusTextColor,
+                Cod = h.GoodsNumber,
+                GoodsName = h.Note
+            };
+            return CreateOk(result);
+        }
+        #endregion
+
+        #region KyNhan-KVD
+        [Authorize]
+        [HttpPost]
+        public async Task<ApiResult<bool>> KyNhan(BillCodeInput model)
+        {
+            var userId = GetLoginUserId();
+
+            var taiKhoan = await _dbCtx.GexpShippers.FirstOrDefaultAsync(h => h.Id == userId);
+            GexpBill bill = _dbCtx.GexpBills.FirstOrDefault(u => u.BillCode == model.BillCode);
+            if (taiKhoan == null || bill == null)
+            {
+                throw new LogicException("Tài khoản/Mã đơn hàng không tồn tại.");
+            }
+            GexpShipperDevivery delivery = new GexpShipperDevivery();
+            delivery.Id = Guid.NewGuid().ToString();
+            delivery.SignDate = DateTime.Now;
+            delivery.BillCode = model.BillCode;
+            delivery.ShipperId = userId;
+            delivery.IsCash = false;
+            delivery.TotalCod = bill.Cod;
+            if (bill.FkPaymentType == "NTT")
+            {
+                delivery.TotalCod = delivery.TotalCod + bill.Freight;
+            }
+            await _dbCtx.GexpShipperDeviveries.AddAsync(delivery);
+            // Cập nhật đơn hàng
+            bill.ShipperStatus = 1;// Giao hàng thành công
+
             await _dbCtx.SaveChangesAsync();
 
-            var result = dbItem.Adapt<GexpOrderDto>();
-            return CreateOk(result);
+            return CreateOk(true);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<ApiResult<bool>> AddKienVanDe(BillCodeInput model)
+        {
+            var userId = GetLoginUserId();
+
+            var taiKhoan = await _dbCtx.GexpShippers.FirstOrDefaultAsync(h => h.Id == userId);
+            GexpBill bill = _dbCtx.GexpBills.FirstOrDefault(u => u.BillCode == model.BillCode);
+            if (taiKhoan == null || bill == null)
+            {
+                throw new LogicException("Tài khoản/Mã đơn hàng không tồn tại.");
+            }
+            // Tạo kiện vấn đề
+            GexpProblem prob = new GexpProblem();
+            prob.Id = Guid.NewGuid().ToString();
+            prob.BillCode = model.BillCode;
+            prob.RegisterDate = DateTime.Now;
+            prob.UserId = userId;
+            prob.FullName = taiKhoan.ShipperName;
+            prob.Note = model.Content;
+            await _dbCtx.GexpProblems.AddAsync(prob);
+            // Tạo chi tiết hành trình
+            GexpScan scan = new GexpScan();
+            scan.Id = Guid.NewGuid().ToString();
+            scan.BillCode = model.BillCode;
+            scan.CreateDate = DateTime.Now;
+            scan.TypeScan = "PROB";
+            scan.Post = taiKhoan.FkPost;
+            scan.KeyDate = scan.CreateDate.ToString();
+            scan.UserCreate = taiKhoan.Id;
+            scan.NameCreate = taiKhoan.ShipperName;
+            scan.IsRead = false;
+            scan.ProblemType = 1;
+            scan.Note = "[" + taiKhoan.ShipperName + " - " + taiKhoan.ShipperPhone + "] lập KVĐ: " + model.Content;
+            await _dbCtx.GexpScans.AddAsync(scan);
+            if (bill.ShipperStatus != 1)// Nếu đã giao thành công thì không được thay đổi status
+            {
+                bill.ShipperStatus = 2;
+            }
+            await _dbCtx.SaveChangesAsync();
+            return CreateOk(true);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<ApiResult<bool>> MakePhoneCall(BillCodeInput model)
+        {
+            var userId = GetLoginUserId();
+
+            var taiKhoan = await _dbCtx.GexpShippers.FirstOrDefaultAsync(h => h.Id == userId);
+            if (taiKhoan == null)
+            {
+                throw new LogicException("Tài khoản không tồn tại.");
+            }
+            GexpScan scan = _dbCtx.GexpScans.Where(u => u.TypeScan == "CALL" && u.CreateDate >= DateTime.Now.AddSeconds(-60)).FirstOrDefault();
+            if (scan == null)
+            {
+                scan = new GexpScan();
+                scan.Id = Guid.NewGuid().ToString();
+                scan.BillCode = model.BillCode;
+                scan.CreateDate = DateTime.Now;
+                scan.TypeScan = "CALL";
+                scan.Post = taiKhoan.FkPost;
+                scan.KeyDate = scan.CreateDate.ToString();
+                scan.UserCreate = taiKhoan.Id;
+                scan.NameCreate = taiKhoan.ShipperName;
+                scan.IsRead = false;
+                scan.ProblemType = 1;
+                scan.Note = "[" + taiKhoan.ShipperName + " - " + taiKhoan.ShipperPhone + "] thực hiện gọi điện thoại đến số điện thoại " + model.Content;
+                await _dbCtx.GexpScans.AddAsync(scan);
+                await _dbCtx.SaveChangesAsync();
+            }
+            return CreateOk(true);
         }
         #endregion
 

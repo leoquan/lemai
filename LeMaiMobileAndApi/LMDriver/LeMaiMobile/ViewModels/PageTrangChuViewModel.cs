@@ -282,7 +282,7 @@ public partial class PageTrangChuViewModel : GhViewModelBase<PageTrangChu>
             if (!_isLoadListStatus)
             {
                 // Call api lay thong tin can ho
-                var request = new RestRequest("/VanDon/ListMaster", Method.Get);
+                var request = new RestRequest("/Shipper/ListMasterVanDon", Method.Get);
 
                 var response = await ExecuteApiAsync<VanDonListMasterOutput>(request);
                 if (!response.isOk || response.data == null)
@@ -305,7 +305,7 @@ public partial class PageTrangChuViewModel : GhViewModelBase<PageTrangChu>
 
             {
                 // Call api lay thong tin can ho
-                var request = new RestRequest("/VanDon/ThongKe", Method.Get);
+                var request = new RestRequest("/Shipper/ThongKeVanDon", Method.Get);
 
                 var dateType = _listDateType[_selectedFilterDateTypeIndex];
                 request.AddQueryParameter("registerDateType", dateType);

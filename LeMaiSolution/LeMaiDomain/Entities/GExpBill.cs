@@ -69,6 +69,7 @@ namespace LeMaiDomain
 		public System.String SiteCode { get; set; }
 		public System.Boolean? IsReceiveBill { get; set; }
 		public System.String PrintData { get; set; }
+		public System.Int32? ShipperStatus { get; set; }
 		public GExpBill(){}
 	}
 }

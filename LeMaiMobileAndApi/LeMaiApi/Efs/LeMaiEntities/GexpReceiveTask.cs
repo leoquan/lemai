@@ -17,6 +17,10 @@ public partial class GexpReceiveTask
 
     public string FkAccount { get; set; }
 
+    public int GoodsNumber { get; set; }
+
+    public bool HaveReturn { get; set; }
+
     public string Note { get; set; }
 
     public int ReceiveStatus { get; set; }

@@ -13,6 +13,8 @@ namespace LeMaiDomain
 		public System.DateTime CreateDate { get; set; }
 		public System.String FK_Post { get; set; }
 		public System.String FK_Account { get; set; }
+		public System.Int32 GoodsNumber { get; set; }
+		public System.Boolean HaveReturn { get; set; }
 		public System.String Note { get; set; }
 		public System.Int32 ReceiveStatus { get; set; }
 		public System.String FK_PickupShipper { get; set; }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -67,13 +68,14 @@
             this.col_SubStepWeightInt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_SubNextFeeInt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataQuanHuyen = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.col_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Select = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTinh = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFeeName = new System.Windows.Forms.TextBox();
-            this.col_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Select = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
+            this.styleManager = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelcomtrol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridChild)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataQuanHuyen)).BeginInit();
@@ -300,8 +302,8 @@
             this.gridChild.AllowUserToAddRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(233)))), ((int)(((byte)(248)))));
             this.gridChild.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridChild.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.gridChild.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridChild.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -418,8 +420,8 @@
             this.dataQuanHuyen.AllowUserToAddRows = false;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(233)))), ((int)(((byte)(248)))));
             this.dataQuanHuyen.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.dataQuanHuyen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dataQuanHuyen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataQuanHuyen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -468,6 +470,41 @@
             this.dataQuanHuyen.Size = new System.Drawing.Size(245, 314);
             this.dataQuanHuyen.TabIndex = 89;
             // 
+            // col_Id
+            // 
+            this.col_Id.DataPropertyName = "DistrictID";
+            this.col_Id.HeaderText = "Id";
+            this.col_Id.Name = "col_Id";
+            this.col_Id.ReadOnly = true;
+            this.col_Id.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "DistrictName";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N0";
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Quận/Huyện";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // col_Select
+            // 
+            this.col_Select.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_Select.Checked = true;
+            this.col_Select.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.col_Select.CheckValue = "N";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.Format = "N0";
+            this.col_Select.DefaultCellStyle = dataGridViewCellStyle13;
+            this.col_Select.HeaderText = "Chọn";
+            this.col_Select.Name = "col_Select";
+            this.col_Select.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_Select.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_Select.ToolTipText = "Chọn";
+            this.col_Select.Width = 50;
+            // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -513,40 +550,10 @@
             this.txtFeeName.Size = new System.Drawing.Size(556, 22);
             this.txtFeeName.TabIndex = 93;
             // 
-            // col_Id
+            // styleManager
             // 
-            this.col_Id.DataPropertyName = "DistrictID";
-            this.col_Id.HeaderText = "Id";
-            this.col_Id.Name = "col_Id";
-            this.col_Id.ReadOnly = true;
-            this.col_Id.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "DistrictName";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "N0";
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle12;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Quận/Huyện";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // col_Select
-            // 
-            this.col_Select.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_Select.Checked = true;
-            this.col_Select.CheckState = System.Windows.Forms.CheckState.Indeterminate;
-            this.col_Select.CheckValue = "N";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.Format = "N0";
-            this.col_Select.DefaultCellStyle = dataGridViewCellStyle13;
-            this.col_Select.HeaderText = "Chọn";
-            this.col_Select.Name = "col_Select";
-            this.col_Select.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_Select.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.col_Select.ToolTipText = "Chọn";
-            this.col_Select.Width = 50;
+            this.styleManager.ManagerStyle = DevComponents.DotNetBar.eStyle.VisualStudio2010Blue;
+            this.styleManager.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
             // 
             // frmQuanLyBangGiaKV
             // 
@@ -619,5 +626,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn col_Select;
+        private DevComponents.DotNetBar.StyleManager styleManager;
     }
 }
