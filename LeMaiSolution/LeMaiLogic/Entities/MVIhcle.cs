@@ -64,9 +64,9 @@ namespace LeMaiLogic
 				foreach (DataRow dr in ds.Rows)
 				{
 					item = new Vihcle();
-					if (dr["Id"] != null && dr["Id"] != DBNull.Value)
+					if (dr["BienSo"] != null && dr["BienSo"] != DBNull.Value)
 					{
-						item.Id = Convert.ToString(dr["Id"]);
+						item.BienSo = Convert.ToString(dr["BienSo"]);
 					}
 					if (dr["TenXe"] != null && dr["TenXe"] != DBNull.Value)
 					{
@@ -79,34 +79,6 @@ namespace LeMaiLogic
 					if (dr["Note"] != null && dr["Note"] != DBNull.Value)
 					{
 						item.Note = Convert.ToString(dr["Note"]);
-					}
-					if (dr["SoKMThayNhot"] != null && dr["SoKMThayNhot"] != DBNull.Value)
-					{
-						item.SoKMThayNhot = Convert.ToInt32(dr["SoKMThayNhot"]);
-					}
-					if (dr["SoKMThayLoc"] != null && dr["SoKMThayLoc"] != DBNull.Value)
-					{
-						item.SoKMThayLoc = Convert.ToInt32(dr["SoKMThayLoc"]);
-					}
-					if (dr["SoKMThayLocDau"] != null && dr["SoKMThayLocDau"] != DBNull.Value)
-					{
-						item.SoKMThayLocDau = Convert.ToInt32(dr["SoKMThayLocDau"]);
-					}
-					if (dr["SoKMThayLocGio"] != null && dr["SoKMThayLocGio"] != DBNull.Value)
-					{
-						item.SoKMThayLocGio = Convert.ToInt32(dr["SoKMThayLocGio"]);
-					}
-					if (dr["SoKMThayNhotHS"] != null && dr["SoKMThayNhotHS"] != DBNull.Value)
-					{
-						item.SoKMThayNhotHS = Convert.ToInt32(dr["SoKMThayNhotHS"]);
-					}
-					if (dr["SoKMThayNhotCau"] != null && dr["SoKMThayNhotCau"] != DBNull.Value)
-					{
-						item.SoKMThayNhotCau = Convert.ToInt32(dr["SoKMThayNhotCau"]);
-					}
-					if (dr["SoThangVSCamBien"] != null && dr["SoThangVSCamBien"] != DBNull.Value)
-					{
-						item.SoThangVSCamBien = Convert.ToInt32(dr["SoThangVSCamBien"]);
 					}
 					if (dr["SoLuongNhot"] != null && dr["SoLuongNhot"] != DBNull.Value)
 					{
@@ -123,6 +95,14 @@ namespace LeMaiLogic
 					if (dr["MaLocDau"] != null && dr["MaLocDau"] != DBNull.Value)
 					{
 						item.MaLocDau = Convert.ToString(dr["MaLocDau"]);
+					}
+					if (dr["MaMay"] != null && dr["MaMay"] != DBNull.Value)
+					{
+						item.MaMay = Convert.ToString(dr["MaMay"]);
+					}
+					if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+					{
+						item.FK_Post = Convert.ToString(dr["FK_Post"]);
 					}
 					items.Add(item);
 				}
@@ -147,9 +127,9 @@ namespace LeMaiLogic
 				foreach (DataRow dr in ds.Rows)
 				{
 					item = new Vihcle();
-					if (dr["Id"] != null && dr["Id"] != DBNull.Value)
+					if (dr["BienSo"] != null && dr["BienSo"] != DBNull.Value)
 					{
-						item.Id = Convert.ToString(dr["Id"]);
+						item.BienSo = Convert.ToString(dr["BienSo"]);
 					}
 					if (dr["TenXe"] != null && dr["TenXe"] != DBNull.Value)
 					{
@@ -162,34 +142,6 @@ namespace LeMaiLogic
 					if (dr["Note"] != null && dr["Note"] != DBNull.Value)
 					{
 						item.Note = Convert.ToString(dr["Note"]);
-					}
-					if (dr["SoKMThayNhot"] != null && dr["SoKMThayNhot"] != DBNull.Value)
-					{
-						item.SoKMThayNhot = Convert.ToInt32(dr["SoKMThayNhot"]);
-					}
-					if (dr["SoKMThayLoc"] != null && dr["SoKMThayLoc"] != DBNull.Value)
-					{
-						item.SoKMThayLoc = Convert.ToInt32(dr["SoKMThayLoc"]);
-					}
-					if (dr["SoKMThayLocDau"] != null && dr["SoKMThayLocDau"] != DBNull.Value)
-					{
-						item.SoKMThayLocDau = Convert.ToInt32(dr["SoKMThayLocDau"]);
-					}
-					if (dr["SoKMThayLocGio"] != null && dr["SoKMThayLocGio"] != DBNull.Value)
-					{
-						item.SoKMThayLocGio = Convert.ToInt32(dr["SoKMThayLocGio"]);
-					}
-					if (dr["SoKMThayNhotHS"] != null && dr["SoKMThayNhotHS"] != DBNull.Value)
-					{
-						item.SoKMThayNhotHS = Convert.ToInt32(dr["SoKMThayNhotHS"]);
-					}
-					if (dr["SoKMThayNhotCau"] != null && dr["SoKMThayNhotCau"] != DBNull.Value)
-					{
-						item.SoKMThayNhotCau = Convert.ToInt32(dr["SoKMThayNhotCau"]);
-					}
-					if (dr["SoThangVSCamBien"] != null && dr["SoThangVSCamBien"] != DBNull.Value)
-					{
-						item.SoThangVSCamBien = Convert.ToInt32(dr["SoThangVSCamBien"]);
 					}
 					if (dr["SoLuongNhot"] != null && dr["SoLuongNhot"] != DBNull.Value)
 					{
@@ -206,6 +158,14 @@ namespace LeMaiLogic
 					if (dr["MaLocDau"] != null && dr["MaLocDau"] != DBNull.Value)
 					{
 						item.MaLocDau = Convert.ToString(dr["MaLocDau"]);
+					}
+					if (dr["MaMay"] != null && dr["MaMay"] != DBNull.Value)
+					{
+						item.MaMay = Convert.ToString(dr["MaMay"]);
+					}
+					if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+					{
+						item.FK_Post = Convert.ToString(dr["FK_Post"]);
 					}
 					items.Add(item);
 				}
@@ -242,20 +202,20 @@ namespace LeMaiLogic
 		/// <summary>
 		/// Lấy một Vihcle từ Database
 		/// </summary>
-		public Vihcle GetObject(string schema, String Id)
+		public Vihcle GetObject(string schema, String BienSo)
 		{
 			try
 			{
-				DataTable ds = this._dataContext.GetData("SELECT * FROM " + schema + ".[Vihcle] where Id=@Id",
-					"@Id", Id);
+				DataTable ds = this._dataContext.GetData("SELECT * FROM " + schema + ".[Vihcle] where BienSo=@BienSo",
+					"@BienSo", BienSo);
 				if (ds.Rows.Count > 0)
 				{
 					Vihcle item=new Vihcle();
 					foreach (DataRow dr in ds.Rows)
 					{
-						if (dr["Id"] != null && dr["Id"] != DBNull.Value)
+						if (dr["BienSo"] != null && dr["BienSo"] != DBNull.Value)
 						{
-							item.Id = Convert.ToString(dr["Id"]);
+							item.BienSo = Convert.ToString(dr["BienSo"]);
 						}
 						if (dr["TenXe"] != null && dr["TenXe"] != DBNull.Value)
 						{
@@ -268,34 +228,6 @@ namespace LeMaiLogic
 						if (dr["Note"] != null && dr["Note"] != DBNull.Value)
 						{
 							item.Note = Convert.ToString(dr["Note"]);
-						}
-						if (dr["SoKMThayNhot"] != null && dr["SoKMThayNhot"] != DBNull.Value)
-						{
-							item.SoKMThayNhot = Convert.ToInt32(dr["SoKMThayNhot"]);
-						}
-						if (dr["SoKMThayLoc"] != null && dr["SoKMThayLoc"] != DBNull.Value)
-						{
-							item.SoKMThayLoc = Convert.ToInt32(dr["SoKMThayLoc"]);
-						}
-						if (dr["SoKMThayLocDau"] != null && dr["SoKMThayLocDau"] != DBNull.Value)
-						{
-							item.SoKMThayLocDau = Convert.ToInt32(dr["SoKMThayLocDau"]);
-						}
-						if (dr["SoKMThayLocGio"] != null && dr["SoKMThayLocGio"] != DBNull.Value)
-						{
-							item.SoKMThayLocGio = Convert.ToInt32(dr["SoKMThayLocGio"]);
-						}
-						if (dr["SoKMThayNhotHS"] != null && dr["SoKMThayNhotHS"] != DBNull.Value)
-						{
-							item.SoKMThayNhotHS = Convert.ToInt32(dr["SoKMThayNhotHS"]);
-						}
-						if (dr["SoKMThayNhotCau"] != null && dr["SoKMThayNhotCau"] != DBNull.Value)
-						{
-							item.SoKMThayNhotCau = Convert.ToInt32(dr["SoKMThayNhotCau"]);
-						}
-						if (dr["SoThangVSCamBien"] != null && dr["SoThangVSCamBien"] != DBNull.Value)
-						{
-							item.SoThangVSCamBien = Convert.ToInt32(dr["SoThangVSCamBien"]);
 						}
 						if (dr["SoLuongNhot"] != null && dr["SoLuongNhot"] != DBNull.Value)
 						{
@@ -312,6 +244,14 @@ namespace LeMaiLogic
 						if (dr["MaLocDau"] != null && dr["MaLocDau"] != DBNull.Value)
 						{
 							item.MaLocDau = Convert.ToString(dr["MaLocDau"]);
+						}
+						if (dr["MaMay"] != null && dr["MaMay"] != DBNull.Value)
+						{
+							item.MaMay = Convert.ToString(dr["MaMay"]);
+						}
+						if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+						{
+							item.FK_Post = Convert.ToString(dr["FK_Post"]);
 						}
 
 						break;
@@ -342,9 +282,9 @@ namespace LeMaiLogic
 					Vihcle item=new Vihcle();
 					foreach (DataRow dr in ds.Rows)
 					{
-						if (dr["Id"] != null && dr["Id"] != DBNull.Value)
+						if (dr["BienSo"] != null && dr["BienSo"] != DBNull.Value)
 						{
-							item.Id = Convert.ToString(dr["Id"]);
+							item.BienSo = Convert.ToString(dr["BienSo"]);
 						}
 						if (dr["TenXe"] != null && dr["TenXe"] != DBNull.Value)
 						{
@@ -357,34 +297,6 @@ namespace LeMaiLogic
 						if (dr["Note"] != null && dr["Note"] != DBNull.Value)
 						{
 							item.Note = Convert.ToString(dr["Note"]);
-						}
-						if (dr["SoKMThayNhot"] != null && dr["SoKMThayNhot"] != DBNull.Value)
-						{
-							item.SoKMThayNhot = Convert.ToInt32(dr["SoKMThayNhot"]);
-						}
-						if (dr["SoKMThayLoc"] != null && dr["SoKMThayLoc"] != DBNull.Value)
-						{
-							item.SoKMThayLoc = Convert.ToInt32(dr["SoKMThayLoc"]);
-						}
-						if (dr["SoKMThayLocDau"] != null && dr["SoKMThayLocDau"] != DBNull.Value)
-						{
-							item.SoKMThayLocDau = Convert.ToInt32(dr["SoKMThayLocDau"]);
-						}
-						if (dr["SoKMThayLocGio"] != null && dr["SoKMThayLocGio"] != DBNull.Value)
-						{
-							item.SoKMThayLocGio = Convert.ToInt32(dr["SoKMThayLocGio"]);
-						}
-						if (dr["SoKMThayNhotHS"] != null && dr["SoKMThayNhotHS"] != DBNull.Value)
-						{
-							item.SoKMThayNhotHS = Convert.ToInt32(dr["SoKMThayNhotHS"]);
-						}
-						if (dr["SoKMThayNhotCau"] != null && dr["SoKMThayNhotCau"] != DBNull.Value)
-						{
-							item.SoKMThayNhotCau = Convert.ToInt32(dr["SoKMThayNhotCau"]);
-						}
-						if (dr["SoThangVSCamBien"] != null && dr["SoThangVSCamBien"] != DBNull.Value)
-						{
-							item.SoThangVSCamBien = Convert.ToInt32(dr["SoThangVSCamBien"]);
 						}
 						if (dr["SoLuongNhot"] != null && dr["SoLuongNhot"] != DBNull.Value)
 						{
@@ -401,6 +313,14 @@ namespace LeMaiLogic
 						if (dr["MaLocDau"] != null && dr["MaLocDau"] != DBNull.Value)
 						{
 							item.MaLocDau = Convert.ToString(dr["MaLocDau"]);
+						}
+						if (dr["MaMay"] != null && dr["MaMay"] != DBNull.Value)
+						{
+							item.MaMay = Convert.ToString(dr["MaMay"]);
+						}
+						if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+						{
+							item.FK_Post = Convert.ToString(dr["FK_Post"]);
 						}
 
 						break;
@@ -444,22 +364,17 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[Vihcle](Id, TenXe, NgayMua, Note, SoKMThayNhot, SoKMThayLoc, SoKMThayLocDau, SoKMThayLocGio, SoKMThayNhotHS, SoKMThayNhotCau, SoThangVSCamBien, SoLuongNhot, SoLuongNhotLoc, MaLocNhot, MaLocDau) VALUES(@Id, @TenXe, @NgayMua, @Note, @SoKMThayNhot, @SoKMThayLoc, @SoKMThayLocDau, @SoKMThayLocGio, @SoKMThayNhotHS, @SoKMThayNhotCau, @SoThangVSCamBien, @SoLuongNhot, @SoLuongNhotLoc, @MaLocNhot, @MaLocDau)", 
-					"@Id",  _Vihcle.Id, 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[Vihcle](BienSo, TenXe, NgayMua, Note, SoLuongNhot, SoLuongNhotLoc, MaLocNhot, MaLocDau, MaMay, FK_Post) VALUES(@BienSo, @TenXe, @NgayMua, @Note, @SoLuongNhot, @SoLuongNhotLoc, @MaLocNhot, @MaLocDau, @MaMay, @FK_Post)", 
+					"@BienSo",  _Vihcle.BienSo, 
 					"@TenXe",  _Vihcle.TenXe, 
 					"@NgayMua", this._dataContext.ConvertDateString( _Vihcle.NgayMua), 
 					"@Note",  _Vihcle.Note, 
-					"@SoKMThayNhot",  _Vihcle.SoKMThayNhot, 
-					"@SoKMThayLoc",  _Vihcle.SoKMThayLoc, 
-					"@SoKMThayLocDau",  _Vihcle.SoKMThayLocDau, 
-					"@SoKMThayLocGio",  _Vihcle.SoKMThayLocGio, 
-					"@SoKMThayNhotHS",  _Vihcle.SoKMThayNhotHS, 
-					"@SoKMThayNhotCau",  _Vihcle.SoKMThayNhotCau, 
-					"@SoThangVSCamBien",  _Vihcle.SoThangVSCamBien, 
 					"@SoLuongNhot",  _Vihcle.SoLuongNhot, 
 					"@SoLuongNhotLoc",  _Vihcle.SoLuongNhotLoc, 
 					"@MaLocNhot",  _Vihcle.MaLocNhot, 
-					"@MaLocDau",  _Vihcle.MaLocDau);
+					"@MaLocDau",  _Vihcle.MaLocDau, 
+					"@MaMay",  _Vihcle.MaMay, 
+					"@FK_Post",  _Vihcle.FK_Post);
 				return true;
 			}
 			catch
@@ -483,27 +398,22 @@ namespace LeMaiLogic
 		/// <summary>
 		/// Cập nhật Vihcle vào Database. Cho phép cập nhật khóa chính.
 		/// </summary>
-		public int Update(string schema, Vihcle _Vihcle, String Id)
+		public int Update(string schema, Vihcle _Vihcle, String BienSo)
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[Vihcle] SET Id=@Id, TenXe=@TenXe, NgayMua=@NgayMua, Note=@Note, SoKMThayNhot=@SoKMThayNhot, SoKMThayLoc=@SoKMThayLoc, SoKMThayLocDau=@SoKMThayLocDau, SoKMThayLocGio=@SoKMThayLocGio, SoKMThayNhotHS=@SoKMThayNhotHS, SoKMThayNhotCau=@SoKMThayNhotCau, SoThangVSCamBien=@SoThangVSCamBien, SoLuongNhot=@SoLuongNhot, SoLuongNhotLoc=@SoLuongNhotLoc, MaLocNhot=@MaLocNhot, MaLocDau=@MaLocDau WHERE Id=@Id", 
-					"@Id",  _Vihcle.Id, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[Vihcle] SET BienSo=@BienSo, TenXe=@TenXe, NgayMua=@NgayMua, Note=@Note, SoLuongNhot=@SoLuongNhot, SoLuongNhotLoc=@SoLuongNhotLoc, MaLocNhot=@MaLocNhot, MaLocDau=@MaLocDau, MaMay=@MaMay, FK_Post=@FK_Post WHERE BienSo=@BienSo", 
+					"@BienSo",  _Vihcle.BienSo, 
 					"@TenXe",  _Vihcle.TenXe, 
 					"@NgayMua", this._dataContext.ConvertDateString( _Vihcle.NgayMua), 
 					"@Note",  _Vihcle.Note, 
-					"@SoKMThayNhot",  _Vihcle.SoKMThayNhot, 
-					"@SoKMThayLoc",  _Vihcle.SoKMThayLoc, 
-					"@SoKMThayLocDau",  _Vihcle.SoKMThayLocDau, 
-					"@SoKMThayLocGio",  _Vihcle.SoKMThayLocGio, 
-					"@SoKMThayNhotHS",  _Vihcle.SoKMThayNhotHS, 
-					"@SoKMThayNhotCau",  _Vihcle.SoKMThayNhotCau, 
-					"@SoThangVSCamBien",  _Vihcle.SoThangVSCamBien, 
 					"@SoLuongNhot",  _Vihcle.SoLuongNhot, 
 					"@SoLuongNhotLoc",  _Vihcle.SoLuongNhotLoc, 
 					"@MaLocNhot",  _Vihcle.MaLocNhot, 
 					"@MaLocDau",  _Vihcle.MaLocDau, 
-					"@Id", Id);
+					"@MaMay",  _Vihcle.MaMay, 
+					"@FK_Post",  _Vihcle.FK_Post, 
+					"@BienSo", BienSo);
 			}
 			catch
 			{
@@ -518,22 +428,17 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[Vihcle] SET TenXe=@TenXe, NgayMua=@NgayMua, Note=@Note, SoKMThayNhot=@SoKMThayNhot, SoKMThayLoc=@SoKMThayLoc, SoKMThayLocDau=@SoKMThayLocDau, SoKMThayLocGio=@SoKMThayLocGio, SoKMThayNhotHS=@SoKMThayNhotHS, SoKMThayNhotCau=@SoKMThayNhotCau, SoThangVSCamBien=@SoThangVSCamBien, SoLuongNhot=@SoLuongNhot, SoLuongNhotLoc=@SoLuongNhotLoc, MaLocNhot=@MaLocNhot, MaLocDau=@MaLocDau WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[Vihcle] SET TenXe=@TenXe, NgayMua=@NgayMua, Note=@Note, SoLuongNhot=@SoLuongNhot, SoLuongNhotLoc=@SoLuongNhotLoc, MaLocNhot=@MaLocNhot, MaLocDau=@MaLocDau, MaMay=@MaMay, FK_Post=@FK_Post WHERE BienSo=@BienSo", 
 					"@TenXe",  _Vihcle.TenXe, 
 					"@NgayMua", this._dataContext.ConvertDateString( _Vihcle.NgayMua), 
 					"@Note",  _Vihcle.Note, 
-					"@SoKMThayNhot",  _Vihcle.SoKMThayNhot, 
-					"@SoKMThayLoc",  _Vihcle.SoKMThayLoc, 
-					"@SoKMThayLocDau",  _Vihcle.SoKMThayLocDau, 
-					"@SoKMThayLocGio",  _Vihcle.SoKMThayLocGio, 
-					"@SoKMThayNhotHS",  _Vihcle.SoKMThayNhotHS, 
-					"@SoKMThayNhotCau",  _Vihcle.SoKMThayNhotCau, 
-					"@SoThangVSCamBien",  _Vihcle.SoThangVSCamBien, 
 					"@SoLuongNhot",  _Vihcle.SoLuongNhot, 
 					"@SoLuongNhotLoc",  _Vihcle.SoLuongNhotLoc, 
 					"@MaLocNhot",  _Vihcle.MaLocNhot, 
 					"@MaLocDau",  _Vihcle.MaLocDau, 
-					"@Id", _Vihcle.Id);
+					"@MaMay",  _Vihcle.MaMay, 
+					"@FK_Post",  _Vihcle.FK_Post, 
+					"@BienSo", _Vihcle.BienSo);
 			}
 			catch
 			{
@@ -559,22 +464,17 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[Vihcle] SET Id=@Id, TenXe=@TenXe, NgayMua=@NgayMua, Note=@Note, SoKMThayNhot=@SoKMThayNhot, SoKMThayLoc=@SoKMThayLoc, SoKMThayLocDau=@SoKMThayLocDau, SoKMThayLocGio=@SoKMThayLocGio, SoKMThayNhotHS=@SoKMThayNhotHS, SoKMThayNhotCau=@SoKMThayNhotCau, SoThangVSCamBien=@SoThangVSCamBien, SoLuongNhot=@SoLuongNhot, SoLuongNhotLoc=@SoLuongNhotLoc, MaLocNhot=@MaLocNhot, MaLocDau=@MaLocDau "+ condition, 
-					"@Id",  _Vihcle.Id, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[Vihcle] SET BienSo=@BienSo, TenXe=@TenXe, NgayMua=@NgayMua, Note=@Note, SoLuongNhot=@SoLuongNhot, SoLuongNhotLoc=@SoLuongNhotLoc, MaLocNhot=@MaLocNhot, MaLocDau=@MaLocDau, MaMay=@MaMay, FK_Post=@FK_Post "+ condition, 
+					"@BienSo",  _Vihcle.BienSo, 
 					"@TenXe",  _Vihcle.TenXe, 
 					"@NgayMua", this._dataContext.ConvertDateString( _Vihcle.NgayMua), 
 					"@Note",  _Vihcle.Note, 
-					"@SoKMThayNhot",  _Vihcle.SoKMThayNhot, 
-					"@SoKMThayLoc",  _Vihcle.SoKMThayLoc, 
-					"@SoKMThayLocDau",  _Vihcle.SoKMThayLocDau, 
-					"@SoKMThayLocGio",  _Vihcle.SoKMThayLocGio, 
-					"@SoKMThayNhotHS",  _Vihcle.SoKMThayNhotHS, 
-					"@SoKMThayNhotCau",  _Vihcle.SoKMThayNhotCau, 
-					"@SoThangVSCamBien",  _Vihcle.SoThangVSCamBien, 
 					"@SoLuongNhot",  _Vihcle.SoLuongNhot, 
 					"@SoLuongNhotLoc",  _Vihcle.SoLuongNhotLoc, 
 					"@MaLocNhot",  _Vihcle.MaLocNhot, 
-					"@MaLocDau",  _Vihcle.MaLocDau);
+					"@MaLocDau",  _Vihcle.MaLocDau, 
+					"@MaMay",  _Vihcle.MaMay, 
+					"@FK_Post",  _Vihcle.FK_Post);
 			}
 			catch
 			{
@@ -584,12 +484,12 @@ namespace LeMaiLogic
 		/// <summary>
 		/// Xóa Vihcle trong Database
 		/// </summary>
-		public int DeleteOnSubmit(string schema, String Id)
+		public int DeleteOnSubmit(string schema, String BienSo)
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("DELETE FROM " + schema + ".[Vihcle] WHERE Id=@Id",
-					"@Id", Id);
+				return this._dataContext.ExecuteNonQuery("DELETE FROM " + schema + ".[Vihcle] WHERE BienSo=@BienSo",
+					"@BienSo", BienSo);
 			}
 			catch
 			{
@@ -604,8 +504,8 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("DELETE FROM " + schema + ".[Vihcle] WHERE Id=@Id",
-					"@Id", _Vihcle.Id);
+				return this._dataContext.ExecuteNonQuery("DELETE FROM " + schema + ".[Vihcle] WHERE BienSo=@BienSo",
+					"@BienSo", _Vihcle.BienSo);
 			}
 			catch
 			{

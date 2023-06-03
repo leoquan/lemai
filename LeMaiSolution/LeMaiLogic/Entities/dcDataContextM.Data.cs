@@ -2421,6 +2421,18 @@ namespace LeMaiLogic
 			get { return _VIewvcnhacungcap; }
 		}
 
+		private IVIewvihclecoupon _VIewvihclecoupon;
+		public IVIewvihclecoupon VIewvihclecoupon
+		{
+			get { return _VIewvihclecoupon; }
+		}
+
+		private IVIewvihclecoupondetail _VIewvihclecoupondetail;
+		public IVIewvihclecoupondetail VIewvihclecoupondetail
+		{
+			get { return _VIewvihclecoupondetail; }
+		}
+
 		private IVIewwebbannerslider _VIewwebbannerslider;
 		public IVIewwebbannerslider VIewwebbannerslider
 		{
@@ -2445,10 +2457,28 @@ namespace LeMaiLogic
 			get { return _VIhcle; }
 		}
 
+		private IVIhclecoupon _VIhclecoupon;
+		public IVIhclecoupon VIhclecoupon
+		{
+			get { return _VIhclecoupon; }
+		}
+
+		private IVIhclecoupondetail _VIhclecoupondetail;
+		public IVIhclecoupondetail VIhclecoupondetail
+		{
+			get { return _VIhclecoupondetail; }
+		}
+
 		private IVIhcleservice _VIhcleservice;
 		public IVIhcleservice VIhcleservice
 		{
 			get { return _VIhcleservice; }
+		}
+
+		private IVIhcleserviceconfig _VIhcleserviceconfig;
+		public IVIhcleserviceconfig VIhcleserviceconfig
+		{
+			get { return _VIhcleserviceconfig; }
 		}
 
 		private IVOucher _VOucher;
@@ -2990,11 +3020,16 @@ namespace LeMaiLogic
 			this._VIewvckhachhang = new MVIewvckhachhang(this);
 			this._VIewvcmathang = new MVIewvcmathang(this);
 			this._VIewvcnhacungcap = new MVIewvcnhacungcap(this);
+			this._VIewvihclecoupon = new MVIewvihclecoupon(this);
+			this._VIewvihclecoupondetail = new MVIewvihclecoupondetail(this);
 			this._VIewwebbannerslider = new MVIewwebbannerslider(this);
 			this._VIewwebnews = new MVIewwebnews(this);
 			this._VIewwebpage = new MVIewwebpage(this);
 			this._VIhcle = new MVIhcle(this);
+			this._VIhclecoupon = new MVIhclecoupon(this);
+			this._VIhclecoupondetail = new MVIhclecoupondetail(this);
 			this._VIhcleservice = new MVIhcleservice(this);
+			this._VIhcleserviceconfig = new MVIhcleserviceconfig(this);
 			this._VOucher = new MVOucher(this);
 			this._VPtemp = new MVPtemp(this);
 			this._VPtempr = new MVPtempr(this);

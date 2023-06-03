@@ -72,6 +72,10 @@ namespace LeMaiLogic
 					{
 						item.ServiceName = Convert.ToString(dr["ServiceName"]);
 					}
+					if (dr["IsDistance"] != null && dr["IsDistance"] != DBNull.Value)
+					{
+						item.IsDistance = Convert.ToBoolean(dr["IsDistance"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -102,6 +106,10 @@ namespace LeMaiLogic
 					if (dr["ServiceName"] != null && dr["ServiceName"] != DBNull.Value)
 					{
 						item.ServiceName = Convert.ToString(dr["ServiceName"]);
+					}
+					if (dr["IsDistance"] != null && dr["IsDistance"] != DBNull.Value)
+					{
+						item.IsDistance = Convert.ToBoolean(dr["IsDistance"]);
 					}
 					items.Add(item);
 				}
@@ -157,6 +165,10 @@ namespace LeMaiLogic
 						{
 							item.ServiceName = Convert.ToString(dr["ServiceName"]);
 						}
+						if (dr["IsDistance"] != null && dr["IsDistance"] != DBNull.Value)
+						{
+							item.IsDistance = Convert.ToBoolean(dr["IsDistance"]);
+						}
 
 						break;
 					}
@@ -193,6 +205,10 @@ namespace LeMaiLogic
 						if (dr["ServiceName"] != null && dr["ServiceName"] != DBNull.Value)
 						{
 							item.ServiceName = Convert.ToString(dr["ServiceName"]);
+						}
+						if (dr["IsDistance"] != null && dr["IsDistance"] != DBNull.Value)
+						{
+							item.IsDistance = Convert.ToBoolean(dr["IsDistance"]);
 						}
 
 						break;
@@ -236,9 +252,10 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[VihcleService](Id, ServiceName) VALUES(@Id, @ServiceName)", 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[VihcleService](Id, ServiceName, IsDistance) VALUES(@Id, @ServiceName, @IsDistance)", 
 					"@Id",  _VihcleService.Id, 
-					"@ServiceName",  _VihcleService.ServiceName);
+					"@ServiceName",  _VihcleService.ServiceName, 
+					"@IsDistance",  _VihcleService.IsDistance);
 				return true;
 			}
 			catch
@@ -266,9 +283,10 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[VihcleService] SET Id=@Id, ServiceName=@ServiceName WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[VihcleService] SET Id=@Id, ServiceName=@ServiceName, IsDistance=@IsDistance WHERE Id=@Id", 
 					"@Id",  _VihcleService.Id, 
 					"@ServiceName",  _VihcleService.ServiceName, 
+					"@IsDistance",  _VihcleService.IsDistance, 
 					"@Id", Id);
 			}
 			catch
@@ -284,8 +302,9 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[VihcleService] SET ServiceName=@ServiceName WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[VihcleService] SET ServiceName=@ServiceName, IsDistance=@IsDistance WHERE Id=@Id", 
 					"@ServiceName",  _VihcleService.ServiceName, 
+					"@IsDistance",  _VihcleService.IsDistance, 
 					"@Id", _VihcleService.Id);
 			}
 			catch
@@ -312,9 +331,10 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[VihcleService] SET Id=@Id, ServiceName=@ServiceName "+ condition, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[VihcleService] SET Id=@Id, ServiceName=@ServiceName, IsDistance=@IsDistance "+ condition, 
 					"@Id",  _VihcleService.Id, 
-					"@ServiceName",  _VihcleService.ServiceName);
+					"@ServiceName",  _VihcleService.ServiceName, 
+					"@IsDistance",  _VihcleService.IsDistance);
 			}
 			catch
 			{

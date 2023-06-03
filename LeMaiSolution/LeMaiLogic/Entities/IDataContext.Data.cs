@@ -812,6 +812,10 @@ namespace LeMaiLogic
 
 		IVIewvcnhacungcap VIewvcnhacungcap { get; }
 
+		IVIewvihclecoupon VIewvihclecoupon { get; }
+
+		IVIewvihclecoupondetail VIewvihclecoupondetail { get; }
+
 		IVIewwebbannerslider VIewwebbannerslider { get; }
 
 		IVIewwebnews VIewwebnews { get; }
@@ -820,7 +824,13 @@ namespace LeMaiLogic
 
 		IVIhcle VIhcle { get; }
 
+		IVIhclecoupon VIhclecoupon { get; }
+
+		IVIhclecoupondetail VIhclecoupondetail { get; }
+
 		IVIhcleservice VIhcleservice { get; }
+
+		IVIhcleserviceconfig VIhcleserviceconfig { get; }
 
 		IVOucher VOucher { get; }
 

@@ -26,7 +26,7 @@ namespace LeMaiLogic
 		/// <summary>
 		/// Lấy một Vihcle từ Database
 		/// </summary>
-		Vihcle GetObject(string schema, String Id);
+		Vihcle GetObject(string schema, String BienSo);
 		/// <summary>
 		/// Lấy một Vihcle đầu tiên từ Database thỏa điền kiện của condition
 		/// </summary>
@@ -44,7 +44,7 @@ namespace LeMaiLogic
 		/// <summary>
 		/// Cập nhật Vihcle vào Database. Cho phép cập nhật khóa chính.
 		/// </summary>
-		int Update(string schema, Vihcle _Vihcle, String Id);
+		int Update(string schema, Vihcle _Vihcle, String BienSo);
 		/// <summary>
 		/// Cập nhật Vihcle vào Database với chính đối tượng được truyền vào. Không cho phép cập nhật khóa chính
 		/// </summary>
@@ -60,7 +60,7 @@ namespace LeMaiLogic
 		/// <summary>
 		/// Xóa Vihcle trong Database
 		/// </summary>
-		int DeleteOnSubmit(string schema, String Id);
+		int DeleteOnSubmit(string schema, String BienSo);
 		/// <summary>
 		/// Xóa Vihcle trong Database
 		/// </summary>

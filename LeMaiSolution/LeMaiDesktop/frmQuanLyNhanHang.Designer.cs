@@ -31,11 +31,12 @@ namespace LeMaiDesktop
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelcomtrol = new System.Windows.Forms.Panel();
             this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnNew = new DevComponents.DotNetBar.ButtonX();
@@ -60,6 +61,7 @@ namespace LeMaiDesktop
             this.styleManager = new DevComponents.DotNetBar.StyleManager(this.components);
             this.datePickup = new System.Windows.Forms.DateTimePicker();
             this.timerFilterKH = new System.Windows.Forms.Timer(this.components);
+            this.col_StatusReceiveName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_FK_CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_FK_ShipperId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,7 +78,6 @@ namespace LeMaiDesktop
             this.col_TenDaiLy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_GoogleMap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_NVGiao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_StatusReceiveName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_StatusTextColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_StatusBackgroundColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_FK_PickupShipper = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -238,6 +239,7 @@ namespace LeMaiDesktop
             this.gridMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gridMain.ColumnHeadersHeight = 25;
             this.gridMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_StatusReceiveName,
             this.col_Id,
             this.col_FK_CustomerId,
             this.col_FK_ShipperId,
@@ -254,21 +256,20 @@ namespace LeMaiDesktop
             this.col_TenDaiLy,
             this.col_GoogleMap,
             this.col_NVGiao,
-            this.col_StatusReceiveName,
             this.col_StatusTextColor,
             this.col_StatusBackgroundColor,
             this.col_FK_PickupShipper,
             this.col_PickupDate,
             this.col_CreateDate,
             this.col_Note});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridMain.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridMain.DefaultCellStyle = dataGridViewCellStyle6;
             this.gridMain.EnableHeadersVisualStyles = false;
             this.gridMain.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.gridMain.HighlightSelectedColumnHeaders = false;
@@ -276,16 +277,16 @@ namespace LeMaiDesktop
             this.gridMain.MultiSelect = false;
             this.gridMain.Name = "gridMain";
             this.gridMain.PaintEnhancedSelection = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridMain.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridMain.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.gridMain.RowHeadersVisible = false;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(106)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            this.gridMain.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(106)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.gridMain.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.gridMain.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridMain.RowTemplate.Height = 25;
             this.gridMain.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -455,6 +456,15 @@ namespace LeMaiDesktop
             this.timerFilterKH.Interval = 500;
             this.timerFilterKH.Tick += new System.EventHandler(this.timerFilterKH_Tick);
             // 
+            // col_StatusReceiveName
+            // 
+            this.col_StatusReceiveName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_StatusReceiveName.DataPropertyName = "StatusReceiveName";
+            this.col_StatusReceiveName.HeaderText = "Tình trạng";
+            this.col_StatusReceiveName.Name = "col_StatusReceiveName";
+            this.col_StatusReceiveName.ReadOnly = true;
+            this.col_StatusReceiveName.Width = 120;
+            // 
             // col_Id
             // 
             this.col_Id.DataPropertyName = "Id";
@@ -497,17 +507,21 @@ namespace LeMaiDesktop
             // 
             // col_CustomerCode
             // 
+            this.col_CustomerCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.col_CustomerCode.DataPropertyName = "CustomerCode";
             this.col_CustomerCode.HeaderText = "Mã KH";
             this.col_CustomerCode.Name = "col_CustomerCode";
             this.col_CustomerCode.ReadOnly = true;
+            this.col_CustomerCode.Width = 60;
             // 
             // col_CustomerName
             // 
+            this.col_CustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.col_CustomerName.DataPropertyName = "CustomerName";
             this.col_CustomerName.HeaderText = "Khách hàng";
             this.col_CustomerName.Name = "col_CustomerName";
             this.col_CustomerName.ReadOnly = true;
+            this.col_CustomerName.Width = 200;
             // 
             // col_CustomerPhone
             // 
@@ -583,13 +597,6 @@ namespace LeMaiDesktop
             this.col_NVGiao.Name = "col_NVGiao";
             this.col_NVGiao.ReadOnly = true;
             // 
-            // col_StatusReceiveName
-            // 
-            this.col_StatusReceiveName.DataPropertyName = "StatusReceiveName";
-            this.col_StatusReceiveName.HeaderText = "Tình trạng";
-            this.col_StatusReceiveName.Name = "col_StatusReceiveName";
-            this.col_StatusReceiveName.ReadOnly = true;
-            // 
             // col_StatusTextColor
             // 
             this.col_StatusTextColor.DataPropertyName = "StatusTextColor";
@@ -616,27 +623,36 @@ namespace LeMaiDesktop
             // 
             // col_PickupDate
             // 
+            this.col_PickupDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.col_PickupDate.DataPropertyName = "PickupDate";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "dd/MM/yyyy HH:mm";
+            this.col_PickupDate.DefaultCellStyle = dataGridViewCellStyle4;
             this.col_PickupDate.HeaderText = "Thời gian nhận";
             this.col_PickupDate.Name = "col_PickupDate";
             this.col_PickupDate.ReadOnly = true;
+            this.col_PickupDate.Width = 120;
             // 
             // col_CreateDate
             // 
+            this.col_CreateDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.col_CreateDate.DataPropertyName = "CreateDate";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Format = "dd/MM/yyyy HH:mm:ss";
-            this.col_CreateDate.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy HH:mm";
+            this.col_CreateDate.DefaultCellStyle = dataGridViewCellStyle5;
             this.col_CreateDate.HeaderText = "Thời gian";
             this.col_CreateDate.Name = "col_CreateDate";
             this.col_CreateDate.ReadOnly = true;
+            this.col_CreateDate.Width = 120;
             // 
             // col_Note
             // 
+            this.col_Note.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.col_Note.DataPropertyName = "Note";
             this.col_Note.HeaderText = "Ghi chú";
             this.col_Note.Name = "col_Note";
             this.col_Note.ReadOnly = true;
+            this.col_Note.Width = 250;
             // 
             // frmQuanLyNhanHang
             // 
@@ -700,6 +716,7 @@ namespace LeMaiDesktop
         private System.Windows.Forms.DateTimePicker datePickup;
         private System.Windows.Forms.Timer timerFilterKH;
         private System.Windows.Forms.TextBox txtShipperFilter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_StatusReceiveName;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_FK_CustomerId;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_FK_ShipperId;
@@ -716,7 +733,6 @@ namespace LeMaiDesktop
         private System.Windows.Forms.DataGridViewTextBoxColumn col_TenDaiLy;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_GoogleMap;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_NVGiao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_StatusReceiveName;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_StatusTextColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_StatusBackgroundColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_FK_PickupShipper;

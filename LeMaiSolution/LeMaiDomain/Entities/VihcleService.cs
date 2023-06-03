@@ -9,6 +9,7 @@ namespace LeMaiDomain
 		//Khai bao các biến
 		public System.String Id { get; set; }
 		public System.String ServiceName { get; set; }
+		public System.Boolean IsDistance { get; set; }
 		public VihcleService(){}
 	}
 }
