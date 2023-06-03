@@ -552,6 +552,10 @@ public partial class LeMaiDbContext : DbContext
             entity.Property(e => e.FkCashId)
                 .HasMaxLength(50)
                 .HasColumnName("FK_CashId");
+            entity.Property(e => e.FkPost)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("FK_Post");
             entity.Property(e => e.Note).HasMaxLength(250);
             entity.Property(e => e.ShipperId)
                 .IsRequired()
@@ -1090,12 +1094,8 @@ public partial class LeMaiDbContext : DbContext
                 .HasMaxLength(250)
                 .HasColumnName("NVGiao");
             entity.Property(e => e.PickupDate).HasColumnType("datetime");
-            entity.Property(e => e.ShipperName)
-                .IsRequired()
-                .HasMaxLength(50);
-            entity.Property(e => e.ShipperPhone)
-                .IsRequired()
-                .HasMaxLength(50);
+            entity.Property(e => e.ShipperName).HasMaxLength(50);
+            entity.Property(e => e.ShipperPhone).HasMaxLength(50);
             entity.Property(e => e.StatusBackgroundColor).HasMaxLength(50);
             entity.Property(e => e.StatusReceiveName)
                 .IsRequired()

@@ -24,4 +24,6 @@ public partial class GexpShipperDevivery
     public string Note { get; set; }
 
     public string FkCashId { get; set; }
+
+    public string FkPost { get; set; }
 }

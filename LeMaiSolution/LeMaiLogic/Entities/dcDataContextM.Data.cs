@@ -645,6 +645,12 @@ namespace LeMaiLogic
 			get { return _GExpaccept; }
 		}
 
+		private IGExpautosign _GExpautosign;
+		public IGExpautosign GExpautosign
+		{
+			get { return _GExpautosign; }
+		}
+
 		private IGExpbalancedetail _GExpbalancedetail;
 		public IGExpbalancedetail GExpbalancedetail
 		{
@@ -2241,6 +2247,12 @@ namespace LeMaiLogic
 			get { return _VIewgexpshipper; }
 		}
 
+		private IVIewgexpshipperdevivery _VIewgexpshipperdevivery;
+		public IVIewgexpshipperdevivery VIewgexpshipperdevivery
+		{
+			get { return _VIewgexpshipperdevivery; }
+		}
+
 		private IVIewgexpwithdrawmoney _VIewgexpwithdrawmoney;
 		public IVIewgexpwithdrawmoney VIewgexpwithdrawmoney
 		{
@@ -2425,6 +2437,18 @@ namespace LeMaiLogic
 		public IVIewwebpage VIewwebpage
 		{
 			get { return _VIewwebpage; }
+		}
+
+		private IVIhcle _VIhcle;
+		public IVIhcle VIhcle
+		{
+			get { return _VIhcle; }
+		}
+
+		private IVIhcleservice _VIhcleservice;
+		public IVIhcleservice VIhcleservice
+		{
+			get { return _VIhcleservice; }
 		}
 
 		private IVOucher _VOucher;
@@ -2670,6 +2694,7 @@ namespace LeMaiLogic
 			this._EXpwithdrawrequeststatus = new MEXpwithdrawrequeststatus(this);
 			this._EXpwithdrawrequesttype = new MEXpwithdrawrequesttype(this);
 			this._GExpaccept = new MGExpaccept(this);
+			this._GExpautosign = new MGExpautosign(this);
 			this._GExpbalancedetail = new MGExpbalancedetail(this);
 			this._GExpbalancedetailpost = new MGExpbalancedetailpost(this);
 			this._GExpbalancedetailtype = new MGExpbalancedetailtype(this);
@@ -2936,6 +2961,7 @@ namespace LeMaiLogic
 			this._VIewgexpscansend = new MVIewgexpscansend(this);
 			this._VIewgexpscansign = new MVIewgexpscansign(this);
 			this._VIewgexpshipper = new MVIewgexpshipper(this);
+			this._VIewgexpshipperdevivery = new MVIewgexpshipperdevivery(this);
 			this._VIewgexpwithdrawmoney = new MVIewgexpwithdrawmoney(this);
 			this._VIewinvoicelist = new MVIewinvoicelist(this);
 			this._VIewinvoiceprint = new MVIewinvoiceprint(this);
@@ -2967,6 +2993,8 @@ namespace LeMaiLogic
 			this._VIewwebbannerslider = new MVIewwebbannerslider(this);
 			this._VIewwebnews = new MVIewwebnews(this);
 			this._VIewwebpage = new MVIewwebpage(this);
+			this._VIhcle = new MVIhcle(this);
+			this._VIhcleservice = new MVIhcleservice(this);
 			this._VOucher = new MVOucher(this);
 			this._VPtemp = new MVPtemp(this);
 			this._VPtempr = new MVPtempr(this);

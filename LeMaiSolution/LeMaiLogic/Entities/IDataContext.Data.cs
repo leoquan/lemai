@@ -220,6 +220,8 @@ namespace LeMaiLogic
 
 		IGExpaccept GExpaccept { get; }
 
+		IGExpautosign GExpautosign { get; }
+
 		IGExpbalancedetail GExpbalancedetail { get; }
 
 		IGExpbalancedetailpost GExpbalancedetailpost { get; }
@@ -752,6 +754,8 @@ namespace LeMaiLogic
 
 		IVIewgexpshipper VIewgexpshipper { get; }
 
+		IVIewgexpshipperdevivery VIewgexpshipperdevivery { get; }
+
 		IVIewgexpwithdrawmoney VIewgexpwithdrawmoney { get; }
 
 		IVIewinvoicelist VIewinvoicelist { get; }
@@ -813,6 +817,10 @@ namespace LeMaiLogic
 		IVIewwebnews VIewwebnews { get; }
 
 		IVIewwebpage VIewwebpage { get; }
+
+		IVIhcle VIhcle { get; }
+
+		IVIhcleservice VIhcleservice { get; }
 
 		IVOucher VOucher { get; }
 

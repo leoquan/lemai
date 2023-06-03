@@ -891,6 +891,7 @@ namespace LeMaiApi.Controllers
             delivery.ShipperId = userId;
             delivery.IsCash = false;
             delivery.TotalCod = bill.Cod;
+            delivery.FkPost = taiKhoan.FkPost;
             if (bill.FkPaymentType == "NTT")
             {
                 delivery.TotalCod = delivery.TotalCod + bill.Freight;

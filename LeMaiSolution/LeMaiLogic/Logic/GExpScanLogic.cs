@@ -11,6 +11,81 @@ namespace LeMaiLogic.Logic
         public GExpScanLogic(BaseLogicConnectionData data) : base(data)
         {
         }
+        public view_GExpShipperDevivery GetShipperDelivery(string Id)
+        {
+            IDataContext dc = new dcDataContextM(ConnectionData.ConnectionString);
+            try
+            {
+                dc.Open();
+                return dc.VIewgexpshipperdevivery.GetObjectCon(base.ConnectionData.Schema, "WHERE Id=@Id", "@Id", Id);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dc.Close();
+            }
+        }
+        public async Task<List<view_GExpShipperDevivery>> GetShipperDelivery(string post, string shipperId)
+        {
+            IDataContext dc = new dcDataContextM(ConnectionData.ConnectionString);
+            try
+            {
+                dc.Open();
+                if (shipperId == "0000")
+                {
+                    return dc.VIewgexpshipperdevivery.GetListObjectCon(base.ConnectionData.Schema, "WHERE FK_Post=@FK_Post AND IsCash=@IsCash",
+                        "@FK_Post", post,
+                        "@IsCash", false);
+                }
+                else
+                {
+                    return dc.VIewgexpshipperdevivery.GetListObjectCon(base.ConnectionData.Schema, "WHERE FK_Post=@FK_Post AND ShipperId=@ShipperId AND IsCash=@IsCash",
+                        "@FK_Post", post,
+                        "@ShipperId", shipperId,
+                        "@IsCash", false);
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dc.Close();
+            }
+        }
+        public async Task<List<GExpShipper>> GetListShipperAll(string post, string search)
+        {
+            List<GExpShipper> ls = new List<GExpShipper>();
+            IDataContext dc = new dcDataContextM(ConnectionData.ConnectionString);
+            try
+            {
+                dc.Open();
+                string searchKey = UnSigns(search);
+                List<GExpShipper> list = new List<GExpShipper>();
+                list.Add(new GExpShipper { Id = "0000", ShipperName = "Tất cả" });
+                var temps = dc.GExpshipper.GetListObjectCon(base.ConnectionData.Schema, "WHERE FK_Post=@FK_Post AND (UserName LIKE '%" + searchKey + "%' OR ShipperPhone LIKE '%" + searchKey + "%' OR ShipperName LIKE N'%" + search + "%') ORDER BY ShipperName", "@FK_Post", post);
+                foreach (var item in temps)
+                {
+                    item.ShipperName = item.ShipperName + " - " + item.ShipperPhone;
+                    list.Add(item);
+                }
+                return list;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dc.Close();
+            }
+        }
         /// <summary>
         /// Ký nhận đơn hàng nội mạng
         /// </summary>

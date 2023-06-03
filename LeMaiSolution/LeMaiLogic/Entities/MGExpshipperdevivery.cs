@@ -104,6 +104,10 @@ namespace LeMaiLogic
 					{
 						item.FK_CashId = Convert.ToString(dr["FK_CashId"]);
 					}
+					if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+					{
+						item.FK_Post = Convert.ToString(dr["FK_Post"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -166,6 +170,10 @@ namespace LeMaiLogic
 					if (dr["FK_CashId"] != null && dr["FK_CashId"] != DBNull.Value)
 					{
 						item.FK_CashId = Convert.ToString(dr["FK_CashId"]);
+					}
+					if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+					{
+						item.FK_Post = Convert.ToString(dr["FK_Post"]);
 					}
 					items.Add(item);
 				}
@@ -253,6 +261,10 @@ namespace LeMaiLogic
 						{
 							item.FK_CashId = Convert.ToString(dr["FK_CashId"]);
 						}
+						if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+						{
+							item.FK_Post = Convert.ToString(dr["FK_Post"]);
+						}
 
 						break;
 					}
@@ -322,6 +334,10 @@ namespace LeMaiLogic
 						{
 							item.FK_CashId = Convert.ToString(dr["FK_CashId"]);
 						}
+						if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+						{
+							item.FK_Post = Convert.ToString(dr["FK_Post"]);
+						}
 
 						break;
 					}
@@ -364,7 +380,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpShipperDevivery](Id, ShipperId, BillCode, SignDate, TotalCOD, IsCash, CashTime, FK_AccountCash, Note, FK_CashId) VALUES(@Id, @ShipperId, @BillCode, @SignDate, @TotalCOD, @IsCash, @CashTime, @FK_AccountCash, @Note, @FK_CashId)", 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpShipperDevivery](Id, ShipperId, BillCode, SignDate, TotalCOD, IsCash, CashTime, FK_AccountCash, Note, FK_CashId, FK_Post) VALUES(@Id, @ShipperId, @BillCode, @SignDate, @TotalCOD, @IsCash, @CashTime, @FK_AccountCash, @Note, @FK_CashId, @FK_Post)", 
 					"@Id",  _GExpShipperDevivery.Id, 
 					"@ShipperId",  _GExpShipperDevivery.ShipperId, 
 					"@BillCode",  _GExpShipperDevivery.BillCode, 
@@ -374,7 +390,8 @@ namespace LeMaiLogic
 					"@CashTime", this._dataContext.ConvertDateString( _GExpShipperDevivery.CashTime), 
 					"@FK_AccountCash",  _GExpShipperDevivery.FK_AccountCash, 
 					"@Note",  _GExpShipperDevivery.Note, 
-					"@FK_CashId",  _GExpShipperDevivery.FK_CashId);
+					"@FK_CashId",  _GExpShipperDevivery.FK_CashId, 
+					"@FK_Post",  _GExpShipperDevivery.FK_Post);
 				return true;
 			}
 			catch
@@ -402,7 +419,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperDevivery] SET Id=@Id, ShipperId=@ShipperId, BillCode=@BillCode, SignDate=@SignDate, TotalCOD=@TotalCOD, IsCash=@IsCash, CashTime=@CashTime, FK_AccountCash=@FK_AccountCash, Note=@Note, FK_CashId=@FK_CashId WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperDevivery] SET Id=@Id, ShipperId=@ShipperId, BillCode=@BillCode, SignDate=@SignDate, TotalCOD=@TotalCOD, IsCash=@IsCash, CashTime=@CashTime, FK_AccountCash=@FK_AccountCash, Note=@Note, FK_CashId=@FK_CashId, FK_Post=@FK_Post WHERE Id=@Id", 
 					"@Id",  _GExpShipperDevivery.Id, 
 					"@ShipperId",  _GExpShipperDevivery.ShipperId, 
 					"@BillCode",  _GExpShipperDevivery.BillCode, 
@@ -413,6 +430,7 @@ namespace LeMaiLogic
 					"@FK_AccountCash",  _GExpShipperDevivery.FK_AccountCash, 
 					"@Note",  _GExpShipperDevivery.Note, 
 					"@FK_CashId",  _GExpShipperDevivery.FK_CashId, 
+					"@FK_Post",  _GExpShipperDevivery.FK_Post, 
 					"@Id", Id);
 			}
 			catch
@@ -428,7 +446,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperDevivery] SET ShipperId=@ShipperId, BillCode=@BillCode, SignDate=@SignDate, TotalCOD=@TotalCOD, IsCash=@IsCash, CashTime=@CashTime, FK_AccountCash=@FK_AccountCash, Note=@Note, FK_CashId=@FK_CashId WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperDevivery] SET ShipperId=@ShipperId, BillCode=@BillCode, SignDate=@SignDate, TotalCOD=@TotalCOD, IsCash=@IsCash, CashTime=@CashTime, FK_AccountCash=@FK_AccountCash, Note=@Note, FK_CashId=@FK_CashId, FK_Post=@FK_Post WHERE Id=@Id", 
 					"@ShipperId",  _GExpShipperDevivery.ShipperId, 
 					"@BillCode",  _GExpShipperDevivery.BillCode, 
 					"@SignDate", this._dataContext.ConvertDateString( _GExpShipperDevivery.SignDate), 
@@ -438,6 +456,7 @@ namespace LeMaiLogic
 					"@FK_AccountCash",  _GExpShipperDevivery.FK_AccountCash, 
 					"@Note",  _GExpShipperDevivery.Note, 
 					"@FK_CashId",  _GExpShipperDevivery.FK_CashId, 
+					"@FK_Post",  _GExpShipperDevivery.FK_Post, 
 					"@Id", _GExpShipperDevivery.Id);
 			}
 			catch
@@ -464,7 +483,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperDevivery] SET Id=@Id, ShipperId=@ShipperId, BillCode=@BillCode, SignDate=@SignDate, TotalCOD=@TotalCOD, IsCash=@IsCash, CashTime=@CashTime, FK_AccountCash=@FK_AccountCash, Note=@Note, FK_CashId=@FK_CashId "+ condition, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperDevivery] SET Id=@Id, ShipperId=@ShipperId, BillCode=@BillCode, SignDate=@SignDate, TotalCOD=@TotalCOD, IsCash=@IsCash, CashTime=@CashTime, FK_AccountCash=@FK_AccountCash, Note=@Note, FK_CashId=@FK_CashId, FK_Post=@FK_Post "+ condition, 
 					"@Id",  _GExpShipperDevivery.Id, 
 					"@ShipperId",  _GExpShipperDevivery.ShipperId, 
 					"@BillCode",  _GExpShipperDevivery.BillCode, 
@@ -474,7 +493,8 @@ namespace LeMaiLogic
 					"@CashTime", this._dataContext.ConvertDateString( _GExpShipperDevivery.CashTime), 
 					"@FK_AccountCash",  _GExpShipperDevivery.FK_AccountCash, 
 					"@Note",  _GExpShipperDevivery.Note, 
-					"@FK_CashId",  _GExpShipperDevivery.FK_CashId);
+					"@FK_CashId",  _GExpShipperDevivery.FK_CashId, 
+					"@FK_Post",  _GExpShipperDevivery.FK_Post);
 			}
 			catch
 			{

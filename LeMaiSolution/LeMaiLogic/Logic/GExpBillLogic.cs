@@ -822,28 +822,32 @@ namespace LeMaiLogic.Logic
                     }
 
                 }
-                // Tạo danh bạ sender
-                GExpSender sender = dc.GExpsender.GetObjectCon(base.ConnectionData.Schema, "WHERE SendManPhone=@SendManPhone", "@SendManPhone", input.SendManPhone.Trim());
-                if (sender == null)
+                if (input.FK_Customer == "0000")
                 {
-                    sender = new GExpSender();
-                    sender.Id = Guid.NewGuid().ToString();
-                    sender.SendMan = input.SendMan;
-                    sender.SendManPhone = input.SendManPhone;
-                    sender.SendAddress = input.SendManAddress;
-                    dc.GExpsender.InsertOnSubmit(base.ConnectionData.Schema, sender);
-                }
-                else
-                {
-                    sender.SendMan = input.SendMan;
-                    sender.SendManPhone = input.SendManPhone;
-                    sender.SendAddress = input.SendManAddress;
-                    if (sender.SendMan != input.SendMan || sender.SendManPhone != input.SendManPhone || sender.SendAddress != input.SendManAddress)
+                    // Tạo danh bạ sender
+                    GExpSender sender = dc.GExpsender.GetObjectCon(base.ConnectionData.Schema, "WHERE SendManPhone=@SendManPhone", "@SendManPhone", input.SendManPhone.Trim());
+                    if (sender == null)
                     {
-                        dc.GExpsender.Update(base.ConnectionData.Schema, sender);
+                        sender = new GExpSender();
+                        sender.Id = Guid.NewGuid().ToString();
+                        sender.SendMan = input.SendMan;
+                        sender.SendManPhone = input.SendManPhone;
+                        sender.SendAddress = input.SendManAddress;
+                        dc.GExpsender.InsertOnSubmit(base.ConnectionData.Schema, sender);
                     }
+                    else
+                    {
+                        sender.SendMan = input.SendMan;
+                        sender.SendManPhone = input.SendManPhone;
+                        sender.SendAddress = input.SendManAddress;
+                        if (sender.SendMan != input.SendMan || sender.SendManPhone != input.SendManPhone || sender.SendAddress != input.SendManAddress)
+                        {
+                            dc.GExpsender.Update(base.ConnectionData.Schema, sender);
+                        }
 
+                    }
                 }
+
                 // If ORDER
                 if (!string.IsNullOrEmpty(input.IdOrder))
                 {
@@ -1196,6 +1200,32 @@ namespace LeMaiLogic.Logic
                         accept.AcceptWard = input.AcceptWardCode;
                         dc.GExpaccept.Update(base.ConnectionData.Schema, accept);
                     }
+                    if (input.FK_Customer == "0000")
+                    {
+                        // Tạo danh bạ sender
+                        GExpSender sender = dc.GExpsender.GetObjectCon(base.ConnectionData.Schema, "WHERE SendManPhone=@SendManPhone", "@SendManPhone", input.SendManPhone.Trim());
+                        if (sender == null)
+                        {
+                            sender = new GExpSender();
+                            sender.Id = Guid.NewGuid().ToString();
+                            sender.SendMan = input.SendMan;
+                            sender.SendManPhone = input.SendManPhone;
+                            sender.SendAddress = input.SendManAddress;
+                            dc.GExpsender.InsertOnSubmit(base.ConnectionData.Schema, sender);
+                        }
+                        else
+                        {
+                            sender.SendMan = input.SendMan;
+                            sender.SendManPhone = input.SendManPhone;
+                            sender.SendAddress = input.SendManAddress;
+                            if (sender.SendMan != input.SendMan || sender.SendManPhone != input.SendManPhone || sender.SendAddress != input.SendManAddress)
+                            {
+                                dc.GExpsender.Update(base.ConnectionData.Schema, sender);
+                            }
+
+                        }
+                    }
+
                     dc.SubmitChanges();
                     return Tuple.Create(true, changeCOD, changeTT);
                 }
