@@ -7,7 +7,6 @@ namespace LeMaiDomain
 	public class VihcleServiceConfig
 	{
 		//Khai bao các biến
-		public System.String Id { get; set; }
 		public System.String FK_ServiceId { get; set; }
 		public System.String FK_Vihcle { get; set; }
 		public System.Decimal ValueCycle { get; set; }

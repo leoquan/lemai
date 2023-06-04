@@ -26,7 +26,7 @@ namespace LeMaiLogic
 		/// <summary>
 		/// Lấy một VihcleServiceConfig từ Database
 		/// </summary>
-		VihcleServiceConfig GetObject(string schema, String Id);
+		VihcleServiceConfig GetObject(string schema, String FK_ServiceId, String FK_Vihcle);
 		/// <summary>
 		/// Lấy một VihcleServiceConfig đầu tiên từ Database thỏa điền kiện của condition
 		/// </summary>
@@ -44,7 +44,7 @@ namespace LeMaiLogic
 		/// <summary>
 		/// Cập nhật VihcleServiceConfig vào Database. Cho phép cập nhật khóa chính.
 		/// </summary>
-		int Update(string schema, VihcleServiceConfig _VihcleServiceConfig, String Id);
+		int Update(string schema, VihcleServiceConfig _VihcleServiceConfig, String FK_ServiceId, String FK_Vihcle);
 		/// <summary>
 		/// Cập nhật VihcleServiceConfig vào Database với chính đối tượng được truyền vào. Không cho phép cập nhật khóa chính
 		/// </summary>
@@ -60,7 +60,7 @@ namespace LeMaiLogic
 		/// <summary>
 		/// Xóa VihcleServiceConfig trong Database
 		/// </summary>
-		int DeleteOnSubmit(string schema, String Id);
+		int DeleteOnSubmit(string schema, String FK_ServiceId, String FK_Vihcle);
 		/// <summary>
 		/// Xóa VihcleServiceConfig trong Database
 		/// </summary>

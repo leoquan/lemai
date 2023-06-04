@@ -64,10 +64,6 @@ namespace LeMaiLogic
 				foreach (DataRow dr in ds.Rows)
 				{
 					item = new VihcleServiceConfig();
-					if (dr["Id"] != null && dr["Id"] != DBNull.Value)
-					{
-						item.Id = Convert.ToString(dr["Id"]);
-					}
 					if (dr["FK_ServiceId"] != null && dr["FK_ServiceId"] != DBNull.Value)
 					{
 						item.FK_ServiceId = Convert.ToString(dr["FK_ServiceId"]);
@@ -107,10 +103,6 @@ namespace LeMaiLogic
 				foreach (DataRow dr in ds.Rows)
 				{
 					item = new VihcleServiceConfig();
-					if (dr["Id"] != null && dr["Id"] != DBNull.Value)
-					{
-						item.Id = Convert.ToString(dr["Id"]);
-					}
 					if (dr["FK_ServiceId"] != null && dr["FK_ServiceId"] != DBNull.Value)
 					{
 						item.FK_ServiceId = Convert.ToString(dr["FK_ServiceId"]);
@@ -162,21 +154,18 @@ namespace LeMaiLogic
 		/// <summary>
 		/// Lấy một VihcleServiceConfig từ Database
 		/// </summary>
-		public VihcleServiceConfig GetObject(string schema, String Id)
+		public VihcleServiceConfig GetObject(string schema, String FK_ServiceId, String FK_Vihcle)
 		{
 			try
 			{
-				DataTable ds = this._dataContext.GetData("SELECT * FROM " + schema + ".[VihcleServiceConfig] where Id=@Id",
-					"@Id", Id);
+				DataTable ds = this._dataContext.GetData("SELECT * FROM " + schema + ".[VihcleServiceConfig] where FK_ServiceId=@FK_ServiceId and FK_Vihcle=@FK_Vihcle",
+					"@FK_ServiceId", FK_ServiceId, 
+					"@FK_Vihcle", FK_Vihcle);
 				if (ds.Rows.Count > 0)
 				{
 					VihcleServiceConfig item=new VihcleServiceConfig();
 					foreach (DataRow dr in ds.Rows)
 					{
-						if (dr["Id"] != null && dr["Id"] != DBNull.Value)
-						{
-							item.Id = Convert.ToString(dr["Id"]);
-						}
 						if (dr["FK_ServiceId"] != null && dr["FK_ServiceId"] != DBNull.Value)
 						{
 							item.FK_ServiceId = Convert.ToString(dr["FK_ServiceId"]);
@@ -222,10 +211,6 @@ namespace LeMaiLogic
 					VihcleServiceConfig item=new VihcleServiceConfig();
 					foreach (DataRow dr in ds.Rows)
 					{
-						if (dr["Id"] != null && dr["Id"] != DBNull.Value)
-						{
-							item.Id = Convert.ToString(dr["Id"]);
-						}
 						if (dr["FK_ServiceId"] != null && dr["FK_ServiceId"] != DBNull.Value)
 						{
 							item.FK_ServiceId = Convert.ToString(dr["FK_ServiceId"]);
@@ -284,8 +269,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[VihcleServiceConfig](Id, FK_ServiceId, FK_Vihcle, ValueCycle, Note) VALUES(@Id, @FK_ServiceId, @FK_Vihcle, @ValueCycle, @Note)", 
-					"@Id",  _VihcleServiceConfig.Id, 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[VihcleServiceConfig](FK_ServiceId, FK_Vihcle, ValueCycle, Note) VALUES(@FK_ServiceId, @FK_Vihcle, @ValueCycle, @Note)", 
 					"@FK_ServiceId",  _VihcleServiceConfig.FK_ServiceId, 
 					"@FK_Vihcle",  _VihcleServiceConfig.FK_Vihcle, 
 					"@ValueCycle",  _VihcleServiceConfig.ValueCycle, 
@@ -313,17 +297,17 @@ namespace LeMaiLogic
 		/// <summary>
 		/// Cập nhật VihcleServiceConfig vào Database. Cho phép cập nhật khóa chính.
 		/// </summary>
-		public int Update(string schema, VihcleServiceConfig _VihcleServiceConfig, String Id)
+		public int Update(string schema, VihcleServiceConfig _VihcleServiceConfig, String FK_ServiceId, String FK_Vihcle)
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[VihcleServiceConfig] SET Id=@Id, FK_ServiceId=@FK_ServiceId, FK_Vihcle=@FK_Vihcle, ValueCycle=@ValueCycle, Note=@Note WHERE Id=@Id", 
-					"@Id",  _VihcleServiceConfig.Id, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[VihcleServiceConfig] SET FK_ServiceId=@FK_ServiceId, FK_Vihcle=@FK_Vihcle, ValueCycle=@ValueCycle, Note=@Note WHERE FK_ServiceId=@FK_ServiceId and FK_Vihcle=@FK_Vihcle", 
 					"@FK_ServiceId",  _VihcleServiceConfig.FK_ServiceId, 
 					"@FK_Vihcle",  _VihcleServiceConfig.FK_Vihcle, 
 					"@ValueCycle",  _VihcleServiceConfig.ValueCycle, 
 					"@Note",  _VihcleServiceConfig.Note, 
-					"@Id", Id);
+					"@FK_ServiceId", FK_ServiceId, 
+					"@FK_Vihcle", FK_Vihcle);
 			}
 			catch
 			{
@@ -338,12 +322,11 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[VihcleServiceConfig] SET FK_ServiceId=@FK_ServiceId, FK_Vihcle=@FK_Vihcle, ValueCycle=@ValueCycle, Note=@Note WHERE Id=@Id", 
-					"@FK_ServiceId",  _VihcleServiceConfig.FK_ServiceId, 
-					"@FK_Vihcle",  _VihcleServiceConfig.FK_Vihcle, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[VihcleServiceConfig] SET ValueCycle=@ValueCycle, Note=@Note WHERE FK_ServiceId=@FK_ServiceId and FK_Vihcle=@FK_Vihcle", 
 					"@ValueCycle",  _VihcleServiceConfig.ValueCycle, 
 					"@Note",  _VihcleServiceConfig.Note, 
-					"@Id", _VihcleServiceConfig.Id);
+					"@FK_ServiceId", _VihcleServiceConfig.FK_ServiceId, 
+					"@FK_Vihcle", _VihcleServiceConfig.FK_Vihcle);
 			}
 			catch
 			{
@@ -369,8 +352,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[VihcleServiceConfig] SET Id=@Id, FK_ServiceId=@FK_ServiceId, FK_Vihcle=@FK_Vihcle, ValueCycle=@ValueCycle, Note=@Note "+ condition, 
-					"@Id",  _VihcleServiceConfig.Id, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[VihcleServiceConfig] SET FK_ServiceId=@FK_ServiceId, FK_Vihcle=@FK_Vihcle, ValueCycle=@ValueCycle, Note=@Note "+ condition, 
 					"@FK_ServiceId",  _VihcleServiceConfig.FK_ServiceId, 
 					"@FK_Vihcle",  _VihcleServiceConfig.FK_Vihcle, 
 					"@ValueCycle",  _VihcleServiceConfig.ValueCycle, 
@@ -384,12 +366,13 @@ namespace LeMaiLogic
 		/// <summary>
 		/// Xóa VihcleServiceConfig trong Database
 		/// </summary>
-		public int DeleteOnSubmit(string schema, String Id)
+		public int DeleteOnSubmit(string schema, String FK_ServiceId, String FK_Vihcle)
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("DELETE FROM " + schema + ".[VihcleServiceConfig] WHERE Id=@Id",
-					"@Id", Id);
+				return this._dataContext.ExecuteNonQuery("DELETE FROM " + schema + ".[VihcleServiceConfig] WHERE FK_ServiceId=@FK_ServiceId and FK_Vihcle=@FK_Vihcle",
+					"@FK_ServiceId", FK_ServiceId, 
+					"@FK_Vihcle", FK_Vihcle);
 			}
 			catch
 			{
@@ -404,8 +387,9 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("DELETE FROM " + schema + ".[VihcleServiceConfig] WHERE Id=@Id",
-					"@Id", _VihcleServiceConfig.Id);
+				return this._dataContext.ExecuteNonQuery("DELETE FROM " + schema + ".[VihcleServiceConfig] WHERE FK_ServiceId=@FK_ServiceId and FK_Vihcle=@FK_Vihcle",
+					"@FK_ServiceId", _VihcleServiceConfig.FK_ServiceId, 
+					"@FK_Vihcle", _VihcleServiceConfig.FK_Vihcle);
 			}
 			catch
 			{

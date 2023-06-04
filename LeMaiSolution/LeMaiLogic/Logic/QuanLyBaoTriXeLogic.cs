@@ -301,7 +301,6 @@ namespace LeMaiLogic.Logic
                     item.FK_Vihcle = input.FK_Vihcle;
                     item.SoKM = input.TotalFee;
                     item.TotalFee = 0;
-                    item.Date = DateTime.Now;
                     item.Note = input.Note;
                     //Change Database
                     dc.VIhclecoupondetail.DeleteOnSubmitCon(base.ConnectionData.Schema, "WHERE FK_VihcleCoupon=@FK_VihcleCoupon", "@FK_VihcleCoupon", item.Id);

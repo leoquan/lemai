@@ -267,6 +267,7 @@ namespace LeMaiDesktop
             view_VihcleCouponDetail childItem = new view_VihcleCouponDetail();
             childItem.FK_Service = cmbSubFK_Service.SelectedValue.ToString();
             childItem.CurrentValue = Int32.Parse(txtSubCurrentValue.Text, System.Globalization.NumberStyles.AllowThousands);
+            childItem.ServiceName = cmbSubFK_Service.Text;
             GListITem.Add(childItem);
             edited = enumEdit.EDIT;
             LoadDataChildItem();
@@ -573,7 +574,7 @@ namespace LeMaiDesktop
         {
             if (edited != enumEdit.NONE)
             {
-                DialogResult dialogResult = MessageBox.Show("", PBean.MESSAGE_TITLE, MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Dữ liệu chưa được lưu, bạn có muốn thoát?", PBean.MESSAGE_TITLE, MessageBoxButtons.YesNo);
                 e.Cancel = (dialogResult == DialogResult.No);
             }
         }
