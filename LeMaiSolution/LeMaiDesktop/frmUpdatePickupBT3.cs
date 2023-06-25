@@ -37,6 +37,8 @@ namespace LeMaiDesktop
             pickupAddress.WardPickup = cmbXaNhan.SelectedValue.ToString();
             pickupAddress.Address = txtSoNhaNguoiGui.Text;
             FullAddress = txtSoNhaNguoiGui.Text + ", " + cmbXaNhan.Text + ", " + cmbHuyenNhan.Text + ", " + cmbTinhNhan.Text;
+            pickupAddress.Name = txtTen.Text;
+            pickupAddress.Phone = txtDienThoai.Text;
             DialogResult = DialogResult.OK;
         }
 

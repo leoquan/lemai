@@ -13,5 +13,7 @@ namespace LeMaiDesktop
         public string ProvincePickup { get; set; }
         public string DistrictPickup { get; set; }
         public string WardPickup { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
     }
 }

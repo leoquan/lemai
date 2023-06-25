@@ -13,7 +13,7 @@ namespace LeMaiDomain
 		public System.Int32 CurrentValue { get; set; }
 		public System.DateTime ServiceDate { get; set; }
 		public System.String ServiceName { get; set; }
-		public System.Decimal ValueCycle { get; set; }
+		public System.Decimal? ValueCycle { get; set; }
 		public System.String ConfigNote { get; set; }
 		public view_VihcleCouponDetail(){}
 	}

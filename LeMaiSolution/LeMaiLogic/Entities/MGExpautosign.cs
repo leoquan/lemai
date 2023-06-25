@@ -68,13 +68,13 @@ namespace LeMaiLogic
 					{
 						item.Id = Convert.ToString(dr["Id"]);
 					}
-					if (dr["ApplyForShipper"] != null && dr["ApplyForShipper"] != DBNull.Value)
+					if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
 					{
-						item.ApplyForShipper = Convert.ToBoolean(dr["ApplyForShipper"]);
+						item.FK_Post = Convert.ToString(dr["FK_Post"]);
 					}
-					if (dr["FK_ShipperOrPost"] != null && dr["FK_ShipperOrPost"] != DBNull.Value)
+					if (dr["FK_Shipper"] != null && dr["FK_Shipper"] != DBNull.Value)
 					{
-						item.FK_ShipperOrPost = Convert.ToString(dr["FK_ShipperOrPost"]);
+						item.FK_Shipper = Convert.ToString(dr["FK_Shipper"]);
 					}
 					if (dr["MinuteSign"] != null && dr["MinuteSign"] != DBNull.Value)
 					{
@@ -111,13 +111,13 @@ namespace LeMaiLogic
 					{
 						item.Id = Convert.ToString(dr["Id"]);
 					}
-					if (dr["ApplyForShipper"] != null && dr["ApplyForShipper"] != DBNull.Value)
+					if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
 					{
-						item.ApplyForShipper = Convert.ToBoolean(dr["ApplyForShipper"]);
+						item.FK_Post = Convert.ToString(dr["FK_Post"]);
 					}
-					if (dr["FK_ShipperOrPost"] != null && dr["FK_ShipperOrPost"] != DBNull.Value)
+					if (dr["FK_Shipper"] != null && dr["FK_Shipper"] != DBNull.Value)
 					{
-						item.FK_ShipperOrPost = Convert.ToString(dr["FK_ShipperOrPost"]);
+						item.FK_Shipper = Convert.ToString(dr["FK_Shipper"]);
 					}
 					if (dr["MinuteSign"] != null && dr["MinuteSign"] != DBNull.Value)
 					{
@@ -177,13 +177,13 @@ namespace LeMaiLogic
 						{
 							item.Id = Convert.ToString(dr["Id"]);
 						}
-						if (dr["ApplyForShipper"] != null && dr["ApplyForShipper"] != DBNull.Value)
+						if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
 						{
-							item.ApplyForShipper = Convert.ToBoolean(dr["ApplyForShipper"]);
+							item.FK_Post = Convert.ToString(dr["FK_Post"]);
 						}
-						if (dr["FK_ShipperOrPost"] != null && dr["FK_ShipperOrPost"] != DBNull.Value)
+						if (dr["FK_Shipper"] != null && dr["FK_Shipper"] != DBNull.Value)
 						{
-							item.FK_ShipperOrPost = Convert.ToString(dr["FK_ShipperOrPost"]);
+							item.FK_Shipper = Convert.ToString(dr["FK_Shipper"]);
 						}
 						if (dr["MinuteSign"] != null && dr["MinuteSign"] != DBNull.Value)
 						{
@@ -226,13 +226,13 @@ namespace LeMaiLogic
 						{
 							item.Id = Convert.ToString(dr["Id"]);
 						}
-						if (dr["ApplyForShipper"] != null && dr["ApplyForShipper"] != DBNull.Value)
+						if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
 						{
-							item.ApplyForShipper = Convert.ToBoolean(dr["ApplyForShipper"]);
+							item.FK_Post = Convert.ToString(dr["FK_Post"]);
 						}
-						if (dr["FK_ShipperOrPost"] != null && dr["FK_ShipperOrPost"] != DBNull.Value)
+						if (dr["FK_Shipper"] != null && dr["FK_Shipper"] != DBNull.Value)
 						{
-							item.FK_ShipperOrPost = Convert.ToString(dr["FK_ShipperOrPost"]);
+							item.FK_Shipper = Convert.ToString(dr["FK_Shipper"]);
 						}
 						if (dr["MinuteSign"] != null && dr["MinuteSign"] != DBNull.Value)
 						{
@@ -284,10 +284,10 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpAutoSign](Id, ApplyForShipper, FK_ShipperOrPost, MinuteSign, ActiveFrom) VALUES(@Id, @ApplyForShipper, @FK_ShipperOrPost, @MinuteSign, @ActiveFrom)", 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpAutoSign](Id, FK_Post, FK_Shipper, MinuteSign, ActiveFrom) VALUES(@Id, @FK_Post, @FK_Shipper, @MinuteSign, @ActiveFrom)", 
 					"@Id",  _GExpAutoSign.Id, 
-					"@ApplyForShipper",  _GExpAutoSign.ApplyForShipper, 
-					"@FK_ShipperOrPost",  _GExpAutoSign.FK_ShipperOrPost, 
+					"@FK_Post",  _GExpAutoSign.FK_Post, 
+					"@FK_Shipper",  _GExpAutoSign.FK_Shipper, 
 					"@MinuteSign",  _GExpAutoSign.MinuteSign, 
 					"@ActiveFrom", this._dataContext.ConvertDateString( _GExpAutoSign.ActiveFrom));
 				return true;
@@ -317,10 +317,10 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpAutoSign] SET Id=@Id, ApplyForShipper=@ApplyForShipper, FK_ShipperOrPost=@FK_ShipperOrPost, MinuteSign=@MinuteSign, ActiveFrom=@ActiveFrom WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpAutoSign] SET Id=@Id, FK_Post=@FK_Post, FK_Shipper=@FK_Shipper, MinuteSign=@MinuteSign, ActiveFrom=@ActiveFrom WHERE Id=@Id", 
 					"@Id",  _GExpAutoSign.Id, 
-					"@ApplyForShipper",  _GExpAutoSign.ApplyForShipper, 
-					"@FK_ShipperOrPost",  _GExpAutoSign.FK_ShipperOrPost, 
+					"@FK_Post",  _GExpAutoSign.FK_Post, 
+					"@FK_Shipper",  _GExpAutoSign.FK_Shipper, 
 					"@MinuteSign",  _GExpAutoSign.MinuteSign, 
 					"@ActiveFrom", this._dataContext.ConvertDateString( _GExpAutoSign.ActiveFrom), 
 					"@Id", Id);
@@ -338,9 +338,9 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpAutoSign] SET ApplyForShipper=@ApplyForShipper, FK_ShipperOrPost=@FK_ShipperOrPost, MinuteSign=@MinuteSign, ActiveFrom=@ActiveFrom WHERE Id=@Id", 
-					"@ApplyForShipper",  _GExpAutoSign.ApplyForShipper, 
-					"@FK_ShipperOrPost",  _GExpAutoSign.FK_ShipperOrPost, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpAutoSign] SET FK_Post=@FK_Post, FK_Shipper=@FK_Shipper, MinuteSign=@MinuteSign, ActiveFrom=@ActiveFrom WHERE Id=@Id", 
+					"@FK_Post",  _GExpAutoSign.FK_Post, 
+					"@FK_Shipper",  _GExpAutoSign.FK_Shipper, 
 					"@MinuteSign",  _GExpAutoSign.MinuteSign, 
 					"@ActiveFrom", this._dataContext.ConvertDateString( _GExpAutoSign.ActiveFrom), 
 					"@Id", _GExpAutoSign.Id);
@@ -369,10 +369,10 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpAutoSign] SET Id=@Id, ApplyForShipper=@ApplyForShipper, FK_ShipperOrPost=@FK_ShipperOrPost, MinuteSign=@MinuteSign, ActiveFrom=@ActiveFrom "+ condition, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpAutoSign] SET Id=@Id, FK_Post=@FK_Post, FK_Shipper=@FK_Shipper, MinuteSign=@MinuteSign, ActiveFrom=@ActiveFrom "+ condition, 
 					"@Id",  _GExpAutoSign.Id, 
-					"@ApplyForShipper",  _GExpAutoSign.ApplyForShipper, 
-					"@FK_ShipperOrPost",  _GExpAutoSign.FK_ShipperOrPost, 
+					"@FK_Post",  _GExpAutoSign.FK_Post, 
+					"@FK_Shipper",  _GExpAutoSign.FK_Shipper, 
 					"@MinuteSign",  _GExpAutoSign.MinuteSign, 
 					"@ActiveFrom", this._dataContext.ConvertDateString( _GExpAutoSign.ActiveFrom));
 			}

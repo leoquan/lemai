@@ -736,7 +736,7 @@ namespace LeMaiApi.Controllers
             var fkShipperId = GetLoginUserId();
             var taiKhoan = await _dbCtx.GexpShippers.FirstOrDefaultAsync(h => h.Id == fkShipperId);
             var query = _dbCtx.ViewGexpReceiveTasks.AsNoTracking()
-                .Where(h => h.FkShipperId == fkShipperId || (h.FkPost == taiKhoan.FkPost && h.FkShipperId == "0000" && (string.IsNullOrEmpty(h.FkPickupShipper)==true || h.FkPickupShipper == fkShipperId)));
+                .Where(h => h.FkShipperId == fkShipperId || (h.FkPost == taiKhoan.FkPost && h.FkShipperId == "0000" && (string.IsNullOrEmpty(h.FkPickupShipper) == true || h.FkPickupShipper == fkShipperId)));
 
             if (!string.IsNullOrWhiteSpace(id))
             {
@@ -892,6 +892,7 @@ namespace LeMaiApi.Controllers
             delivery.IsCash = false;
             delivery.TotalCod = bill.Cod;
             delivery.FkPost = taiKhoan.FkPost;
+            delivery.IsSign = false;
             if (bill.FkPaymentType == "NTT")
             {
                 delivery.TotalCod = delivery.TotalCod + bill.Freight;

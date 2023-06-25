@@ -26,4 +26,6 @@ public partial class GexpShipperDevivery
     public string FkCashId { get; set; }
 
     public string FkPost { get; set; }
+
+    public bool IsSign { get; set; }
 }

@@ -19,6 +19,7 @@ namespace LeMaiDesktop
 {
     public partial class frmExpConsignmentV2 : frmBase
     {
+        SoundPlayer printSound = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "nhacnho.wav");
         SoundPlayer notifySound = new SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "mixding.wav");
         private GExpBillLogic _logic = new GExpBillLogic(PBean.ConnectionBase);
         private enumAction status = enumAction.NONE;
@@ -789,7 +790,7 @@ namespace LeMaiDesktop
             item.Note = txtYeuCauKhac.Text.Trim();
             item.BT3Type = cmbLoaiKien.SelectedValue.ToString();
             item.GoodsName = txtTenHang.Text.Trim();
-            item.DonHangNhan = chbNhanHang.Checked;
+            item.IsReceiveBill = chbNhanHang.Checked;
             int number = 0;
             if (!int.TryParse(txtSoLuong.Text.Trim(), out number))
             {
@@ -835,6 +836,8 @@ namespace LeMaiDesktop
             item.ProvincePickup = _pickupAddress.ProvincePickup;
             item.DistricPickup = _pickupAddress.DistrictPickup;
             item.WardPickup = _pickupAddress.WardPickup;
+            item.NamePickup = _pickupAddress.Name;
+            item.PhonePickup = _pickupAddress.Phone;
             if (status == enumAction.NEW)
             {
                 item.IdOrder = _IdOrder;
@@ -1037,6 +1040,7 @@ namespace LeMaiDesktop
             List<view_GExpBill> ls = await _logic.GetListByListIds(ids, false);
             if (ls.Count > 0)
             {
+
                 PrintDialog printDialog = new PrintDialog();
                 if (!string.IsNullOrEmpty(PBean.LOCAL_OPTIONS.PRINTER_RECEPT))
                 {
@@ -1044,8 +1048,6 @@ namespace LeMaiDesktop
                 }
                 if (printDialog.ShowDialog() == DialogResult.OK)
                 {
-                    PBean.LOCAL_OPTIONS.PRINTER_RECEPT = printDialog.PrinterSettings.PrinterName;
-                    PBean.LOCAL_OPTIONS.Save();
                     IDocumentPrint doc = DocumentPrintHelper.GetDocument(PBean.LOCAL_OPTIONS.ICON_NAME);
                     string printsize = cmbBienNhan.SelectedValue.ToString();
                     foreach (var item in ls)
@@ -1067,9 +1069,14 @@ namespace LeMaiDesktop
                         }
                     }
                     // lưu config 
-
-                    PBean.LOCAL_OPTIONS.PrintSizeReceipt = printsize;
-                    PBean.LOCAL_OPTIONS.Save();
+                    if (PBean.LOCAL_OPTIONS.PrintSizeReceipt != printsize || PBean.LOCAL_OPTIONS.PRINTER_RECEPT != printDialog.PrinterSettings.PrinterName)
+                    {
+                        PBean.LOCAL_OPTIONS.PrintSizeReceipt = printsize;
+                        PBean.LOCAL_OPTIONS.PRINTER_RECEPT = printDialog.PrinterSettings.PrinterName;
+                        PBean.LOCAL_OPTIONS.Save();
+                    }
+                    // SOund
+                    printSound.Play();
                 }
             }
         }

@@ -83,7 +83,9 @@ namespace LeMaiDomain.Models
         public string AddressPickup { get; set; }
         public string ShopIdPickup { get; set; }
         public String SiteCode { get; set; }
-        public bool DonHangNhan { get; set; }
+        public bool IsReceiveBill { get; set; }
+        public string NamePickup { get; set; }
+        public string PhonePickup { get; set; }
     }
     public class GExpBillLogicOutputDto : view_GExpBill
     {

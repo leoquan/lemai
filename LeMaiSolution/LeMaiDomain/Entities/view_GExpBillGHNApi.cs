@@ -82,6 +82,8 @@ namespace LeMaiDomain
 		public System.String PP_LinkCustomerLogin { get; set; }
 		public System.String PP_TrackLink { get; set; }
 		public System.String TrackLink { get; set; }
+		public System.String NamePickup { get; set; }
+		public System.String PhonePickup { get; set; }
 		public view_GExpBillGHNApi(){}
 	}
 }

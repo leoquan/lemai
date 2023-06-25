@@ -70,6 +70,8 @@ namespace LeMaiDomain
 		public System.Boolean? IsReceiveBill { get; set; }
 		public System.String PrintData { get; set; }
 		public System.Int32? ShipperStatus { get; set; }
+		public System.String NamePickup { get; set; }
+		public System.String PhonePickup { get; set; }
 		public GExpBill(){}
 	}
 }

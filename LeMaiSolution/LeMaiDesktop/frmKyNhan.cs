@@ -16,6 +16,7 @@ namespace LeMaiDesktop
     public partial class frmKyNhan : frmBase
     {
         private GExpBillLogic _logic = new GExpBillLogic(PBean.ConnectionBase);
+        private GExpScanLogic _logicScan = new GExpScanLogic(PBean.ConnectionBase);
         public frmKyNhan() : base(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
         {
             InitializeComponent();
@@ -87,7 +88,7 @@ namespace LeMaiDesktop
                 txtNoiDung.Focus();
                 return;
             }
-            string mess = await _logic.AddSigned(txtMaDonHang.Text.Trim(), txtNoiDung.Text, chbGiaoHangThanhCong.Checked, PBean.USER.Id, PBean.USER.FullName, PBean.USER.CardId, dateCurrentDate.Value);
+            string mess = _logicScan.Returned(txtMaDonHang.Text.Trim(), PBean.USER.Id, PBean.USER.FullName, PBean.USER.Phone, PBean.USER.CardId, txtNoiDung.Text);
             if (string.IsNullOrEmpty(mess))
             {
                 MessageBox.Show("Ký nhận đơn hàng thành công!", PBean.MESSAGE_TITLE);

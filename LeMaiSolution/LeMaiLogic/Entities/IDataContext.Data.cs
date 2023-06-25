@@ -242,6 +242,10 @@ namespace LeMaiLogic
 
 		IGExpcode GExpcode { get; }
 
+		IGExpdebitcomparison GExpdebitcomparison { get; }
+
+		IGExpdebitcomparisondetail GExpdebitcomparisondetail { get; }
+
 		IGExpdistrict GExpdistrict { get; }
 
 		IGExpdistrictghsv GExpdistrictghsv { get; }
@@ -289,6 +293,8 @@ namespace LeMaiLogic
 		IGExpprofit GExpprofit { get; }
 
 		IGExpprovider GExpprovider { get; }
+
+		IGExpproviderconfig GExpproviderconfig { get; }
 
 		IGExpprovidercustomer GExpprovidercustomer { get; }
 
@@ -626,6 +632,8 @@ namespace LeMaiLogic
 
 		IVIewaccountobject VIewaccountobject { get; }
 
+		IVIewautosigndelivery VIewautosigndelivery { get; }
+
 		IVIewbaocaotaichinh VIewbaocaotaichinh { get; }
 
 		IVIewbooking VIewbooking { get; }
@@ -700,6 +708,8 @@ namespace LeMaiLogic
 
 		IVIewexpwithdrawrequest VIewexpwithdrawrequest { get; }
 
+		IVIewgexpautosign VIewgexpautosign { get; }
+
 		IVIewgexpbalancedetail VIewgexpbalancedetail { get; }
 
 		IVIewgexpbalancedetailpost VIewgexpbalancedetailpost { get; }
@@ -715,6 +725,10 @@ namespace LeMaiLogic
 		IVIewgexpbillghnapi VIewgexpbillghnapi { get; }
 
 		IVIewgexpbillhistory VIewgexpbillhistory { get; }
+
+		IVIewgexpdebitcomparison VIewgexpdebitcomparison { get; }
+
+		IVIewgexpdebitcomparisondetail VIewgexpdebitcomparisondetail { get; }
 
 		IVIewgexpdoisoatchitiet VIewgexpdoisoatchitiet { get; }
 
@@ -753,6 +767,10 @@ namespace LeMaiLogic
 		IVIewgexpscansign VIewgexpscansign { get; }
 
 		IVIewgexpshipper VIewgexpshipper { get; }
+
+		IVIewgexpshippercash VIewgexpshippercash { get; }
+
+		IVIewgexpshippercashdetail VIewgexpshippercashdetail { get; }
 
 		IVIewgexpshipperdevivery VIewgexpshipperdevivery { get; }
 

@@ -18,6 +18,7 @@ namespace LeMaiDomain
 		public System.String Note { get; set; }
 		public System.String FK_CashId { get; set; }
 		public System.String FK_Post { get; set; }
+		public System.Boolean IsSign { get; set; }
 		public GExpShipperDevivery(){}
 	}
 }

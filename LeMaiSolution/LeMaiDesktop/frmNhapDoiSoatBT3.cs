@@ -111,7 +111,7 @@ namespace LeMaiDesktop
                 {
                     case "GHN":
                         {
-                            _dataDoiSoat = ReadGHN(txtFilePath.Text.Trim());
+                            _dataDoiSoat = ReadDebitComparison.ReadGHN(txtFilePath.Text.Trim());
 
                         }
                         break;
@@ -122,22 +122,22 @@ namespace LeMaiDesktop
                         break;
                     case "GHSV":
                         {
-                            _dataDoiSoat = ReadGHSV(txtFilePath.Text.Trim());
+                            _dataDoiSoat = ReadDebitComparison.ReadGHSV(txtFilePath.Text.Trim());
                         }
                         break;
                     case "BEST":
                         {
-                            _dataDoiSoat = ReadBEST(txtFilePath.Text.Trim());
+                            _dataDoiSoat = ReadDebitComparison.ReadBEST(txtFilePath.Text.Trim());
                         }
                         break;
                     case "JNT":
                         {
-                            _dataDoiSoat = ReadJNT(txtFilePath.Text.Trim());
+                            _dataDoiSoat = ReadDebitComparison.ReadJNT(txtFilePath.Text.Trim());
                         }
                         break;
                     case "NINJA":
                         {
-                            _dataDoiSoat = ReadNINJA(txtFilePath.Text.Trim());
+                            _dataDoiSoat = ReadDebitComparison.ReadNINJA(txtFilePath.Text.Trim());
                         }
                         break;
                     default:
@@ -199,7 +199,7 @@ namespace LeMaiDesktop
             {
                 DataSet ds = NPOIHelper.GetDataSetFromXls(filename);
                 DataTable data = ds.Tables[0];
-                DataTable result = MakeDataTable();
+                DataTable result = ReadDebitComparison.MakeDataTable();
                 int STT = 0;
                 foreach (DataRow item in data.Rows)
                 {
@@ -231,426 +231,8 @@ namespace LeMaiDesktop
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), PBean.MESSAGE_TITLE);
-                return MakeDataTable();
+                return ReadDebitComparison.MakeDataTable();
             }
-        }
-        DataTable ReadBEST(string filename)
-        {
-            try
-            {
-                DataTable data = ExcelHelper.Read2007Xlsx(txtFilePath.Text.Trim());
-                DataTable result = MakeDataTable();
-                int i = 0;
-                foreach (DataRow item in data.Rows)
-                {
-                    // Hiển thị data
-                    if (!string.IsNullOrEmpty(item["Mã vận đơn"].ToString()))
-                    {
-                        DataRow dr = result.NewRow();
-                        i++;
-                        // Định dạng cũ
-                        //Trả về hay không Có là hoàn, Không là giao thành công Không Có
-                        dr["Id"] = i.ToString();
-                        dr["BT3Code"] = item["Mã vận đơn"].ToString().Trim();
-                        dr["BillCode"] = item["mã đối tác"].ToString();
-                        dr["Status"] = 0;
-                        string statusName = item["Trả về hay không"].ToString();
-                        if (statusName == "Không")
-                        {
-                            dr["Status"] = 1;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thành công";
-                        }
-                        else
-                        {
-                            dr["Status"] = 2;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thất bại";
-                        }
-                        string ngay = item["Thời gian ký nhận"].ToString();
-                        if (!string.IsNullOrEmpty(ngay))
-                        {
-                            DateTime date = DateTime.ParseExact(ngay, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-                            dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", date);
-                        }
-                        else
-                        {
-                            dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-                        }
-                        dr["BT3COD"] = item["Số tiền COD trên phiếu thanh toán"].ToString();
-                        dr["BT3TotalPaid"] = 0;
-                        dr["BT3TotalDiscount"] = 0;
-                        dr["BT3TotalFee"] = item["Tổng cước vận chuyển"].ToString();
-                        string DoiSoat = item["Khách hàng nhận COD"].ToString();
-                        if (string.IsNullOrEmpty(DoiSoat))
-                        {
-                            dr["MoneyReturn"] = "0";
-                        }
-                        else
-                        {
-                            dr["MoneyReturn"] = DoiSoat;
-                        }
-
-                        result.Rows.Add(dr);
-                    }
-                }
-                return result;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), PBean.MESSAGE_TITLE);
-                return MakeDataTable();
-            }
-
-        }
-        DataTable ReadNINJA(string filename)
-        {
-            try
-            {
-                DataTable data = ExcelHelper.Read2007Xlsx(txtFilePath.Text.Trim());
-                DataTable result = MakeDataTable();
-                int i = 0;
-                foreach (DataRow item in data.Rows)
-                {
-                    // Hiển thị data
-                    if (!string.IsNullOrEmpty(item["Mã đơn hàng"].ToString()))
-                    {
-                        i++;
-                        DataRow dr = result.NewRow();
-                        // Định dạng cũ
-                        dr["Id"] = i.ToString();
-                        string BT3CodeTemp = item["Mã đơn hàng"].ToString().Trim();
-
-                        dr["BT3Code"] = BT3CodeTemp;
-
-                        dr["BillCode"] = "";
-                        dr["Status"] = 0;
-                        string statusName = item["Trạng thái đơn hàng"].ToString();
-                        if (statusName == "Completed")
-                        {
-                            dr["Status"] = 1;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thành công";
-                        }
-                        else
-                        {
-                            dr["Status"] = 2;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thất bại";
-                        }
-                        dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-                        dr["BT3COD"] = item["Thu hộ"].ToString();
-                        dr["BT3TotalPaid"] = 0;
-                        dr["BT3TotalDiscount"] = 0;
-                        dr["BT3TotalFee"] = item["Tổng phí vận chuyển"].ToString();
-                        string DoiSoat = item["Thu hộ"].ToString();
-                        if (string.IsNullOrEmpty(DoiSoat))
-                        {
-                            dr["MoneyReturn"] = "0";
-                        }
-                        else
-                        {
-                            dr["MoneyReturn"] = DoiSoat;
-                        }
-
-                        result.Rows.Add(dr);
-                    }
-                }
-                return result;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), PBean.MESSAGE_TITLE);
-                return MakeDataTable();
-            }
-
-        }
-        DataTable ReadJNT(string filename)
-        {
-            try
-            {
-                DataTable data = ExcelHelper.Read2007Xlsx(txtFilePath.Text.Trim());
-                DataTable result = MakeDataTable();
-                foreach (DataRow item in data.Rows)
-                {
-                    // Hiển thị data
-                    if (!string.IsNullOrEmpty(item["Mã vận đơn"].ToString()))
-                    {
-                        DataRow dr = result.NewRow();
-                        dr["Id"] = 0;
-                        dr["BT3Code"] = item["Mã vận đơn"].ToString().Trim();
-                        dr["BillCode"] = item["Mã đơn KH"].ToString();
-                        dr["Status"] = 0;
-                        string statusName = item["Ghi chú"].ToString();
-                        if (statusName != "Đã hoàn hàng")
-                        {
-                            dr["Status"] = 1;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thành công";
-                        }
-                        else
-                        {
-                            dr["Status"] = 2;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thất bại";
-                        }
-                        string ngay = item["Kỳ thanh toán"].ToString();
-                        if (!string.IsNullOrEmpty(ngay))
-                        {
-                            string temp = ngay.Split('_')[1];
-                            temp = temp.Split('.')[0];
-                            DateTime date = DateTime.ParseExact(temp, "yyyyMMdd", CultureInfo.InvariantCulture);
-                            dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", date);
-                        }
-                        else
-                        {
-                            dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-                        }
-                        dr["BT3COD"] = item["Tiền COD"].ToString();
-                        dr["BT3TotalPaid"] = 0;
-                        dr["BT3TotalDiscount"] = 0;
-
-                        dr["BT3TotalFee"] = item["Vận phí"].ToString();
-                        string DoiSoat = item["Tiền thực nhận"].ToString();
-                        if (string.IsNullOrEmpty(DoiSoat))
-                        {
-                            dr["MoneyReturn"] = "0";
-                        }
-                        else
-                        {
-                            dr["MoneyReturn"] = DoiSoat;
-                        }
-
-                        result.Rows.Add(dr);
-                    }
-                }
-                return result;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), PBean.MESSAGE_TITLE);
-                return MakeDataTable();
-            }
-
-        }
-        DataTable ReadGHSV(string filename)
-        {
-            try
-            {
-                DataTable data = ExcelHelper.Read2007Xlsx(txtFilePath.Text.Trim());
-                DataTable result = MakeDataTable();
-                foreach (DataRow item in data.Rows)
-                {
-                    // Hiển thị data
-                    if (!string.IsNullOrEmpty(item["Mã Đơn Hàng"].ToString()))
-                    {
-                        DataRow dr = result.NewRow();
-                        // Định dạng cũ
-                        dr["Id"] = item["STT"].ToString();
-                        string BT3CodeTemp = item["Mã Đơn Hàng"].ToString().Trim();
-
-                        dr["BT3Code"] = BT3CodeTemp.Split('.')[1];
-                        dr["BillCode"] = item["Mã Đơn Khách Hàng"].ToString();
-                        dr["Status"] = 0;
-                        string statusName = item["Trạng Thái Đơn Hàng"].ToString();
-                        if (statusName == "Đã Đối Soát Giao Hàng")
-                        {
-                            dr["Status"] = 1;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thành công";
-                        }
-                        else
-                        {
-                            dr["Status"] = 2;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thất bại";
-                        }
-                        string ngay = item["Ngày Đối Soát"].ToString();
-                        if (!string.IsNullOrEmpty(ngay))
-                        {
-                            DateTime date = DateTime.ParseExact(ngay, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                            dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", date);
-                        }
-                        else
-                        {
-                            dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-                        }
-                        dr["BT3COD"] = item["Thu Hộ"].ToString();
-                        dr["BT3TotalPaid"] = 0;
-                        dr["BT3TotalDiscount"] = 0;
-                        dr["BT3TotalFee"] = item["Phí Ship"].ToString();
-                        string DoiSoat = item["Trả Shop"].ToString();
-                        if (string.IsNullOrEmpty(DoiSoat))
-                        {
-                            dr["MoneyReturn"] = "0";
-                        }
-                        else
-                        {
-                            dr["MoneyReturn"] = DoiSoat;
-                        }
-
-                        result.Rows.Add(dr);
-                    }
-                }
-                return result;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), PBean.MESSAGE_TITLE);
-                return MakeDataTable();
-            }
-
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="filename"></param>
-        /// <returns></returns>
-        DataTable ReadGHN(string filename)
-        {
-            try
-            {
-                DataTable data = ExcelHelper.Read2007Xlsx(txtFilePath.Text.Trim());
-                DataTable result = MakeDataTable();
-                foreach (DataRow item in data.Rows)
-                {
-                    // Hiển thị data
-                    if (!string.IsNullOrEmpty(item["Mã đơn GHN"].ToString()))
-                    {
-                        DataRow dr = result.NewRow();
-                        // Check 2 cái format của GHN
-                        if (data.Columns.Contains("(1) + (2) + (3) + (4)"))
-                        {
-                            // Định dạng cũ
-                            dr["Id"] = item["STT"].ToString();
-                            dr["BT3Code"] = item["Mã đơn GHN"].ToString();
-                            dr["BillCode"] = item["Mã đơn khách hàng"].ToString();
-                            dr["Status"] = 0;
-                            string statusName = item["Trạng thái"].ToString();
-                            if (statusName == "Giao hàng thành công")
-                            {
-                                dr["Status"] = 1;
-                            }
-                            else if (statusName == "0")
-                            {
-                                dr["Status"] = 0;
-                            }
-                            else if (statusName == "Chuyển hoàn")
-                            {
-                                dr["Status"] = 2;
-                            }
-                            dr["MoneyReturnStatusName"] = item["Trạng thái"].ToString();
-                            string ngay = item["Ngày giao/trả"].ToString();
-                            if (!string.IsNullOrEmpty(ngay))
-                            {
-                                DateTime date = DateTime.ParseExact(ngay, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                                dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", date);
-                            }
-                            else
-                            {
-                                dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-                            }
-
-                            dr["BT3COD"] = item["(1)"].ToString();
-                            dr["BT3TotalPaid"] = item["(2)"].ToString();
-                            dr["BT3TotalDiscount"] = item["(3)"].ToString();
-                            dr["BT3TotalFee"] = item["(4)"].ToString();
-                            string DoiSoat = item["(1) + (2) + (3) + (4)"].ToString();
-                            if (string.IsNullOrEmpty(DoiSoat))
-                            {
-                                dr["MoneyReturn"] = "0";
-                            }
-                            else
-                            {
-                                dr["MoneyReturn"] = DoiSoat;
-                            }
-                        }
-                        else if (data.Columns.Contains("(1) + (2) + (3) + (4) + (5)"))
-                        {
-                            // Định dạng mới
-                            dr["Id"] = item["STT"].ToString();
-                            dr["BT3Code"] = item["Mã đơn GHN"].ToString();
-                            dr["BillCode"] = item["Mã đơn khách hàng"].ToString();
-                            dr["Status"] = 0;
-                            string statusName = item["Trạng thái"].ToString();
-                            if (statusName == "Giao hàng thành công")
-                            {
-                                dr["Status"] = 1;
-                            }
-                            else if (statusName == "0")
-                            {
-                                dr["Status"] = 0;
-                            }
-                            else if (statusName == "Chuyển hoàn")
-                            {
-                                dr["Status"] = 2;
-                            }
-                            dr["MoneyReturnStatusName"] = item["Trạng thái"].ToString();
-
-                            string ngay = item["Ngày giao/trả"].ToString();
-                            if (!string.IsNullOrEmpty(ngay))
-                            {
-                                DateTime date;
-                                if (!DateTime.TryParseExact(ngay, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
-                                {
-                                    date = DateTime.Now;
-                                }
-                                dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", date);
-                            }
-                            else
-                            {
-                                dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-                            }
-                            dr["BT3COD"] = item["(1)"].ToString();
-                            dr["BT3TotalPaid"] = item["(3)"].ToString();
-                            dr["BT3TotalDiscount"] = item["(4)"].ToString();
-                            dr["BT3TotalFee"] = item["(5)"].ToString();
-                            string DoiSoat = item["(1) + (2) + (3) + (4) + (5)"].ToString();
-                            if (string.IsNullOrEmpty(DoiSoat))
-                            {
-                                dr["MoneyReturn"] = "0";
-                            }
-                            else
-                            {
-                                dr["MoneyReturn"] = DoiSoat;
-                            }
-                        }
-                        result.Rows.Add(dr);
-                    }
-                }
-                return result;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), PBean.MESSAGE_TITLE);
-                return MakeDataTable();
-            }
-
-        }
-        public DataTable MakeDataTable()
-        {
-            DataTable data = new DataTable();
-            data.Columns.Add("Id", Type.GetType("System.String"));//STT
-            data.Columns.Add("BT3Code", Type.GetType("System.String")); //Mã đơn GHN
-            data.Columns.Add("BillCode", Type.GetType("System.String"));//Mã đơn khách hàng
-            data.Columns.Add("MoneyReturnStatusName", Type.GetType("System.String")); //Trạng thái
-            data.Columns.Add("DateReturn", Type.GetType("System.String"));//Ngày giao/trả
-
-            data.Columns.Add("BT3COD", Type.GetType("System.Decimal"));//(1)
-            data.Columns.Add("Status", Type.GetType("System.Int32"));
-            data.Columns.Add("BT3TotalPaid", Type.GetType("System.Decimal"));//(2)
-            data.Columns.Add("BT3TotalDiscount", Type.GetType("System.Decimal"));//(3)
-            data.Columns.Add("BT3TotalFee", Type.GetType("System.Decimal"));// (4)
-            data.Columns.Add("MoneyReturn", Type.GetType("System.Decimal")); // "(1) + (2) + (3) + (4)"
-
-            // fill data extend
-            data.Columns.Add("SendMan", Type.GetType("System.String"));
-            data.Columns.Add("SendManPhone", Type.GetType("System.String"));
-            data.Columns.Add("AcceptMan", Type.GetType("System.String"));
-            data.Columns.Add("AcceptManPhone", Type.GetType("System.String"));
-            data.Columns.Add("AcceptProvince", Type.GetType("System.String"));
-
-            data.Columns.Add("COD", Type.GetType("System.Decimal"));
-            data.Columns.Add("Freight", Type.GetType("System.Decimal"));
-            data.Columns.Add("FeeWeight", Type.GetType("System.Decimal"));
-            data.Columns.Add("BillWeight", Type.GetType("System.Decimal"));
-
-            data.Columns.Add("PayType", Type.GetType("System.String"));
-
-
-            return data;
         }
 
         private void frmNhapDoiSoatBT3_Load(object sender, EventArgs e)
@@ -736,65 +318,6 @@ namespace LeMaiDesktop
                     if (bill != null)
                     {
                         mItem.BillCode = bill.BillCode;
-                        #region Chưa implement
-                        // ========== Tạm thời phần scan này chưa thực hiện kiểm tra cho ổn thỏa mới cho chạy ===========
-                        //// Thêm Scan đơn hàng
-                        //GExpScan scan = dc.GExpscan.GetObjectCon(PBean.SCHEMA, "WHERE TypeScan=@TypeScan AND BillCode=@BillCode",
-                        //    "@TypeScan", "TRACK6",
-                        //    "@BillCode", bill.BillCode);
-                        //if (scan == null)
-                        //{
-                        //    if (mItem.Status == 1)
-                        //    {
-                        //        scan = new GExpScan();
-                        //        scan.Id = Guid.NewGuid().ToString();
-                        //        scan.BillCode = bill.BillCode;
-                        //        scan.CreateDate = currentDate;
-                        //        scan.IsRead = false;
-                        //        scan.KeyDate = mItem.Id;
-                        //        scan.NameCreate = PBean.USER.FullName;
-                        //        scan.UserCreate = PBean.USER.Id;
-                        //        scan.Post = PBean.USER.CardId;
-                        //        scan.TypeScan = "TRACK6";
-                        //        scan.ProblemType = 0;
-                        //        scan.Note = _logic.MakeNotForScan(scan.TypeScan, scan.BillCode, bill.AcceptMan, bill.AcceptManPhone);
-                        //        dc.GExpscan.InsertOnSubmit(PBean.SCHEMA, scan);
-                        //        // Cập nhật trạng thái đơn hàng
-                        //        if (bill.BillStatus < 6)
-                        //        {
-                        //            bill.BillStatus = 6;
-                        //            bill.SignedDate = currentDate;
-                        //            bill.IsSigned = true;
-                        //            dc.GExpbill.Update(PBean.SCHEMA, bill);
-                        //        }
-                        //    }
-                        //    else if (mItem.Status == 2)
-                        //    {
-                        //        scan = new GExpScan();
-                        //        scan.Id = Guid.NewGuid().ToString();
-                        //        scan.BillCode = bill.BillCode;
-                        //        scan.CreateDate = currentDate;
-                        //        scan.IsRead = false;
-                        //        scan.KeyDate = mItem.Id;
-                        //        scan.NameCreate = PBean.USER.FullName;
-                        //        scan.UserCreate = PBean.USER.Id;
-                        //        scan.Post = PBean.USER.CardId;
-                        //        scan.TypeScan = "TRACK8";
-                        //        scan.ProblemType = 0;
-                        //        scan.Note = _logic.MakeNotForScan(scan.TypeScan, scan.BillCode, bill.AcceptMan, bill.AcceptManPhone);
-                        //        dc.GExpscan.InsertOnSubmit(PBean.SCHEMA, scan);
-                        //        // Cập nhật trạng thái đơn hàng
-                        //        if (bill.BillStatus < 8)
-                        //        {
-                        //            bill.BillStatus = 8;
-                        //            bill.SignedDate = currentDate;
-                        //            bill.IsSigned = true;
-                        //            bill.IsReturn = true;
-                        //            dc.GExpbill.Update(PBean.SCHEMA, bill);
-                        //        }
-                        //    }
-                        //}
-                        #endregion
                     }
                     else
                     {

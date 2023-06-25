@@ -72,13 +72,25 @@ namespace LeMaiLogic
 					{
 						item.BillCode = Convert.ToString(dr["BillCode"]);
 					}
-					if (dr["CashType"] != null && dr["CashType"] != DBNull.Value)
-					{
-						item.CashType = Convert.ToInt32(dr["CashType"]);
-					}
 					if (dr["MoneyValue"] != null && dr["MoneyValue"] != DBNull.Value)
 					{
 						item.MoneyValue = Convert.ToDecimal(dr["MoneyValue"]);
+					}
+					if (dr["Freight"] != null && dr["Freight"] != DBNull.Value)
+					{
+						item.Freight = Convert.ToDecimal(dr["Freight"]);
+					}
+					if (dr["COD"] != null && dr["COD"] != DBNull.Value)
+					{
+						item.COD = Convert.ToDecimal(dr["COD"]);
+					}
+					if (dr["PayMentType"] != null && dr["PayMentType"] != DBNull.Value)
+					{
+						item.PayMentType = Convert.ToString(dr["PayMentType"]);
+					}
+					if (dr["FK_CashShipper"] != null && dr["FK_CashShipper"] != DBNull.Value)
+					{
+						item.FK_CashShipper = Convert.ToString(dr["FK_CashShipper"]);
 					}
 					items.Add(item);
 				}
@@ -111,13 +123,25 @@ namespace LeMaiLogic
 					{
 						item.BillCode = Convert.ToString(dr["BillCode"]);
 					}
-					if (dr["CashType"] != null && dr["CashType"] != DBNull.Value)
-					{
-						item.CashType = Convert.ToInt32(dr["CashType"]);
-					}
 					if (dr["MoneyValue"] != null && dr["MoneyValue"] != DBNull.Value)
 					{
 						item.MoneyValue = Convert.ToDecimal(dr["MoneyValue"]);
+					}
+					if (dr["Freight"] != null && dr["Freight"] != DBNull.Value)
+					{
+						item.Freight = Convert.ToDecimal(dr["Freight"]);
+					}
+					if (dr["COD"] != null && dr["COD"] != DBNull.Value)
+					{
+						item.COD = Convert.ToDecimal(dr["COD"]);
+					}
+					if (dr["PayMentType"] != null && dr["PayMentType"] != DBNull.Value)
+					{
+						item.PayMentType = Convert.ToString(dr["PayMentType"]);
+					}
+					if (dr["FK_CashShipper"] != null && dr["FK_CashShipper"] != DBNull.Value)
+					{
+						item.FK_CashShipper = Convert.ToString(dr["FK_CashShipper"]);
 					}
 					items.Add(item);
 				}
@@ -173,13 +197,25 @@ namespace LeMaiLogic
 						{
 							item.BillCode = Convert.ToString(dr["BillCode"]);
 						}
-						if (dr["CashType"] != null && dr["CashType"] != DBNull.Value)
-						{
-							item.CashType = Convert.ToInt32(dr["CashType"]);
-						}
 						if (dr["MoneyValue"] != null && dr["MoneyValue"] != DBNull.Value)
 						{
 							item.MoneyValue = Convert.ToDecimal(dr["MoneyValue"]);
+						}
+						if (dr["Freight"] != null && dr["Freight"] != DBNull.Value)
+						{
+							item.Freight = Convert.ToDecimal(dr["Freight"]);
+						}
+						if (dr["COD"] != null && dr["COD"] != DBNull.Value)
+						{
+							item.COD = Convert.ToDecimal(dr["COD"]);
+						}
+						if (dr["PayMentType"] != null && dr["PayMentType"] != DBNull.Value)
+						{
+							item.PayMentType = Convert.ToString(dr["PayMentType"]);
+						}
+						if (dr["FK_CashShipper"] != null && dr["FK_CashShipper"] != DBNull.Value)
+						{
+							item.FK_CashShipper = Convert.ToString(dr["FK_CashShipper"]);
 						}
 
 						break;
@@ -218,13 +254,25 @@ namespace LeMaiLogic
 						{
 							item.BillCode = Convert.ToString(dr["BillCode"]);
 						}
-						if (dr["CashType"] != null && dr["CashType"] != DBNull.Value)
-						{
-							item.CashType = Convert.ToInt32(dr["CashType"]);
-						}
 						if (dr["MoneyValue"] != null && dr["MoneyValue"] != DBNull.Value)
 						{
 							item.MoneyValue = Convert.ToDecimal(dr["MoneyValue"]);
+						}
+						if (dr["Freight"] != null && dr["Freight"] != DBNull.Value)
+						{
+							item.Freight = Convert.ToDecimal(dr["Freight"]);
+						}
+						if (dr["COD"] != null && dr["COD"] != DBNull.Value)
+						{
+							item.COD = Convert.ToDecimal(dr["COD"]);
+						}
+						if (dr["PayMentType"] != null && dr["PayMentType"] != DBNull.Value)
+						{
+							item.PayMentType = Convert.ToString(dr["PayMentType"]);
+						}
+						if (dr["FK_CashShipper"] != null && dr["FK_CashShipper"] != DBNull.Value)
+						{
+							item.FK_CashShipper = Convert.ToString(dr["FK_CashShipper"]);
 						}
 
 						break;
@@ -268,11 +316,14 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpShipperCashDetail](Id, BillCode, CashType, MoneyValue) VALUES(@Id, @BillCode, @CashType, @MoneyValue)", 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpShipperCashDetail](Id, BillCode, MoneyValue, Freight, COD, PayMentType, FK_CashShipper) VALUES(@Id, @BillCode, @MoneyValue, @Freight, @COD, @PayMentType, @FK_CashShipper)", 
 					"@Id",  _GExpShipperCashDetail.Id, 
 					"@BillCode",  _GExpShipperCashDetail.BillCode, 
-					"@CashType",  _GExpShipperCashDetail.CashType, 
-					"@MoneyValue",  _GExpShipperCashDetail.MoneyValue);
+					"@MoneyValue",  _GExpShipperCashDetail.MoneyValue, 
+					"@Freight",  _GExpShipperCashDetail.Freight, 
+					"@COD",  _GExpShipperCashDetail.COD, 
+					"@PayMentType",  _GExpShipperCashDetail.PayMentType, 
+					"@FK_CashShipper",  _GExpShipperCashDetail.FK_CashShipper);
 				return true;
 			}
 			catch
@@ -300,11 +351,14 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperCashDetail] SET Id=@Id, BillCode=@BillCode, CashType=@CashType, MoneyValue=@MoneyValue WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperCashDetail] SET Id=@Id, BillCode=@BillCode, MoneyValue=@MoneyValue, Freight=@Freight, COD=@COD, PayMentType=@PayMentType, FK_CashShipper=@FK_CashShipper WHERE Id=@Id", 
 					"@Id",  _GExpShipperCashDetail.Id, 
 					"@BillCode",  _GExpShipperCashDetail.BillCode, 
-					"@CashType",  _GExpShipperCashDetail.CashType, 
 					"@MoneyValue",  _GExpShipperCashDetail.MoneyValue, 
+					"@Freight",  _GExpShipperCashDetail.Freight, 
+					"@COD",  _GExpShipperCashDetail.COD, 
+					"@PayMentType",  _GExpShipperCashDetail.PayMentType, 
+					"@FK_CashShipper",  _GExpShipperCashDetail.FK_CashShipper, 
 					"@Id", Id);
 			}
 			catch
@@ -320,10 +374,13 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperCashDetail] SET BillCode=@BillCode, CashType=@CashType, MoneyValue=@MoneyValue WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperCashDetail] SET BillCode=@BillCode, MoneyValue=@MoneyValue, Freight=@Freight, COD=@COD, PayMentType=@PayMentType, FK_CashShipper=@FK_CashShipper WHERE Id=@Id", 
 					"@BillCode",  _GExpShipperCashDetail.BillCode, 
-					"@CashType",  _GExpShipperCashDetail.CashType, 
 					"@MoneyValue",  _GExpShipperCashDetail.MoneyValue, 
+					"@Freight",  _GExpShipperCashDetail.Freight, 
+					"@COD",  _GExpShipperCashDetail.COD, 
+					"@PayMentType",  _GExpShipperCashDetail.PayMentType, 
+					"@FK_CashShipper",  _GExpShipperCashDetail.FK_CashShipper, 
 					"@Id", _GExpShipperCashDetail.Id);
 			}
 			catch
@@ -350,11 +407,14 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperCashDetail] SET Id=@Id, BillCode=@BillCode, CashType=@CashType, MoneyValue=@MoneyValue "+ condition, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperCashDetail] SET Id=@Id, BillCode=@BillCode, MoneyValue=@MoneyValue, Freight=@Freight, COD=@COD, PayMentType=@PayMentType, FK_CashShipper=@FK_CashShipper "+ condition, 
 					"@Id",  _GExpShipperCashDetail.Id, 
 					"@BillCode",  _GExpShipperCashDetail.BillCode, 
-					"@CashType",  _GExpShipperCashDetail.CashType, 
-					"@MoneyValue",  _GExpShipperCashDetail.MoneyValue);
+					"@MoneyValue",  _GExpShipperCashDetail.MoneyValue, 
+					"@Freight",  _GExpShipperCashDetail.Freight, 
+					"@COD",  _GExpShipperCashDetail.COD, 
+					"@PayMentType",  _GExpShipperCashDetail.PayMentType, 
+					"@FK_CashShipper",  _GExpShipperCashDetail.FK_CashShipper);
 			}
 			catch
 			{

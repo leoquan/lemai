@@ -100,6 +100,8 @@ namespace LeMaiDesktop
             this.col_DistrictWhiteList = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_ManualSign = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.col_ProviderTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.vùngVậnChuyểnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.highlighter = new DevComponents.DotNetBar.Validator.Highlighter();
             this.txtProviderName = new System.Windows.Forms.TextBox();
             this.txtToken = new System.Windows.Forms.TextBox();
@@ -163,8 +165,6 @@ namespace LeMaiDesktop
             this.lblDeliveryStepPrice = new System.Windows.Forms.Label();
             this.lblLinkCustomerLogin = new System.Windows.Forms.Label();
             this.styleManager = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.vùngVậnChuyểnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelcomtrol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMain)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -433,7 +433,7 @@ namespace LeMaiDesktop
             this.gridMain.RowTemplate.Height = 25;
             this.gridMain.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.gridMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridMain.Size = new System.Drawing.Size(981, 406);
+            this.gridMain.Size = new System.Drawing.Size(981, 407);
             this.gridMain.TabIndex = 62;
             this.gridMain.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridMain_CellDoubleClick);
             // 
@@ -861,6 +861,21 @@ namespace LeMaiDesktop
             this.col_ProviderTypeName.ReadOnly = true;
             this.col_ProviderTypeName.Visible = false;
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.vùngVậnChuyểnToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(167, 26);
+            // 
+            // vùngVậnChuyểnToolStripMenuItem
+            // 
+            this.vùngVậnChuyểnToolStripMenuItem.Image = global::LeMaiDesktop.Properties.Resources.iHanhTrinhDon;
+            this.vùngVậnChuyểnToolStripMenuItem.Name = "vùngVậnChuyểnToolStripMenuItem";
+            this.vùngVậnChuyểnToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.vùngVậnChuyểnToolStripMenuItem.Text = "Vùng vận chuyển";
+            this.vùngVậnChuyểnToolStripMenuItem.Click += new System.EventHandler(this.vùngVậnChuyểnToolStripMenuItem_Click);
+            // 
             // highlighter
             // 
             this.highlighter.ContainerControl = this;
@@ -873,7 +888,7 @@ namespace LeMaiDesktop
             this.txtProviderName.BackColor = System.Drawing.SystemColors.Window;
             this.txtProviderName.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtProviderName, true);
-            this.txtProviderName.Location = new System.Drawing.Point(80, 458);
+            this.txtProviderName.Location = new System.Drawing.Point(80, 462);
             this.txtProviderName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtProviderName.MaxLength = 150;
             this.txtProviderName.Name = "txtProviderName";
@@ -888,7 +903,7 @@ namespace LeMaiDesktop
             this.txtToken.BackColor = System.Drawing.SystemColors.Window;
             this.txtToken.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtToken, true);
-            this.txtToken.Location = new System.Drawing.Point(80, 488);
+            this.txtToken.Location = new System.Drawing.Point(80, 492);
             this.txtToken.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtToken.MaxLength = 500;
             this.txtToken.Name = "txtToken";
@@ -902,7 +917,7 @@ namespace LeMaiDesktop
             this.txtUserApi.BackColor = System.Drawing.SystemColors.Window;
             this.txtUserApi.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtUserApi, true);
-            this.txtUserApi.Location = new System.Drawing.Point(640, 458);
+            this.txtUserApi.Location = new System.Drawing.Point(640, 462);
             this.txtUserApi.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUserApi.MaxLength = 50;
             this.txtUserApi.Name = "txtUserApi";
@@ -916,7 +931,7 @@ namespace LeMaiDesktop
             this.txtPassApi.BackColor = System.Drawing.SystemColors.Window;
             this.txtPassApi.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtPassApi, true);
-            this.txtPassApi.Location = new System.Drawing.Point(839, 458);
+            this.txtPassApi.Location = new System.Drawing.Point(839, 462);
             this.txtPassApi.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPassApi.MaxLength = 50;
             this.txtPassApi.Name = "txtPassApi";
@@ -930,7 +945,7 @@ namespace LeMaiDesktop
             this.txtShopId.BackColor = System.Drawing.SystemColors.Window;
             this.txtShopId.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtShopId, true);
-            this.txtShopId.Location = new System.Drawing.Point(640, 488);
+            this.txtShopId.Location = new System.Drawing.Point(640, 492);
             this.txtShopId.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtShopId.MaxLength = 50;
             this.txtShopId.Name = "txtShopId";
@@ -944,7 +959,7 @@ namespace LeMaiDesktop
             this.txtClientId.BackColor = System.Drawing.SystemColors.Window;
             this.txtClientId.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtClientId, true);
-            this.txtClientId.Location = new System.Drawing.Point(839, 488);
+            this.txtClientId.Location = new System.Drawing.Point(839, 492);
             this.txtClientId.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtClientId.MaxLength = 50;
             this.txtClientId.Name = "txtClientId";
@@ -959,7 +974,7 @@ namespace LeMaiDesktop
             this.txtAddress.BackColor = System.Drawing.SystemColors.Window;
             this.txtAddress.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtAddress, true);
-            this.txtAddress.Location = new System.Drawing.Point(80, 518);
+            this.txtAddress.Location = new System.Drawing.Point(80, 522);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtAddress.MaxLength = 250;
             this.txtAddress.Name = "txtAddress";
@@ -974,7 +989,7 @@ namespace LeMaiDesktop
             this.txtEmail.BackColor = System.Drawing.SystemColors.Window;
             this.txtEmail.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtEmail, true);
-            this.txtEmail.Location = new System.Drawing.Point(80, 548);
+            this.txtEmail.Location = new System.Drawing.Point(80, 552);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
@@ -988,7 +1003,7 @@ namespace LeMaiDesktop
             this.txtShopName.BackColor = System.Drawing.SystemColors.Window;
             this.txtShopName.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtShopName, true);
-            this.txtShopName.Location = new System.Drawing.Point(386, 518);
+            this.txtShopName.Location = new System.Drawing.Point(386, 522);
             this.txtShopName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtShopName.MaxLength = 50;
             this.txtShopName.Name = "txtShopName";
@@ -1002,7 +1017,7 @@ namespace LeMaiDesktop
             this.txtShopPhone.BackColor = System.Drawing.SystemColors.Window;
             this.txtShopPhone.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtShopPhone, true);
-            this.txtShopPhone.Location = new System.Drawing.Point(640, 518);
+            this.txtShopPhone.Location = new System.Drawing.Point(640, 522);
             this.txtShopPhone.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtShopPhone.MaxLength = 50;
             this.txtShopPhone.Name = "txtShopPhone";
@@ -1015,7 +1030,7 @@ namespace LeMaiDesktop
             this.cmbProviderTypeCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbProviderTypeCode.FormattingEnabled = true;
             this.highlighter.SetHighlightOnFocus(this.cmbProviderTypeCode, true);
-            this.cmbProviderTypeCode.Location = new System.Drawing.Point(386, 458);
+            this.cmbProviderTypeCode.Location = new System.Drawing.Point(386, 462);
             this.cmbProviderTypeCode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbProviderTypeCode.Name = "cmbProviderTypeCode";
             this.cmbProviderTypeCode.Size = new System.Drawing.Size(158, 22);
@@ -1027,7 +1042,7 @@ namespace LeMaiDesktop
             this.chbAutoSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chbAutoSelect.AutoSize = true;
             this.highlighter.SetHighlightOnFocus(this.chbAutoSelect, true);
-            this.chbAutoSelect.Location = new System.Drawing.Point(548, 580);
+            this.chbAutoSelect.Location = new System.Drawing.Point(548, 584);
             this.chbAutoSelect.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chbAutoSelect.Name = "chbAutoSelect";
             this.chbAutoSelect.Size = new System.Drawing.Size(73, 18);
@@ -1040,7 +1055,7 @@ namespace LeMaiDesktop
             this.txtInitWeightSelect.BackColor = System.Drawing.SystemColors.Window;
             this.txtInitWeightSelect.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtInitWeightSelect, true);
-            this.txtInitWeightSelect.Location = new System.Drawing.Point(697, 578);
+            this.txtInitWeightSelect.Location = new System.Drawing.Point(697, 582);
             this.txtInitWeightSelect.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtInitWeightSelect.Name = "txtInitWeightSelect";
             this.txtInitWeightSelect.Size = new System.Drawing.Size(56, 22);
@@ -1054,7 +1069,7 @@ namespace LeMaiDesktop
             this.txtInitWeightSelectMax.BackColor = System.Drawing.SystemColors.Window;
             this.txtInitWeightSelectMax.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtInitWeightSelectMax, true);
-            this.txtInitWeightSelectMax.Location = new System.Drawing.Point(783, 578);
+            this.txtInitWeightSelectMax.Location = new System.Drawing.Point(783, 582);
             this.txtInitWeightSelectMax.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtInitWeightSelectMax.Name = "txtInitWeightSelectMax";
             this.txtInitWeightSelectMax.Size = new System.Drawing.Size(56, 22);
@@ -1068,7 +1083,7 @@ namespace LeMaiDesktop
             this.txtSelectIndex.BackColor = System.Drawing.SystemColors.Window;
             this.txtSelectIndex.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtSelectIndex, true);
-            this.txtSelectIndex.Location = new System.Drawing.Point(943, 578);
+            this.txtSelectIndex.Location = new System.Drawing.Point(943, 565);
             this.txtSelectIndex.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSelectIndex.Name = "txtSelectIndex";
             this.txtSelectIndex.Size = new System.Drawing.Size(39, 22);
@@ -1081,7 +1096,7 @@ namespace LeMaiDesktop
             this.cmbWardCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbWardCode.FormattingEnabled = true;
             this.highlighter.SetHighlightOnFocus(this.cmbWardCode, true);
-            this.cmbWardCode.Location = new System.Drawing.Point(839, 548);
+            this.cmbWardCode.Location = new System.Drawing.Point(839, 552);
             this.cmbWardCode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbWardCode.Name = "cmbWardCode";
             this.cmbWardCode.Size = new System.Drawing.Size(143, 22);
@@ -1092,7 +1107,7 @@ namespace LeMaiDesktop
             this.cmbDistrictCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbDistrictCode.FormattingEnabled = true;
             this.highlighter.SetHighlightOnFocus(this.cmbDistrictCode, true);
-            this.cmbDistrictCode.Location = new System.Drawing.Point(640, 548);
+            this.cmbDistrictCode.Location = new System.Drawing.Point(640, 552);
             this.cmbDistrictCode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbDistrictCode.Name = "cmbDistrictCode";
             this.cmbDistrictCode.Size = new System.Drawing.Size(131, 22);
@@ -1104,7 +1119,7 @@ namespace LeMaiDesktop
             this.cmbProvinceCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbProvinceCode.FormattingEnabled = true;
             this.highlighter.SetHighlightOnFocus(this.cmbProvinceCode, true);
-            this.cmbProvinceCode.Location = new System.Drawing.Point(386, 548);
+            this.cmbProvinceCode.Location = new System.Drawing.Point(386, 552);
             this.cmbProvinceCode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbProvinceCode.Name = "cmbProvinceCode";
             this.cmbProvinceCode.Size = new System.Drawing.Size(158, 22);
@@ -1117,7 +1132,7 @@ namespace LeMaiDesktop
             this.txtServiceId.BackColor = System.Drawing.SystemColors.Window;
             this.txtServiceId.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtServiceId, true);
-            this.txtServiceId.Location = new System.Drawing.Point(839, 518);
+            this.txtServiceId.Location = new System.Drawing.Point(839, 522);
             this.txtServiceId.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtServiceId.MaxLength = 50;
             this.txtServiceId.Name = "txtServiceId";
@@ -1131,7 +1146,7 @@ namespace LeMaiDesktop
             this.txtPostBT3Id.BackColor = System.Drawing.SystemColors.Window;
             this.txtPostBT3Id.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtPostBT3Id, true);
-            this.txtPostBT3Id.Location = new System.Drawing.Point(386, 608);
+            this.txtPostBT3Id.Location = new System.Drawing.Point(386, 612);
             this.txtPostBT3Id.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPostBT3Id.MaxLength = 50;
             this.txtPostBT3Id.Name = "txtPostBT3Id";
@@ -1145,7 +1160,7 @@ namespace LeMaiDesktop
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbGroupProvider.FormattingEnabled = true;
             this.highlighter.SetHighlightOnFocus(this.cmbGroupProvider, true);
-            this.cmbGroupProvider.Location = new System.Drawing.Point(80, 578);
+            this.cmbGroupProvider.Location = new System.Drawing.Point(80, 582);
             this.cmbGroupProvider.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbGroupProvider.Name = "cmbGroupProvider";
             this.cmbGroupProvider.Size = new System.Drawing.Size(229, 22);
@@ -1157,7 +1172,7 @@ namespace LeMaiDesktop
             this.txtInsuranceValue.BackColor = System.Drawing.SystemColors.Window;
             this.txtInsuranceValue.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtInsuranceValue, true);
-            this.txtInsuranceValue.Location = new System.Drawing.Point(540, 608);
+            this.txtInsuranceValue.Location = new System.Drawing.Point(540, 612);
             this.txtInsuranceValue.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtInsuranceValue.Name = "txtInsuranceValue";
             this.txtInsuranceValue.Size = new System.Drawing.Size(110, 22);
@@ -1171,7 +1186,7 @@ namespace LeMaiDesktop
             this.txtClientSecrect.BackColor = System.Drawing.SystemColors.Window;
             this.txtClientSecrect.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtClientSecrect, true);
-            this.txtClientSecrect.Location = new System.Drawing.Point(386, 488);
+            this.txtClientSecrect.Location = new System.Drawing.Point(386, 492);
             this.txtClientSecrect.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtClientSecrect.MaxLength = 250;
             this.txtClientSecrect.Name = "txtClientSecrect";
@@ -1186,7 +1201,7 @@ namespace LeMaiDesktop
             this.txtPrintLable.BackColor = System.Drawing.SystemColors.Window;
             this.txtPrintLable.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtPrintLable, true);
-            this.txtPrintLable.Location = new System.Drawing.Point(80, 608);
+            this.txtPrintLable.Location = new System.Drawing.Point(80, 612);
             this.txtPrintLable.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPrintLable.MaxLength = 50;
             this.txtPrintLable.Name = "txtPrintLable";
@@ -1200,7 +1215,7 @@ namespace LeMaiDesktop
             this.txtDeliveryInitPrice.BackColor = System.Drawing.SystemColors.Window;
             this.txtDeliveryInitPrice.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtDeliveryInitPrice, true);
-            this.txtDeliveryInitPrice.Location = new System.Drawing.Point(540, 638);
+            this.txtDeliveryInitPrice.Location = new System.Drawing.Point(540, 642);
             this.txtDeliveryInitPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDeliveryInitPrice.Name = "txtDeliveryInitPrice";
             this.txtDeliveryInitPrice.Size = new System.Drawing.Size(110, 22);
@@ -1214,7 +1229,7 @@ namespace LeMaiDesktop
             this.txtDeliveryInitWeight.BackColor = System.Drawing.SystemColors.Window;
             this.txtDeliveryInitWeight.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtDeliveryInitWeight, true);
-            this.txtDeliveryInitWeight.Location = new System.Drawing.Point(386, 638);
+            this.txtDeliveryInitWeight.Location = new System.Drawing.Point(386, 642);
             this.txtDeliveryInitWeight.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDeliveryInitWeight.Name = "txtDeliveryInitWeight";
             this.txtDeliveryInitWeight.Size = new System.Drawing.Size(75, 22);
@@ -1228,7 +1243,7 @@ namespace LeMaiDesktop
             this.txtDeliveryStepWeight.BackColor = System.Drawing.SystemColors.Window;
             this.txtDeliveryStepWeight.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtDeliveryStepWeight, true);
-            this.txtDeliveryStepWeight.Location = new System.Drawing.Point(737, 638);
+            this.txtDeliveryStepWeight.Location = new System.Drawing.Point(737, 642);
             this.txtDeliveryStepWeight.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDeliveryStepWeight.Name = "txtDeliveryStepWeight";
             this.txtDeliveryStepWeight.Size = new System.Drawing.Size(66, 22);
@@ -1242,7 +1257,7 @@ namespace LeMaiDesktop
             this.txtDeliveryStepPrice.BackColor = System.Drawing.SystemColors.Window;
             this.txtDeliveryStepPrice.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtDeliveryStepPrice, true);
-            this.txtDeliveryStepPrice.Location = new System.Drawing.Point(866, 638);
+            this.txtDeliveryStepPrice.Location = new System.Drawing.Point(866, 642);
             this.txtDeliveryStepPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDeliveryStepPrice.Name = "txtDeliveryStepPrice";
             this.txtDeliveryStepPrice.Size = new System.Drawing.Size(116, 22);
@@ -1255,7 +1270,7 @@ namespace LeMaiDesktop
             this.chbManualSign.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chbManualSign.AutoSize = true;
             this.highlighter.SetHighlightOnFocus(this.chbManualSign, true);
-            this.chbManualSign.Location = new System.Drawing.Point(829, 610);
+            this.chbManualSign.Location = new System.Drawing.Point(829, 614);
             this.chbManualSign.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chbManualSign.Name = "chbManualSign";
             this.chbManualSign.Size = new System.Drawing.Size(124, 18);
@@ -1267,7 +1282,7 @@ namespace LeMaiDesktop
             this.chbIsPickup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chbIsPickup.AutoSize = true;
             this.highlighter.SetHighlightOnFocus(this.chbIsPickup, true);
-            this.chbIsPickup.Location = new System.Drawing.Point(659, 610);
+            this.chbIsPickup.Location = new System.Drawing.Point(659, 614);
             this.chbIsPickup.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chbIsPickup.Name = "chbIsPickup";
             this.chbIsPickup.Size = new System.Drawing.Size(144, 18);
@@ -1281,7 +1296,7 @@ namespace LeMaiDesktop
             this.txtLinkCustomerLogin.BackColor = System.Drawing.SystemColors.Window;
             this.txtLinkCustomerLogin.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtLinkCustomerLogin, true);
-            this.txtLinkCustomerLogin.Location = new System.Drawing.Point(80, 638);
+            this.txtLinkCustomerLogin.Location = new System.Drawing.Point(80, 642);
             this.txtLinkCustomerLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtLinkCustomerLogin.MaxLength = 250;
             this.txtLinkCustomerLogin.Name = "txtLinkCustomerLogin";
@@ -1298,7 +1313,7 @@ namespace LeMaiDesktop
             "Không kết nối API",
             "Có kết nối API",
             "Có kết nối API + Webhook"});
-            this.cmbRunMode.Location = new System.Drawing.Point(386, 578);
+            this.cmbRunMode.Location = new System.Drawing.Point(386, 582);
             this.cmbRunMode.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbRunMode.Name = "cmbRunMode";
             this.cmbRunMode.Size = new System.Drawing.Size(158, 22);
@@ -1309,7 +1324,7 @@ namespace LeMaiDesktop
             this.lblProviderName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblProviderName.AutoSize = true;
             this.lblProviderName.ForeColor = System.Drawing.Color.Black;
-            this.lblProviderName.Location = new System.Drawing.Point(7, 462);
+            this.lblProviderName.Location = new System.Drawing.Point(7, 466);
             this.lblProviderName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProviderName.Name = "lblProviderName";
             this.lblProviderName.Size = new System.Drawing.Size(74, 14);
@@ -1321,7 +1336,7 @@ namespace LeMaiDesktop
             this.lblToken.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblToken.AutoSize = true;
             this.lblToken.ForeColor = System.Drawing.Color.Black;
-            this.lblToken.Location = new System.Drawing.Point(35, 492);
+            this.lblToken.Location = new System.Drawing.Point(35, 496);
             this.lblToken.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblToken.Name = "lblToken";
             this.lblToken.Size = new System.Drawing.Size(46, 14);
@@ -1334,7 +1349,7 @@ namespace LeMaiDesktop
             this.lblUserApi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUserApi.AutoSize = true;
             this.lblUserApi.ForeColor = System.Drawing.Color.Black;
-            this.lblUserApi.Location = new System.Drawing.Point(546, 462);
+            this.lblUserApi.Location = new System.Drawing.Point(546, 466);
             this.lblUserApi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserApi.Name = "lblUserApi";
             this.lblUserApi.Size = new System.Drawing.Size(95, 14);
@@ -1346,7 +1361,7 @@ namespace LeMaiDesktop
             this.lblPassApi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPassApi.AutoSize = true;
             this.lblPassApi.ForeColor = System.Drawing.Color.Black;
-            this.lblPassApi.Location = new System.Drawing.Point(780, 462);
+            this.lblPassApi.Location = new System.Drawing.Point(780, 466);
             this.lblPassApi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassApi.Name = "lblPassApi";
             this.lblPassApi.Size = new System.Drawing.Size(61, 14);
@@ -1358,7 +1373,7 @@ namespace LeMaiDesktop
             this.lblShopId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblShopId.AutoSize = true;
             this.lblShopId.ForeColor = System.Drawing.Color.Black;
-            this.lblShopId.Location = new System.Drawing.Point(587, 492);
+            this.lblShopId.Location = new System.Drawing.Point(587, 496);
             this.lblShopId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblShopId.Name = "lblShopId";
             this.lblShopId.Size = new System.Drawing.Size(54, 14);
@@ -1371,7 +1386,7 @@ namespace LeMaiDesktop
             this.lblClientId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblClientId.AutoSize = true;
             this.lblClientId.ForeColor = System.Drawing.Color.Black;
-            this.lblClientId.Location = new System.Drawing.Point(785, 492);
+            this.lblClientId.Location = new System.Drawing.Point(785, 496);
             this.lblClientId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClientId.Name = "lblClientId";
             this.lblClientId.Size = new System.Drawing.Size(56, 14);
@@ -1384,7 +1399,7 @@ namespace LeMaiDesktop
             this.lblAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblAddress.AutoSize = true;
             this.lblAddress.ForeColor = System.Drawing.Color.Black;
-            this.lblAddress.Location = new System.Drawing.Point(35, 522);
+            this.lblAddress.Location = new System.Drawing.Point(35, 526);
             this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(46, 14);
@@ -1396,7 +1411,7 @@ namespace LeMaiDesktop
             this.lblEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblEmail.AutoSize = true;
             this.lblEmail.ForeColor = System.Drawing.Color.Black;
-            this.lblEmail.Location = new System.Drawing.Point(43, 552);
+            this.lblEmail.Location = new System.Drawing.Point(43, 556);
             this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(38, 14);
@@ -1408,7 +1423,7 @@ namespace LeMaiDesktop
             this.lblShopName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblShopName.AutoSize = true;
             this.lblShopName.ForeColor = System.Drawing.Color.Black;
-            this.lblShopName.Location = new System.Drawing.Point(323, 522);
+            this.lblShopName.Location = new System.Drawing.Point(323, 526);
             this.lblShopName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblShopName.Name = "lblShopName";
             this.lblShopName.Size = new System.Drawing.Size(63, 14);
@@ -1420,7 +1435,7 @@ namespace LeMaiDesktop
             this.lblShopPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblShopPhone.AutoSize = true;
             this.lblShopPhone.ForeColor = System.Drawing.Color.Black;
-            this.lblShopPhone.Location = new System.Drawing.Point(551, 522);
+            this.lblShopPhone.Location = new System.Drawing.Point(551, 526);
             this.lblShopPhone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblShopPhone.Name = "lblShopPhone";
             this.lblShopPhone.Size = new System.Drawing.Size(90, 14);
@@ -1433,7 +1448,7 @@ namespace LeMaiDesktop
             this.lblProviderTypeCode.AutoSize = true;
             this.lblProviderTypeCode.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProviderTypeCode.ForeColor = System.Drawing.Color.Black;
-            this.lblProviderTypeCode.Location = new System.Drawing.Point(313, 462);
+            this.lblProviderTypeCode.Location = new System.Drawing.Point(313, 466);
             this.lblProviderTypeCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProviderTypeCode.Name = "lblProviderTypeCode";
             this.lblProviderTypeCode.Size = new System.Drawing.Size(73, 14);
@@ -1445,7 +1460,7 @@ namespace LeMaiDesktop
             this.lblInitWeightSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInitWeightSelect.AutoSize = true;
             this.lblInitWeightSelect.ForeColor = System.Drawing.Color.Black;
-            this.lblInitWeightSelect.Location = new System.Drawing.Point(635, 582);
+            this.lblInitWeightSelect.Location = new System.Drawing.Point(635, 586);
             this.lblInitWeightSelect.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInitWeightSelect.Name = "lblInitWeightSelect";
             this.lblInitWeightSelect.Size = new System.Drawing.Size(62, 14);
@@ -1457,7 +1472,7 @@ namespace LeMaiDesktop
             this.lblInitWeightSelectMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInitWeightSelectMax.AutoSize = true;
             this.lblInitWeightSelectMax.ForeColor = System.Drawing.Color.Black;
-            this.lblInitWeightSelectMax.Location = new System.Drawing.Point(757, 582);
+            this.lblInitWeightSelectMax.Location = new System.Drawing.Point(757, 586);
             this.lblInitWeightSelectMax.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInitWeightSelectMax.Name = "lblInitWeightSelectMax";
             this.lblInitWeightSelectMax.Size = new System.Drawing.Size(25, 14);
@@ -1469,7 +1484,7 @@ namespace LeMaiDesktop
             this.lblSelectIndex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSelectIndex.AutoSize = true;
             this.lblSelectIndex.ForeColor = System.Drawing.Color.Black;
-            this.lblSelectIndex.Location = new System.Drawing.Point(908, 582);
+            this.lblSelectIndex.Location = new System.Drawing.Point(908, 586);
             this.lblSelectIndex.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSelectIndex.Name = "lblSelectIndex";
             this.lblSelectIndex.Size = new System.Drawing.Size(34, 14);
@@ -1482,7 +1497,7 @@ namespace LeMaiDesktop
             this.lblWardCode.AutoSize = true;
             this.lblWardCode.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWardCode.ForeColor = System.Drawing.Color.Black;
-            this.lblWardCode.Location = new System.Drawing.Point(817, 552);
+            this.lblWardCode.Location = new System.Drawing.Point(817, 556);
             this.lblWardCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWardCode.Name = "lblWardCode";
             this.lblWardCode.Size = new System.Drawing.Size(24, 14);
@@ -1495,7 +1510,7 @@ namespace LeMaiDesktop
             this.lblDistrictCode.AutoSize = true;
             this.lblDistrictCode.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDistrictCode.ForeColor = System.Drawing.Color.Black;
-            this.lblDistrictCode.Location = new System.Drawing.Point(595, 552);
+            this.lblDistrictCode.Location = new System.Drawing.Point(595, 556);
             this.lblDistrictCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDistrictCode.Name = "lblDistrictCode";
             this.lblDistrictCode.Size = new System.Drawing.Size(46, 14);
@@ -1508,7 +1523,7 @@ namespace LeMaiDesktop
             this.lblProvinceCode.AutoSize = true;
             this.lblProvinceCode.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProvinceCode.ForeColor = System.Drawing.Color.Black;
-            this.lblProvinceCode.Location = new System.Drawing.Point(351, 552);
+            this.lblProvinceCode.Location = new System.Drawing.Point(351, 556);
             this.lblProvinceCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProvinceCode.Name = "lblProvinceCode";
             this.lblProvinceCode.Size = new System.Drawing.Size(35, 14);
@@ -1520,7 +1535,7 @@ namespace LeMaiDesktop
             this.lblServiceId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblServiceId.AutoSize = true;
             this.lblServiceId.ForeColor = System.Drawing.Color.Black;
-            this.lblServiceId.Location = new System.Drawing.Point(776, 522);
+            this.lblServiceId.Location = new System.Drawing.Point(776, 526);
             this.lblServiceId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblServiceId.Name = "lblServiceId";
             this.lblServiceId.Size = new System.Drawing.Size(65, 14);
@@ -1533,7 +1548,7 @@ namespace LeMaiDesktop
             this.lblPostBT3Id.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPostBT3Id.AutoSize = true;
             this.lblPostBT3Id.ForeColor = System.Drawing.Color.Black;
-            this.lblPostBT3Id.Location = new System.Drawing.Point(335, 612);
+            this.lblPostBT3Id.Location = new System.Drawing.Point(335, 616);
             this.lblPostBT3Id.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPostBT3Id.Name = "lblPostBT3Id";
             this.lblPostBT3Id.Size = new System.Drawing.Size(51, 14);
@@ -1546,7 +1561,7 @@ namespace LeMaiDesktop
             this.lblRunMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRunMode.AutoSize = true;
             this.lblRunMode.ForeColor = System.Drawing.Color.Black;
-            this.lblRunMode.Location = new System.Drawing.Point(324, 582);
+            this.lblRunMode.Location = new System.Drawing.Point(324, 586);
             this.lblRunMode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRunMode.Name = "lblRunMode";
             this.lblRunMode.Size = new System.Drawing.Size(62, 14);
@@ -1559,7 +1574,7 @@ namespace LeMaiDesktop
             this.lblGroupProvider.AutoSize = true;
             this.lblGroupProvider.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGroupProvider.ForeColor = System.Drawing.Color.Black;
-            this.lblGroupProvider.Location = new System.Drawing.Point(18, 582);
+            this.lblGroupProvider.Location = new System.Drawing.Point(18, 586);
             this.lblGroupProvider.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGroupProvider.Name = "lblGroupProvider";
             this.lblGroupProvider.Size = new System.Drawing.Size(63, 14);
@@ -1571,7 +1586,7 @@ namespace LeMaiDesktop
             this.lblInsuranceValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInsuranceValue.AutoSize = true;
             this.lblInsuranceValue.ForeColor = System.Drawing.Color.Black;
-            this.lblInsuranceValue.Location = new System.Drawing.Point(480, 612);
+            this.lblInsuranceValue.Location = new System.Drawing.Point(480, 616);
             this.lblInsuranceValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInsuranceValue.Name = "lblInsuranceValue";
             this.lblInsuranceValue.Size = new System.Drawing.Size(61, 14);
@@ -1584,7 +1599,7 @@ namespace LeMaiDesktop
             this.lblClientSecrect.AutoSize = true;
             this.lblClientSecrect.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClientSecrect.ForeColor = System.Drawing.Color.Black;
-            this.lblClientSecrect.Location = new System.Drawing.Point(309, 493);
+            this.lblClientSecrect.Location = new System.Drawing.Point(309, 497);
             this.lblClientSecrect.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClientSecrect.Name = "lblClientSecrect";
             this.lblClientSecrect.Size = new System.Drawing.Size(77, 13);
@@ -1597,7 +1612,7 @@ namespace LeMaiDesktop
             this.lblPrintLable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblPrintLable.AutoSize = true;
             this.lblPrintLable.ForeColor = System.Drawing.Color.Black;
-            this.lblPrintLable.Location = new System.Drawing.Point(16, 612);
+            this.lblPrintLable.Location = new System.Drawing.Point(16, 616);
             this.lblPrintLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrintLable.Name = "lblPrintLable";
             this.lblPrintLable.Size = new System.Drawing.Size(65, 14);
@@ -1609,7 +1624,7 @@ namespace LeMaiDesktop
             this.lblDeliveryInitPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDeliveryInitPrice.AutoSize = true;
             this.lblDeliveryInitPrice.ForeColor = System.Drawing.Color.Black;
-            this.lblDeliveryInitPrice.Location = new System.Drawing.Point(467, 642);
+            this.lblDeliveryInitPrice.Location = new System.Drawing.Point(467, 646);
             this.lblDeliveryInitPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDeliveryInitPrice.Name = "lblDeliveryInitPrice";
             this.lblDeliveryInitPrice.Size = new System.Drawing.Size(74, 14);
@@ -1621,7 +1636,7 @@ namespace LeMaiDesktop
             this.lblDeliveryInitWeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDeliveryInitWeight.AutoSize = true;
             this.lblDeliveryInitWeight.ForeColor = System.Drawing.Color.Black;
-            this.lblDeliveryInitWeight.Location = new System.Drawing.Point(331, 642);
+            this.lblDeliveryInitWeight.Location = new System.Drawing.Point(331, 646);
             this.lblDeliveryInitWeight.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDeliveryInitWeight.Name = "lblDeliveryInitWeight";
             this.lblDeliveryInitWeight.Size = new System.Drawing.Size(55, 14);
@@ -1633,7 +1648,7 @@ namespace LeMaiDesktop
             this.lblDeliveryStepWeight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDeliveryStepWeight.AutoSize = true;
             this.lblDeliveryStepWeight.ForeColor = System.Drawing.Color.Black;
-            this.lblDeliveryStepWeight.Location = new System.Drawing.Point(652, 642);
+            this.lblDeliveryStepWeight.Location = new System.Drawing.Point(652, 646);
             this.lblDeliveryStepWeight.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDeliveryStepWeight.Name = "lblDeliveryStepWeight";
             this.lblDeliveryStepWeight.Size = new System.Drawing.Size(86, 14);
@@ -1645,7 +1660,7 @@ namespace LeMaiDesktop
             this.lblDeliveryStepPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDeliveryStepPrice.AutoSize = true;
             this.lblDeliveryStepPrice.ForeColor = System.Drawing.Color.Black;
-            this.lblDeliveryStepPrice.Location = new System.Drawing.Point(811, 642);
+            this.lblDeliveryStepPrice.Location = new System.Drawing.Point(811, 646);
             this.lblDeliveryStepPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDeliveryStepPrice.Name = "lblDeliveryStepPrice";
             this.lblDeliveryStepPrice.Size = new System.Drawing.Size(50, 14);
@@ -1657,7 +1672,7 @@ namespace LeMaiDesktop
             this.lblLinkCustomerLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblLinkCustomerLogin.AutoSize = true;
             this.lblLinkCustomerLogin.ForeColor = System.Drawing.Color.Black;
-            this.lblLinkCustomerLogin.Location = new System.Drawing.Point(-2, 642);
+            this.lblLinkCustomerLogin.Location = new System.Drawing.Point(-2, 646);
             this.lblLinkCustomerLogin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLinkCustomerLogin.Name = "lblLinkCustomerLogin";
             this.lblLinkCustomerLogin.Size = new System.Drawing.Size(83, 14);
@@ -1668,21 +1683,6 @@ namespace LeMaiDesktop
             // 
             this.styleManager.ManagerStyle = DevComponents.DotNetBar.eStyle.VisualStudio2010Blue;
             this.styleManager.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
-            // 
-            // contextMenuStrip
-            // 
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.vùngVậnChuyểnToolStripMenuItem});
-            this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(167, 26);
-            // 
-            // vùngVậnChuyểnToolStripMenuItem
-            // 
-            this.vùngVậnChuyểnToolStripMenuItem.Image = global::LeMaiDesktop.Properties.Resources.iHanhTrinhDon;
-            this.vùngVậnChuyểnToolStripMenuItem.Name = "vùngVậnChuyểnToolStripMenuItem";
-            this.vùngVậnChuyểnToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.vùngVậnChuyểnToolStripMenuItem.Text = "Vùng vận chuyển";
-            this.vùngVậnChuyểnToolStripMenuItem.Click += new System.EventHandler(this.vùngVậnChuyểnToolStripMenuItem_Click);
             // 
             // frmQuanLyTaiKhoanDoiTacVanChuyen
             // 

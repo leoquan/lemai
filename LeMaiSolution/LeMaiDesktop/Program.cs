@@ -40,7 +40,7 @@ namespace LeMaiDesktop
                 frmdatabase.ShowDialog();
                 MessageBox.Show("Vui lòng khởi động lại chương trình để hoàn tất cấu hình!", PBean.MESSAGE_TITLE);
             }
-           
+
             PBean.LOCAL_OPTIONS = LocalOptions.ReadOption();
             PBean.LOCAL_OPTIONS.Save();
             //Load cấu hình database
@@ -52,7 +52,8 @@ namespace LeMaiDesktop
                 ConnectionString = PBean.CONNECTION_STRING,
                 Schema = "dbo"
             };
-            PBean.CONNECTION_STRING_VIEW = string.Format("Server={0},{1};Database={2};", _dbconfig.ServerName, _dbconfig.Port, _dbconfig.DatabaseName);
+            string[] ipend = _dbconfig.ServerName.Split('.');
+            PBean.CONNECTION_STRING_VIEW = string.Format("Server={0}", ipend[ipend.Length - 1]);
             PBean.SERVER_OPTION = ServerOption.ReadServerOption(PBean.CONNECTION_STRING);
 
             if (args.Length > 0)

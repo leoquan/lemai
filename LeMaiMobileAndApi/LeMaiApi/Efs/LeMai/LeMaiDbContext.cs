@@ -65,6 +65,8 @@ public partial class LeMaiDbContext : DbContext
         {
             entity.ToTable("ExpCustomer");
 
+            entity.HasIndex(e => e.CustomerPhone, "NonClusteredIndex-20230607-100014");
+
             entity.Property(e => e.Id).HasMaxLength(50);
             entity.Property(e => e.AccountCode).HasMaxLength(50);
             entity.Property(e => e.AccountName).HasMaxLength(50);

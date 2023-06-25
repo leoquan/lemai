@@ -26,6 +26,23 @@ namespace LeMaiLogic.Logic
         public GExpBillLogic(BaseLogicConnectionData data) : base(data)
         {
         }
+        public view_AutoSignDelivery GetDetailAutoSignDelivery()
+        {
+            IDataContext dc = new dcDataContextM(base.ConnectionData.ConnectionString);
+            try
+            {
+                dc.Open();
+                return dc.VIewautosigndelivery.GetObjectCon(base.ConnectionData.Schema, "ORDER BY SignDate");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                dc.Close();
+            }
+        }
         public List<GExpWebhook> GetListWebhook()
         {
             IDataContext dc = new dcDataContextM(base.ConnectionData.ConnectionString);
@@ -774,7 +791,9 @@ namespace LeMaiLogic.Logic
                 item.WardPickup = input.WardPickup;
                 item.AddressPickup = input.AddressPickup;
                 item.ShopIdPickup = input.ShopIdPickup;
-                item.IsReceiveBill = input.DonHangNhan;
+                item.NamePickup = input.NamePickup;
+                item.PhonePickup = input.PhonePickup;
+                item.IsReceiveBill = input.IsReceiveBill;
                 //Change Database
                 dc.GExpbill.InsertOnSubmit(base.ConnectionData.Schema, item);
                 // Thêm scan
@@ -1105,7 +1124,7 @@ namespace LeMaiLogic.Logic
 
                     item.LastUpdateDate = currentDate;
                     item.LastUpdateUser = input.LastUpdateUser;
-                    item.IsReceiveBill = input.DonHangNhan;
+                    item.IsReceiveBill = input.IsReceiveBill;
 
                     item.Note = input.Note;
                     item.SystemDate = currentDate;
@@ -1157,7 +1176,9 @@ namespace LeMaiLogic.Logic
                     item.WardPickup = input.WardPickup;
                     item.AddressPickup = input.AddressPickup;
                     item.ShopIdPickup = input.ShopIdPickup;
-
+                    item.IsReceiveBill = input.IsReceiveBill;
+                    item.NamePickup= input.NamePickup;
+                    item.PhonePickup = input.PhonePickup;
                     //Change Database
                     dc.GExpbill.Update(base.ConnectionData.Schema, item);
 
@@ -2208,74 +2229,7 @@ namespace LeMaiLogic.Logic
                 dc.Close();
             }
         }
-        public async Task<string> AddSigned(string BillCode, string note, bool GiaoThanhCong, string UserId, string FullName, string post, DateTime currentDate)
-        {
-            IDataContext dc = new dcDataContextM(base.ConnectionData.ConnectionString);
-            try
-            {
-                dc.Open();
-                GExpBill bill = dc.GExpbill.GetObject(base.ConnectionData.Schema, BillCode);
-
-                if (bill != null)
-                {
-                    if (bill.BillStatus == 6 || bill.BillStatus == 8)
-                    {
-                        return "Đơn hàng đã được ký nhận hoặc hoàn trả.";
-                    }
-                    GExpProvider provider = dc.GExpprovider.GetObject(base.ConnectionData.Schema, bill.FK_ProviderAccount);
-
-                    if (provider.ManualSign == false)
-                    {
-                        return "Loại kiện không cho phép ký nhận thủ công!";
-                    }
-                    // Thêm vào hành trình
-                    GExpScan scan = new GExpScan();
-                    scan.Id = Guid.NewGuid().ToString();
-                    scan.BillCode = BillCode;
-                    scan.CreateDate = currentDate;
-                    scan.IsRead = false;
-                    scan.KeyDate = string.Format("{0:yyyy-MM-dd HH:mm:ss}", currentDate);
-                    scan.NameCreate = FullName;
-                    scan.UserCreate = UserId;
-                    scan.Post = post;
-                    if (GiaoThanhCong == true)
-                    {
-                        scan.TypeScan = "TRACK6";
-                        bill.IsSigned = true;
-                        bill.IsReturn = false;
-                        bill.SignedDate = currentDate;
-                        bill.BillStatus = 6;
-                    }
-                    else
-                    {
-                        scan.TypeScan = "TRACK8";
-                        bill.IsSigned = true;
-                        bill.IsReturn = true;
-                        bill.SignedDate = currentDate;
-                        bill.BillStatus = 8;
-                    }
-                    scan.ProblemType = 0;
-                    scan.Note = MakeNotForScan(scan.TypeScan, scan.BillCode, bill.AcceptMan, bill.AcceptManPhone);
-                    dc.GExpscan.InsertOnSubmit(base.ConnectionData.Schema, scan);
-                    // Update billstatus
-                    dc.GExpbill.Update(base.ConnectionData.Schema, bill);
-                    dc.SubmitChanges();
-                    return string.Empty;
-                }
-                else
-                {
-                    return string.Empty;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                dc.Close();
-            }
-        }
+        
         /// <summary>
         /// Thêm kiện vấn đề cho đơn hàng
         /// </summary>
@@ -2460,7 +2414,7 @@ namespace LeMaiLogic.Logic
             try
             {
                 dc.Open();
-                string condition = "WHERE TypeScan ='TRACK6' AND FK_ProviderAccount LIKE 'LM%' AND RegisterSiteCode='" + postId + "' AND CreateDate>='" + string.Format("{0:yyyy-MM-dd}", from) + " 00:00:00' AND CreateDate<='" + string.Format("{0:yyyy-MM-dd}", to) + " 23:59:59' &";
+                string condition = "WHERE TypeScan ='TRACK8' AND FK_ProviderAccount LIKE 'LM%' AND RegisterSiteCode='" + postId + "' AND CreateDate>='" + string.Format("{0:yyyy-MM-dd}", from) + " 00:00:00' AND CreateDate<='" + string.Format("{0:yyyy-MM-dd}", to) + " 23:59:59' &";
                 if (customerId != "9999")
                 {
                     condition += " FK_Customer='" + customerId + "' &";

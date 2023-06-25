@@ -316,6 +316,14 @@ namespace LeMaiLogic
 					{
 						item.ShipperStatus = Convert.ToInt32(dr["ShipperStatus"]);
 					}
+					if (dr["NamePickup"] != null && dr["NamePickup"] != DBNull.Value)
+					{
+						item.NamePickup = Convert.ToString(dr["NamePickup"]);
+					}
+					if (dr["PhonePickup"] != null && dr["PhonePickup"] != DBNull.Value)
+					{
+						item.PhonePickup = Convert.ToString(dr["PhonePickup"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -590,6 +598,14 @@ namespace LeMaiLogic
 					if (dr["ShipperStatus"] != null && dr["ShipperStatus"] != DBNull.Value)
 					{
 						item.ShipperStatus = Convert.ToInt32(dr["ShipperStatus"]);
+					}
+					if (dr["NamePickup"] != null && dr["NamePickup"] != DBNull.Value)
+					{
+						item.NamePickup = Convert.ToString(dr["NamePickup"]);
+					}
+					if (dr["PhonePickup"] != null && dr["PhonePickup"] != DBNull.Value)
+					{
+						item.PhonePickup = Convert.ToString(dr["PhonePickup"]);
 					}
 					items.Add(item);
 				}
@@ -889,6 +905,14 @@ namespace LeMaiLogic
 						{
 							item.ShipperStatus = Convert.ToInt32(dr["ShipperStatus"]);
 						}
+						if (dr["NamePickup"] != null && dr["NamePickup"] != DBNull.Value)
+						{
+							item.NamePickup = Convert.ToString(dr["NamePickup"]);
+						}
+						if (dr["PhonePickup"] != null && dr["PhonePickup"] != DBNull.Value)
+						{
+							item.PhonePickup = Convert.ToString(dr["PhonePickup"]);
+						}
 
 						break;
 					}
@@ -1170,6 +1194,14 @@ namespace LeMaiLogic
 						{
 							item.ShipperStatus = Convert.ToInt32(dr["ShipperStatus"]);
 						}
+						if (dr["NamePickup"] != null && dr["NamePickup"] != DBNull.Value)
+						{
+							item.NamePickup = Convert.ToString(dr["NamePickup"]);
+						}
+						if (dr["PhonePickup"] != null && dr["PhonePickup"] != DBNull.Value)
+						{
+							item.PhonePickup = Convert.ToString(dr["PhonePickup"]);
+						}
 
 						break;
 					}
@@ -1212,7 +1244,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpBill](BillCode, BillWeight, FeeWeight, RegisterUser, RegisterSiteCode, Freight, PayType, COD, SendMan, SendManUs, SendManPhone, SendManAddress, AcceptProvinceCode, AcceptDistrictCode, AcceptWardCode, AcceptMan, AcceptManUs, AcceptManPhone, AcceptManAddress, AcceptProvince, AcceptDistrict, AcceptWard, IsSigned, IsReturn, BillProcessStatus, RegisterDate, SignedDate, LastUpdateDate, LastUpdateUser, Note, SystemDate, BT3Type, BT3CodeSub, BT3Code, BT3Status, BT3Freight, BT3COD, BT3PayType, BT3LastMess, GoodsName, GoodsNumber, GoodsCode, GoodsW, GoodsH, GoodsL, FK_Customer, FK_ProviderAccount, PayCustomerDate, IsPayCustomer, ShipperPhoneNumber, BillStatus, FK_PaymentType, FK_ShipType, Pickup, AddressPickup, ProvincePickup, DistricPickup, WardPickup, ShopIdPickup, SiteCode, IsReceiveBill, PrintData, ShipperStatus) VALUES(@BillCode, @BillWeight, @FeeWeight, @RegisterUser, @RegisterSiteCode, @Freight, @PayType, @COD, @SendMan, @SendManUs, @SendManPhone, @SendManAddress, @AcceptProvinceCode, @AcceptDistrictCode, @AcceptWardCode, @AcceptMan, @AcceptManUs, @AcceptManPhone, @AcceptManAddress, @AcceptProvince, @AcceptDistrict, @AcceptWard, @IsSigned, @IsReturn, @BillProcessStatus, @RegisterDate, @SignedDate, @LastUpdateDate, @LastUpdateUser, @Note, @SystemDate, @BT3Type, @BT3CodeSub, @BT3Code, @BT3Status, @BT3Freight, @BT3COD, @BT3PayType, @BT3LastMess, @GoodsName, @GoodsNumber, @GoodsCode, @GoodsW, @GoodsH, @GoodsL, @FK_Customer, @FK_ProviderAccount, @PayCustomerDate, @IsPayCustomer, @ShipperPhoneNumber, @BillStatus, @FK_PaymentType, @FK_ShipType, @Pickup, @AddressPickup, @ProvincePickup, @DistricPickup, @WardPickup, @ShopIdPickup, @SiteCode, @IsReceiveBill, @PrintData, @ShipperStatus)", 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpBill](BillCode, BillWeight, FeeWeight, RegisterUser, RegisterSiteCode, Freight, PayType, COD, SendMan, SendManUs, SendManPhone, SendManAddress, AcceptProvinceCode, AcceptDistrictCode, AcceptWardCode, AcceptMan, AcceptManUs, AcceptManPhone, AcceptManAddress, AcceptProvince, AcceptDistrict, AcceptWard, IsSigned, IsReturn, BillProcessStatus, RegisterDate, SignedDate, LastUpdateDate, LastUpdateUser, Note, SystemDate, BT3Type, BT3CodeSub, BT3Code, BT3Status, BT3Freight, BT3COD, BT3PayType, BT3LastMess, GoodsName, GoodsNumber, GoodsCode, GoodsW, GoodsH, GoodsL, FK_Customer, FK_ProviderAccount, PayCustomerDate, IsPayCustomer, ShipperPhoneNumber, BillStatus, FK_PaymentType, FK_ShipType, Pickup, AddressPickup, ProvincePickup, DistricPickup, WardPickup, ShopIdPickup, SiteCode, IsReceiveBill, PrintData, ShipperStatus, NamePickup, PhonePickup) VALUES(@BillCode, @BillWeight, @FeeWeight, @RegisterUser, @RegisterSiteCode, @Freight, @PayType, @COD, @SendMan, @SendManUs, @SendManPhone, @SendManAddress, @AcceptProvinceCode, @AcceptDistrictCode, @AcceptWardCode, @AcceptMan, @AcceptManUs, @AcceptManPhone, @AcceptManAddress, @AcceptProvince, @AcceptDistrict, @AcceptWard, @IsSigned, @IsReturn, @BillProcessStatus, @RegisterDate, @SignedDate, @LastUpdateDate, @LastUpdateUser, @Note, @SystemDate, @BT3Type, @BT3CodeSub, @BT3Code, @BT3Status, @BT3Freight, @BT3COD, @BT3PayType, @BT3LastMess, @GoodsName, @GoodsNumber, @GoodsCode, @GoodsW, @GoodsH, @GoodsL, @FK_Customer, @FK_ProviderAccount, @PayCustomerDate, @IsPayCustomer, @ShipperPhoneNumber, @BillStatus, @FK_PaymentType, @FK_ShipType, @Pickup, @AddressPickup, @ProvincePickup, @DistricPickup, @WardPickup, @ShopIdPickup, @SiteCode, @IsReceiveBill, @PrintData, @ShipperStatus, @NamePickup, @PhonePickup)", 
 					"@BillCode",  _GExpBill.BillCode, 
 					"@BillWeight",  _GExpBill.BillWeight, 
 					"@FeeWeight",  _GExpBill.FeeWeight, 
@@ -1275,7 +1307,9 @@ namespace LeMaiLogic
 					"@SiteCode",  _GExpBill.SiteCode, 
 					"@IsReceiveBill",  _GExpBill.IsReceiveBill, 
 					"@PrintData",  _GExpBill.PrintData, 
-					"@ShipperStatus",  _GExpBill.ShipperStatus);
+					"@ShipperStatus",  _GExpBill.ShipperStatus, 
+					"@NamePickup",  _GExpBill.NamePickup, 
+					"@PhonePickup",  _GExpBill.PhonePickup);
 				return true;
 			}
 			catch
@@ -1303,7 +1337,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpBill] SET BillCode=@BillCode, BillWeight=@BillWeight, FeeWeight=@FeeWeight, RegisterUser=@RegisterUser, RegisterSiteCode=@RegisterSiteCode, Freight=@Freight, PayType=@PayType, COD=@COD, SendMan=@SendMan, SendManUs=@SendManUs, SendManPhone=@SendManPhone, SendManAddress=@SendManAddress, AcceptProvinceCode=@AcceptProvinceCode, AcceptDistrictCode=@AcceptDistrictCode, AcceptWardCode=@AcceptWardCode, AcceptMan=@AcceptMan, AcceptManUs=@AcceptManUs, AcceptManPhone=@AcceptManPhone, AcceptManAddress=@AcceptManAddress, AcceptProvince=@AcceptProvince, AcceptDistrict=@AcceptDistrict, AcceptWard=@AcceptWard, IsSigned=@IsSigned, IsReturn=@IsReturn, BillProcessStatus=@BillProcessStatus, RegisterDate=@RegisterDate, SignedDate=@SignedDate, LastUpdateDate=@LastUpdateDate, LastUpdateUser=@LastUpdateUser, Note=@Note, SystemDate=@SystemDate, BT3Type=@BT3Type, BT3CodeSub=@BT3CodeSub, BT3Code=@BT3Code, BT3Status=@BT3Status, BT3Freight=@BT3Freight, BT3COD=@BT3COD, BT3PayType=@BT3PayType, BT3LastMess=@BT3LastMess, GoodsName=@GoodsName, GoodsNumber=@GoodsNumber, GoodsCode=@GoodsCode, GoodsW=@GoodsW, GoodsH=@GoodsH, GoodsL=@GoodsL, FK_Customer=@FK_Customer, FK_ProviderAccount=@FK_ProviderAccount, PayCustomerDate=@PayCustomerDate, IsPayCustomer=@IsPayCustomer, ShipperPhoneNumber=@ShipperPhoneNumber, BillStatus=@BillStatus, FK_PaymentType=@FK_PaymentType, FK_ShipType=@FK_ShipType, Pickup=@Pickup, AddressPickup=@AddressPickup, ProvincePickup=@ProvincePickup, DistricPickup=@DistricPickup, WardPickup=@WardPickup, ShopIdPickup=@ShopIdPickup, SiteCode=@SiteCode, IsReceiveBill=@IsReceiveBill, PrintData=@PrintData, ShipperStatus=@ShipperStatus WHERE BillCode=@BillCode", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpBill] SET BillCode=@BillCode, BillWeight=@BillWeight, FeeWeight=@FeeWeight, RegisterUser=@RegisterUser, RegisterSiteCode=@RegisterSiteCode, Freight=@Freight, PayType=@PayType, COD=@COD, SendMan=@SendMan, SendManUs=@SendManUs, SendManPhone=@SendManPhone, SendManAddress=@SendManAddress, AcceptProvinceCode=@AcceptProvinceCode, AcceptDistrictCode=@AcceptDistrictCode, AcceptWardCode=@AcceptWardCode, AcceptMan=@AcceptMan, AcceptManUs=@AcceptManUs, AcceptManPhone=@AcceptManPhone, AcceptManAddress=@AcceptManAddress, AcceptProvince=@AcceptProvince, AcceptDistrict=@AcceptDistrict, AcceptWard=@AcceptWard, IsSigned=@IsSigned, IsReturn=@IsReturn, BillProcessStatus=@BillProcessStatus, RegisterDate=@RegisterDate, SignedDate=@SignedDate, LastUpdateDate=@LastUpdateDate, LastUpdateUser=@LastUpdateUser, Note=@Note, SystemDate=@SystemDate, BT3Type=@BT3Type, BT3CodeSub=@BT3CodeSub, BT3Code=@BT3Code, BT3Status=@BT3Status, BT3Freight=@BT3Freight, BT3COD=@BT3COD, BT3PayType=@BT3PayType, BT3LastMess=@BT3LastMess, GoodsName=@GoodsName, GoodsNumber=@GoodsNumber, GoodsCode=@GoodsCode, GoodsW=@GoodsW, GoodsH=@GoodsH, GoodsL=@GoodsL, FK_Customer=@FK_Customer, FK_ProviderAccount=@FK_ProviderAccount, PayCustomerDate=@PayCustomerDate, IsPayCustomer=@IsPayCustomer, ShipperPhoneNumber=@ShipperPhoneNumber, BillStatus=@BillStatus, FK_PaymentType=@FK_PaymentType, FK_ShipType=@FK_ShipType, Pickup=@Pickup, AddressPickup=@AddressPickup, ProvincePickup=@ProvincePickup, DistricPickup=@DistricPickup, WardPickup=@WardPickup, ShopIdPickup=@ShopIdPickup, SiteCode=@SiteCode, IsReceiveBill=@IsReceiveBill, PrintData=@PrintData, ShipperStatus=@ShipperStatus, NamePickup=@NamePickup, PhonePickup=@PhonePickup WHERE BillCode=@BillCode", 
 					"@BillCode",  _GExpBill.BillCode, 
 					"@BillWeight",  _GExpBill.BillWeight, 
 					"@FeeWeight",  _GExpBill.FeeWeight, 
@@ -1367,6 +1401,8 @@ namespace LeMaiLogic
 					"@IsReceiveBill",  _GExpBill.IsReceiveBill, 
 					"@PrintData",  _GExpBill.PrintData, 
 					"@ShipperStatus",  _GExpBill.ShipperStatus, 
+					"@NamePickup",  _GExpBill.NamePickup, 
+					"@PhonePickup",  _GExpBill.PhonePickup, 
 					"@BillCode", BillCode);
 			}
 			catch
@@ -1382,7 +1418,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpBill] SET BillWeight=@BillWeight, FeeWeight=@FeeWeight, RegisterUser=@RegisterUser, RegisterSiteCode=@RegisterSiteCode, Freight=@Freight, PayType=@PayType, COD=@COD, SendMan=@SendMan, SendManUs=@SendManUs, SendManPhone=@SendManPhone, SendManAddress=@SendManAddress, AcceptProvinceCode=@AcceptProvinceCode, AcceptDistrictCode=@AcceptDistrictCode, AcceptWardCode=@AcceptWardCode, AcceptMan=@AcceptMan, AcceptManUs=@AcceptManUs, AcceptManPhone=@AcceptManPhone, AcceptManAddress=@AcceptManAddress, AcceptProvince=@AcceptProvince, AcceptDistrict=@AcceptDistrict, AcceptWard=@AcceptWard, IsSigned=@IsSigned, IsReturn=@IsReturn, BillProcessStatus=@BillProcessStatus, RegisterDate=@RegisterDate, SignedDate=@SignedDate, LastUpdateDate=@LastUpdateDate, LastUpdateUser=@LastUpdateUser, Note=@Note, SystemDate=@SystemDate, BT3Type=@BT3Type, BT3CodeSub=@BT3CodeSub, BT3Code=@BT3Code, BT3Status=@BT3Status, BT3Freight=@BT3Freight, BT3COD=@BT3COD, BT3PayType=@BT3PayType, BT3LastMess=@BT3LastMess, GoodsName=@GoodsName, GoodsNumber=@GoodsNumber, GoodsCode=@GoodsCode, GoodsW=@GoodsW, GoodsH=@GoodsH, GoodsL=@GoodsL, FK_Customer=@FK_Customer, FK_ProviderAccount=@FK_ProviderAccount, PayCustomerDate=@PayCustomerDate, IsPayCustomer=@IsPayCustomer, ShipperPhoneNumber=@ShipperPhoneNumber, BillStatus=@BillStatus, FK_PaymentType=@FK_PaymentType, FK_ShipType=@FK_ShipType, Pickup=@Pickup, AddressPickup=@AddressPickup, ProvincePickup=@ProvincePickup, DistricPickup=@DistricPickup, WardPickup=@WardPickup, ShopIdPickup=@ShopIdPickup, SiteCode=@SiteCode, IsReceiveBill=@IsReceiveBill, PrintData=@PrintData, ShipperStatus=@ShipperStatus WHERE BillCode=@BillCode", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpBill] SET BillWeight=@BillWeight, FeeWeight=@FeeWeight, RegisterUser=@RegisterUser, RegisterSiteCode=@RegisterSiteCode, Freight=@Freight, PayType=@PayType, COD=@COD, SendMan=@SendMan, SendManUs=@SendManUs, SendManPhone=@SendManPhone, SendManAddress=@SendManAddress, AcceptProvinceCode=@AcceptProvinceCode, AcceptDistrictCode=@AcceptDistrictCode, AcceptWardCode=@AcceptWardCode, AcceptMan=@AcceptMan, AcceptManUs=@AcceptManUs, AcceptManPhone=@AcceptManPhone, AcceptManAddress=@AcceptManAddress, AcceptProvince=@AcceptProvince, AcceptDistrict=@AcceptDistrict, AcceptWard=@AcceptWard, IsSigned=@IsSigned, IsReturn=@IsReturn, BillProcessStatus=@BillProcessStatus, RegisterDate=@RegisterDate, SignedDate=@SignedDate, LastUpdateDate=@LastUpdateDate, LastUpdateUser=@LastUpdateUser, Note=@Note, SystemDate=@SystemDate, BT3Type=@BT3Type, BT3CodeSub=@BT3CodeSub, BT3Code=@BT3Code, BT3Status=@BT3Status, BT3Freight=@BT3Freight, BT3COD=@BT3COD, BT3PayType=@BT3PayType, BT3LastMess=@BT3LastMess, GoodsName=@GoodsName, GoodsNumber=@GoodsNumber, GoodsCode=@GoodsCode, GoodsW=@GoodsW, GoodsH=@GoodsH, GoodsL=@GoodsL, FK_Customer=@FK_Customer, FK_ProviderAccount=@FK_ProviderAccount, PayCustomerDate=@PayCustomerDate, IsPayCustomer=@IsPayCustomer, ShipperPhoneNumber=@ShipperPhoneNumber, BillStatus=@BillStatus, FK_PaymentType=@FK_PaymentType, FK_ShipType=@FK_ShipType, Pickup=@Pickup, AddressPickup=@AddressPickup, ProvincePickup=@ProvincePickup, DistricPickup=@DistricPickup, WardPickup=@WardPickup, ShopIdPickup=@ShopIdPickup, SiteCode=@SiteCode, IsReceiveBill=@IsReceiveBill, PrintData=@PrintData, ShipperStatus=@ShipperStatus, NamePickup=@NamePickup, PhonePickup=@PhonePickup WHERE BillCode=@BillCode", 
 					"@BillWeight",  _GExpBill.BillWeight, 
 					"@FeeWeight",  _GExpBill.FeeWeight, 
 					"@RegisterUser",  _GExpBill.RegisterUser, 
@@ -1445,6 +1481,8 @@ namespace LeMaiLogic
 					"@IsReceiveBill",  _GExpBill.IsReceiveBill, 
 					"@PrintData",  _GExpBill.PrintData, 
 					"@ShipperStatus",  _GExpBill.ShipperStatus, 
+					"@NamePickup",  _GExpBill.NamePickup, 
+					"@PhonePickup",  _GExpBill.PhonePickup, 
 					"@BillCode", _GExpBill.BillCode);
 			}
 			catch
@@ -1471,7 +1509,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpBill] SET BillCode=@BillCode, BillWeight=@BillWeight, FeeWeight=@FeeWeight, RegisterUser=@RegisterUser, RegisterSiteCode=@RegisterSiteCode, Freight=@Freight, PayType=@PayType, COD=@COD, SendMan=@SendMan, SendManUs=@SendManUs, SendManPhone=@SendManPhone, SendManAddress=@SendManAddress, AcceptProvinceCode=@AcceptProvinceCode, AcceptDistrictCode=@AcceptDistrictCode, AcceptWardCode=@AcceptWardCode, AcceptMan=@AcceptMan, AcceptManUs=@AcceptManUs, AcceptManPhone=@AcceptManPhone, AcceptManAddress=@AcceptManAddress, AcceptProvince=@AcceptProvince, AcceptDistrict=@AcceptDistrict, AcceptWard=@AcceptWard, IsSigned=@IsSigned, IsReturn=@IsReturn, BillProcessStatus=@BillProcessStatus, RegisterDate=@RegisterDate, SignedDate=@SignedDate, LastUpdateDate=@LastUpdateDate, LastUpdateUser=@LastUpdateUser, Note=@Note, SystemDate=@SystemDate, BT3Type=@BT3Type, BT3CodeSub=@BT3CodeSub, BT3Code=@BT3Code, BT3Status=@BT3Status, BT3Freight=@BT3Freight, BT3COD=@BT3COD, BT3PayType=@BT3PayType, BT3LastMess=@BT3LastMess, GoodsName=@GoodsName, GoodsNumber=@GoodsNumber, GoodsCode=@GoodsCode, GoodsW=@GoodsW, GoodsH=@GoodsH, GoodsL=@GoodsL, FK_Customer=@FK_Customer, FK_ProviderAccount=@FK_ProviderAccount, PayCustomerDate=@PayCustomerDate, IsPayCustomer=@IsPayCustomer, ShipperPhoneNumber=@ShipperPhoneNumber, BillStatus=@BillStatus, FK_PaymentType=@FK_PaymentType, FK_ShipType=@FK_ShipType, Pickup=@Pickup, AddressPickup=@AddressPickup, ProvincePickup=@ProvincePickup, DistricPickup=@DistricPickup, WardPickup=@WardPickup, ShopIdPickup=@ShopIdPickup, SiteCode=@SiteCode, IsReceiveBill=@IsReceiveBill, PrintData=@PrintData, ShipperStatus=@ShipperStatus "+ condition, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpBill] SET BillCode=@BillCode, BillWeight=@BillWeight, FeeWeight=@FeeWeight, RegisterUser=@RegisterUser, RegisterSiteCode=@RegisterSiteCode, Freight=@Freight, PayType=@PayType, COD=@COD, SendMan=@SendMan, SendManUs=@SendManUs, SendManPhone=@SendManPhone, SendManAddress=@SendManAddress, AcceptProvinceCode=@AcceptProvinceCode, AcceptDistrictCode=@AcceptDistrictCode, AcceptWardCode=@AcceptWardCode, AcceptMan=@AcceptMan, AcceptManUs=@AcceptManUs, AcceptManPhone=@AcceptManPhone, AcceptManAddress=@AcceptManAddress, AcceptProvince=@AcceptProvince, AcceptDistrict=@AcceptDistrict, AcceptWard=@AcceptWard, IsSigned=@IsSigned, IsReturn=@IsReturn, BillProcessStatus=@BillProcessStatus, RegisterDate=@RegisterDate, SignedDate=@SignedDate, LastUpdateDate=@LastUpdateDate, LastUpdateUser=@LastUpdateUser, Note=@Note, SystemDate=@SystemDate, BT3Type=@BT3Type, BT3CodeSub=@BT3CodeSub, BT3Code=@BT3Code, BT3Status=@BT3Status, BT3Freight=@BT3Freight, BT3COD=@BT3COD, BT3PayType=@BT3PayType, BT3LastMess=@BT3LastMess, GoodsName=@GoodsName, GoodsNumber=@GoodsNumber, GoodsCode=@GoodsCode, GoodsW=@GoodsW, GoodsH=@GoodsH, GoodsL=@GoodsL, FK_Customer=@FK_Customer, FK_ProviderAccount=@FK_ProviderAccount, PayCustomerDate=@PayCustomerDate, IsPayCustomer=@IsPayCustomer, ShipperPhoneNumber=@ShipperPhoneNumber, BillStatus=@BillStatus, FK_PaymentType=@FK_PaymentType, FK_ShipType=@FK_ShipType, Pickup=@Pickup, AddressPickup=@AddressPickup, ProvincePickup=@ProvincePickup, DistricPickup=@DistricPickup, WardPickup=@WardPickup, ShopIdPickup=@ShopIdPickup, SiteCode=@SiteCode, IsReceiveBill=@IsReceiveBill, PrintData=@PrintData, ShipperStatus=@ShipperStatus, NamePickup=@NamePickup, PhonePickup=@PhonePickup "+ condition, 
 					"@BillCode",  _GExpBill.BillCode, 
 					"@BillWeight",  _GExpBill.BillWeight, 
 					"@FeeWeight",  _GExpBill.FeeWeight, 
@@ -1534,7 +1572,9 @@ namespace LeMaiLogic
 					"@SiteCode",  _GExpBill.SiteCode, 
 					"@IsReceiveBill",  _GExpBill.IsReceiveBill, 
 					"@PrintData",  _GExpBill.PrintData, 
-					"@ShipperStatus",  _GExpBill.ShipperStatus);
+					"@ShipperStatus",  _GExpBill.ShipperStatus, 
+					"@NamePickup",  _GExpBill.NamePickup, 
+					"@PhonePickup",  _GExpBill.PhonePickup);
 			}
 			catch
 			{

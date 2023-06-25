@@ -24,11 +24,13 @@ namespace LeMaiDesktop
     public partial class frmAutoUpdateTrack : frmBase
     {
         private GExpBillLogic _logic = new GExpBillLogic(PBean.ConnectionBase);
+        private GExpScanLogic _logicScan = new GExpScanLogic(PBean.ConnectionBase);
         List<GExpBillStatusName> lsStatus = new List<GExpBillStatusName>();
 
         view_GExpBillGHNApi bill;
         public bool isBusy = false;
         public bool isBusyWebhook = false;
+        public bool isBusySign = false;
         public frmAutoUpdateTrack() : base(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
         {
             InitializeComponent();
@@ -214,6 +216,45 @@ namespace LeMaiDesktop
                 }
             }
             return result;
+        }
+
+        private void timerSign_Tick(object sender, EventArgs e)
+        {
+            if (isBusySign == false)
+            {
+                try
+                {
+                    isBusySign = true;
+                    backgroundWorkerSign.RunWorkerAsync();
+                }
+                catch
+                {
+                    isBusySign = false;
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+
+        private void backgroundWorkerSign_DoWork(object sender, DoWorkEventArgs e)
+        {
+            // Lấy dữ liệu
+            try
+            {
+                view_AutoSignDelivery delivery = _logic.GetDetailAutoSignDelivery();
+                if (delivery != null)
+                {
+                    // Ký thực tế
+                    _logicScan.AddSigned(delivery.BillCode, delivery.ShipperId, delivery.ShipperName, delivery.ShipperPhone, delivery.FK_Post, delivery.Id);
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private void backgroundWorkerSign_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            isBusySign = false;
         }
     }
 }

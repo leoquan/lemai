@@ -39,8 +39,8 @@ namespace LeMaiDesktop
             if (bill.Pickup.GetValueOrDefault(false))
             {
                 // Nhờ bên thứ 3 nhận hàng giùm
-                jsonObject.from_name = bill.SendMan;
-                jsonObject.from_phone = bill.SendManPhone;
+                jsonObject.from_name = bill.NamePickup;
+                jsonObject.from_phone = bill.PhonePickup;
 
                 jsonObject.from_address = bill.AddressPickup;
                 jsonObject.from_ward_name = bill.WardPickup;

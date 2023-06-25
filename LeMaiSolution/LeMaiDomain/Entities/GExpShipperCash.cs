@@ -12,6 +12,7 @@ namespace LeMaiDomain
 		public System.DateTime CreateDate { get; set; }
 		public System.String FK_Account { get; set; }
 		public System.Decimal TotalCash { get; set; }
+		public System.String FK_Post { get; set; }
 		public GExpShipperCash(){}
 	}
 }

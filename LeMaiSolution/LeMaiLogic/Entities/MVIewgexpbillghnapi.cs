@@ -364,6 +364,14 @@ namespace LeMaiLogic
 					{
 						item.TrackLink = Convert.ToString(dr["TrackLink"]);
 					}
+					if (dr["NamePickup"] != null && dr["NamePickup"] != DBNull.Value)
+					{
+						item.NamePickup = Convert.ToString(dr["NamePickup"]);
+					}
+					if (dr["PhonePickup"] != null && dr["PhonePickup"] != DBNull.Value)
+					{
+						item.PhonePickup = Convert.ToString(dr["PhonePickup"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -686,6 +694,14 @@ namespace LeMaiLogic
 					if (dr["TrackLink"] != null && dr["TrackLink"] != DBNull.Value)
 					{
 						item.TrackLink = Convert.ToString(dr["TrackLink"]);
+					}
+					if (dr["NamePickup"] != null && dr["NamePickup"] != DBNull.Value)
+					{
+						item.NamePickup = Convert.ToString(dr["NamePickup"]);
+					}
+					if (dr["PhonePickup"] != null && dr["PhonePickup"] != DBNull.Value)
+					{
+						item.PhonePickup = Convert.ToString(dr["PhonePickup"]);
 					}
 					items.Add(item);
 				}
@@ -1031,6 +1047,14 @@ namespace LeMaiLogic
 						if (dr["TrackLink"] != null && dr["TrackLink"] != DBNull.Value)
 						{
 							item.TrackLink = Convert.ToString(dr["TrackLink"]);
+						}
+						if (dr["NamePickup"] != null && dr["NamePickup"] != DBNull.Value)
+						{
+							item.NamePickup = Convert.ToString(dr["NamePickup"]);
+						}
+						if (dr["PhonePickup"] != null && dr["PhonePickup"] != DBNull.Value)
+						{
+							item.PhonePickup = Convert.ToString(dr["PhonePickup"]);
 						}
 
 						break;

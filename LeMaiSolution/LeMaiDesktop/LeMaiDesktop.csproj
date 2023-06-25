@@ -142,6 +142,12 @@
     <Compile Include="frmAccountPermission.Designer.cs">
       <DependentUpon>frmAccountPermission.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNhapDoiSoatBT3Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhapDoiSoatBT3Master.Designer.cs">
+      <DependentUpon>frmNhapDoiSoatBT3Master.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQuanLyBaoTriXe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,18 @@
     </Compile>
     <Compile Include="frmQuanLyDonHangGiao.Designer.cs">
       <DependentUpon>frmQuanLyDonHangGiao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuanLyKyNhanTuDong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanLyKyNhanTuDong.Designer.cs">
+      <DependentUpon>frmQuanLyKyNhanTuDong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuanLyNapTienShipper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanLyNapTienShipper.Designer.cs">
+      <DependentUpon>frmQuanLyNapTienShipper.cs</DependentUpon>
     </Compile>
     <Compile Include="frmQuanLyNhanHang.cs">
       <SubType>Form</SubType>
@@ -641,6 +659,7 @@
     <Compile Include="IConnectApi.cs" />
     <Compile Include="JsonWardTemp.cs" />
     <Compile Include="NPOIHelper.cs" />
+    <Compile Include="ReadDebitComparison.cs" />
     <Compile Include="Reports\BangKeHoaDon1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -773,11 +792,17 @@
     <EmbeddedResource Include="frmInputSearch.resx">
       <DependentUpon>frmInputSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNhapDoiSoatBT3Master.resx">
+      <DependentUpon>frmNhapDoiSoatBT3Master.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyBaoTriXe.resx">
       <DependentUpon>frmQuanLyBaoTriXe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyDonHangGiao.resx">
       <DependentUpon>frmQuanLyDonHangGiao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanLyKyNhanTuDong.resx">
+      <DependentUpon>frmQuanLyKyNhanTuDong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyNhanHang.resx">
       <DependentUpon>frmQuanLyNhanHang.cs</DependentUpon>
@@ -1366,6 +1391,9 @@
     </Content>
     <Content Include="mixding.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="nhacnho.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="QRCoder.dll" />
     <Content Include="success.wav">

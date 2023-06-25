@@ -86,6 +86,69 @@ namespace LeMaiLogic.Logic
                 dc.Close();
             }
         }
+        public string Returned(string BillCode, string UserId, string FullName, string phone, string scanPost, string reason)
+        {
+            IDataContext dc = new dcDataContextM(base.ConnectionData.ConnectionString);
+            try
+            {
+                dc.Open();
+                GExpBill bill = dc.GExpbill.GetObject(base.ConnectionData.Schema, BillCode);
+
+                if (bill != null)
+                {
+                    DateTime currentDate = dc.CurrentTime();
+                    if (bill.BillStatus == 6 || bill.BillStatus == 8)
+                    {
+                        return "Đơn hàng đã được ký nhận hoặc hoàn trả.";
+                    }
+                    GExpProvider provider = dc.GExpprovider.GetObject(base.ConnectionData.Schema, bill.FK_ProviderAccount);
+
+                    if (provider.ManualSign == false)
+                    {
+                        return "Loại kiện không cho phép ký nhận thủ công!";
+                    }
+                    if (bill.RegisterSiteCode != scanPost)
+                    {
+                        return "Đơn hàng không phải do đại lý phát hành, không thể ký hoàn. Đơn hàng thuộc đại lý [" + bill.RegisterSiteCode + "]";
+                    }
+                    // Thêm vào hành trình
+                    GExpScan scan = new GExpScan();
+                    scan.Id = Guid.NewGuid().ToString();
+                    scan.BillCode = BillCode;
+                    scan.CreateDate = currentDate;
+                    scan.IsRead = false;
+                    scan.KeyDate = string.Format("{0:yyyy-MM-dd HH:mm:ss}", currentDate);
+                    scan.NameCreate = FullName;
+                    scan.UserCreate = UserId;
+                    scan.Post = scanPost;
+                    scan.TypeScan = "TRACK8";
+                    scan.ProblemType = 0;
+                    scan.Note = "[" + FullName + " - " + phone + "] - Hoàn trả hàng cho người gửi " + bill.SendMan + " Vì: " + reason;
+                    dc.GExpscan.InsertOnSubmit(base.ConnectionData.Schema, scan);
+
+                    bill.IsSigned = true;
+                    bill.IsReturn = true;
+                    bill.SignedDate = currentDate;
+                    bill.BillStatus = 8;
+                    dc.GExpbill.Update(base.ConnectionData.Schema, bill);
+
+                    dc.SubmitChanges();
+                    return string.Empty;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                dc.Close();
+            }
+        }
         /// <summary>
         /// Ký nhận đơn hàng nội mạng
         /// </summary>
@@ -94,7 +157,7 @@ namespace LeMaiLogic.Logic
         /// <param name="FullName">Tên đầy đủ</param>
         /// <param name="scanPost">Mã bưu cục - Tính toán chi phí nữa</param>
         /// <returns></returns>
-        public string AddSigned(string BillCode, string UserId, string FullName, string phone, string scanPost)
+        public string AddSigned(string BillCode, string UserId, string FullName, string phone, string scanPost, string autoSignId = "")
         {
             IDataContext dc = new dcDataContextM(base.ConnectionData.ConnectionString);
             try
@@ -120,26 +183,13 @@ namespace LeMaiLogic.Logic
                     scan.Id = Guid.NewGuid().ToString();
                     scan.BillCode = BillCode;
                     scan.CreateDate = currentDate;
-                    bool isDeliverySucess = true;
-                    // Cập nhật trạng thái đơn hàng
-                    if (scanPost != bill.RegisterSiteCode || provider.Post == bill.RegisterSiteCode)
-                    {
-                        // Giao hàng thành công.
-                        bill.IsSigned = true;
-                        bill.IsReturn = false;
-                        bill.SignedDate = currentDate;
-                        bill.BillStatus = (int)enumGExpBillStatus.DA_GIAO_6;
-                        scan.Note = "[" + FullName + " - " + phone + "] - Ký nhận giao hàng thành công cho người nhận là " + bill.AcceptMan;
-                    }
-                    else
-                    {
-                        isDeliverySucess = false;
-                        bill.IsSigned = true;
-                        bill.IsReturn = true;
-                        bill.SignedDate = currentDate;
-                        bill.BillStatus = (int)enumGExpBillStatus.DA_HOAN_8;
-                        scan.Note = "[" + FullName + " - " + phone + "] - Ký nhận hoàn trả đơn hàng cho người gửi là " + bill.SendMan;
-                    }
+                    // Giao hàng thành công.
+                    bill.IsSigned = true;
+                    bill.IsReturn = false;
+                    bill.SignedDate = currentDate;
+                    bill.BillStatus = (int)enumGExpBillStatus.DA_GIAO_6;
+                    scan.Note = "[" + FullName + " - " + phone + "] - Ký nhận, giao hàng thành công cho người nhận là " + bill.AcceptMan;
+
                     dc.GExpscansign.InsertOnSubmit(base.ConnectionData.Schema, scan);
                     dc.GExpbill.Update(base.ConnectionData.Schema, bill);
 
@@ -151,7 +201,7 @@ namespace LeMaiLogic.Logic
                     {
                         return "Mã bưu cục không tồn tại. Vui lòng liên hệ quản trị";
                     }
-                    if (isDeliverySucess == true && postFrom.Id != postTo.Id)
+                    if (postFrom.Id != postTo.Id)
                     {
                         string caseId = string.Empty;
                         if (postFrom.ParrentPost == postTo.ParrentPost && postFrom.ParrentPost != "0000")
@@ -1568,7 +1618,23 @@ namespace LeMaiLogic.Logic
                                 break;
                         }
                     }
+                    else
+                    {
+                        // Đơn hàng tự tạo, sao đó tự giao luôn
+                        // Tạm thời chưa xử lý gì hết
+                    }
                     // Lưu toàn bộ dữ liệu thay đổi vào database
+                    // Cập nhật Auto delivery
+                    if (string.IsNullOrEmpty(autoSignId) == false)
+                    {
+                        // Ký nhận tự động
+                        GExpShipperDevivery delivery = dc.GExpshipperdevivery.GetObject(base.ConnectionData.Schema, autoSignId);
+                        if (delivery != null)
+                        {
+                            delivery.IsSign = true;
+                            dc.GExpshipperdevivery.Update(base.ConnectionData.Schema, delivery);
+                        }
+                    }
                     dc.SubmitChanges();
                     return string.Empty;
                 }

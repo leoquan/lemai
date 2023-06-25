@@ -55,6 +55,8 @@
             this.styleManager = new DevComponents.DotNetBar.StyleManager(this.components);
             this.timerwebhook = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorkerWH = new System.ComponentModel.BackgroundWorker();
+            this.timerSign = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorkerSign = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // label1
@@ -328,6 +330,16 @@
             this.backgroundWorkerWH.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerWH_DoWork);
             this.backgroundWorkerWH.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerWH_RunWorkerCompleted);
             // 
+            // timerSign
+            // 
+            this.timerSign.Interval = 60000;
+            this.timerSign.Tick += new System.EventHandler(this.timerSign_Tick);
+            // 
+            // backgroundWorkerSign
+            // 
+            this.backgroundWorkerSign.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSign_DoWork);
+            this.backgroundWorkerSign.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerSign_RunWorkerCompleted);
+            // 
             // frmAutoUpdateTrack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,5 +405,7 @@
         private DevComponents.DotNetBar.StyleManager styleManager;
         private System.Windows.Forms.Timer timerwebhook;
         private System.ComponentModel.BackgroundWorker backgroundWorkerWH;
+        private System.Windows.Forms.Timer timerSign;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerSign;
     }
 }

@@ -84,6 +84,10 @@ namespace LeMaiLogic
 					{
 						item.TotalCash = Convert.ToDecimal(dr["TotalCash"]);
 					}
+					if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+					{
+						item.FK_Post = Convert.ToString(dr["FK_Post"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -126,6 +130,10 @@ namespace LeMaiLogic
 					if (dr["TotalCash"] != null && dr["TotalCash"] != DBNull.Value)
 					{
 						item.TotalCash = Convert.ToDecimal(dr["TotalCash"]);
+					}
+					if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+					{
+						item.FK_Post = Convert.ToString(dr["FK_Post"]);
 					}
 					items.Add(item);
 				}
@@ -193,6 +201,10 @@ namespace LeMaiLogic
 						{
 							item.TotalCash = Convert.ToDecimal(dr["TotalCash"]);
 						}
+						if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+						{
+							item.FK_Post = Convert.ToString(dr["FK_Post"]);
+						}
 
 						break;
 					}
@@ -242,6 +254,10 @@ namespace LeMaiLogic
 						{
 							item.TotalCash = Convert.ToDecimal(dr["TotalCash"]);
 						}
+						if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+						{
+							item.FK_Post = Convert.ToString(dr["FK_Post"]);
+						}
 
 						break;
 					}
@@ -284,12 +300,13 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpShipperCash](Id, FK_Shipper, CreateDate, FK_Account, TotalCash) VALUES(@Id, @FK_Shipper, @CreateDate, @FK_Account, @TotalCash)", 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpShipperCash](Id, FK_Shipper, CreateDate, FK_Account, TotalCash, FK_Post) VALUES(@Id, @FK_Shipper, @CreateDate, @FK_Account, @TotalCash, @FK_Post)", 
 					"@Id",  _GExpShipperCash.Id, 
 					"@FK_Shipper",  _GExpShipperCash.FK_Shipper, 
 					"@CreateDate", this._dataContext.ConvertDateString( _GExpShipperCash.CreateDate), 
 					"@FK_Account",  _GExpShipperCash.FK_Account, 
-					"@TotalCash",  _GExpShipperCash.TotalCash);
+					"@TotalCash",  _GExpShipperCash.TotalCash, 
+					"@FK_Post",  _GExpShipperCash.FK_Post);
 				return true;
 			}
 			catch
@@ -317,12 +334,13 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperCash] SET Id=@Id, FK_Shipper=@FK_Shipper, CreateDate=@CreateDate, FK_Account=@FK_Account, TotalCash=@TotalCash WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperCash] SET Id=@Id, FK_Shipper=@FK_Shipper, CreateDate=@CreateDate, FK_Account=@FK_Account, TotalCash=@TotalCash, FK_Post=@FK_Post WHERE Id=@Id", 
 					"@Id",  _GExpShipperCash.Id, 
 					"@FK_Shipper",  _GExpShipperCash.FK_Shipper, 
 					"@CreateDate", this._dataContext.ConvertDateString( _GExpShipperCash.CreateDate), 
 					"@FK_Account",  _GExpShipperCash.FK_Account, 
 					"@TotalCash",  _GExpShipperCash.TotalCash, 
+					"@FK_Post",  _GExpShipperCash.FK_Post, 
 					"@Id", Id);
 			}
 			catch
@@ -338,11 +356,12 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperCash] SET FK_Shipper=@FK_Shipper, CreateDate=@CreateDate, FK_Account=@FK_Account, TotalCash=@TotalCash WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperCash] SET FK_Shipper=@FK_Shipper, CreateDate=@CreateDate, FK_Account=@FK_Account, TotalCash=@TotalCash, FK_Post=@FK_Post WHERE Id=@Id", 
 					"@FK_Shipper",  _GExpShipperCash.FK_Shipper, 
 					"@CreateDate", this._dataContext.ConvertDateString( _GExpShipperCash.CreateDate), 
 					"@FK_Account",  _GExpShipperCash.FK_Account, 
 					"@TotalCash",  _GExpShipperCash.TotalCash, 
+					"@FK_Post",  _GExpShipperCash.FK_Post, 
 					"@Id", _GExpShipperCash.Id);
 			}
 			catch
@@ -369,12 +388,13 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperCash] SET Id=@Id, FK_Shipper=@FK_Shipper, CreateDate=@CreateDate, FK_Account=@FK_Account, TotalCash=@TotalCash "+ condition, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpShipperCash] SET Id=@Id, FK_Shipper=@FK_Shipper, CreateDate=@CreateDate, FK_Account=@FK_Account, TotalCash=@TotalCash, FK_Post=@FK_Post "+ condition, 
 					"@Id",  _GExpShipperCash.Id, 
 					"@FK_Shipper",  _GExpShipperCash.FK_Shipper, 
 					"@CreateDate", this._dataContext.ConvertDateString( _GExpShipperCash.CreateDate), 
 					"@FK_Account",  _GExpShipperCash.FK_Account, 
-					"@TotalCash",  _GExpShipperCash.TotalCash);
+					"@TotalCash",  _GExpShipperCash.TotalCash, 
+					"@FK_Post",  _GExpShipperCash.FK_Post);
 			}
 			catch
 			{

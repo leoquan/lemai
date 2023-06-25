@@ -8,8 +8,8 @@ namespace LeMaiDomain
 	{
 		//Khai bao các biến
 		public System.String Id { get; set; }
-		public System.Boolean ApplyForShipper { get; set; }
-		public System.String FK_ShipperOrPost { get; set; }
+		public System.String FK_Post { get; set; }
+		public System.String FK_Shipper { get; set; }
 		public System.Int32 MinuteSign { get; set; }
 		public System.DateTime ActiveFrom { get; set; }
 		public GExpAutoSign(){}
