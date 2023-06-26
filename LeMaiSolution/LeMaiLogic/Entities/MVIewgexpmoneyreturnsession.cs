@@ -112,6 +112,10 @@ namespace LeMaiLogic
 					{
 						item.IsPayCustomer = Convert.ToBoolean(dr["IsPayCustomer"]);
 					}
+					if (dr["SessionCode"] != null && dr["SessionCode"] != DBNull.Value)
+					{
+						item.SessionCode = Convert.ToString(dr["SessionCode"]);
+					}
 					if (dr["FullName"] != null && dr["FullName"] != DBNull.Value)
 					{
 						item.FullName = Convert.ToString(dr["FullName"]);
@@ -202,6 +206,10 @@ namespace LeMaiLogic
 					if (dr["IsPayCustomer"] != null && dr["IsPayCustomer"] != DBNull.Value)
 					{
 						item.IsPayCustomer = Convert.ToBoolean(dr["IsPayCustomer"]);
+					}
+					if (dr["SessionCode"] != null && dr["SessionCode"] != DBNull.Value)
+					{
+						item.SessionCode = Convert.ToString(dr["SessionCode"]);
 					}
 					if (dr["FullName"] != null && dr["FullName"] != DBNull.Value)
 					{
@@ -315,6 +323,10 @@ namespace LeMaiLogic
 						if (dr["IsPayCustomer"] != null && dr["IsPayCustomer"] != DBNull.Value)
 						{
 							item.IsPayCustomer = Convert.ToBoolean(dr["IsPayCustomer"]);
+						}
+						if (dr["SessionCode"] != null && dr["SessionCode"] != DBNull.Value)
+						{
+							item.SessionCode = Convert.ToString(dr["SessionCode"]);
 						}
 						if (dr["FullName"] != null && dr["FullName"] != DBNull.Value)
 						{

@@ -801,6 +801,12 @@ namespace LeMaiLogic
 			get { return _GExpfeedetail; }
 		}
 
+		private IGExpfeemaster _GExpfeemaster;
+		public IGExpfeemaster GExpfeemaster
+		{
+			get { return _GExpfeemaster; }
+		}
+
 		private IGExpfeeprovincedetail _GExpfeeprovincedetail;
 		public IGExpfeeprovincedetail GExpfeeprovincedetail
 		{
@@ -2163,6 +2169,12 @@ namespace LeMaiLogic
 			get { return _VIewgexpbillhistory; }
 		}
 
+		private IVIewgexpbillmaster _VIewgexpbillmaster;
+		public IVIewgexpbillmaster VIewgexpbillmaster
+		{
+			get { return _VIewgexpbillmaster; }
+		}
+
 		private IVIewgexpdebitcomparison _VIewgexpdebitcomparison;
 		public IVIewgexpdebitcomparison VIewgexpdebitcomparison
 		{
@@ -2804,6 +2816,7 @@ namespace LeMaiLogic
 			this._GExperror = new MGExperror(this);
 			this._GExpfee = new MGExpfee(this);
 			this._GExpfeedetail = new MGExpfeedetail(this);
+			this._GExpfeemaster = new MGExpfeemaster(this);
 			this._GExpfeeprovincedetail = new MGExpfeeprovincedetail(this);
 			this._GExpmoneyreturn = new MGExpmoneyreturn(this);
 			this._GExpmoneyreturnsession = new MGExpmoneyreturnsession(this);
@@ -3031,6 +3044,7 @@ namespace LeMaiLogic
 			this._VIewgexpbillghn = new MVIewgexpbillghn(this);
 			this._VIewgexpbillghnapi = new MVIewgexpbillghnapi(this);
 			this._VIewgexpbillhistory = new MVIewgexpbillhistory(this);
+			this._VIewgexpbillmaster = new MVIewgexpbillmaster(this);
 			this._VIewgexpdebitcomparison = new MVIewgexpdebitcomparison(this);
 			this._VIewgexpdebitcomparisondetail = new MVIewgexpdebitcomparisondetail(this);
 			this._VIewgexpdoisoatchitiet = new MVIewgexpdoisoatchitiet(this);

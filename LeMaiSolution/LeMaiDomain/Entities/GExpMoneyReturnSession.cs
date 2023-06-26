@@ -20,6 +20,7 @@ namespace LeMaiDomain
 		public System.DateTime DateReturn { get; set; }
 		public System.Boolean IsPayCustomer { get; set; }
 		public System.String FK_DoiSoat { get; set; }
+		public System.String SessionCode { get; set; }
 		public GExpMoneyReturnSession(){}
 	}
 }

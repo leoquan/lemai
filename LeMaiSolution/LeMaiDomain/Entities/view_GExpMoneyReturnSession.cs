@@ -19,6 +19,7 @@ namespace LeMaiDomain
 		public System.String FK_AccountRefer { get; set; }
 		public System.DateTime DateReturn { get; set; }
 		public System.Boolean IsPayCustomer { get; set; }
+		public System.String SessionCode { get; set; }
 		public System.String FullName { get; set; }
 		public System.String ShopName { get; set; }
 		public System.String UserApi { get; set; }

@@ -116,6 +116,10 @@ namespace LeMaiLogic
 					{
 						item.FK_Post = Convert.ToString(dr["FK_Post"]);
 					}
+					if (dr["DebitComparisonCode"] != null && dr["DebitComparisonCode"] != DBNull.Value)
+					{
+						item.DebitComparisonCode = Convert.ToString(dr["DebitComparisonCode"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -190,6 +194,10 @@ namespace LeMaiLogic
 					if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
 					{
 						item.FK_Post = Convert.ToString(dr["FK_Post"]);
+					}
+					if (dr["DebitComparisonCode"] != null && dr["DebitComparisonCode"] != DBNull.Value)
+					{
+						item.DebitComparisonCode = Convert.ToString(dr["DebitComparisonCode"]);
 					}
 					items.Add(item);
 				}
@@ -287,6 +295,10 @@ namespace LeMaiLogic
 						if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
 						{
 							item.FK_Post = Convert.ToString(dr["FK_Post"]);
+						}
+						if (dr["DebitComparisonCode"] != null && dr["DebitComparisonCode"] != DBNull.Value)
+						{
+							item.DebitComparisonCode = Convert.ToString(dr["DebitComparisonCode"]);
 						}
 
 						break;

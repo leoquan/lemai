@@ -23,28 +23,7 @@ namespace LeMaiLogic.Logic
                 dc.Open();
                 List<GExpProvider> list = new List<GExpProvider>();
                 list.Add(new GExpProvider { Id = "9999", ProviderName = "Vui lòng chọn tài khoản BT3" });
-                list.AddRange(dc.GExpprovider.GetListObjectCon(base.ConnectionData.Schema, "WHERE Post=@Post AND IsOwner=@IsOwner ORDER BY SelectIndex", "@Post", post, "@IsOwner", false));
-                return list;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                dc.Close();
-
-            }
-        }
-        public List<GExpProvider> GetProviderListMaster(string post)
-        {
-            IDataContext dc = new dcDataContextM(base.ConnectionData.ConnectionString);
-            try
-            {
-                dc.Open();
-                List<GExpProvider> list = new List<GExpProvider>();
-                list.Add(new GExpProvider { Id = "9999", ProviderName = "Vui lòng chọn tài khoản BT3" });
-                list.AddRange(dc.GExpprovider.GetListObjectCon(base.ConnectionData.Schema, "WHERE Post=@Post AND IsOwner=@IsOwner ORDER BY SelectIndex", "@Post", post, "@IsOwner", true));
+                list.AddRange(dc.GExpprovider.GetListObjectCon(base.ConnectionData.Schema, "WHERE Post=@Post ORDER BY SelectIndex", "@Post", post));
                 return list;
             }
             catch (Exception ex)
@@ -65,28 +44,7 @@ namespace LeMaiLogic.Logic
                 dc.Open();
                 List<GExpProvider> list = new List<GExpProvider>();
                 list.Add(new GExpProvider { Id = "9999", ProviderName = "Tất cả" });
-                list.AddRange(dc.GExpprovider.GetListObjectCon(base.ConnectionData.Schema, "WHERE Post=@Post AND IsOwner=@IsOwner ORDER BY SelectIndex", "@Post", post, "@IsOwner", false));
-                return list;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                dc.Close();
-
-            }
-        }
-        public List<GExpProvider> GetProviderListMasterAndAll(string post)
-        {
-            IDataContext dc = new dcDataContextM(base.ConnectionData.ConnectionString);
-            try
-            {
-                dc.Open();
-                List<GExpProvider> list = new List<GExpProvider>();
-                list.Add(new GExpProvider { Id = "9999", ProviderName = "Tất cả" });
-                list.AddRange(dc.GExpprovider.GetListObjectCon(base.ConnectionData.Schema, "WHERE Post=@Post AND IsOwner=@IsOwner ORDER BY SelectIndex", "@Post", post, "@IsOwner", true));
+                list.AddRange(dc.GExpprovider.GetListObjectCon(base.ConnectionData.Schema, "WHERE Post=@Post ORDER BY SelectIndex", "@Post", post));
                 return list;
             }
             catch (Exception ex)
@@ -529,16 +487,24 @@ namespace LeMaiLogic.Logic
             {
                 dc.Open();
                 DateTime currentDate = dc.CurrentTime();
+                // Đơn hàng tự phát
                 List<view_GExpBill> billsVanTai = dc.VIewgexpbill.GetListObjectCon(base.ConnectionData.Schema, "WHERE RunMode=@RunMode AND IsSigned=@IsSigned AND IsPayCustomer=@IsPayCustomer AND RegisterSiteCode=@RegisterSiteCode",
                     "@RunMode", 0,
                     "@IsSigned", true,
                     "@IsPayCustomer", false,
                     "@RegisterSiteCode", post);
                 List<GExpDoiSoatChiTiet> lsChiTiet = new List<GExpDoiSoatChiTiet>();
+                // Đơn hàng tự gửi BT3 của bưu cục
                 List<GExpMoneyReturnSession> lsSession = dc.GExpmoneyreturnsession.GetListObjectCon(base.ConnectionData.Schema, "WHERE (FK_DoiSoat IS NULL OR FK_DoiSoat='') AND Post=@Post",
                     "@IsPayCustomer", false
                     , "@Post", post);
-                if (lsSession.Count == 0 && billsVanTai.Count == 0)
+                // Đơn hàng gửi BT3 của thằng Master
+                var lsBillMaster = dc.VIewgexpbillmaster.GetListObjectCon(base.ConnectionData.Schema, "WHERE IsSigned=@IsSigned AND IsPayCustomer=@IsPayCustomer AND RegisterSiteCode=@RegisterSiteCode",
+                    "@IsSigned", true,
+                    "@IsPayCustomer", false,
+                    "@RegisterSiteCode", post);
+
+                if (lsSession.Count == 0 && billsVanTai.Count == 0 && lsBillMaster.Count == 0)
                 {
                     errorMessage = "Không tìm thấy dữ liệu đối soát chưa thanh toán cho khách hàng!";
                     return null;
@@ -670,8 +636,120 @@ namespace LeMaiLogic.Logic
                     item.FK_DoiSoat = doisoat.Id;
                     dc.GExpmoneyreturnsession.Update(base.ConnectionData.Schema, item);
                 }
-                // Đối soát đơn vận tải
+                //B. Đối soát đơn vận tải
                 foreach (var vantai in billsVanTai)
+                {
+                    GExpDoiSoatHistory history = dc.GExpdoisoathistory.GetObject(base.ConnectionData.Schema, vantai.BillCode);
+                    if (history != null)
+                    {
+                        // Đơn hàng đã nhập đối soát rồi thì thôi bỏ qua
+                        continue;
+                    }
+                    GExpDoiSoatChiTietCt chitietct = new GExpDoiSoatChiTietCt();
+                    GExpDoiSoatChiTiet chitiet = lsChiTiet.FirstOrDefault(u => u.FK_Customer == vantai.FK_Customer);
+                    if (chitiet == null)
+                    {
+                        chitiet = new GExpDoiSoatChiTiet();
+                        chitiet.Id = Guid.NewGuid().ToString();
+                        chitiet.FK_DoiSoat = doisoat.Id;
+                        chitiet.FK_Customer = vantai.FK_Customer;
+                        chitiet.TenKhachHang = vantai.SendMan;
+                        chitiet.SoDienThoai = vantai.SendManPhone;
+                        chitiet.SoLuongDon = 1;
+                        chitiet.ThuHo = (decimal)vantai.COD;
+                        chitiet.ThuHoKT = 0;
+                        chitiet.SaiLech = 0;
+                        chitiet.CuocNhanTra = 0;
+                        if (vantai.FK_PaymentType == "GTT")
+                        {
+                            chitiet.CuocGuiTra = (decimal)vantai.Freight;
+                            chitiet.ThanhToanKH = chitiet.ThuHo - chitiet.CuocGuiTra;
+                        }
+                        else
+                        {
+                            chitiet.CuocNhanTra = (decimal)vantai.Freight;
+                            chitiet.ThanhToanKH = chitiet.ThuHo;
+                        }
+                        chitiet.ChiPhi = 0;
+                        chitiet.LoiNhuan = 0;
+                        chitiet.DaThanhToanKH = 0;
+                        chitiet.IsHoanThanh = false;
+                        // Thêm chi tiết vào trong danh sách
+                        lsChiTiet.Add(chitiet);
+                    }
+                    else
+                    {
+                        chitiet.SoLuongDon = chitiet.SoLuongDon + 1;
+                        chitiet.ThuHo = chitiet.ThuHo + (decimal)vantai.COD;
+                        if (vantai.FK_PaymentType == "GTT")
+                        {
+                            chitiet.CuocGuiTra = chitiet.CuocGuiTra + (decimal)vantai.Freight;
+                            chitiet.ThanhToanKH = chitiet.ThanhToanKH + (decimal)vantai.COD - (decimal)vantai.Freight;
+                        }
+                        else
+                        {
+                            chitiet.CuocNhanTra = chitiet.CuocNhanTra + (decimal)vantai.Freight;
+                            chitiet.ThanhToanKH = chitiet.ThanhToanKH + (decimal)vantai.COD;
+                        }
+                    }
+                    // Thêm chitietct
+                    chitietct.BillCode = vantai.BillCode;
+                    chitietct.TrongLuongKH = vantai.FeeWeight;
+                    chitietct.FK_DoiSoatChiTiet = chitiet.Id;
+                    chitietct.NguoiGui = vantai.SendMan;
+                    chitietct.NguoiNhan = vantai.AcceptMan;
+                    chitietct.SoDienThoai = vantai.AcceptManPhone;
+                    chitietct.NoiDen = vantai.AcceptProvince;
+                    chitietct.ThuHo = (decimal)vantai.COD;
+                    chitietct.TrongLuong = vantai.BillWeight;
+
+                    if (vantai.IsReturn == true)
+                    {
+                        chitietct.Status = 2;
+                    }
+                    else
+                    {
+                        chitietct.Status = 1;
+                    }
+
+                    chitietct.NgayGuiHang = string.Format("{0:dd/MM/yyyy HH:mm}", vantai.RegisterDate);
+                    chitietct.NgayKyNhan = string.Format("{0:dd/MM/yyyy}", (DateTime)vantai.SignedDate);
+                    chitietct.CuocVanChuyen = (decimal)vantai.Freight;
+                    chitietct.LoaiThanhToan = vantai.PayType;
+                    chitietct.LoaiKien = vantai.ProviderTypeCode;
+
+                    if (chitietct.Status == 2)
+                    {
+                        // Đơn hàng hoàn thì tiền thu hộ =0
+                        vantai.COD = 0;
+                    }
+                    if (vantai.FK_PaymentType == "GTT")
+                    {
+                        chitietct.SoTienThanhToan = (decimal)vantai.COD - (decimal)vantai.Freight;
+                    }
+                    else
+                    {
+                        chitietct.SoTienThanhToan = (decimal)vantai.COD;
+                    }
+                    ExpCODCK codCK = dc.EXpcodck.GetObject(base.ConnectionData.Schema, vantai.BillCode);
+                    if (codCK != null)
+                    {
+                        chitietct.SoTienThanhToan = chitietct.SoTienThanhToan - codCK.SoTienCKCOD;
+                    }
+                    if (chitietct.Status == 1)
+                    {
+                        chitietct.GhiChu = "Giao thành công";
+                    }
+                    else if (chitietct.Status == 2)
+                    {
+                        chitietct.GhiChu = "Hoàn";
+                    }
+                    chitietct.IsHoanThanh = false;
+                    //
+                    dc.GExpdoisoatchitietct.InsertOnSubmit(base.ConnectionData.Schema, chitietct);
+                }
+                //C. Đối soát đơn master
+                foreach (var vantai in lsBillMaster)
                 {
                     GExpDoiSoatHistory history = dc.GExpdoisoathistory.GetObject(base.ConnectionData.Schema, vantai.BillCode);
                     if (history != null)

@@ -64,6 +64,7 @@ namespace LeMaiDomain
 		public System.String LinkCustomerLogin { get; set; }
 		public System.Boolean IsOwner { get; set; }
 		public System.Int32 PercentConfig { get; set; }
+		public System.Boolean AlwayReceivePay { get; set; }
 		public GExpProvider(){}
 	}
 }

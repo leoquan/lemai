@@ -29,13 +29,13 @@ namespace LeMaiDesktop
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelcomtrol = new System.Windows.Forms.Panel();
             this.txtSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnPrint = new DevComponents.DotNetBar.ButtonX();
@@ -165,6 +165,8 @@ namespace LeMaiDesktop
             this.lblDeliveryStepPrice = new System.Windows.Forms.Label();
             this.lblLinkCustomerLogin = new System.Windows.Forms.Label();
             this.styleManager = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.chbAlwayReceivePay = new System.Windows.Forms.CheckBox();
+            this.chbDel = new System.Windows.Forms.CheckBox();
             this.panelcomtrol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMain)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -185,7 +187,7 @@ namespace LeMaiDesktop
             this.panelcomtrol.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panelcomtrol.Name = "panelcomtrol";
             this.panelcomtrol.Size = new System.Drawing.Size(984, 42);
-            this.panelcomtrol.TabIndex = 32;
+            this.panelcomtrol.TabIndex = 34;
             // 
             // txtSearch
             // 
@@ -333,19 +335,19 @@ namespace LeMaiDesktop
             // gridMain
             // 
             this.gridMain.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(233)))), ((int)(((byte)(248)))));
-            this.gridMain.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(233)))), ((int)(((byte)(248)))));
+            this.gridMain.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.gridMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.gridMain.ColumnHeadersHeight = 25;
             this.gridMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_Id,
@@ -403,14 +405,14 @@ namespace LeMaiDesktop
             this.col_ManualSign,
             this.col_ProviderTypeName});
             this.gridMain.ContextMenuStrip = this.contextMenuStrip;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridMain.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridMain.DefaultCellStyle = dataGridViewCellStyle12;
             this.gridMain.EnableHeadersVisualStyles = false;
             this.gridMain.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.gridMain.HighlightSelectedColumnHeaders = false;
@@ -419,16 +421,16 @@ namespace LeMaiDesktop
             this.gridMain.MultiSelect = false;
             this.gridMain.Name = "gridMain";
             this.gridMain.PaintEnhancedSelection = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridMain.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridMain.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.gridMain.RowHeadersVisible = false;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(106)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            this.gridMain.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(106)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
+            this.gridMain.RowsDefaultCellStyle = dataGridViewCellStyle14;
             this.gridMain.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridMain.RowTemplate.Height = 25;
             this.gridMain.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -556,9 +558,9 @@ namespace LeMaiDesktop
             // col_InitWeightSelect
             // 
             this.col_InitWeightSelect.DataPropertyName = "InitWeightSelect";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N0";
-            this.col_InitWeightSelect.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N0";
+            this.col_InitWeightSelect.DefaultCellStyle = dataGridViewCellStyle10;
             this.col_InitWeightSelect.HeaderText = "Min Select";
             this.col_InitWeightSelect.Name = "col_InitWeightSelect";
             this.col_InitWeightSelect.ReadOnly = true;
@@ -727,9 +729,9 @@ namespace LeMaiDesktop
             // col_ExpiresDate
             // 
             this.col_ExpiresDate.DataPropertyName = "ExpiresDate";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Format = "dd/MM/yyyy HH:mm:ss";
-            this.col_ExpiresDate.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.Format = "dd/MM/yyyy HH:mm:ss";
+            this.col_ExpiresDate.DefaultCellStyle = dataGridViewCellStyle11;
             this.col_ExpiresDate.HeaderText = "ExpiresDate";
             this.col_ExpiresDate.Name = "col_ExpiresDate";
             this.col_ExpiresDate.ReadOnly = true;
@@ -1083,7 +1085,7 @@ namespace LeMaiDesktop
             this.txtSelectIndex.BackColor = System.Drawing.SystemColors.Window;
             this.txtSelectIndex.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtSelectIndex, true);
-            this.txtSelectIndex.Location = new System.Drawing.Point(943, 565);
+            this.txtSelectIndex.Location = new System.Drawing.Point(943, 582);
             this.txtSelectIndex.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSelectIndex.Name = "txtSelectIndex";
             this.txtSelectIndex.Size = new System.Drawing.Size(39, 22);
@@ -1219,7 +1221,7 @@ namespace LeMaiDesktop
             this.txtDeliveryInitPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDeliveryInitPrice.Name = "txtDeliveryInitPrice";
             this.txtDeliveryInitPrice.Size = new System.Drawing.Size(110, 22);
-            this.txtDeliveryInitPrice.TabIndex = 29;
+            this.txtDeliveryInitPrice.TabIndex = 31;
             this.txtDeliveryInitPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDeliveryInitPrice_KeyPress);
             this.txtDeliveryInitPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDeliveryInitPrice_KeyUp);
             // 
@@ -1233,7 +1235,7 @@ namespace LeMaiDesktop
             this.txtDeliveryInitWeight.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDeliveryInitWeight.Name = "txtDeliveryInitWeight";
             this.txtDeliveryInitWeight.Size = new System.Drawing.Size(75, 22);
-            this.txtDeliveryInitWeight.TabIndex = 28;
+            this.txtDeliveryInitWeight.TabIndex = 30;
             this.txtDeliveryInitWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDeliveryInitWeight_KeyPress);
             this.txtDeliveryInitWeight.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDeliveryInitWeight_KeyUp);
             // 
@@ -1247,7 +1249,7 @@ namespace LeMaiDesktop
             this.txtDeliveryStepWeight.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDeliveryStepWeight.Name = "txtDeliveryStepWeight";
             this.txtDeliveryStepWeight.Size = new System.Drawing.Size(66, 22);
-            this.txtDeliveryStepWeight.TabIndex = 30;
+            this.txtDeliveryStepWeight.TabIndex = 32;
             this.txtDeliveryStepWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDeliveryStepWeight_KeyPress);
             this.txtDeliveryStepWeight.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDeliveryStepWeight_KeyUp);
             // 
@@ -1261,7 +1263,7 @@ namespace LeMaiDesktop
             this.txtDeliveryStepPrice.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtDeliveryStepPrice.Name = "txtDeliveryStepPrice";
             this.txtDeliveryStepPrice.Size = new System.Drawing.Size(116, 22);
-            this.txtDeliveryStepPrice.TabIndex = 31;
+            this.txtDeliveryStepPrice.TabIndex = 33;
             this.txtDeliveryStepPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDeliveryStepPrice_KeyPress);
             this.txtDeliveryStepPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDeliveryStepPrice_KeyUp);
             // 
@@ -1270,12 +1272,12 @@ namespace LeMaiDesktop
             this.chbManualSign.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chbManualSign.AutoSize = true;
             this.highlighter.SetHighlightOnFocus(this.chbManualSign, true);
-            this.chbManualSign.Location = new System.Drawing.Point(829, 614);
+            this.chbManualSign.Location = new System.Drawing.Point(737, 614);
             this.chbManualSign.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chbManualSign.Name = "chbManualSign";
-            this.chbManualSign.Size = new System.Drawing.Size(124, 18);
+            this.chbManualSign.Size = new System.Drawing.Size(70, 18);
             this.chbManualSign.TabIndex = 26;
-            this.chbManualSign.Text = "Ký nhận thủ công";
+            this.chbManualSign.Text = "Ký nhận";
             // 
             // chbIsPickup
             // 
@@ -1285,9 +1287,9 @@ namespace LeMaiDesktop
             this.chbIsPickup.Location = new System.Drawing.Point(659, 614);
             this.chbIsPickup.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chbIsPickup.Name = "chbIsPickup";
-            this.chbIsPickup.Size = new System.Drawing.Size(144, 18);
+            this.chbIsPickup.Size = new System.Drawing.Size(79, 18);
             this.chbIsPickup.TabIndex = 25;
-            this.chbIsPickup.Text = "Có nhận hàng tận nơi";
+            this.chbIsPickup.Text = "Có Pickup";
             // 
             // txtLinkCustomerLogin
             // 
@@ -1301,7 +1303,7 @@ namespace LeMaiDesktop
             this.txtLinkCustomerLogin.MaxLength = 250;
             this.txtLinkCustomerLogin.Name = "txtLinkCustomerLogin";
             this.txtLinkCustomerLogin.Size = new System.Drawing.Size(229, 22);
-            this.txtLinkCustomerLogin.TabIndex = 27;
+            this.txtLinkCustomerLogin.TabIndex = 29;
             this.txtLinkCustomerLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLinkCustomerLogin_KeyPress);
             // 
             // cmbRunMode
@@ -1684,12 +1686,39 @@ namespace LeMaiDesktop
             this.styleManager.ManagerStyle = DevComponents.DotNetBar.eStyle.VisualStudio2010Blue;
             this.styleManager.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(87)))), ((int)(((byte)(154))))));
             // 
+            // chbAlwayReceivePay
+            // 
+            this.chbAlwayReceivePay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.chbAlwayReceivePay.AutoSize = true;
+            this.highlighter.SetHighlightOnFocus(this.chbAlwayReceivePay, true);
+            this.chbAlwayReceivePay.Location = new System.Drawing.Point(814, 614);
+            this.chbAlwayReceivePay.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.chbAlwayReceivePay.Name = "chbAlwayReceivePay";
+            this.chbAlwayReceivePay.Size = new System.Drawing.Size(117, 18);
+            this.chbAlwayReceivePay.TabIndex = 27;
+            this.chbAlwayReceivePay.Text = "Chuyển nhận trả";
+            // 
+            // chbDel
+            // 
+            this.chbDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.chbDel.AutoSize = true;
+            this.chbDel.ForeColor = System.Drawing.Color.Red;
+            this.highlighter.SetHighlightOnFocus(this.chbDel, true);
+            this.chbDel.Location = new System.Drawing.Point(936, 614);
+            this.chbDel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.chbDel.Name = "chbDel";
+            this.chbDel.Size = new System.Drawing.Size(47, 18);
+            this.chbDel.TabIndex = 28;
+            this.chbDel.Text = "DEL";
+            // 
             // frmQuanLyTaiKhoanDoiTacVanChuyen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(984, 717);
+            this.Controls.Add(this.chbDel);
+            this.Controls.Add(this.chbAlwayReceivePay);
             this.Controls.Add(this.cmbRunMode);
             this.Controls.Add(this.gridMain);
             this.Controls.Add(this.panelcomtrol);
@@ -1902,5 +1931,7 @@ namespace LeMaiDesktop
         private DevComponents.DotNetBar.StyleManager styleManager;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem vùngVậnChuyểnToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chbAlwayReceivePay;
+        private System.Windows.Forms.CheckBox chbDel;
     }
 }

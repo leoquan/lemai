@@ -63,6 +63,7 @@ namespace LeMaiDomain
 		public System.String ProviderTypeName { get; set; }
 		public System.Boolean IsPickup { get; set; }
 		public System.String LinkCustomerLogin { get; set; }
+		public System.Boolean AlwayReceivePay { get; set; }
 		public view_GExpProvider(){}
 	}
 }

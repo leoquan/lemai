@@ -136,17 +136,12 @@
   <ItemGroup>
     <Compile Include="ApiGHTK.cs" />
     <Compile Include="ApiViettel.cs" />
+    <Compile Include="DebitComprisonExcel.cs" />
     <Compile Include="frmAccountPermission.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAccountPermission.Designer.cs">
       <DependentUpon>frmAccountPermission.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmNhapDoiSoatBT3Master.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmNhapDoiSoatBT3Master.Designer.cs">
-      <DependentUpon>frmNhapDoiSoatBT3Master.cs</DependentUpon>
     </Compile>
     <Compile Include="frmQuanLyBaoTriXe.cs">
       <SubType>Form</SubType>
@@ -791,9 +786,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInputSearch.resx">
       <DependentUpon>frmInputSearch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmNhapDoiSoatBT3Master.resx">
-      <DependentUpon>frmNhapDoiSoatBT3Master.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyBaoTriXe.resx">
       <DependentUpon>frmQuanLyBaoTriXe.cs</DependentUpon>

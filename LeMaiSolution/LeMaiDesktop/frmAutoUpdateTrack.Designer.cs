@@ -332,7 +332,7 @@
             // 
             // timerSign
             // 
-            this.timerSign.Interval = 60000;
+            this.timerSign.Interval = 30000;
             this.timerSign.Tick += new System.EventHandler(this.timerSign_Tick);
             // 
             // backgroundWorkerSign

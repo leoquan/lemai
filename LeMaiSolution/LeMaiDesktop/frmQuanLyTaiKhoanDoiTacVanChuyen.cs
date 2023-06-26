@@ -109,6 +109,8 @@ namespace LeMaiDesktop
                 chbIsPickup.Enabled = false;
                 cmbRunMode.Enabled = false;
                 txtLinkCustomerLogin.Enabled = false;
+                chbDel.Enabled = false;
+                chbAlwayReceivePay.Enabled = false;
             }
             if (stus == enumAction.NEW)
             {
@@ -149,6 +151,8 @@ namespace LeMaiDesktop
                 chbManualSign.Enabled = true;
                 chbIsPickup.Enabled = true;
                 txtLinkCustomerLogin.Enabled = true;
+                chbDel.Enabled = true;
+                chbAlwayReceivePay.Enabled = true;
             }
             if (stus == enumAction.UPDATE)
             {
@@ -189,6 +193,8 @@ namespace LeMaiDesktop
                 cmbRunMode.Enabled = true;
                 chbIsPickup.Enabled = true;
                 txtLinkCustomerLogin.Enabled = true;
+                chbDel.Enabled = true;
+                chbAlwayReceivePay.Enabled = true;
             }
         }
         // Xóa trắng tất cả các textbox.
@@ -283,6 +289,9 @@ namespace LeMaiDesktop
             cmbWardCode.DisplayMember = "WardName";
             cmbWardCode.ValueMember = "WardId";
             cmbWardCode.SelectedValue = item.WardCode;
+
+            chbDel.Checked = item.IsDelete;
+            chbAlwayReceivePay.Checked = item.AlwayReceivePay;
         }
 
         #region Xử lý TextBox tìm kiếm dữ liệu trên form
@@ -751,6 +760,8 @@ namespace LeMaiDesktop
             item.ManualSign = chbManualSign.Checked;
             item.IsPickup = chbIsPickup.Checked;
             item.LinkCustomerLogin = txtLinkCustomerLogin.Text;
+            item.IsAlwayReceive = chbAlwayReceivePay.Checked;
+            item.IsDelete = chbDel.Checked;
             if (status == enumAction.NEW)
             {
                 await _logic.Create(item);

@@ -182,6 +182,71 @@ namespace LeMaiDesktop
                             _logic.UpdateTracking(objectJson.tracking_id, trackingResultGHN, lsStatus);
                         }
                     }
+                    else if (item.Provider == "JNT")
+                    {
+                        WHJNTInput hJNTInput = JsonConvert.DeserializeObject<WHJNTInput>(item.JsonContent);
+                        if (hJNTInput != null)
+                        {
+                            foreach (var wh in hJNTInput.responseitems)
+                            {
+                                switch (wh.status_code)
+                                {
+                                    case "103"://Xác nhận đơn hàng
+                                        {
+                                        }
+                                        break;
+                                    case "104"://Lấy hàng ko thành công
+                                        { }
+                                        break;
+                                    case "105"://Hủy đơn
+                                        { }
+                                        break;
+                                    case "106"://Nhận hàng thành công
+                                        { }
+                                        break;
+                                    case "107"://Nhập kho
+                                        { }
+                                        break;
+                                    case "108"://Đóng bao
+                                        { }
+                                        break;
+                                    case "109"://Gửi kiện
+                                        { }
+                                        break;
+                                    case "110"://Kiện đến
+                                        { }
+                                        break;
+                                    case "111"://Tháo bao
+                                        { }
+                                        break;
+                                    case "112"://Giao kiện
+                                        { }
+                                        break;
+                                    case "113"://Giao kiện thành công | Ký nhận
+                                        {
+                                            // Ký nhận đơn hàng
+
+                                        }
+                                        break;
+                                    case "116"://Chuyển hoàn
+                                        { }
+                                        break;
+                                    case "117"://Chuyển hoàn thành công | Ký nhận
+                                        { }
+                                        break;
+                                    case "118"://Giao không thành công
+                                        { }
+                                        break;
+                                    case "120"://Chuyển hoàn không thành công
+                                        { }
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                            }
+                        }
+                    }
                     // Delete những webhook đã xử lý
                     _logic.DeleteWebhook(item.Id);
                 }

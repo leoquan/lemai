@@ -288,6 +288,10 @@ namespace LeMaiLogic
 					{
 						item.LinkCustomerLogin = Convert.ToString(dr["LinkCustomerLogin"]);
 					}
+					if (dr["AlwayReceivePay"] != null && dr["AlwayReceivePay"] != DBNull.Value)
+					{
+						item.AlwayReceivePay = Convert.ToBoolean(dr["AlwayReceivePay"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -534,6 +538,10 @@ namespace LeMaiLogic
 					if (dr["LinkCustomerLogin"] != null && dr["LinkCustomerLogin"] != DBNull.Value)
 					{
 						item.LinkCustomerLogin = Convert.ToString(dr["LinkCustomerLogin"]);
+					}
+					if (dr["AlwayReceivePay"] != null && dr["AlwayReceivePay"] != DBNull.Value)
+					{
+						item.AlwayReceivePay = Convert.ToBoolean(dr["AlwayReceivePay"]);
 					}
 					items.Add(item);
 				}
@@ -803,6 +811,10 @@ namespace LeMaiLogic
 						if (dr["LinkCustomerLogin"] != null && dr["LinkCustomerLogin"] != DBNull.Value)
 						{
 							item.LinkCustomerLogin = Convert.ToString(dr["LinkCustomerLogin"]);
+						}
+						if (dr["AlwayReceivePay"] != null && dr["AlwayReceivePay"] != DBNull.Value)
+						{
+							item.AlwayReceivePay = Convert.ToBoolean(dr["AlwayReceivePay"]);
 						}
 
 						break;

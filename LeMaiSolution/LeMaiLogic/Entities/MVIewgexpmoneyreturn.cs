@@ -112,6 +112,10 @@ namespace LeMaiLogic
 					{
 						item.FK_MoneyReturnSession = Convert.ToString(dr["FK_MoneyReturnSession"]);
 					}
+					if (dr["SessionCode"] != null && dr["SessionCode"] != DBNull.Value)
+					{
+						item.SessionCode = Convert.ToString(dr["SessionCode"]);
+					}
 					if (dr["ShopName"] != null && dr["ShopName"] != DBNull.Value)
 					{
 						item.ShopName = Convert.ToString(dr["ShopName"]);
@@ -266,6 +270,10 @@ namespace LeMaiLogic
 					if (dr["FK_MoneyReturnSession"] != null && dr["FK_MoneyReturnSession"] != DBNull.Value)
 					{
 						item.FK_MoneyReturnSession = Convert.ToString(dr["FK_MoneyReturnSession"]);
+					}
+					if (dr["SessionCode"] != null && dr["SessionCode"] != DBNull.Value)
+					{
+						item.SessionCode = Convert.ToString(dr["SessionCode"]);
 					}
 					if (dr["ShopName"] != null && dr["ShopName"] != DBNull.Value)
 					{
@@ -443,6 +451,10 @@ namespace LeMaiLogic
 						if (dr["FK_MoneyReturnSession"] != null && dr["FK_MoneyReturnSession"] != DBNull.Value)
 						{
 							item.FK_MoneyReturnSession = Convert.ToString(dr["FK_MoneyReturnSession"]);
+						}
+						if (dr["SessionCode"] != null && dr["SessionCode"] != DBNull.Value)
+						{
+							item.SessionCode = Convert.ToString(dr["SessionCode"]);
 						}
 						if (dr["ShopName"] != null && dr["ShopName"] != DBNull.Value)
 						{

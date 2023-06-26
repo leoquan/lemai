@@ -67,7 +67,7 @@ namespace LeMaiDesktop
                 jsonObject.from_province_name = bill.ProvinceName;
 
                 jsonObject.return_name = bill.ShopName;
-                jsonObject.return_phone= bill.ShopPhone;
+                jsonObject.return_phone = bill.ShopPhone;
 
                 jsonObject.return_address = bill.Address;
                 jsonObject.return_ward_name = bill.WardName;
@@ -147,10 +147,9 @@ namespace LeMaiDesktop
         public OutTrackingResultGHN Tracking(view_GExpBillGHNApi bill)
         {
             OutTrackingResultGHN rs = new OutTrackingResultGHN();
-            var client = new RestClient("https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/detail");
+            var client = new RestClient("https://fe-online-gateway.ghn.vn/order-tracking/public-api/client/tracking-logs");
             var request = new RestRequest();
             request.Method = Method.POST;
-            request.AddHeader("token", bill.Token);
             request.AddHeader("Content-Type", "application/json");
             string bodyjson = JsonConvert.SerializeObject(new { order_code = bill.BT3Code });
             request.AddParameter("application/json", bodyjson, ParameterType.RequestBody);
@@ -158,7 +157,7 @@ namespace LeMaiDesktop
             var response = client.Execute(request);
             try
             {
-                JsonGHNTrackingOutput result = JsonConvert.DeserializeObject<JsonGHNTrackingOutput>(response.Content);
+                GHNV2TrackingOutput result = JsonConvert.DeserializeObject<GHNV2TrackingOutput>(response.Content);
                 if (result != null)
                 {
                     if (result.code == 200)
@@ -167,10 +166,10 @@ namespace LeMaiDesktop
                         rs.IsSuccess = true;
                         rs.Message = result.message;
                         string nearstatus = string.Empty;
-                        foreach (var item in result.data.log)
+                        foreach (var item in result.data.tracking_logs)
                         {
                             OutTrackingLogGHN log = new OutTrackingLogGHN();
-                            DateTime tempDate = item.updated_date.AddHours(7);
+                            DateTime tempDate = item.action_at.AddHours(7);
                             log.ActionDateTime = new DateTime(tempDate.Year, tempDate.Month, tempDate.Day, tempDate.Hour, tempDate.Minute, 0, 0);
                             log.ActionDate = log.ActionDateTime.ToString();
                             log.StatusCode = item.status;
@@ -179,26 +178,11 @@ namespace LeMaiDesktop
                                 log.StatusCode = "storing_tt";
                             }
                             nearstatus = item.status;
-                            string tranName = Tranlate(item.status);
-                            if (!string.IsNullOrEmpty(tranName))
-                            {
-                                log.Note = "[" + tranName + "]";
-                                if (!string.IsNullOrEmpty(item.reason))
-                                {
-                                    log.Note = log.Note + " " + item.reason;
-                                }
-                                if (!string.IsNullOrEmpty(item.driver_name))
-                                {
-                                    log.Note = log.Note + " NV:" + item.driver_name;
-                                }
-                                if (!string.IsNullOrEmpty(item.driver_phone))
-                                {
-                                    log.Note = log.Note + " SĐT:" + item.driver_phone;
-                                }
-                                log.ProviderName = "GHN";
+                            log.Note = "[" + item.status_name + "] " + item.location.address + " - NV: " + item.executor.name + " SĐT:" + item.executor.phone;
+                            log.ProviderName = "GHN";
 
-                                rs.outTrackingLogs.Add(log);
-                            }
+                            rs.outTrackingLogs.Add(log);
+
 
                         }
                     }
@@ -749,5 +733,79 @@ namespace LeMaiDesktop
         public int? next_warehouse_id { get; set; }
     }
 
+    #region Tracking Log
+    public class GHNV2Data
+    {
+        public GHNV2OrderInfo order_info { get; set; }
+        public List<GHNV2TrackingLog> tracking_logs { get; set; }
+        public bool is_sender { get; set; }
+    }
 
+    public class GHNV2Executor
+    {
+        public int client_id { get; set; }
+        public string name { get; set; }
+        public string phone { get; set; }
+        public int? employee_id { get; set; }
+    }
+
+    public class GHNV2Location
+    {
+        public string address { get; set; }
+        public string ward_code { get; set; }
+        public int district_id { get; set; }
+        public int warehouse_id { get; set; }
+        public int? next_warehouse_id { get; set; }
+    }
+
+    public class GHNV2OrderInfo
+    {
+        public string order_code { get; set; }
+        public string client_order_code { get; set; }
+        public int shop_id { get; set; }
+        public string status { get; set; }
+        public string action { get; set; }
+        public string status_name { get; set; }
+        public DateTime picktime { get; set; }
+        public DateTime leadtime { get; set; }
+        public DateTime finish_date { get; set; }
+        public string to_name { get; set; }
+        public string to_phone { get; set; }
+        public string to_address { get; set; }
+        public string from_name { get; set; }
+        public string from_phone { get; set; }
+        public string from_address { get; set; }
+        public string return_name { get; set; }
+        public string return_phone { get; set; }
+        public string return_address { get; set; }
+        public int main_service_fee { get; set; }
+        public int total_fee { get; set; }
+        public int payment_type_id { get; set; }
+        public int insurance_value { get; set; }
+        public string order_version { get; set; }
+        public bool is_partial_return { get; set; }
+        public bool danger_zone_sender { get; set; }
+        public bool danger_zone_deliver { get; set; }
+        public int sub { get; set; }
+    }
+
+    public class GHNV2TrackingOutput
+    {
+        public int code { get; set; }
+        public string message { get; set; }
+        public GHNV2Data data { get; set; }
+    }
+
+    public class GHNV2TrackingLog
+    {
+        public string order_code { get; set; }
+        public string status { get; set; }
+        public string status_name { get; set; }
+        public GHNV2Location location { get; set; }
+        public GHNV2Executor executor { get; set; }
+        public DateTime action_at { get; set; }
+        public object sync_data_at { get; set; }
+        public string action_code { get; set; }
+    }
+    #endregion
 }

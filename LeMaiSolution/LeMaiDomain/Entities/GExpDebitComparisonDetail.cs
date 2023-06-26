@@ -20,6 +20,7 @@ namespace LeMaiDomain
 		public System.DateTime? PayDate { get; set; }
 		public System.String FK_KyDoiSoat { get; set; }
 		public System.String FK_Post { get; set; }
+		public System.String DebitComparisonCode { get; set; }
 		public GExpDebitComparisonDetail(){}
 	}
 }

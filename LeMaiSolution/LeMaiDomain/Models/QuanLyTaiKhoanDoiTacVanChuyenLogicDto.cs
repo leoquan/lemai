@@ -98,7 +98,8 @@ namespace LeMaiDomain.Models
 		[Required(ErrorMessage = "IsPickup Not Empty")]
 		public Boolean IsPickup { get; set; }
 		public String LinkCustomerLogin { get; set; }
-	}
+        public Boolean IsAlwayReceive { get; set; }
+    }
 	public class QuanLyTaiKhoanDoiTacVanChuyenLogicOutputDto:view_GExpProvider
 	{
 	}

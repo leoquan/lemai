@@ -12,118 +12,69 @@ namespace LeMaiDesktop
 {
     public class ReadDebitComparison
     {
-        public static DataTable ReadGHN(string filename)
+        public static List<DebitComprisonExcel> ReadGHN(string filename)
         {
             try
             {
                 DataTable data = ExcelHelper.Read2007Xlsx(filename, "STT");
                 string CodPhien = ExcelHelper.ReadPhienCODGHN(filename);
-                DataTable result = MakeDataTable();
+                var result = new List<DebitComprisonExcel>();
                 foreach (DataRow item in data.Rows)
                 {
                     // Hiển thị data
                     if (!string.IsNullOrEmpty(item["Mã đơn GHN"].ToString()))
                     {
-                        DataRow dr = result.NewRow();
-                        dr["Session"] = CodPhien;
-                        // Check 2 cái format của GHN
-                        if (data.Columns.Contains("(1) + (2) + (3) + (4)"))
+                        DebitComprisonExcel dr = new DebitComprisonExcel();
+                        dr.Session = CodPhien;
+                        dr.Stt = Int32.Parse(item["STT"].ToString());
+                        dr.BT3Code = item["Mã đơn GHN"].ToString();
+                        dr.eBillCode = item["Mã đơn khách hàng"].ToString();
+                        dr.Status = 0;
+                        dr.StatusName = item["Trạng thái"].ToString();
+                        if (dr.StatusName == "Giao hàng thành công")
                         {
-                            // Định dạng cũ
-                            dr["Id"] = item["STT"].ToString();
-                            dr["BT3Code"] = item["Mã đơn GHN"].ToString();
-                            dr["BillCode"] = item["Mã đơn khách hàng"].ToString();
-                            dr["Status"] = 0;
-                            string statusName = item["Trạng thái"].ToString();
-                            if (statusName == "Giao hàng thành công")
-                            {
-                                dr["Status"] = 1;
-                            }
-                            else if (statusName == "0")
-                            {
-                                dr["Status"] = 0;
-                            }
-                            else if (statusName == "Chuyển hoàn")
-                            {
-                                dr["Status"] = 2;
-                            }
-                            dr["MoneyReturnStatusName"] = item["Trạng thái"].ToString();
-                            string ngay = item["Ngày giao/trả"].ToString();
-                            if (!string.IsNullOrEmpty(ngay))
-                            {
-                                DateTime date = DateTime.ParseExact(ngay, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                                dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", date);
-                            }
-                            else
-                            {
-                                dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-                            }
-
-                            dr["BT3COD"] = item["(1)"].ToString();
-                            dr["BT3TotalPaid"] = item["(2)"].ToString();
-                            dr["BT3TotalDiscount"] = item["(3)"].ToString();
-                            dr["BT3TotalFee"] = item["(4)"].ToString();
-                            string DoiSoat = item["(1) + (2) + (3) + (4)"].ToString();
-                            if (string.IsNullOrEmpty(DoiSoat))
-                            {
-                                dr["MoneyReturn"] = "0";
-                            }
-                            else
-                            {
-                                dr["MoneyReturn"] = DoiSoat;
-                            }
+                            dr.Status = 1;
                         }
-                        else if (data.Columns.Contains("(1) + (2) + (3) + (4) + (5)"))
+                        else if (dr.StatusName == "Chuyển hoàn")
                         {
-                            // Định dạng mới
-                            dr["Id"] = item["STT"].ToString();
-                            dr["BT3Code"] = item["Mã đơn GHN"].ToString();
-                            dr["BillCode"] = item["Mã đơn khách hàng"].ToString();
-                            dr["Status"] = 0;
-                            string statusName = item["Trạng thái"].ToString();
-                            if (statusName == "Giao hàng thành công")
-                            {
-                                dr["Status"] = 1;
-                            }
-                            else if (statusName == "0")
-                            {
-                                dr["Status"] = 0;
-                            }
-                            else if (statusName == "Chuyển hoàn")
-                            {
-                                dr["Status"] = 2;
-                            }
-                            dr["MoneyReturnStatusName"] = item["Trạng thái"].ToString();
-
-                            string ngay = item["Ngày giao/trả"].ToString();
-                            if (!string.IsNullOrEmpty(ngay))
-                            {
-                                DateTime date;
-                                if (!DateTime.TryParseExact(ngay, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
-                                {
-                                    date = DateTime.Now;
-                                }
-                                dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", date);
-                            }
-                            else
-                            {
-                                dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-                            }
-                            dr["BT3COD"] = item["(1)"].ToString();
-                            dr["BT3TotalPaid"] = item["(3)"].ToString();
-                            dr["BT3TotalDiscount"] = item["(4)"].ToString();
-                            dr["BT3TotalFee"] = item["(5)"].ToString();
-                            string DoiSoat = item["(1) + (2) + (3) + (4) + (5)"].ToString();
-                            if (string.IsNullOrEmpty(DoiSoat))
-                            {
-                                dr["MoneyReturn"] = "0";
-                            }
-                            else
-                            {
-                                dr["MoneyReturn"] = DoiSoat;
-                            }
+                            dr.Status = 2;
                         }
-                        result.Rows.Add(dr);
+
+                        string ngay = item["Ngày giao/trả"].ToString();
+                        if (!string.IsNullOrEmpty(ngay))
+                        {
+                            DateTime date;
+                            if (!DateTime.TryParseExact(ngay, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
+                            {
+                                date = DateTime.Now;
+                            }
+                            dr.DateDeliveryReturn = date;
+                        }
+                        dr.BT3COD = decimal.Parse(item["(1)"].ToString());
+                        dr.BT3Paid = decimal.Parse(item["(3)"].ToString());
+                        dr.Discount = decimal.Parse(item["(4)"].ToString());
+                        dr.BT3TotalFee = decimal.Parse(item["(5)"].ToString());
+                        dr.Fee = decimal.Parse(item["(5.1)"].ToString());
+                        dr.ReturnFee = decimal.Parse(item["(5.4)"].ToString());
+                        dr.OtherFee = decimal.Parse(item["(5.2)"].ToString());
+                        dr.InsuranceFee = decimal.Parse(item["(5.3)"].ToString());
+                        // Lấy trị tuyệt đối
+                        dr.Fee = Math.Abs(dr.Fee);
+                        dr.ReturnFee = Math.Abs(dr.ReturnFee);
+                        dr.OtherFee = Math.Abs(dr.OtherFee);
+                        dr.InsuranceFee = Math.Abs(dr.InsuranceFee);
+                        dr.BT3TotalFee = Math.Abs(dr.BT3TotalFee);
+
+                        string DoiSoat = item["(1) + (2) + (3) + (4) + (5)"].ToString();
+                        if (string.IsNullOrEmpty(DoiSoat))
+                        {
+                            dr.ReturnCOD = 0;
+                        }
+                        else
+                        {
+                            dr.ReturnCOD = decimal.Parse(DoiSoat);
+                        }
+                        result.Add(dr);
                     }
                 }
                 return result;
@@ -131,71 +82,44 @@ namespace LeMaiDesktop
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), PBean.MESSAGE_TITLE);
-                return MakeDataTable();
+                return new List<DebitComprisonExcel>();
             }
 
         }
-        public static DataTable MakeDataTable()
-        {
-            DataTable data = new DataTable();
-            data.Columns.Add("Session", Type.GetType("System.String"));//Phiên giao dịch
-            data.Columns.Add("Id", Type.GetType("System.String"));//STT
-            data.Columns.Add("BT3Code", Type.GetType("System.String")); //Mã đơn GHN
-            data.Columns.Add("BillCode", Type.GetType("System.String"));//Mã đơn khách hàng
-            data.Columns.Add("MoneyReturnStatusName", Type.GetType("System.String")); //Trạng thái
-            data.Columns.Add("DateReturn", Type.GetType("System.String"));//Ngày giao/trả
-
-            data.Columns.Add("BT3COD", Type.GetType("System.Decimal"));//(1)
-            data.Columns.Add("Status", Type.GetType("System.Int32"));
-            data.Columns.Add("BT3TotalPaid", Type.GetType("System.Decimal"));//(2)
-            data.Columns.Add("BT3TotalDiscount", Type.GetType("System.Decimal"));//(3)
-            data.Columns.Add("BT3TotalFee", Type.GetType("System.Decimal"));// (4)
-            data.Columns.Add("MoneyReturn", Type.GetType("System.Decimal")); // "(1) + (2) + (3) + (4)"
-
-            // fill data extend
-            data.Columns.Add("SendMan", Type.GetType("System.String"));
-            data.Columns.Add("SendManPhone", Type.GetType("System.String"));
-            data.Columns.Add("AcceptMan", Type.GetType("System.String"));
-            data.Columns.Add("AcceptManPhone", Type.GetType("System.String"));
-            data.Columns.Add("AcceptProvince", Type.GetType("System.String"));
-
-            data.Columns.Add("COD", Type.GetType("System.Decimal"));
-            data.Columns.Add("Freight", Type.GetType("System.Decimal"));
-            data.Columns.Add("FeeWeight", Type.GetType("System.Decimal"));
-            data.Columns.Add("BillWeight", Type.GetType("System.Decimal"));
-
-            data.Columns.Add("PayType", Type.GetType("System.String"));
-
-
-            return data;
-        }
-        public static DataTable ReadJNT(string filename)
+        public static List<DebitComprisonExcel> ReadJNT(string filename)
         {
             try
             {
                 DataTable data = ExcelHelper.Read2007Xlsx(filename);
-                DataTable result = MakeDataTable();
+                var result = new List<DebitComprisonExcel>();
+                int stt = 0;
                 foreach (DataRow item in data.Rows)
                 {
                     // Hiển thị data
                     if (!string.IsNullOrEmpty(item["Mã vận đơn"].ToString()))
                     {
-                        DataRow dr = result.NewRow();
-                        dr["Session"] = item["Kỳ thanh toán"].ToString();
-                        dr["Id"] = 0;
-                        dr["BT3Code"] = item["Mã vận đơn"].ToString().Trim();
-                        dr["BillCode"] = item["Mã đơn KH"].ToString();
-                        dr["Status"] = 0;
+                        DebitComprisonExcel dr = new DebitComprisonExcel();
+                        dr.Session = item["Kỳ thanh toán"].ToString();
+                        stt++;
+                        dr.Stt = stt;
+                        dr.BT3Code = item["Mã vận đơn"].ToString().Trim();
+                        dr.eBillCode = item["Mã đơn KH"].ToString();
+                        dr.Status = 0;
                         string statusName = item["Ghi chú"].ToString();
-                        if (statusName != "Đã hoàn hàng")
+                        if (statusName == "Chưa thanh toán COD")
                         {
-                            dr["Status"] = 1;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thành công";
+                            dr.Status = 0;
+                            dr.StatusName = "Đang trung chuyển";
                         }
-                        else
+                        else if (statusName.ToLower().Contains("hoàn"))
                         {
-                            dr["Status"] = 2;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thất bại";
+                            dr.Status = 2;
+                            dr.StatusName = "Giao hàng thất bại";
+                        }
+                        else if (statusName.Trim() == "")
+                        {
+                            dr.Status = 1;
+                            dr.StatusName = "Giao hàng thành công";
                         }
                         string ngay = item["Kỳ thanh toán"].ToString();
                         if (!string.IsNullOrEmpty(ngay))
@@ -203,28 +127,30 @@ namespace LeMaiDesktop
                             string temp = ngay.Split('_')[1];
                             temp = temp.Split('.')[0];
                             DateTime date = DateTime.ParseExact(temp, "yyyyMMdd", CultureInfo.InvariantCulture);
-                            dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", date);
+                            dr.DateDeliveryReturn = date;
                         }
-                        else
-                        {
-                            dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-                        }
-                        dr["BT3COD"] = item["Tiền COD"].ToString();
-                        dr["BT3TotalPaid"] = 0;
-                        dr["BT3TotalDiscount"] = 0;
+                        dr.BT3COD = decimal.Parse(item["Tiền COD"].ToString());
+                        dr.BT3Paid = 0;
+                        dr.Discount = decimal.Parse(item["Chiết khấu"].ToString());
 
-                        dr["BT3TotalFee"] = item["Vận phí"].ToString();
+                        dr.Fee = decimal.Parse(item["Vận phí"].ToString());
+                        dr.ReturnFee = decimal.Parse(item["Phí chuyển hoàn"].ToString());
+                        dr.OtherFee = decimal.Parse(item["Phí khác"].ToString());
+                        dr.InsuranceFee = decimal.Parse(item["Phí COD"].ToString());
+
+                        dr.BT3TotalFee = dr.Fee + dr.ReturnFee + dr.InsuranceFee + dr.OtherFee;
+
                         string DoiSoat = item["Tiền thực nhận"].ToString();
                         if (string.IsNullOrEmpty(DoiSoat))
                         {
-                            dr["MoneyReturn"] = "0";
+                            dr.ReturnCOD = 0;
                         }
                         else
                         {
-                            dr["MoneyReturn"] = DoiSoat;
+                            dr.ReturnCOD = decimal.Parse(DoiSoat);
                         }
 
-                        result.Rows.Add(dr);
+                        result.Add(dr);
                     }
                 }
                 return result;
@@ -232,65 +158,61 @@ namespace LeMaiDesktop
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), PBean.MESSAGE_TITLE);
-                return MakeDataTable();
+                return new List<DebitComprisonExcel>();
             }
 
         }
-        public static DataTable ReadGHSV(string filename)
+        public static List<DebitComprisonExcel> ReadGHSV(string filename)
         {
             try
             {
                 DataTable data = ExcelHelper.Read2007Xlsx(filename);
-                DataTable result = MakeDataTable();
+                var result = new List<DebitComprisonExcel>();
                 foreach (DataRow item in data.Rows)
                 {
                     // Hiển thị data
                     if (!string.IsNullOrEmpty(item["Mã Đơn Hàng"].ToString()))
                     {
-                        DataRow dr = result.NewRow();
+                        DebitComprisonExcel dr = new DebitComprisonExcel();
                         // Định dạng cũ
-                        dr["Id"] = item["STT"].ToString();
+                        dr.Stt = Int32.Parse(item["STT"].ToString());
                         string BT3CodeTemp = item["Mã Đơn Hàng"].ToString().Trim();
 
-                        dr["BT3Code"] = BT3CodeTemp.Split('.')[1];
-                        dr["BillCode"] = item["Mã Đơn Khách Hàng"].ToString();
-                        dr["Status"] = 0;
+                        dr.BT3Code = BT3CodeTemp.Split('.')[1];
+                        dr.eBillCode = item["Mã Đơn Khách Hàng"].ToString();
+                        dr.Status = 0;
                         string statusName = item["Trạng Thái Đơn Hàng"].ToString();
                         if (statusName == "Đã Đối Soát Giao Hàng")
                         {
-                            dr["Status"] = 1;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thành công";
+                            dr.Status = 1;
+                            dr.StatusName = "Giao hàng thành công";
                         }
                         else
                         {
-                            dr["Status"] = 2;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thất bại";
+                            dr.Status = 2;
+                            dr.StatusName = "Giao hàng thất bại";
                         }
                         string ngay = item["Ngày Đối Soát"].ToString();
                         if (!string.IsNullOrEmpty(ngay))
                         {
                             DateTime date = DateTime.ParseExact(ngay, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                            dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", date);
+                            dr.DateDeliveryReturn = date;
                         }
-                        else
-                        {
-                            dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-                        }
-                        dr["BT3COD"] = item["Thu Hộ"].ToString();
-                        dr["BT3TotalPaid"] = 0;
-                        dr["BT3TotalDiscount"] = 0;
-                        dr["BT3TotalFee"] = item["Phí Ship"].ToString();
+                        dr.BT3COD = decimal.Parse(item["Thu Hộ"].ToString());
+                        dr.BT3Paid = 0;
+                        dr.Discount = 0;
+                        dr.BT3TotalFee = decimal.Parse(item["Phí Ship"].ToString());
                         string DoiSoat = item["Trả Shop"].ToString();
                         if (string.IsNullOrEmpty(DoiSoat))
                         {
-                            dr["MoneyReturn"] = "0";
+                            dr.ReturnCOD = 0;
                         }
                         else
                         {
-                            dr["MoneyReturn"] = DoiSoat;
+                            dr.ReturnCOD = decimal.Parse(DoiSoat);
                         }
 
-                        result.Rows.Add(dr);
+                        result.Add(dr);
                     }
                 }
                 return result;
@@ -298,17 +220,16 @@ namespace LeMaiDesktop
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), PBean.MESSAGE_TITLE);
-                return MakeDataTable();
+                return new List<DebitComprisonExcel>();
             }
 
         }
-
-        public static DataTable ReadNINJA(string filename)
+        public static List<DebitComprisonExcel> ReadNINJA(string filename)
         {
             try
             {
                 DataTable data = ExcelHelper.Read2007Xlsx(filename);
-                DataTable result = MakeDataTable();
+                var result = new List<DebitComprisonExcel>();
                 int i = 0;
                 foreach (DataRow item in data.Rows)
                 {
@@ -316,42 +237,41 @@ namespace LeMaiDesktop
                     if (!string.IsNullOrEmpty(item["Mã đơn hàng"].ToString()))
                     {
                         i++;
-                        DataRow dr = result.NewRow();
-                        // Định dạng cũ
-                        dr["Id"] = i.ToString();
+                        DebitComprisonExcel dr = new DebitComprisonExcel();
+                        dr.Stt = i;
                         string BT3CodeTemp = item["Mã đơn hàng"].ToString().Trim();
 
-                        dr["BT3Code"] = BT3CodeTemp;
+                        dr.BT3Code = BT3CodeTemp;
 
-                        dr["BillCode"] = "";
-                        dr["Status"] = 0;
+                        dr.eBillCode = "";
+                        dr.Status = 0;
                         string statusName = item["Trạng thái đơn hàng"].ToString();
                         if (statusName == "Completed")
                         {
-                            dr["Status"] = 1;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thành công";
+                            dr.Status = 1;
+                            dr.StatusName = "Giao hàng thành công";
                         }
                         else
                         {
-                            dr["Status"] = 2;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thất bại";
+                            dr.Status = 2;
+                            dr.StatusName = "Giao hàng thất bại";
                         }
-                        dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-                        dr["BT3COD"] = item["Thu hộ"].ToString();
-                        dr["BT3TotalPaid"] = 0;
-                        dr["BT3TotalDiscount"] = 0;
-                        dr["BT3TotalFee"] = item["Tổng phí vận chuyển"].ToString();
+                        dr.DateDeliveryReturn = DateTime.Now;
+                        dr.BT3COD = decimal.Parse(item["Thu hộ"].ToString());
+                        dr.BT3Paid = 0;
+                        dr.Discount = 0;
+                        dr.BT3TotalFee = decimal.Parse(item["Tổng phí vận chuyển"].ToString());
                         string DoiSoat = item["Thu hộ"].ToString();
                         if (string.IsNullOrEmpty(DoiSoat))
                         {
-                            dr["MoneyReturn"] = "0";
+                            dr.ReturnCOD = 0;
                         }
                         else
                         {
-                            dr["MoneyReturn"] = DoiSoat;
+                            dr.ReturnCOD = decimal.Parse(DoiSoat);
                         }
 
-                        result.Rows.Add(dr);
+                        result.Add(dr);
                     }
                 }
                 return result;
@@ -359,67 +279,61 @@ namespace LeMaiDesktop
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), PBean.MESSAGE_TITLE);
-                return MakeDataTable();
+                return new List<DebitComprisonExcel>();
             }
 
         }
-
-        public static DataTable ReadBEST(string filename)
+        public static List<DebitComprisonExcel> ReadBEST(string filename)
         {
             try
             {
                 DataTable data = ExcelHelper.Read2007Xlsx(filename);
-                DataTable result = MakeDataTable();
+                var result = new List<DebitComprisonExcel>();
                 int i = 0;
                 foreach (DataRow item in data.Rows)
                 {
                     // Hiển thị data
                     if (!string.IsNullOrEmpty(item["Mã vận đơn"].ToString()))
                     {
-                        DataRow dr = result.NewRow();
+                        DebitComprisonExcel dr = new DebitComprisonExcel();
                         i++;
-                        // Định dạng cũ
                         //Trả về hay không Có là hoàn, Không là giao thành công Không Có
-                        dr["Id"] = i.ToString();
-                        dr["BT3Code"] = item["Mã vận đơn"].ToString().Trim();
-                        dr["BillCode"] = item["mã đối tác"].ToString();
-                        dr["Status"] = 0;
+                        dr.Stt = i;
+                        dr.BT3Code = item["Mã vận đơn"].ToString().Trim();
+                        dr.eBillCode = item["mã đối tác"].ToString();
+                        dr.Status = 0;
                         string statusName = item["Trả về hay không"].ToString();
                         if (statusName == "Không")
                         {
-                            dr["Status"] = 1;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thành công";
+                            dr.Status = 1;
+                            dr.StatusName = "Giao hàng thành công";
                         }
                         else
                         {
-                            dr["Status"] = 2;
-                            dr["MoneyReturnStatusName"] = "Giao hàng thất bại";
+                            dr.Status = 2;
+                            dr.StatusName = "Giao hàng thất bại";
                         }
                         string ngay = item["Thời gian ký nhận"].ToString();
                         if (!string.IsNullOrEmpty(ngay))
                         {
                             DateTime date = DateTime.ParseExact(ngay, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-                            dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", date);
+                            dr.DateDeliveryReturn = date;
                         }
-                        else
-                        {
-                            dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-                        }
-                        dr["BT3COD"] = item["Số tiền COD trên phiếu thanh toán"].ToString();
-                        dr["BT3TotalPaid"] = 0;
-                        dr["BT3TotalDiscount"] = 0;
-                        dr["BT3TotalFee"] = item["Tổng cước vận chuyển"].ToString();
+                        dr.BT3COD = decimal.Parse(item["Số tiền COD trên phiếu thanh toán"].ToString());
+                        dr.BT3Paid = 0;
+                        dr.Discount = 0;
+                        dr.BT3TotalFee = decimal.Parse(item["Tổng cước vận chuyển"].ToString());
                         string DoiSoat = item["Khách hàng nhận COD"].ToString();
                         if (string.IsNullOrEmpty(DoiSoat))
                         {
-                            dr["MoneyReturn"] = "0";
+                            dr.ReturnCOD = 0;
                         }
                         else
                         {
-                            dr["MoneyReturn"] = DoiSoat;
+                            dr.ReturnCOD = decimal.Parse(DoiSoat);
                         }
 
-                        result.Rows.Add(dr);
+                        result.Add(dr);
                     }
                 }
                 return result;
@@ -427,7 +341,7 @@ namespace LeMaiDesktop
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), PBean.MESSAGE_TITLE);
-                return MakeDataTable();
+                return new List<DebitComprisonExcel>();
             }
 
         }

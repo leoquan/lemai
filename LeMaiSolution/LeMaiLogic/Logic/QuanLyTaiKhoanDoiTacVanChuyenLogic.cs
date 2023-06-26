@@ -336,6 +336,7 @@ namespace LeMaiLogic.Logic
                 item.IsPickup = input.IsPickup;
                 item.LinkCustomerLogin = input.LinkCustomerLogin;
                 item.PercentConfig = 100;
+                item.AlwayReceivePay = input.IsAlwayReceive;
                 //Change Database
                 dc.GExpprovider.InsertOnSubmit(base.ConnectionData.Schema, item);
                 dc.SubmitChanges();
@@ -402,7 +403,8 @@ namespace LeMaiLogic.Logic
                     item.ManualSign = input.ManualSign;
                     item.IsPickup = input.IsPickup;
                     item.LinkCustomerLogin = input.LinkCustomerLogin;
-
+                    item.AlwayReceivePay = input.IsAlwayReceive;
+                    item.IsDelete = input.IsDelete;
                     //Change Database
                     dc.GExpprovider.Update(base.ConnectionData.Schema, item);
                     dc.SubmitChanges();

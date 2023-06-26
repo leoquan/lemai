@@ -98,7 +98,6 @@ namespace LeMaiDesktop
             this.cmbTaiKhoan = new System.Windows.Forms.ComboBox();
             this.panelControl = new System.Windows.Forms.Panel();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.btnNhapXacNhanThuPhi = new DevComponents.DotNetBar.ButtonX();
             this.lblCountChild = new System.Windows.Forms.Label();
             this.btnNew = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
@@ -153,7 +152,6 @@ namespace LeMaiDesktop
             this.txtFilePath = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.backgroundWorkerLuu = new System.ComponentModel.BackgroundWorker();
-            this.backgroundWorkerNhapXNTP = new System.ComponentModel.BackgroundWorker();
             this.tabControl.SuspendLayout();
             this.tab01.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridParrent)).BeginInit();
@@ -197,7 +195,6 @@ namespace LeMaiDesktop
             // tab01
             // 
             this.tab01.Controls.Add(this.gridParrent);
-            this.tab01.Controls.Add(this.btnNhapXacNhanThuPhi);
             this.tab01.Controls.Add(this.lblHoanTra);
             this.tab01.Controls.Add(this.label6);
             this.tab01.Controls.Add(this.dateFrom);
@@ -585,23 +582,6 @@ namespace LeMaiDesktop
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar.TabIndex = 1430;
             this.progressBar.Visible = false;
-            // 
-            // btnNhapXacNhanThuPhi
-            // 
-            this.btnNhapXacNhanThuPhi.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnNhapXacNhanThuPhi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNhapXacNhanThuPhi.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnNhapXacNhanThuPhi.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhapXacNhanThuPhi.Image = global::LeMaiDesktop.Properties.Resources.iThuPhi;
-            this.btnNhapXacNhanThuPhi.ImageTextSpacing = 3;
-            this.btnNhapXacNhanThuPhi.Location = new System.Drawing.Point(1126, 8);
-            this.btnNhapXacNhanThuPhi.Name = "btnNhapXacNhanThuPhi";
-            this.btnNhapXacNhanThuPhi.Size = new System.Drawing.Size(155, 30);
-            this.btnNhapXacNhanThuPhi.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNhapXacNhanThuPhi.TabIndex = 1429;
-            this.btnNhapXacNhanThuPhi.Text = "Nhập xác nhận thu phí";
-            this.btnNhapXacNhanThuPhi.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Left;
-            this.btnNhapXacNhanThuPhi.Click += new System.EventHandler(this.btnNhapXacNhanThuPhi_Click);
             // 
             // lblCountChild
             // 
@@ -1283,12 +1263,6 @@ namespace LeMaiDesktop
             this.backgroundWorkerLuu.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerLuu_ProgressChanged);
             this.backgroundWorkerLuu.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerLuu_RunWorkerCompleted);
             // 
-            // backgroundWorkerNhapXNTP
-            // 
-            this.backgroundWorkerNhapXNTP.WorkerReportsProgress = true;
-            this.backgroundWorkerNhapXNTP.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerNhapXNTP_DoWork);
-            this.backgroundWorkerNhapXNTP.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerNhapXNTP_RunWorkerCompleted);
-            // 
             // frmNhapDoiSoatBT3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1406,8 +1380,6 @@ namespace LeMaiDesktop
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Note;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Post;
-		private DevComponents.DotNetBar.ButtonX btnNhapXacNhanThuPhi;
 		private System.Windows.Forms.ProgressBar progressBar;
-		private System.ComponentModel.BackgroundWorker backgroundWorkerNhapXNTP;
 	}
 }

@@ -430,7 +430,7 @@ namespace LeMaiDesktop
                                     bankItem.AccountName = PCommon.ConvertToUnSign(chitiet.AccountName).ToUpper();
                                     bankItem.AccountCode = chitiet.AccountCode;
                                     bankItem.Amount = (int)chitiet.ThanhToanKH;
-                                    bankItem.Remark = "LE MAI THANH TOAN COD KHACH HANG";
+                                    bankItem.Remark = "THANH TOAN COD KHACH HANG";
                                     bankItem.BankCode = chitiet.BankId.GetValueOrDefault(0);
                                     bankItems.Add(bankItem);
                                 }

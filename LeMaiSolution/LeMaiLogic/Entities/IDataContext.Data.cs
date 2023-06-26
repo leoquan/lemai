@@ -272,6 +272,8 @@ namespace LeMaiLogic
 
 		IGExpfeedetail GExpfeedetail { get; }
 
+		IGExpfeemaster GExpfeemaster { get; }
+
 		IGExpfeeprovincedetail GExpfeeprovincedetail { get; }
 
 		IGExpmoneyreturn GExpmoneyreturn { get; }
@@ -725,6 +727,8 @@ namespace LeMaiLogic
 		IVIewgexpbillghnapi VIewgexpbillghnapi { get; }
 
 		IVIewgexpbillhistory VIewgexpbillhistory { get; }
+
+		IVIewgexpbillmaster VIewgexpbillmaster { get; }
 
 		IVIewgexpdebitcomparison VIewgexpdebitcomparison { get; }
 

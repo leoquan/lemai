@@ -116,6 +116,10 @@ namespace LeMaiLogic
 					{
 						item.CustomerPayDate = Convert.ToDateTime(dr["CustomerPayDate"]);
 					}
+					if (dr["SessionCode"] != null && dr["SessionCode"] != DBNull.Value)
+					{
+						item.SessionCode = Convert.ToString(dr["SessionCode"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -190,6 +194,10 @@ namespace LeMaiLogic
 					if (dr["CustomerPayDate"] != null && dr["CustomerPayDate"] != DBNull.Value)
 					{
 						item.CustomerPayDate = Convert.ToDateTime(dr["CustomerPayDate"]);
+					}
+					if (dr["SessionCode"] != null && dr["SessionCode"] != DBNull.Value)
+					{
+						item.SessionCode = Convert.ToString(dr["SessionCode"]);
 					}
 					items.Add(item);
 				}
@@ -289,6 +297,10 @@ namespace LeMaiLogic
 						{
 							item.CustomerPayDate = Convert.ToDateTime(dr["CustomerPayDate"]);
 						}
+						if (dr["SessionCode"] != null && dr["SessionCode"] != DBNull.Value)
+						{
+							item.SessionCode = Convert.ToString(dr["SessionCode"]);
+						}
 
 						break;
 					}
@@ -370,6 +382,10 @@ namespace LeMaiLogic
 						{
 							item.CustomerPayDate = Convert.ToDateTime(dr["CustomerPayDate"]);
 						}
+						if (dr["SessionCode"] != null && dr["SessionCode"] != DBNull.Value)
+						{
+							item.SessionCode = Convert.ToString(dr["SessionCode"]);
+						}
 
 						break;
 					}
@@ -412,7 +428,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpMoneyReturn](Id, BT3Code, BillCode, Status, BT3COD, BT3TotalPaid, BT3TotalDiscount, BT3TotalFee, MoneyReturn, DateReturn, FK_MoneyReturnSession, IsPayCustomer, CustomerPayDate) VALUES(@Id, @BT3Code, @BillCode, @Status, @BT3COD, @BT3TotalPaid, @BT3TotalDiscount, @BT3TotalFee, @MoneyReturn, @DateReturn, @FK_MoneyReturnSession, @IsPayCustomer, @CustomerPayDate)", 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpMoneyReturn](Id, BT3Code, BillCode, Status, BT3COD, BT3TotalPaid, BT3TotalDiscount, BT3TotalFee, MoneyReturn, DateReturn, FK_MoneyReturnSession, IsPayCustomer, CustomerPayDate, SessionCode) VALUES(@Id, @BT3Code, @BillCode, @Status, @BT3COD, @BT3TotalPaid, @BT3TotalDiscount, @BT3TotalFee, @MoneyReturn, @DateReturn, @FK_MoneyReturnSession, @IsPayCustomer, @CustomerPayDate, @SessionCode)", 
 					"@Id",  _GExpMoneyReturn.Id, 
 					"@BT3Code",  _GExpMoneyReturn.BT3Code, 
 					"@BillCode",  _GExpMoneyReturn.BillCode, 
@@ -425,7 +441,8 @@ namespace LeMaiLogic
 					"@DateReturn", this._dataContext.ConvertDateString( _GExpMoneyReturn.DateReturn), 
 					"@FK_MoneyReturnSession",  _GExpMoneyReturn.FK_MoneyReturnSession, 
 					"@IsPayCustomer",  _GExpMoneyReturn.IsPayCustomer, 
-					"@CustomerPayDate", this._dataContext.ConvertDateString( _GExpMoneyReturn.CustomerPayDate));
+					"@CustomerPayDate", this._dataContext.ConvertDateString( _GExpMoneyReturn.CustomerPayDate), 
+					"@SessionCode",  _GExpMoneyReturn.SessionCode);
 				return true;
 			}
 			catch
@@ -453,7 +470,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpMoneyReturn] SET Id=@Id, BT3Code=@BT3Code, BillCode=@BillCode, Status=@Status, BT3COD=@BT3COD, BT3TotalPaid=@BT3TotalPaid, BT3TotalDiscount=@BT3TotalDiscount, BT3TotalFee=@BT3TotalFee, MoneyReturn=@MoneyReturn, DateReturn=@DateReturn, FK_MoneyReturnSession=@FK_MoneyReturnSession, IsPayCustomer=@IsPayCustomer, CustomerPayDate=@CustomerPayDate WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpMoneyReturn] SET Id=@Id, BT3Code=@BT3Code, BillCode=@BillCode, Status=@Status, BT3COD=@BT3COD, BT3TotalPaid=@BT3TotalPaid, BT3TotalDiscount=@BT3TotalDiscount, BT3TotalFee=@BT3TotalFee, MoneyReturn=@MoneyReturn, DateReturn=@DateReturn, FK_MoneyReturnSession=@FK_MoneyReturnSession, IsPayCustomer=@IsPayCustomer, CustomerPayDate=@CustomerPayDate, SessionCode=@SessionCode WHERE Id=@Id", 
 					"@Id",  _GExpMoneyReturn.Id, 
 					"@BT3Code",  _GExpMoneyReturn.BT3Code, 
 					"@BillCode",  _GExpMoneyReturn.BillCode, 
@@ -467,6 +484,7 @@ namespace LeMaiLogic
 					"@FK_MoneyReturnSession",  _GExpMoneyReturn.FK_MoneyReturnSession, 
 					"@IsPayCustomer",  _GExpMoneyReturn.IsPayCustomer, 
 					"@CustomerPayDate", this._dataContext.ConvertDateString( _GExpMoneyReturn.CustomerPayDate), 
+					"@SessionCode",  _GExpMoneyReturn.SessionCode, 
 					"@Id", Id);
 			}
 			catch
@@ -482,7 +500,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpMoneyReturn] SET BT3Code=@BT3Code, BillCode=@BillCode, Status=@Status, BT3COD=@BT3COD, BT3TotalPaid=@BT3TotalPaid, BT3TotalDiscount=@BT3TotalDiscount, BT3TotalFee=@BT3TotalFee, MoneyReturn=@MoneyReturn, DateReturn=@DateReturn, FK_MoneyReturnSession=@FK_MoneyReturnSession, IsPayCustomer=@IsPayCustomer, CustomerPayDate=@CustomerPayDate WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpMoneyReturn] SET BT3Code=@BT3Code, BillCode=@BillCode, Status=@Status, BT3COD=@BT3COD, BT3TotalPaid=@BT3TotalPaid, BT3TotalDiscount=@BT3TotalDiscount, BT3TotalFee=@BT3TotalFee, MoneyReturn=@MoneyReturn, DateReturn=@DateReturn, FK_MoneyReturnSession=@FK_MoneyReturnSession, IsPayCustomer=@IsPayCustomer, CustomerPayDate=@CustomerPayDate, SessionCode=@SessionCode WHERE Id=@Id", 
 					"@BT3Code",  _GExpMoneyReturn.BT3Code, 
 					"@BillCode",  _GExpMoneyReturn.BillCode, 
 					"@Status",  _GExpMoneyReturn.Status, 
@@ -495,6 +513,7 @@ namespace LeMaiLogic
 					"@FK_MoneyReturnSession",  _GExpMoneyReturn.FK_MoneyReturnSession, 
 					"@IsPayCustomer",  _GExpMoneyReturn.IsPayCustomer, 
 					"@CustomerPayDate", this._dataContext.ConvertDateString( _GExpMoneyReturn.CustomerPayDate), 
+					"@SessionCode",  _GExpMoneyReturn.SessionCode, 
 					"@Id", _GExpMoneyReturn.Id);
 			}
 			catch
@@ -521,7 +540,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpMoneyReturn] SET Id=@Id, BT3Code=@BT3Code, BillCode=@BillCode, Status=@Status, BT3COD=@BT3COD, BT3TotalPaid=@BT3TotalPaid, BT3TotalDiscount=@BT3TotalDiscount, BT3TotalFee=@BT3TotalFee, MoneyReturn=@MoneyReturn, DateReturn=@DateReturn, FK_MoneyReturnSession=@FK_MoneyReturnSession, IsPayCustomer=@IsPayCustomer, CustomerPayDate=@CustomerPayDate "+ condition, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpMoneyReturn] SET Id=@Id, BT3Code=@BT3Code, BillCode=@BillCode, Status=@Status, BT3COD=@BT3COD, BT3TotalPaid=@BT3TotalPaid, BT3TotalDiscount=@BT3TotalDiscount, BT3TotalFee=@BT3TotalFee, MoneyReturn=@MoneyReturn, DateReturn=@DateReturn, FK_MoneyReturnSession=@FK_MoneyReturnSession, IsPayCustomer=@IsPayCustomer, CustomerPayDate=@CustomerPayDate, SessionCode=@SessionCode "+ condition, 
 					"@Id",  _GExpMoneyReturn.Id, 
 					"@BT3Code",  _GExpMoneyReturn.BT3Code, 
 					"@BillCode",  _GExpMoneyReturn.BillCode, 
@@ -534,7 +553,8 @@ namespace LeMaiLogic
 					"@DateReturn", this._dataContext.ConvertDateString( _GExpMoneyReturn.DateReturn), 
 					"@FK_MoneyReturnSession",  _GExpMoneyReturn.FK_MoneyReturnSession, 
 					"@IsPayCustomer",  _GExpMoneyReturn.IsPayCustomer, 
-					"@CustomerPayDate", this._dataContext.ConvertDateString( _GExpMoneyReturn.CustomerPayDate));
+					"@CustomerPayDate", this._dataContext.ConvertDateString( _GExpMoneyReturn.CustomerPayDate), 
+					"@SessionCode",  _GExpMoneyReturn.SessionCode);
 			}
 			catch
 			{

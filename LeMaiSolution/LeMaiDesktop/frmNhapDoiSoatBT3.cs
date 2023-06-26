@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -21,9 +22,8 @@ namespace LeMaiDesktop
     public partial class frmNhapDoiSoatBT3 : frmBase
     {
         DoiSoatKhachHangLogic _logic = new DoiSoatKhachHangLogic(PBean.ConnectionBase);
-        DataTable _dataDoiSoat = new DataTable();
+        List<DebitComprisonExcel> _dataDoiSoat = new List<DebitComprisonExcel>();
         private string _Note = string.Empty;
-        private string _providerId = string.Empty;
         string _errorMessage = string.Empty;
 
         decimal TongTienXacNhan = 0;
@@ -39,6 +39,8 @@ namespace LeMaiDesktop
 
         bool isNew = false;
         int count = 0;
+
+        GExpProvider _provider = new GExpProvider();
 
         public frmNhapDoiSoatBT3() : base(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
         {
@@ -71,7 +73,7 @@ namespace LeMaiDesktop
                             }
                             break;
                         default:
-                            _dataDoiSoat = new DataTable();
+                            _dataDoiSoat = new List<DebitComprisonExcel>();
                             break;
                     }
                 }
@@ -96,7 +98,6 @@ namespace LeMaiDesktop
 
         private void btnReadData_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (cmbSubTaiKhoan.SelectedValue.ToString() == "9999")
@@ -105,9 +106,9 @@ namespace LeMaiDesktop
                     cmbSubTaiKhoan.Focus();
                     return;
                 }
-                GExpProvider provider = _logic.GetProviderDetail(cmbSubTaiKhoan.SelectedValue.ToString());
-                _dataDoiSoat = new DataTable();
-                switch (provider.ProviderTypeCode)
+                _provider = _logic.GetProviderDetail(cmbSubTaiKhoan.SelectedValue.ToString());
+                _dataDoiSoat = new List<DebitComprisonExcel>();
+                switch (_provider.ProviderTypeCode)
                 {
                     case "GHN":
                         {
@@ -141,13 +142,13 @@ namespace LeMaiDesktop
                         }
                         break;
                     default:
-                        _dataDoiSoat = new DataTable();
+                        _dataDoiSoat = new List<DebitComprisonExcel>();
                         break;
                 }
                 ReFillDataTable(_dataDoiSoat);
 
                 gridChild.DataSource = _dataDoiSoat;
-                lblSubCount.Text = PCommon.FormatNumber(_dataDoiSoat.Rows.Count.ToString());
+                lblSubCount.Text = PCommon.FormatNumber(_dataDoiSoat.Count.ToString());
                 btnSave.Enabled = true;
             }
             catch (Exception ex)
@@ -157,28 +158,28 @@ namespace LeMaiDesktop
             }
 
         }
-        void ReFillDataTable(DataTable data)
+        void ReFillDataTable(List<DebitComprisonExcel> data)
         {
             IDataContext dc = new dcDataContextM(PBean.CONNECTION_STRING);
             try
             {
                 dc.Open();
-                foreach (DataRow item in data.Rows)
+                foreach (var item in data)
                 {
-                    view_GExpBill bill = dc.VIewgexpbill.GetObjectCon(PBean.SCHEMA, "WHERE BT3Code=@BT3Code", "@BT3Code", item["BT3Code"].ToString());
+                    view_GExpBill bill = dc.VIewgexpbill.GetObjectCon(PBean.SCHEMA, "WHERE BT3Code=@BT3Code", "@BT3Code", item.eBillCode);
                     if (bill != null)
                     {
-                        item["BillCode"] = bill.BillCode;
-                        item["SendMan"] = bill.SendMan;
-                        item["SendManPhone"] = bill.SendManPhone;
-                        item["AcceptMan"] = bill.AcceptMan;
-                        item["AcceptManPhone"] = bill.AcceptManPhone;
-                        item["AcceptProvince"] = bill.AcceptProvince;
-                        item["COD"] = bill.COD;
-                        item["Freight"] = bill.Freight;
-                        item["FeeWeight"] = bill.FeeWeight;
-                        item["BillWeight"] = bill.BillWeight;
-                        item["PayType"] = bill.PayType;
+                        item.eBillCode = bill.BillCode;
+                        item.eSendMan = bill.SendMan;
+                        item.eSendPhone = bill.SendManPhone;
+                        item.eAcceptMan = bill.AcceptMan;
+                        item.eAcceptPhone = bill.AcceptManPhone;
+                        item.eAcceptProvince = bill.AcceptProvince;
+                        item.eCOD = bill.COD;
+                        item.eFreight = bill.Freight;
+                        item.eFeeWeight = bill.FeeWeight;
+                        item.eBillWeight = bill.BillWeight;
+                        item.ePayType = bill.PayType;
                     }
                 }
             }
@@ -193,13 +194,13 @@ namespace LeMaiDesktop
             }
 
         }
-        DataTable ReadVNPOST(string filename)
+        List<DebitComprisonExcel> ReadVNPOST(string filename)
         {
             try
             {
                 DataSet ds = NPOIHelper.GetDataSetFromXls(filename);
                 DataTable data = ds.Tables[0];
-                DataTable result = ReadDebitComparison.MakeDataTable();
+                List<DebitComprisonExcel> result = new List<DebitComprisonExcel>();
                 int STT = 0;
                 foreach (DataRow item in data.Rows)
                 {
@@ -207,23 +208,23 @@ namespace LeMaiDesktop
                     if (!string.IsNullOrEmpty(item["Số hiệu bưu gửi"].ToString()))
                     {
                         STT++;
-                        DataRow dr = result.NewRow();
-                        dr["Id"] = STT;
-                        dr["BT3Code"] = item["Số hiệu bưu gửi"].ToString();
-                        dr["Status"] = 1;
+                        DebitComprisonExcel dr = new DebitComprisonExcel();
+                        dr.Stt = STT;
+                        dr.BT3Code = item["Số hiệu bưu gửi"].ToString();
+                        dr.Status = 1;
 
-                        dr["MoneyReturnStatusName"] = "";
+                        dr.StatusName = "";
                         DateTime date = DateTime.ParseExact(item["Ngày thu tiền"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                        dr["DateReturn"] = string.Format("{0:yyyy-MM-dd}", date);
-                        dr["BT3COD"] = item["Số tiền"];
+                        dr.DateDeliveryReturn = date;
+                        dr.BT3COD = decimal.Parse(item["Số tiền"].ToString());
 
-                        dr["BT3TotalPaid"] = 0;
-                        dr["BT3TotalDiscount"] = 0;
-                        dr["BT3TotalFee"] = 0;
+                        dr.BT3Paid = 0;
+                        dr.Discount = 0;
+                        dr.BT3TotalFee = 0;
 
-                        dr["MoneyReturn"] = item["Số tiền"];
+                        dr.ReturnCOD = decimal.Parse(item["Số tiền"].ToString());
 
-                        result.Rows.Add(dr);
+                        result.Add(dr);
                     }
                 }
                 return result;
@@ -231,7 +232,7 @@ namespace LeMaiDesktop
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), PBean.MESSAGE_TITLE);
-                return ReadDebitComparison.MakeDataTable();
+                return new List<DebitComprisonExcel>();
             }
         }
 
@@ -256,20 +257,18 @@ namespace LeMaiDesktop
         private void btnSave_Click(object sender, EventArgs e)
         {
             // Lưu danh sách đối soát
-            if (_dataDoiSoat.Rows.Count > 0)
+            if (_dataDoiSoat.Count > 0)
             {
                 count = 0;
                 lsMoneyReturn = new List<GExpMoneyReturn>();
                 lsMoneyReturnError = new List<GExpMoneyReturn>();
                 lsMoneyReturnExist = new List<GExpMoneyReturn>();
                 _errorMessage = string.Empty;
-                _providerId = cmbSubTaiKhoan.SelectedValue.ToString();
                 _Note = txtNote.Text.Trim();
 
                 progressBarLuuDoiSoat.Visible = true;
                 progressBarLuuDoiSoat.Value = 0;
-                progressBarLuuDoiSoat.Maximum = _dataDoiSoat.Rows.Count;
-
+                progressBarLuuDoiSoat.Maximum = _dataDoiSoat.Count;
                 backgroundWorkerLuu.RunWorkerAsync();
             }
             else
@@ -286,72 +285,149 @@ namespace LeMaiDesktop
             {
                 dc.Open();
                 DateTime currentDate = dc.CurrentTime();
-                GExpMoneyReturnSession moneySession = new GExpMoneyReturnSession();
-                moneySession.Id = Guid.NewGuid().ToString();
-                moneySession.Note = _Note;
-                moneySession.FK_ProviderAccount = _providerId;
-                moneySession.FK_AccountRefer = PBean.USER.Id;
-                moneySession.DateReturn = currentDate;
-                moneySession.IsPayCustomer = false;
-
-                foreach (DataRow item in _dataDoiSoat.Rows)
+                if (_provider.IsOwner == true)
                 {
-                    GExpMoneyReturn mItem = new GExpMoneyReturn();
-                    mItem.Id = Guid.NewGuid().ToString();
-                    mItem.BT3Code = item["BT3Code"].ToString();
-                    mItem.Status = Int32.Parse(item["Status"].ToString());
+                    // Tài khoản master
+                    GExpDebitComparison debit = new GExpDebitComparison();
+                    debit.Id = Guid.NewGuid().ToString();
+                    if (_dataDoiSoat.Count > 0)
+                    {
+                        debit.DebitComparisonCode = _dataDoiSoat[0].Session;
+                        var checkDebit = dc.GExpdebitcomparison.GetObjectCon(PBean.SCHEMA, "WHERE DebitComparisonCode=@DebitComparisonCode", "@DebitComparisonCode", debit.DebitComparisonCode);
+                        if (checkDebit != null)
+                        {
+                            _errorMessage = "Đã nhập file đối soát cho đợt đối soát: " + debit.DebitComparisonCode;
+                            return;
+                        }
+                    }
 
-                    mItem.BT3COD = decimal.Parse(item["BT3COD"].ToString());
-                    mItem.BT3TotalPaid = decimal.Parse(item["BT3TotalPaid"].ToString());
-                    mItem.BT3TotalDiscount = decimal.Parse(item["BT3TotalDiscount"].ToString());
-                    mItem.BT3TotalFee = decimal.Parse(item["BT3TotalFee"].ToString());
-                    mItem.MoneyReturn = decimal.Parse(item["MoneyReturn"].ToString());
-                    DateTime date;
-                    if (DateTime.TryParse(item["DateReturn"].ToString(), out date))
-                    {
-                        mItem.DateReturn = date;
-                    }
-                    mItem.FK_MoneyReturnSession = moneySession.Id;
-                    mItem.IsPayCustomer = false;
+                    debit.DebitComparisonDate = currentDate;
+                    debit.SuccessCount = 0;
+                    debit.ReturnCount = 0;
+                    debit.PendingCount = 0;
+                    debit.FeeCost = 0;
+                    debit.COD = 0;
+                    debit.ReturnCOD = 0;
+                    debit.FK_Provider = _provider.Id;
 
-                    GExpBill bill = dc.GExpbill.GetObjectCon(PBean.SCHEMA, "WHERE BT3Code=@BT3Code", "@BT3Code", mItem.BT3Code);
-                    if (bill != null)
+                    foreach (var item in _dataDoiSoat)
                     {
-                        mItem.BillCode = bill.BillCode;
-                    }
-                    else
-                    {
-                        mItem.BillCode = string.Empty;
-                        lsMoneyReturnError.Add(mItem);
-                    }
-                    GExpMoneyReturn check = dc.GExpmoneyreturn.GetObjectCon(PBean.SCHEMA, "WHERE BT3Code=@BT3Code AND Status=@Status",
-                        "@BT3Code", mItem.BT3Code,
-                        "@Status", mItem.Status);
-                    if (check != null)
-                    {
-                        lsMoneyReturnExist.Add(mItem);
-                    }
-                    else
-                    {
-                        lsMoneyReturn.Add(mItem);
+                        GExpDebitComparisonDetail mItem = new GExpDebitComparisonDetail();
+                        mItem.Id = Guid.NewGuid().ToString();
+                        mItem.FK_DebitComparison = debit.Id;
+                        mItem.BT3Code = item.BT3Code;
+                        mItem.AcceptMan = item.eAcceptMan;
+                        mItem.AcceptAddress = item.eAcceptProvince;
+                        mItem.AcceptManPhone = item.eAcceptPhone;
+                        mItem.Status = item.Status;
+                        mItem.COD = item.BT3COD;
+                        mItem.Fee = item.BT3TotalFee;
+                        mItem.IsPayCustomer = false;
+                        mItem.DebitComparisonCode = item.Session;
 
-                        dc.GExpmoneyreturn.InsertOnSubmit(PBean.SCHEMA, mItem);
+                        dc.GExpdebitcomparisondetail.InsertOnSubmit(PBean.SCHEMA, mItem);
+
+                        if (mItem.Status == 1)
+                        {
+                            debit.SuccessCount++;
+                        }
+                        else if (mItem.Status == 2)
+                        {
+                            debit.ReturnCount++;
+                        }
+                        else if (mItem.Status == 0)
+                        {
+                            debit.PendingCount++;
+                        }
+                        debit.FeeCost += mItem.Fee;
+                        debit.COD += mItem.COD;
+                        debit.ReturnCOD += item.ReturnCOD;
+
+                        backgroundWorkerLuu.ReportProgress(0);
                     }
-                    backgroundWorkerLuu.ReportProgress(0);
+                    dc.GExpdebitcomparison.InsertOnSubmit(PBean.SCHEMA, debit);
+                    dc.SubmitChanges();
                 }
-                moneySession.BT3COD = lsMoneyReturn.Sum(s => s.BT3COD);
-                moneySession.BT3TotalPaid = lsMoneyReturn.Sum(s => s.BT3TotalPaid);
-                moneySession.BT3TotalDiscount = lsMoneyReturn.Sum(s => s.BT3TotalDiscount);
-                moneySession.BT3TotalFee = lsMoneyReturn.Sum(s => s.BT3TotalFee);
-                moneySession.MoneyReturn = lsMoneyReturn.Sum(s => s.MoneyReturn);
-                moneySession.Post = PBean.USER.CardId;
-                count = lsMoneyReturn.Count;
-                if (lsMoneyReturn.Count > 0)
+                else
                 {
-                    dc.GExpmoneyreturnsession.InsertOnSubmit(PBean.SCHEMA, moneySession);
+                    // Tài khoản của chính bưu cục ký hợp đồng.
+                    GExpMoneyReturnSession moneySession = new GExpMoneyReturnSession();
+                    moneySession.Id = Guid.NewGuid().ToString();
+                    moneySession.Note = _Note;
+                    moneySession.FK_ProviderAccount = _provider.Id;
+                    moneySession.FK_AccountRefer = PBean.USER.Id;
+                    moneySession.DateReturn = currentDate;
+                    moneySession.IsPayCustomer = false;
+
+                    if (_dataDoiSoat.Count > 0)
+                    {
+                        moneySession.SessionCode = _dataDoiSoat[0].Session;
+                        var checkSession = dc.GExpmoneyreturnsession.GetObjectCon(PBean.SCHEMA, "WHERE SessionCode=@SessionCode", "@SessionCode", moneySession.SessionCode);
+                        if (checkSession != null)
+                        {
+                            _errorMessage = "Đã nhập file đối soát cho đợt đối soát: " + moneySession.SessionCode;
+                            return;
+                        }
+                    }
+                    foreach (var item in _dataDoiSoat)
+                    {
+                        GExpMoneyReturn mItem = new GExpMoneyReturn();
+                        mItem.Id = Guid.NewGuid().ToString();
+                        mItem.BT3Code = item.BT3Code;
+                        mItem.Status = item.Status;
+                        mItem.BT3COD = item.BT3COD;
+                        mItem.BT3TotalPaid = item.BT3Paid;
+                        mItem.BT3TotalDiscount = item.Discount;
+                        mItem.BT3TotalFee = item.BT3TotalFee;
+                        mItem.MoneyReturn = item.ReturnCOD;
+                        mItem.SessionCode = item.Session;
+                        if (item.DateDeliveryReturn.HasValue)
+                        {
+                            mItem.DateReturn = item.DateDeliveryReturn;
+                        }
+                        mItem.FK_MoneyReturnSession = moneySession.Id;
+                        mItem.IsPayCustomer = false;
+
+                        GExpBill bill = dc.GExpbill.GetObjectCon(PBean.SCHEMA, "WHERE BT3Code=@BT3Code", "@BT3Code", mItem.BT3Code);
+                        if (bill != null)
+                        {
+                            mItem.BillCode = bill.BillCode;
+                        }
+                        else
+                        {
+                            mItem.BillCode = string.Empty;
+                            lsMoneyReturnError.Add(mItem);
+                        }
+                        // Kiểm tra kỳ đối soát 
+                        GExpMoneyReturn check = dc.GExpmoneyreturn.GetObjectCon(PBean.SCHEMA, "WHERE BT3Code=@BT3Code AND Status=@Status",
+                            "@BT3Code", mItem.BT3Code,
+                            "@Status", mItem.Status);
+                        if (check != null)
+                        {
+                            lsMoneyReturnExist.Add(mItem);
+                        }
+                        else
+                        {
+                            lsMoneyReturn.Add(mItem);
+
+                            dc.GExpmoneyreturn.InsertOnSubmit(PBean.SCHEMA, mItem);
+                        }
+                        backgroundWorkerLuu.ReportProgress(0);
+                    }
+                    moneySession.BT3COD = lsMoneyReturn.Sum(s => s.BT3COD);
+                    moneySession.BT3TotalPaid = lsMoneyReturn.Sum(s => s.BT3TotalPaid);
+                    moneySession.BT3TotalDiscount = lsMoneyReturn.Sum(s => s.BT3TotalDiscount);
+                    moneySession.BT3TotalFee = lsMoneyReturn.Sum(s => s.BT3TotalFee);
+                    moneySession.MoneyReturn = lsMoneyReturn.Sum(s => s.MoneyReturn);
+                    moneySession.Post = PBean.USER.CardId;
+                    count = lsMoneyReturn.Count;
+                    if (lsMoneyReturn.Count > 0)
+                    {
+                        dc.GExpmoneyreturnsession.InsertOnSubmit(PBean.SCHEMA, moneySession);
+                    }
+                    dc.SubmitChanges();
                 }
 
-                dc.SubmitChanges();
             }
             catch (Exception ex)
             {
@@ -464,96 +540,6 @@ namespace LeMaiDesktop
             {
                 return;
             }
-        }
-
-        private void btnNhapXacNhanThuPhi_Click(object sender, EventArgs e)
-        {
-            if (isBusy == true)
-            {
-                MessageBox.Show("Đang nhập xác nhận thu phí, vui lòng chờ!", PBean.MESSAGE_TITLE);
-                return;
-            }
-            // Nhập thư mục đối soát
-            OpenFileDialog openFiles = new OpenFileDialog();
-            openFiles.Filter = "Excel xác nhận thu phí|*.xls";
-            openFiles.Multiselect = true;
-            if (openFiles.ShowDialog() == DialogResult.OK)
-            {
-                selectFiles = openFiles.FileNames.ToList();
-                progressBar.Visible = true;
-                isBusy = true;
-                backgroundWorkerNhapXNTP.RunWorkerAsync();
-            }
-        }
-        DataTable GetXacNhanThuPhi(string fileName)
-        {
-            DataSet ds = NPOIHelper.GetDataSetFromXls(fileName);
-            DataTable data = ds.Tables[0];
-            return data;
-        }
-
-        private void backgroundWorkerNhapXNTP_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-            foreach (var item in selectFiles)
-            {
-                try
-                {
-                    List<GExpProfit> list = new List<GExpProfit>();
-                    DataTable data = GetXacNhanThuPhi(item);
-                    foreach (DataRow row in data.Rows)
-                    {
-                        GExpProfit profit = new GExpProfit();
-                        profit.Id = Guid.NewGuid().ToString();
-                        string dateString = row["Thời gian xác nhận"].ToString();
-                        profit.DateComfirm = DateTime.ParseExact(dateString, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-                        profit.BT3Code = row["Mã đơn"].ToString().Trim();
-                        profit.StatusName = row["Trạng thái"].ToString().Trim();
-                        decimal feeConfirm = 0;
-                        if (!decimal.TryParse(row["Phí xác nhận"].ToString().Trim(), out feeConfirm))
-                        {
-                            feeConfirm = 0;
-                        }
-                        profit.FeeConfirm = feeConfirm;
-
-                        decimal feeTotal = 0;
-                        if (!decimal.TryParse(row["Tổng phí"].ToString().Trim(), out feeTotal))
-                        {
-                            feeTotal = 0;
-                        }
-                        profit.FeeTotal = feeTotal;
-
-                        decimal feeProfit = 0;
-                        if (!decimal.TryParse(row["Doanh thu âm"].ToString().Trim(), out feeProfit))
-                        {
-                            feeProfit = 0;
-                        }
-                        profit.Profit = feeProfit;
-                        list.Add(profit);
-                    }
-                    int count = 0;
-                    decimal fee = _logic.InsertProfit(list, out count);
-                    TongTienXacNhan = TongTienXacNhan + fee;
-                    CountTienXacNhan = CountTienXacNhan + count;
-                }
-                catch (Exception ex)
-                {
-                    _errorMessageXNTP += "[" + item + "] " + ex.ToString() + System.Environment.NewLine;
-                }
-            }
-
-        }
-
-        private void backgroundWorkerNhapXNTP_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            isBusy = false;
-            progressBar.Visible = false;
-
-            if (!string.IsNullOrEmpty(_errorMessageXNTP))
-            {
-                MessageBox.Show(_errorMessageXNTP, PBean.MESSAGE_TITLE);
-            }
-            MessageBox.Show("Đã nhập xác nhận thu phí với [" + PCommon.FormatNumber(count.ToString()) + "] đơn hàng - Tổng tiền: " + PCommon.FormatNumber(TongTienXacNhan.ToString()), PBean.MESSAGE_TITLE);
         }
     }
 }
