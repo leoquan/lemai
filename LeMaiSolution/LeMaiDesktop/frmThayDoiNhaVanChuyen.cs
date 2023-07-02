@@ -88,7 +88,7 @@ namespace LeMaiDesktop
                             {
                             }
                             // Update mã nhà vận chuyển mới
-                            _logic.UpdateBT3Code(bill.BillCode, result.OrderCode, result.BT3COD, result.BT3Freight, result.BT3SubCode, result.PrintData);
+                            _logic.UpdateBT3Code(bill.BillCode, result.OrderCode, result.BT3COD, result.BT3Freight, result.BT3SubCode, result.PrintData, result.BT3PayType);
                             if (MessageBox.Show("Đã thay đổi nhà vận chuyển. Mã BT3 mới là [" + result.OrderCode + "]. Bạn có muốn in tem không?", PBean.MESSAGE_TITLE, MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
                                 PrintMaVanDon("'" + bill.BillCode + "'");

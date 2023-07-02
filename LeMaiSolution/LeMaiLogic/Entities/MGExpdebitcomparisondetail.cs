@@ -120,6 +120,14 @@ namespace LeMaiLogic
 					{
 						item.DebitComparisonCode = Convert.ToString(dr["DebitComparisonCode"]);
 					}
+					if (dr["BillCode"] != null && dr["BillCode"] != DBNull.Value)
+					{
+						item.BillCode = Convert.ToString(dr["BillCode"]);
+					}
+					if (dr["MoneyReturn"] != null && dr["MoneyReturn"] != DBNull.Value)
+					{
+						item.MoneyReturn = Convert.ToDecimal(dr["MoneyReturn"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -198,6 +206,14 @@ namespace LeMaiLogic
 					if (dr["DebitComparisonCode"] != null && dr["DebitComparisonCode"] != DBNull.Value)
 					{
 						item.DebitComparisonCode = Convert.ToString(dr["DebitComparisonCode"]);
+					}
+					if (dr["BillCode"] != null && dr["BillCode"] != DBNull.Value)
+					{
+						item.BillCode = Convert.ToString(dr["BillCode"]);
+					}
+					if (dr["MoneyReturn"] != null && dr["MoneyReturn"] != DBNull.Value)
+					{
+						item.MoneyReturn = Convert.ToDecimal(dr["MoneyReturn"]);
 					}
 					items.Add(item);
 				}
@@ -301,6 +317,14 @@ namespace LeMaiLogic
 						{
 							item.DebitComparisonCode = Convert.ToString(dr["DebitComparisonCode"]);
 						}
+						if (dr["BillCode"] != null && dr["BillCode"] != DBNull.Value)
+						{
+							item.BillCode = Convert.ToString(dr["BillCode"]);
+						}
+						if (dr["MoneyReturn"] != null && dr["MoneyReturn"] != DBNull.Value)
+						{
+							item.MoneyReturn = Convert.ToDecimal(dr["MoneyReturn"]);
+						}
 
 						break;
 					}
@@ -386,6 +410,14 @@ namespace LeMaiLogic
 						{
 							item.DebitComparisonCode = Convert.ToString(dr["DebitComparisonCode"]);
 						}
+						if (dr["BillCode"] != null && dr["BillCode"] != DBNull.Value)
+						{
+							item.BillCode = Convert.ToString(dr["BillCode"]);
+						}
+						if (dr["MoneyReturn"] != null && dr["MoneyReturn"] != DBNull.Value)
+						{
+							item.MoneyReturn = Convert.ToDecimal(dr["MoneyReturn"]);
+						}
 
 						break;
 					}
@@ -428,7 +460,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpDebitComparisonDetail](Id, FK_DebitComparison, BT3Code, AcceptMan, AcceptAddress, AcceptManPhone, Status, COD, Fee, IsPayCustomer, PayDate, FK_KyDoiSoat, FK_Post, DebitComparisonCode) VALUES(@Id, @FK_DebitComparison, @BT3Code, @AcceptMan, @AcceptAddress, @AcceptManPhone, @Status, @COD, @Fee, @IsPayCustomer, @PayDate, @FK_KyDoiSoat, @FK_Post, @DebitComparisonCode)", 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpDebitComparisonDetail](Id, FK_DebitComparison, BT3Code, AcceptMan, AcceptAddress, AcceptManPhone, Status, COD, Fee, IsPayCustomer, PayDate, FK_KyDoiSoat, FK_Post, DebitComparisonCode, BillCode, MoneyReturn) VALUES(@Id, @FK_DebitComparison, @BT3Code, @AcceptMan, @AcceptAddress, @AcceptManPhone, @Status, @COD, @Fee, @IsPayCustomer, @PayDate, @FK_KyDoiSoat, @FK_Post, @DebitComparisonCode, @BillCode, @MoneyReturn)", 
 					"@Id",  _GExpDebitComparisonDetail.Id, 
 					"@FK_DebitComparison",  _GExpDebitComparisonDetail.FK_DebitComparison, 
 					"@BT3Code",  _GExpDebitComparisonDetail.BT3Code, 
@@ -442,7 +474,9 @@ namespace LeMaiLogic
 					"@PayDate", this._dataContext.ConvertDateString( _GExpDebitComparisonDetail.PayDate), 
 					"@FK_KyDoiSoat",  _GExpDebitComparisonDetail.FK_KyDoiSoat, 
 					"@FK_Post",  _GExpDebitComparisonDetail.FK_Post, 
-					"@DebitComparisonCode",  _GExpDebitComparisonDetail.DebitComparisonCode);
+					"@DebitComparisonCode",  _GExpDebitComparisonDetail.DebitComparisonCode, 
+					"@BillCode",  _GExpDebitComparisonDetail.BillCode, 
+					"@MoneyReturn",  _GExpDebitComparisonDetail.MoneyReturn);
 				return true;
 			}
 			catch
@@ -470,7 +504,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpDebitComparisonDetail] SET Id=@Id, FK_DebitComparison=@FK_DebitComparison, BT3Code=@BT3Code, AcceptMan=@AcceptMan, AcceptAddress=@AcceptAddress, AcceptManPhone=@AcceptManPhone, Status=@Status, COD=@COD, Fee=@Fee, IsPayCustomer=@IsPayCustomer, PayDate=@PayDate, FK_KyDoiSoat=@FK_KyDoiSoat, FK_Post=@FK_Post, DebitComparisonCode=@DebitComparisonCode WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpDebitComparisonDetail] SET Id=@Id, FK_DebitComparison=@FK_DebitComparison, BT3Code=@BT3Code, AcceptMan=@AcceptMan, AcceptAddress=@AcceptAddress, AcceptManPhone=@AcceptManPhone, Status=@Status, COD=@COD, Fee=@Fee, IsPayCustomer=@IsPayCustomer, PayDate=@PayDate, FK_KyDoiSoat=@FK_KyDoiSoat, FK_Post=@FK_Post, DebitComparisonCode=@DebitComparisonCode, BillCode=@BillCode, MoneyReturn=@MoneyReturn WHERE Id=@Id", 
 					"@Id",  _GExpDebitComparisonDetail.Id, 
 					"@FK_DebitComparison",  _GExpDebitComparisonDetail.FK_DebitComparison, 
 					"@BT3Code",  _GExpDebitComparisonDetail.BT3Code, 
@@ -485,6 +519,8 @@ namespace LeMaiLogic
 					"@FK_KyDoiSoat",  _GExpDebitComparisonDetail.FK_KyDoiSoat, 
 					"@FK_Post",  _GExpDebitComparisonDetail.FK_Post, 
 					"@DebitComparisonCode",  _GExpDebitComparisonDetail.DebitComparisonCode, 
+					"@BillCode",  _GExpDebitComparisonDetail.BillCode, 
+					"@MoneyReturn",  _GExpDebitComparisonDetail.MoneyReturn, 
 					"@Id", Id);
 			}
 			catch
@@ -500,7 +536,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpDebitComparisonDetail] SET FK_DebitComparison=@FK_DebitComparison, BT3Code=@BT3Code, AcceptMan=@AcceptMan, AcceptAddress=@AcceptAddress, AcceptManPhone=@AcceptManPhone, Status=@Status, COD=@COD, Fee=@Fee, IsPayCustomer=@IsPayCustomer, PayDate=@PayDate, FK_KyDoiSoat=@FK_KyDoiSoat, FK_Post=@FK_Post, DebitComparisonCode=@DebitComparisonCode WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpDebitComparisonDetail] SET FK_DebitComparison=@FK_DebitComparison, BT3Code=@BT3Code, AcceptMan=@AcceptMan, AcceptAddress=@AcceptAddress, AcceptManPhone=@AcceptManPhone, Status=@Status, COD=@COD, Fee=@Fee, IsPayCustomer=@IsPayCustomer, PayDate=@PayDate, FK_KyDoiSoat=@FK_KyDoiSoat, FK_Post=@FK_Post, DebitComparisonCode=@DebitComparisonCode, BillCode=@BillCode, MoneyReturn=@MoneyReturn WHERE Id=@Id", 
 					"@FK_DebitComparison",  _GExpDebitComparisonDetail.FK_DebitComparison, 
 					"@BT3Code",  _GExpDebitComparisonDetail.BT3Code, 
 					"@AcceptMan",  _GExpDebitComparisonDetail.AcceptMan, 
@@ -514,6 +550,8 @@ namespace LeMaiLogic
 					"@FK_KyDoiSoat",  _GExpDebitComparisonDetail.FK_KyDoiSoat, 
 					"@FK_Post",  _GExpDebitComparisonDetail.FK_Post, 
 					"@DebitComparisonCode",  _GExpDebitComparisonDetail.DebitComparisonCode, 
+					"@BillCode",  _GExpDebitComparisonDetail.BillCode, 
+					"@MoneyReturn",  _GExpDebitComparisonDetail.MoneyReturn, 
 					"@Id", _GExpDebitComparisonDetail.Id);
 			}
 			catch
@@ -540,7 +578,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpDebitComparisonDetail] SET Id=@Id, FK_DebitComparison=@FK_DebitComparison, BT3Code=@BT3Code, AcceptMan=@AcceptMan, AcceptAddress=@AcceptAddress, AcceptManPhone=@AcceptManPhone, Status=@Status, COD=@COD, Fee=@Fee, IsPayCustomer=@IsPayCustomer, PayDate=@PayDate, FK_KyDoiSoat=@FK_KyDoiSoat, FK_Post=@FK_Post, DebitComparisonCode=@DebitComparisonCode "+ condition, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpDebitComparisonDetail] SET Id=@Id, FK_DebitComparison=@FK_DebitComparison, BT3Code=@BT3Code, AcceptMan=@AcceptMan, AcceptAddress=@AcceptAddress, AcceptManPhone=@AcceptManPhone, Status=@Status, COD=@COD, Fee=@Fee, IsPayCustomer=@IsPayCustomer, PayDate=@PayDate, FK_KyDoiSoat=@FK_KyDoiSoat, FK_Post=@FK_Post, DebitComparisonCode=@DebitComparisonCode, BillCode=@BillCode, MoneyReturn=@MoneyReturn "+ condition, 
 					"@Id",  _GExpDebitComparisonDetail.Id, 
 					"@FK_DebitComparison",  _GExpDebitComparisonDetail.FK_DebitComparison, 
 					"@BT3Code",  _GExpDebitComparisonDetail.BT3Code, 
@@ -554,7 +592,9 @@ namespace LeMaiLogic
 					"@PayDate", this._dataContext.ConvertDateString( _GExpDebitComparisonDetail.PayDate), 
 					"@FK_KyDoiSoat",  _GExpDebitComparisonDetail.FK_KyDoiSoat, 
 					"@FK_Post",  _GExpDebitComparisonDetail.FK_Post, 
-					"@DebitComparisonCode",  _GExpDebitComparisonDetail.DebitComparisonCode);
+					"@DebitComparisonCode",  _GExpDebitComparisonDetail.DebitComparisonCode, 
+					"@BillCode",  _GExpDebitComparisonDetail.BillCode, 
+					"@MoneyReturn",  _GExpDebitComparisonDetail.MoneyReturn);
 			}
 			catch
 			{

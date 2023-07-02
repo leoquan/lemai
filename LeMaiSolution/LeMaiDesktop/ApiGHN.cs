@@ -79,6 +79,7 @@ namespace LeMaiDesktop
             jsonObject.to_name = bill.AcceptMan;
             jsonObject.to_phone = bill.AcceptManPhone;
             jsonObject.to_address = bill.AcceptManAddress;
+
             jsonObject.to_ward_name = bill.AcceptWard;
             jsonObject.to_district_name = bill.AcceptDistrict;
             jsonObject.to_province_name = bill.AcceptProvince;
@@ -96,13 +97,78 @@ namespace LeMaiDesktop
             {
                 jsonObject.insurance_value = (int)bill.COD;
             }
+
             rs.BT3COD = bill.COD;
-            jsonObject.payment_type_id = 1; // Gửi thanh toán hết khỏi lăn tăn
+
+            // Chuyển đổi cân nặng
+            int convertWeight = bill.ConvertWeight.GetValueOrDefault(0);
+            if (convertWeight > 0)
+            {
+                jsonObject.weight = convertWeight;
+                int x = 10;
+                if (convertWeight > 1000)
+                {
+                    x = (int)Math.Pow(((convertWeight / 1000) * 5000), (1.0 / 3.0));
+                }
+                jsonObject.length = x;
+                jsonObject.height = x;
+                jsonObject.width = x;
+            }
 
             if (bill.FK_PaymentType == "NTT")
             {
                 // Nhận thanh toán thì thu hộ = thu hộ + phí vận chuyển
                 rs.BT3COD = bill.COD + bill.Freight;
+            }
+            rs.BT3PayType = "GTT";
+            jsonObject.payment_type_id = 1; // Gửi thanh toán hết khỏi lăn tăn
+            if (bill.AlwayReceivePay)
+            {
+                // Tính phí dịch vụ thay đổi COD
+                var clientCheck = new RestClient("https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee");
+                var requestCheck = new RestRequest();
+                requestCheck.Method = Method.POST;
+                requestCheck.AddHeader("Token", bill.Token);
+                requestCheck.AddHeader("ShopId", bill.ShopId);
+                requestCheck.AddHeader("Content-Type", "application/json");
+                JsonGHNCalFeeInput calJson = new JsonGHNCalFeeInput();
+                // Thêm data cho json ở đây
+                calJson.weight = jsonObject.weight;
+                calJson.cod_value = (int)rs.BT3COD;
+                calJson.cod_failed_amount = 0;
+                calJson.service_id = jsonObject.service_id;
+                calJson.service_type_id = jsonObject.service_type_id;
+                // From
+                calJson.from_district_id = Int32.Parse(bill.DistrictCode);
+                calJson.from_ward_code = bill.WardCode;
+                // To
+                calJson.to_district_id = bill.AcceptDistrictCode;
+                calJson.to_ward_code = bill.AcceptWardCode;
+                calJson.height = jsonObject.height;
+                calJson.width = jsonObject.width;
+                calJson.length = jsonObject.length;
+                calJson.insurance_value = jsonObject.insurance_value;
+                calJson.cod_value = (int)rs.BT3COD;
+                string bodyFee = JsonConvert.SerializeObject(calJson);
+                requestCheck.AddParameter("application/json", bodyFee, ParameterType.RequestBody);
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                var responseCheck = clientCheck.Execute(requestCheck);
+                try
+                {
+                    JsonGHNCalFeeOutput rsFee = JsonConvert.DeserializeObject<JsonGHNCalFeeOutput>(responseCheck.Content);
+                    if (rsFee != null)
+                    {
+                        if (rsFee.data != null)
+                        {
+                            jsonObject.payment_type_id = 2; // Nhận thanh toán
+                            rs.BT3PayType = "NTT";
+                            rs.BT3COD = rs.BT3COD - rsFee.data.total;// Tính toán lại số tiền thu hộ = số tiền tổng - tổng phí
+                        }
+                    }
+                }
+                catch
+                {
+                }
             }
             jsonObject.cod_amount = (int)rs.BT3COD;
             jsonObject.items = new List<Item>();
@@ -110,7 +176,7 @@ namespace LeMaiDesktop
             it.quantity = bill.GoodsNumber;
             it.name = bill.GoodsName;
             it.category = new Category();
-            it.category.level1 = "Áo";
+            it.category.level1 = "XXX";
             jsonObject.items.Add(it);
 
             string bodyjson = JsonConvert.SerializeObject(jsonObject);
@@ -501,8 +567,45 @@ namespace LeMaiDesktop
         public List<Item> items { get; set; }
     }
 
-
+    public class JsonGHNCalFeeInput
+    {
+        public int from_district_id { get; set; }
+        public string from_ward_code { get; set; }
+        public int service_id { get; set; }
+        public int service_type_id { get; set; }
+        public int to_district_id { get; set; }
+        public string to_ward_code { get; set; }
+        public int height { get; set; }
+        public int length { get; set; }
+        public int weight { get; set; }
+        public int width { get; set; }
+        public int cod_failed_amount { get; set; }
+        public int insurance_value { get; set; }
+        public int cod_value { get; set; }
+    }
     // ================== OUT PUT ==========================
+    public class JsonGHNCalFeeOut
+    {
+        public int total { get; set; }
+        public int service_fee { get; set; }
+        public int insurance_fee { get; set; }
+        public int pick_station_fee { get; set; }
+        public int coupon_value { get; set; }
+        public int r2s_fee { get; set; }
+        public int document_return { get; set; }
+        public int double_check { get; set; }
+        public int cod_fee { get; set; }
+        public int pick_remote_areas_fee { get; set; }
+        public int deliver_remote_areas_fee { get; set; }
+        public int cod_failed_fee { get; set; }
+    }
+
+    public class JsonGHNCalFeeOutput
+    {
+        public int code { get; set; }
+        public string message { get; set; }
+        public JsonGHNCalFeeOut data { get; set; }
+    }
     public class OrderData
     {
         public string order_code { get; set; }

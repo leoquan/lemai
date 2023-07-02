@@ -292,6 +292,10 @@ namespace LeMaiLogic
 					{
 						item.AlwayReceivePay = Convert.ToBoolean(dr["AlwayReceivePay"]);
 					}
+					if (dr["ConvertWeight"] != null && dr["ConvertWeight"] != DBNull.Value)
+					{
+						item.ConvertWeight = Convert.ToInt32(dr["ConvertWeight"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -542,6 +546,10 @@ namespace LeMaiLogic
 					if (dr["AlwayReceivePay"] != null && dr["AlwayReceivePay"] != DBNull.Value)
 					{
 						item.AlwayReceivePay = Convert.ToBoolean(dr["AlwayReceivePay"]);
+					}
+					if (dr["ConvertWeight"] != null && dr["ConvertWeight"] != DBNull.Value)
+					{
+						item.ConvertWeight = Convert.ToInt32(dr["ConvertWeight"]);
 					}
 					items.Add(item);
 				}
@@ -815,6 +823,10 @@ namespace LeMaiLogic
 						if (dr["AlwayReceivePay"] != null && dr["AlwayReceivePay"] != DBNull.Value)
 						{
 							item.AlwayReceivePay = Convert.ToBoolean(dr["AlwayReceivePay"]);
+						}
+						if (dr["ConvertWeight"] != null && dr["ConvertWeight"] != DBNull.Value)
+						{
+							item.ConvertWeight = Convert.ToInt32(dr["ConvertWeight"]);
 						}
 
 						break;

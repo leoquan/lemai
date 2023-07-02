@@ -100,11 +100,18 @@ namespace LeMaiWebPublic
             //        pattern: "{controller=" + Configuration.GetValue<String>("ClientSite") + "}/{action=Index}/{id?}");
             //});
 
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=KhachHang}/{action=Login}");
+            //});
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=KhachHang}/{action=Login}");
+                    pattern: "{controller=Post}/{action=DangNhap}");
             });
         }
     }

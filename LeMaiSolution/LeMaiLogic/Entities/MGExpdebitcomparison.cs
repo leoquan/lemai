@@ -104,6 +104,14 @@ namespace LeMaiLogic
 					{
 						item.FK_Provider = Convert.ToString(dr["FK_Provider"]);
 					}
+					if (dr["FK_AccountRefer"] != null && dr["FK_AccountRefer"] != DBNull.Value)
+					{
+						item.FK_AccountRefer = Convert.ToString(dr["FK_AccountRefer"]);
+					}
+					if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+					{
+						item.FK_Post = Convert.ToString(dr["FK_Post"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -166,6 +174,14 @@ namespace LeMaiLogic
 					if (dr["FK_Provider"] != null && dr["FK_Provider"] != DBNull.Value)
 					{
 						item.FK_Provider = Convert.ToString(dr["FK_Provider"]);
+					}
+					if (dr["FK_AccountRefer"] != null && dr["FK_AccountRefer"] != DBNull.Value)
+					{
+						item.FK_AccountRefer = Convert.ToString(dr["FK_AccountRefer"]);
+					}
+					if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+					{
+						item.FK_Post = Convert.ToString(dr["FK_Post"]);
 					}
 					items.Add(item);
 				}
@@ -253,6 +269,14 @@ namespace LeMaiLogic
 						{
 							item.FK_Provider = Convert.ToString(dr["FK_Provider"]);
 						}
+						if (dr["FK_AccountRefer"] != null && dr["FK_AccountRefer"] != DBNull.Value)
+						{
+							item.FK_AccountRefer = Convert.ToString(dr["FK_AccountRefer"]);
+						}
+						if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+						{
+							item.FK_Post = Convert.ToString(dr["FK_Post"]);
+						}
 
 						break;
 					}
@@ -322,6 +346,14 @@ namespace LeMaiLogic
 						{
 							item.FK_Provider = Convert.ToString(dr["FK_Provider"]);
 						}
+						if (dr["FK_AccountRefer"] != null && dr["FK_AccountRefer"] != DBNull.Value)
+						{
+							item.FK_AccountRefer = Convert.ToString(dr["FK_AccountRefer"]);
+						}
+						if (dr["FK_Post"] != null && dr["FK_Post"] != DBNull.Value)
+						{
+							item.FK_Post = Convert.ToString(dr["FK_Post"]);
+						}
 
 						break;
 					}
@@ -364,7 +396,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpDebitComparison](Id, DebitComparisonCode, DebitComparisonDate, SuccessCount, ReturnCount, PendingCount, FeeCost, COD, ReturnCOD, FK_Provider) VALUES(@Id, @DebitComparisonCode, @DebitComparisonDate, @SuccessCount, @ReturnCount, @PendingCount, @FeeCost, @COD, @ReturnCOD, @FK_Provider)", 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpDebitComparison](Id, DebitComparisonCode, DebitComparisonDate, SuccessCount, ReturnCount, PendingCount, FeeCost, COD, ReturnCOD, FK_Provider, FK_AccountRefer, FK_Post) VALUES(@Id, @DebitComparisonCode, @DebitComparisonDate, @SuccessCount, @ReturnCount, @PendingCount, @FeeCost, @COD, @ReturnCOD, @FK_Provider, @FK_AccountRefer, @FK_Post)", 
 					"@Id",  _GExpDebitComparison.Id, 
 					"@DebitComparisonCode",  _GExpDebitComparison.DebitComparisonCode, 
 					"@DebitComparisonDate", this._dataContext.ConvertDateString( _GExpDebitComparison.DebitComparisonDate), 
@@ -374,7 +406,9 @@ namespace LeMaiLogic
 					"@FeeCost",  _GExpDebitComparison.FeeCost, 
 					"@COD",  _GExpDebitComparison.COD, 
 					"@ReturnCOD",  _GExpDebitComparison.ReturnCOD, 
-					"@FK_Provider",  _GExpDebitComparison.FK_Provider);
+					"@FK_Provider",  _GExpDebitComparison.FK_Provider, 
+					"@FK_AccountRefer",  _GExpDebitComparison.FK_AccountRefer, 
+					"@FK_Post",  _GExpDebitComparison.FK_Post);
 				return true;
 			}
 			catch
@@ -402,7 +436,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpDebitComparison] SET Id=@Id, DebitComparisonCode=@DebitComparisonCode, DebitComparisonDate=@DebitComparisonDate, SuccessCount=@SuccessCount, ReturnCount=@ReturnCount, PendingCount=@PendingCount, FeeCost=@FeeCost, COD=@COD, ReturnCOD=@ReturnCOD, FK_Provider=@FK_Provider WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpDebitComparison] SET Id=@Id, DebitComparisonCode=@DebitComparisonCode, DebitComparisonDate=@DebitComparisonDate, SuccessCount=@SuccessCount, ReturnCount=@ReturnCount, PendingCount=@PendingCount, FeeCost=@FeeCost, COD=@COD, ReturnCOD=@ReturnCOD, FK_Provider=@FK_Provider, FK_AccountRefer=@FK_AccountRefer, FK_Post=@FK_Post WHERE Id=@Id", 
 					"@Id",  _GExpDebitComparison.Id, 
 					"@DebitComparisonCode",  _GExpDebitComparison.DebitComparisonCode, 
 					"@DebitComparisonDate", this._dataContext.ConvertDateString( _GExpDebitComparison.DebitComparisonDate), 
@@ -413,6 +447,8 @@ namespace LeMaiLogic
 					"@COD",  _GExpDebitComparison.COD, 
 					"@ReturnCOD",  _GExpDebitComparison.ReturnCOD, 
 					"@FK_Provider",  _GExpDebitComparison.FK_Provider, 
+					"@FK_AccountRefer",  _GExpDebitComparison.FK_AccountRefer, 
+					"@FK_Post",  _GExpDebitComparison.FK_Post, 
 					"@Id", Id);
 			}
 			catch
@@ -428,7 +464,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpDebitComparison] SET DebitComparisonCode=@DebitComparisonCode, DebitComparisonDate=@DebitComparisonDate, SuccessCount=@SuccessCount, ReturnCount=@ReturnCount, PendingCount=@PendingCount, FeeCost=@FeeCost, COD=@COD, ReturnCOD=@ReturnCOD, FK_Provider=@FK_Provider WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpDebitComparison] SET DebitComparisonCode=@DebitComparisonCode, DebitComparisonDate=@DebitComparisonDate, SuccessCount=@SuccessCount, ReturnCount=@ReturnCount, PendingCount=@PendingCount, FeeCost=@FeeCost, COD=@COD, ReturnCOD=@ReturnCOD, FK_Provider=@FK_Provider, FK_AccountRefer=@FK_AccountRefer, FK_Post=@FK_Post WHERE Id=@Id", 
 					"@DebitComparisonCode",  _GExpDebitComparison.DebitComparisonCode, 
 					"@DebitComparisonDate", this._dataContext.ConvertDateString( _GExpDebitComparison.DebitComparisonDate), 
 					"@SuccessCount",  _GExpDebitComparison.SuccessCount, 
@@ -438,6 +474,8 @@ namespace LeMaiLogic
 					"@COD",  _GExpDebitComparison.COD, 
 					"@ReturnCOD",  _GExpDebitComparison.ReturnCOD, 
 					"@FK_Provider",  _GExpDebitComparison.FK_Provider, 
+					"@FK_AccountRefer",  _GExpDebitComparison.FK_AccountRefer, 
+					"@FK_Post",  _GExpDebitComparison.FK_Post, 
 					"@Id", _GExpDebitComparison.Id);
 			}
 			catch
@@ -464,7 +502,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpDebitComparison] SET Id=@Id, DebitComparisonCode=@DebitComparisonCode, DebitComparisonDate=@DebitComparisonDate, SuccessCount=@SuccessCount, ReturnCount=@ReturnCount, PendingCount=@PendingCount, FeeCost=@FeeCost, COD=@COD, ReturnCOD=@ReturnCOD, FK_Provider=@FK_Provider "+ condition, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpDebitComparison] SET Id=@Id, DebitComparisonCode=@DebitComparisonCode, DebitComparisonDate=@DebitComparisonDate, SuccessCount=@SuccessCount, ReturnCount=@ReturnCount, PendingCount=@PendingCount, FeeCost=@FeeCost, COD=@COD, ReturnCOD=@ReturnCOD, FK_Provider=@FK_Provider, FK_AccountRefer=@FK_AccountRefer, FK_Post=@FK_Post "+ condition, 
 					"@Id",  _GExpDebitComparison.Id, 
 					"@DebitComparisonCode",  _GExpDebitComparison.DebitComparisonCode, 
 					"@DebitComparisonDate", this._dataContext.ConvertDateString( _GExpDebitComparison.DebitComparisonDate), 
@@ -474,7 +512,9 @@ namespace LeMaiLogic
 					"@FeeCost",  _GExpDebitComparison.FeeCost, 
 					"@COD",  _GExpDebitComparison.COD, 
 					"@ReturnCOD",  _GExpDebitComparison.ReturnCOD, 
-					"@FK_Provider",  _GExpDebitComparison.FK_Provider);
+					"@FK_Provider",  _GExpDebitComparison.FK_Provider, 
+					"@FK_AccountRefer",  _GExpDebitComparison.FK_AccountRefer, 
+					"@FK_Post",  _GExpDebitComparison.FK_Post);
 			}
 			catch
 			{

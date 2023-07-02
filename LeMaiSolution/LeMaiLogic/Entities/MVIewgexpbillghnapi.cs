@@ -372,6 +372,14 @@ namespace LeMaiLogic
 					{
 						item.PhonePickup = Convert.ToString(dr["PhonePickup"]);
 					}
+					if (dr["ConvertWeight"] != null && dr["ConvertWeight"] != DBNull.Value)
+					{
+						item.ConvertWeight = Convert.ToInt32(dr["ConvertWeight"]);
+					}
+					if (dr["AlwayReceivePay"] != null && dr["AlwayReceivePay"] != DBNull.Value)
+					{
+						item.AlwayReceivePay = Convert.ToBoolean(dr["AlwayReceivePay"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -702,6 +710,14 @@ namespace LeMaiLogic
 					if (dr["PhonePickup"] != null && dr["PhonePickup"] != DBNull.Value)
 					{
 						item.PhonePickup = Convert.ToString(dr["PhonePickup"]);
+					}
+					if (dr["ConvertWeight"] != null && dr["ConvertWeight"] != DBNull.Value)
+					{
+						item.ConvertWeight = Convert.ToInt32(dr["ConvertWeight"]);
+					}
+					if (dr["AlwayReceivePay"] != null && dr["AlwayReceivePay"] != DBNull.Value)
+					{
+						item.AlwayReceivePay = Convert.ToBoolean(dr["AlwayReceivePay"]);
 					}
 					items.Add(item);
 				}
@@ -1055,6 +1071,14 @@ namespace LeMaiLogic
 						if (dr["PhonePickup"] != null && dr["PhonePickup"] != DBNull.Value)
 						{
 							item.PhonePickup = Convert.ToString(dr["PhonePickup"]);
+						}
+						if (dr["ConvertWeight"] != null && dr["ConvertWeight"] != DBNull.Value)
+						{
+							item.ConvertWeight = Convert.ToInt32(dr["ConvertWeight"]);
+						}
+						if (dr["AlwayReceivePay"] != null && dr["AlwayReceivePay"] != DBNull.Value)
+						{
+							item.AlwayReceivePay = Convert.ToBoolean(dr["AlwayReceivePay"]);
 						}
 
 						break;

@@ -1807,7 +1807,7 @@ namespace LeMaiLogic.Logic
                 dc.Close();
             }
         }
-        public void UpdateBT3Code(string billCode, string BT3Code, decimal BT3COD, decimal BT3Frieght, string BT3SubCode, string printData)
+        public void UpdateBT3Code(string billCode, string BT3Code, decimal BT3COD, decimal BT3Frieght, string BT3SubCode, string printData, string BT3PayType)
         {
             if (string.IsNullOrEmpty(billCode) || string.IsNullOrEmpty(BT3Code))
             {
@@ -1824,6 +1824,7 @@ namespace LeMaiLogic.Logic
                     bill.BT3Freight = BT3Frieght;
                     bill.BT3CodeSub = BT3SubCode;
                     bill.BT3COD = BT3COD;
+                    bill.BT3PayType = BT3PayType;
                     bill.PrintData = printData;
                     dc.GExpbill.Update(base.ConnectionData.Schema, bill);
                     dc.SubmitChanges();

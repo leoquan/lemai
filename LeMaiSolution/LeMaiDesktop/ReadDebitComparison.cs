@@ -28,14 +28,14 @@ namespace LeMaiDesktop
                         dr.Session = CodPhien;
                         dr.Stt = Int32.Parse(item["STT"].ToString());
                         dr.BT3Code = item["Mã đơn GHN"].ToString();
-                        dr.eBillCode = item["Mã đơn khách hàng"].ToString();
+                        dr.BillCode = item["Mã đơn khách hàng"].ToString();
                         dr.Status = 0;
-                        dr.StatusName = item["Trạng thái"].ToString();
-                        if (dr.StatusName == "Giao hàng thành công")
+                        dr.MoneyReturnStatusName = item["Trạng thái"].ToString();
+                        if (dr.MoneyReturnStatusName == "Giao hàng thành công")
                         {
                             dr.Status = 1;
                         }
-                        else if (dr.StatusName == "Chuyển hoàn")
+                        else if (dr.MoneyReturnStatusName == "Chuyển hoàn")
                         {
                             dr.Status = 2;
                         }
@@ -103,23 +103,23 @@ namespace LeMaiDesktop
                         stt++;
                         dr.Stt = stt;
                         dr.BT3Code = item["Mã vận đơn"].ToString().Trim();
-                        dr.eBillCode = item["Mã đơn KH"].ToString();
+                        dr.BillCode = item["Mã đơn KH"].ToString();
                         dr.Status = 0;
                         string statusName = item["Ghi chú"].ToString();
                         if (statusName == "Chưa thanh toán COD")
                         {
                             dr.Status = 0;
-                            dr.StatusName = "Đang trung chuyển";
+                            dr.MoneyReturnStatusName = "Đang trung chuyển";
                         }
                         else if (statusName.ToLower().Contains("hoàn"))
                         {
                             dr.Status = 2;
-                            dr.StatusName = "Giao hàng thất bại";
+                            dr.MoneyReturnStatusName = "Giao hàng thất bại";
                         }
-                        else if (statusName.Trim() == "")
+                        else if (String.IsNullOrEmpty(statusName.Trim()))
                         {
                             dr.Status = 1;
-                            dr.StatusName = "Giao hàng thành công";
+                            dr.MoneyReturnStatusName = "Giao hàng thành công";
                         }
                         string ngay = item["Kỳ thanh toán"].ToString();
                         if (!string.IsNullOrEmpty(ngay))
@@ -179,18 +179,18 @@ namespace LeMaiDesktop
                         string BT3CodeTemp = item["Mã Đơn Hàng"].ToString().Trim();
 
                         dr.BT3Code = BT3CodeTemp.Split('.')[1];
-                        dr.eBillCode = item["Mã Đơn Khách Hàng"].ToString();
+                        dr.BillCode = item["Mã Đơn Khách Hàng"].ToString();
                         dr.Status = 0;
                         string statusName = item["Trạng Thái Đơn Hàng"].ToString();
                         if (statusName == "Đã Đối Soát Giao Hàng")
                         {
                             dr.Status = 1;
-                            dr.StatusName = "Giao hàng thành công";
+                            dr.MoneyReturnStatusName = "Giao hàng thành công";
                         }
                         else
                         {
                             dr.Status = 2;
-                            dr.StatusName = "Giao hàng thất bại";
+                            dr.MoneyReturnStatusName = "Giao hàng thất bại";
                         }
                         string ngay = item["Ngày Đối Soát"].ToString();
                         if (!string.IsNullOrEmpty(ngay))
@@ -243,18 +243,18 @@ namespace LeMaiDesktop
 
                         dr.BT3Code = BT3CodeTemp;
 
-                        dr.eBillCode = "";
+                        dr.BillCode = "";
                         dr.Status = 0;
                         string statusName = item["Trạng thái đơn hàng"].ToString();
                         if (statusName == "Completed")
                         {
                             dr.Status = 1;
-                            dr.StatusName = "Giao hàng thành công";
+                            dr.MoneyReturnStatusName = "Giao hàng thành công";
                         }
                         else
                         {
                             dr.Status = 2;
-                            dr.StatusName = "Giao hàng thất bại";
+                            dr.MoneyReturnStatusName = "Giao hàng thất bại";
                         }
                         dr.DateDeliveryReturn = DateTime.Now;
                         dr.BT3COD = decimal.Parse(item["Thu hộ"].ToString());
@@ -300,18 +300,18 @@ namespace LeMaiDesktop
                         //Trả về hay không Có là hoàn, Không là giao thành công Không Có
                         dr.Stt = i;
                         dr.BT3Code = item["Mã vận đơn"].ToString().Trim();
-                        dr.eBillCode = item["mã đối tác"].ToString();
+                        dr.BillCode = item["mã đối tác"].ToString();
                         dr.Status = 0;
                         string statusName = item["Trả về hay không"].ToString();
                         if (statusName == "Không")
                         {
                             dr.Status = 1;
-                            dr.StatusName = "Giao hàng thành công";
+                            dr.MoneyReturnStatusName = "Giao hàng thành công";
                         }
                         else
                         {
                             dr.Status = 2;
-                            dr.StatusName = "Giao hàng thất bại";
+                            dr.MoneyReturnStatusName = "Giao hàng thất bại";
                         }
                         string ngay = item["Thời gian ký nhận"].ToString();
                         if (!string.IsNullOrEmpty(ngay))

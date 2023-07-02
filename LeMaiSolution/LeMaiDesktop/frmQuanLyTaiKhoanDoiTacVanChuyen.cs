@@ -885,37 +885,43 @@ namespace LeMaiDesktop
                                     case "token":
                                         {
                                             lblToken.ForeColor = Color.Red;
-                                            txtToken.Text = temp[1];
+                                            if (string.IsNullOrEmpty(txtToken.Text))
+                                                txtToken.Text = temp[1];
                                         }
                                         break;
                                     case "clientsecrect":
                                         {
                                             lblClientSecrect.ForeColor = Color.Red;
-                                            txtClientSecrect.Text = temp[1];
+                                            if (string.IsNullOrEmpty(txtClientSecrect.Text))
+                                                txtClientSecrect.Text = temp[1];
                                         }
                                         break;
                                     case "shopid":
                                         {
                                             lblShopId.ForeColor = Color.Red;
-                                            txtShopId.Text = temp[1];
+                                            if (string.IsNullOrEmpty(txtShopId.Text))
+                                                txtShopId.Text = temp[1];
                                         }
                                         break;
                                     case "clientid":
                                         {
                                             lblClientId.ForeColor = Color.Red;
-                                            txtClientId.Text = temp[1];
+                                            if (string.IsNullOrEmpty(txtClientId.Text))
+                                                txtClientId.Text = temp[1];
                                         }
                                         break;
                                     case "serviceid":
                                         {
                                             lblServiceId.ForeColor = Color.Red;
-                                            txtServiceId.Text = temp[1];
+                                            if (string.IsNullOrEmpty(txtServiceId.Text))
+                                                txtServiceId.Text = temp[1];
                                         }
                                         break;
                                     case "pickupid":
                                         {
                                             lblPostBT3Id.ForeColor = Color.Red;
-                                            txtPostBT3Id.Text = temp[1];
+                                            if (string.IsNullOrEmpty(txtPostBT3Id.Text))
+                                                txtPostBT3Id.Text = temp[1];
                                         }
                                         break;
                                     default:

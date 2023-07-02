@@ -11,7 +11,7 @@ namespace LeMaiDesktop
         public string Session { get; set; }
         public int Stt { get; set; }
         public string BT3Code { get; set; }
-        public string StatusName { get; set; }
+        public string MoneyReturnStatusName { get; set; }
         public int Status { get; set; }
         public DateTime? DateDeliveryReturn { get; set; }
         public decimal BT3COD { get; set; }
@@ -24,18 +24,17 @@ namespace LeMaiDesktop
         public decimal Discount { get; set; }
         public decimal ReturnCOD { get; set; }
         //---
-
-        public string eBillCode { get; set; }
-        public string eSendMan { get; set; }
-        public string eSendAddress { get; set; }
-        public string eSendPhone { get; set; }
-        public string eAcceptMan { get; set; }
-        public string eAcceptPhone { get; set; }
-        public string eAcceptProvince { get; set; }
-        public decimal eCOD { get; set; }
-        public decimal eFreight { get; set; }
-        public decimal eBillWeight { get; set; }
-        public decimal eFeeWeight { get; set; }
-        public string ePayType { get; set; }
+        public string BillCode { get; set; }
+        public string SendMan { get; set; }
+        public string SendAddress { get; set; }
+        public string SendManPhone { get; set; }
+        public string AcceptMan { get; set; }
+        public string AcceptManPhone { get; set; }
+        public string AcceptProvince { get; set; }
+        public decimal COD { get; set; }
+        public decimal Freight { get; set; }
+        public decimal BillWeight { get; set; }
+        public decimal FeeWeight { get; set; }
+        public string PayType { get; set; }
     }
 }

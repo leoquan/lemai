@@ -12,8 +12,8 @@ namespace LeMaiDomain
 		public System.String BillCode { get; set; }
 		public System.Int32 Status { get; set; }
 		public System.Decimal BT3COD { get; set; }
-		public System.Decimal BT3TotalPaid { get; set; }
-		public System.Decimal BT3TotalDiscount { get; set; }
+		public System.Decimal? BT3TotalPaid { get; set; }
+		public System.Decimal? BT3TotalDiscount { get; set; }
 		public System.Decimal BT3TotalFee { get; set; }
 		public System.Decimal MoneyReturn { get; set; }
 		public System.DateTime? DateReturn { get; set; }

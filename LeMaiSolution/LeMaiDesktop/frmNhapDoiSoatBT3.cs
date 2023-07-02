@@ -1,4 +1,5 @@
 ﻿using Common;
+using LeMaiDesktop.EnumDefined;
 using LeMaiDomain;
 using LeMaiLogic;
 using LeMaiLogic.Logic;
@@ -145,7 +146,7 @@ namespace LeMaiDesktop
                         _dataDoiSoat = new List<DebitComprisonExcel>();
                         break;
                 }
-                ReFillDataTable(_dataDoiSoat);
+                // ReFillDataTable(_dataDoiSoat);
 
                 gridChild.DataSource = _dataDoiSoat;
                 lblSubCount.Text = PCommon.FormatNumber(_dataDoiSoat.Count.ToString());
@@ -166,20 +167,20 @@ namespace LeMaiDesktop
                 dc.Open();
                 foreach (var item in data)
                 {
-                    view_GExpBill bill = dc.VIewgexpbill.GetObjectCon(PBean.SCHEMA, "WHERE BT3Code=@BT3Code", "@BT3Code", item.eBillCode);
+                    GExpBill bill = dc.GExpbill.GetObjectCon(PBean.SCHEMA, "WHERE BT3Code=@BT3Code", "@BT3Code", item.BT3Code);
                     if (bill != null)
                     {
-                        item.eBillCode = bill.BillCode;
-                        item.eSendMan = bill.SendMan;
-                        item.eSendPhone = bill.SendManPhone;
-                        item.eAcceptMan = bill.AcceptMan;
-                        item.eAcceptPhone = bill.AcceptManPhone;
-                        item.eAcceptProvince = bill.AcceptProvince;
-                        item.eCOD = bill.COD;
-                        item.eFreight = bill.Freight;
-                        item.eFeeWeight = bill.FeeWeight;
-                        item.eBillWeight = bill.BillWeight;
-                        item.ePayType = bill.PayType;
+                        item.BillCode = bill.BillCode;
+                        item.SendMan = bill.SendMan;
+                        item.SendManPhone = bill.SendManPhone;
+                        item.AcceptMan = bill.AcceptMan;
+                        item.AcceptManPhone = bill.AcceptManPhone;
+                        item.AcceptProvince = bill.AcceptProvince;
+                        item.COD = bill.COD;
+                        item.Freight = bill.Freight;
+                        item.FeeWeight = bill.FeeWeight;
+                        item.BillWeight = bill.BillWeight;
+                        item.PayType = bill.PayType;
                     }
                 }
             }
@@ -213,7 +214,7 @@ namespace LeMaiDesktop
                         dr.BT3Code = item["Số hiệu bưu gửi"].ToString();
                         dr.Status = 1;
 
-                        dr.StatusName = "";
+                        dr.MoneyReturnStatusName = "";
                         DateTime date = DateTime.ParseExact(item["Ngày thu tiền"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                         dr.DateDeliveryReturn = date;
                         dr.BT3COD = decimal.Parse(item["Số tiền"].ToString());
@@ -285,7 +286,7 @@ namespace LeMaiDesktop
             {
                 dc.Open();
                 DateTime currentDate = dc.CurrentTime();
-                if (_provider.IsOwner == true)
+                if (_provider.IsOwner == (int)enumProviderOwner.Master)
                 {
                     // Tài khoản master
                     GExpDebitComparison debit = new GExpDebitComparison();
@@ -309,21 +310,44 @@ namespace LeMaiDesktop
                     debit.COD = 0;
                     debit.ReturnCOD = 0;
                     debit.FK_Provider = _provider.Id;
+                    debit.FK_AccountRefer = PBean.USER.Id;
+                    debit.FK_Post = PBean.USER.CardId;
+
 
                     foreach (var item in _dataDoiSoat)
                     {
                         GExpDebitComparisonDetail mItem = new GExpDebitComparisonDetail();
+
+                        GExpBill bill = dc.GExpbill.GetObjectCon(PBean.SCHEMA, "WHERE BT3Code=@BT3Code", "@BT3Code", item.BT3Code);
+                        if (bill != null)
+                        {
+                            item.BillCode = bill.BillCode;
+                            item.SendMan = bill.SendMan;
+                            item.SendManPhone = bill.SendManPhone;
+                            item.AcceptMan = bill.AcceptMan;
+                            item.AcceptManPhone = bill.AcceptManPhone;
+                            item.AcceptProvince = bill.AcceptProvince;
+                            item.COD = bill.COD;
+                            item.Freight = bill.Freight;
+                            item.FeeWeight = bill.FeeWeight;
+                            item.BillWeight = bill.BillWeight;
+                            item.PayType = bill.PayType;
+                        }
+
                         mItem.Id = Guid.NewGuid().ToString();
                         mItem.FK_DebitComparison = debit.Id;
                         mItem.BT3Code = item.BT3Code;
-                        mItem.AcceptMan = item.eAcceptMan;
-                        mItem.AcceptAddress = item.eAcceptProvince;
-                        mItem.AcceptManPhone = item.eAcceptPhone;
+                        mItem.AcceptMan = item.AcceptMan;
+                        mItem.AcceptAddress = item.AcceptProvince;
+                        mItem.AcceptManPhone = item.AcceptManPhone;
                         mItem.Status = item.Status;
                         mItem.COD = item.BT3COD;
                         mItem.Fee = item.BT3TotalFee;
                         mItem.IsPayCustomer = false;
                         mItem.DebitComparisonCode = item.Session;
+                        mItem.FK_Post = PBean.USER.CardId;
+                        mItem.BillCode = item.BillCode;
+                        mItem.MoneyReturn = item.ReturnCOD;
 
                         dc.GExpdebitcomparisondetail.InsertOnSubmit(PBean.SCHEMA, mItem);
 
@@ -348,7 +372,7 @@ namespace LeMaiDesktop
                     dc.GExpdebitcomparison.InsertOnSubmit(PBean.SCHEMA, debit);
                     dc.SubmitChanges();
                 }
-                else
+                else if (_provider.IsOwner == (int)enumProviderOwner.Single)
                 {
                     // Tài khoản của chính bưu cục ký hợp đồng.
                     GExpMoneyReturnSession moneySession = new GExpMoneyReturnSession();
@@ -497,6 +521,7 @@ namespace LeMaiDesktop
             try
             {
                 int index = gridParrent.SelectedRows[0].Index;
+
                 view_GExpMoneyReturnSession session = _logic.GetMoneyReturnSessionDetail(Convert.ToString(gridParrent.Rows[index].Cells["col_ParrentId"].Value));
                 if (null != session)
                 {

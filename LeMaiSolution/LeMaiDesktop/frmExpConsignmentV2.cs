@@ -555,18 +555,20 @@ namespace LeMaiDesktop
                 if (!string.IsNullOrEmpty(PBean.LOCAL_OPTIONS.SAVE_TINH))
                 {
                     cmbTinhNhan.SelectedValue = PBean.LOCAL_OPTIONS.SAVE_TINH;
-
-                    cmbHuyenNhan.DataSource = await _logic.GetDanhSachHuyen(PBean.LOCAL_OPTIONS.SAVE_TINH);
-                    cmbHuyenNhan.DisplayMember = "DistrictName";
-                    cmbHuyenNhan.ValueMember = "DistrictID";
+                }
+                cmbHuyenNhan.DataSource = await _logic.GetDanhSachHuyen(cmbTinhNhan.SelectedValue.ToString());
+                cmbHuyenNhan.DisplayMember = "DistrictName";
+                cmbHuyenNhan.ValueMember = "DistrictID";
+                if (!string.IsNullOrEmpty(PBean.LOCAL_OPTIONS.SAVE_HUYEN))
+                {
                     cmbHuyenNhan.SelectedValue = PBean.LOCAL_OPTIONS.SAVE_HUYEN;
-                    if (!string.IsNullOrEmpty(PBean.LOCAL_OPTIONS.SAVE_HUYEN))
-                    {
-                        cmbXaNhan.DataSource = await _logic.GetDanhSachXa(PBean.LOCAL_OPTIONS.SAVE_HUYEN);
-                        cmbXaNhan.DisplayMember = "WardName";
-                        cmbXaNhan.ValueMember = "WardId";
-                        cmbXaNhan.SelectedValue = PBean.LOCAL_OPTIONS.SAVE_XA;
-                    }
+                }
+                cmbXaNhan.DataSource = await _logic.GetDanhSachXa(cmbHuyenNhan.SelectedValue.ToString());
+                cmbXaNhan.DisplayMember = "WardName";
+                cmbXaNhan.ValueMember = "WardId";
+                if (!string.IsNullOrEmpty(PBean.LOCAL_OPTIONS.SAVE_XA))
+                {
+                    cmbXaNhan.SelectedValue = PBean.LOCAL_OPTIONS.SAVE_XA;
                 }
 
             }
@@ -1634,7 +1636,7 @@ namespace LeMaiDesktop
                     var result = api.CreateOrder(bill);
                     if (result.IsSuccess == true)
                     {
-                        _logic.UpdateBT3Code(bill.BillCode, result.OrderCode, result.BT3COD, result.BT3Freight, result.BT3SubCode, result.PrintData);
+                        _logic.UpdateBT3Code(bill.BillCode, result.OrderCode, result.BT3COD, result.BT3Freight, result.BT3SubCode, result.PrintData, result.BT3PayType);
                         if (!string.IsNullOrEmpty(result.ShopId))
                         {
                             _logic.UpdateShopId(bill.BillCode, result.ShopId);
@@ -1843,7 +1845,7 @@ namespace LeMaiDesktop
                     {
                         _countApiSucces++;
                         _ListIdApi += "'" + item.BillCode + "',";
-                        _logic.UpdateBT3Code(item.BillCode, result.OrderCode, result.BT3COD, result.BT3Freight, result.BT3SubCode, result.PrintData);
+                        _logic.UpdateBT3Code(item.BillCode, result.OrderCode, result.BT3COD, result.BT3Freight, result.BT3SubCode, result.PrintData, result.BT3PayType);
                         if (result.IsUpdateShope)
                         {
 

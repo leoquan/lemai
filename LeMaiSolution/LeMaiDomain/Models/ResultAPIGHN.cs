@@ -13,6 +13,7 @@ namespace LeMaiDomain.Models
         public decimal BT3COD { get; set; }
         public decimal BT3Freight { get; set; }
         public string BT3Status { get; set; }
+        public string BT3PayType { get; set; }
         public string ShopId { get; set; }
         public bool IsUpdateShope { get; set; } = false;
         public string Province { get; set; }

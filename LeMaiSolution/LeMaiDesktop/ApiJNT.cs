@@ -163,7 +163,7 @@ namespace LeMaiDesktop
             jsonObject.sendendtime = string.Format("{0:yyyy-MM-dd HH:mm:ss}", DateTime.Now.AddDays(1));
 
             jsonObject.paytype = "PP_PM";
-
+            rs.BT3PayType = "GTT";
             if (bill.FK_PaymentType == "NTT")
             {
                 // Nhận thanh toán
@@ -181,12 +181,16 @@ namespace LeMaiDesktop
                 jsonObject.goodsvalue = bill.COD.ToString();// Bảo hiểm = COD
             }
 
+
             jsonObject.isInsured = "1";
 
             jsonObject.weight = (bill.BillWeight / 1000).ToString();
             jsonObject.volume = (bill.BillWeight / 1000).ToString();
 
             jsonObject.remark = "(" + bill.ShipNoteType + ") " + bill.Note;
+
+
+
             // Items
             jsonObject.items = new List<JNTItem>();
             JNTItem item = new JNTItem();

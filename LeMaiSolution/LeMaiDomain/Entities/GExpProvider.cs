@@ -62,9 +62,10 @@ namespace LeMaiDomain
 		public System.Boolean ManualSign { get; set; }
 		public System.Boolean IsPickup { get; set; }
 		public System.String LinkCustomerLogin { get; set; }
-		public System.Boolean IsOwner { get; set; }
+		public System.Int32 IsOwner { get; set; }
 		public System.Int32 PercentConfig { get; set; }
 		public System.Boolean AlwayReceivePay { get; set; }
+		public System.Int32? ConvertWeight { get; set; }
 		public GExpProvider(){}
 	}
 }

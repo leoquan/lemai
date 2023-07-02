@@ -30,39 +30,39 @@ namespace LeMaiDesktop
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager = new DevComponents.DotNetBar.StyleManager(this.components);
             this.lTieude = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
@@ -106,7 +106,28 @@ namespace LeMaiDesktop
             this.label2 = new System.Windows.Forms.Label();
             this.tab02 = new System.Windows.Forms.TabPage();
             this.gridChild = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblSubHoanTien = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblSubPhi = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblSubThuHo = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnBrowser = new DevComponents.DotNetBar.ButtonX();
+            this.btnReadData = new DevComponents.DotNetBar.ButtonX();
+            this.cmbSubTaiKhoan = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.progressBarLuuDoiSoat = new System.Windows.Forms.ProgressBar();
+            this.lblSubCount = new System.Windows.Forms.Label();
+            this.btnClose2 = new DevComponents.DotNetBar.ButtonX();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.txtFilePath = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.backgroundWorkerLuu = new System.ComponentModel.BackgroundWorker();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Session = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_BT3Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_BillCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_SendMan = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,26 +153,6 @@ namespace LeMaiDesktop
             this.col_MoneyReturnStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_ProviderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_ProviderTypeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtNote = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblSubHoanTien = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblSubPhi = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblSubThuHo = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnBrowser = new DevComponents.DotNetBar.ButtonX();
-            this.btnReadData = new DevComponents.DotNetBar.ButtonX();
-            this.cmbSubTaiKhoan = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.progressBarLuuDoiSoat = new System.Windows.Forms.ProgressBar();
-            this.lblSubCount = new System.Windows.Forms.Label();
-            this.btnClose2 = new DevComponents.DotNetBar.ButtonX();
-            this.btnSave = new DevComponents.DotNetBar.ButtonX();
-            this.txtFilePath = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.backgroundWorkerLuu = new System.ComponentModel.BackgroundWorker();
             this.tabControl.SuspendLayout();
             this.tab01.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridParrent)).BeginInit();
@@ -220,19 +221,19 @@ namespace LeMaiDesktop
             // gridParrent
             // 
             this.gridParrent.AllowUserToAddRows = false;
-            dataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(233)))), ((int)(((byte)(248)))));
-            this.gridParrent.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(233)))), ((int)(((byte)(248)))));
+            this.gridParrent.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridParrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridParrent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridParrent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gridParrent.ColumnHeadersHeight = 25;
             this.gridParrent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_ParrentId,
@@ -252,14 +253,14 @@ namespace LeMaiDesktop
             this.dataGridViewTextBoxColumn10,
             this.col_Note,
             this.col_Post});
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle44.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridParrent.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridParrent.DefaultCellStyle = dataGridViewCellStyle11;
             this.gridParrent.EnableHeadersVisualStyles = false;
             this.gridParrent.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.gridParrent.HighlightSelectedColumnHeaders = false;
@@ -267,16 +268,16 @@ namespace LeMaiDesktop
             this.gridParrent.MultiSelect = false;
             this.gridParrent.Name = "gridParrent";
             this.gridParrent.PaintEnhancedSelection = false;
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle45.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridParrent.RowHeadersDefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridParrent.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.gridParrent.RowHeadersVisible = false;
-            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(106)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.Color.White;
-            this.gridParrent.RowsDefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(106)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            this.gridParrent.RowsDefaultCellStyle = dataGridViewCellStyle13;
             this.gridParrent.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridParrent.RowTemplate.Height = 25;
             this.gridParrent.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -297,8 +298,8 @@ namespace LeMaiDesktop
             // 
             this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridViewTextBoxColumn13.DataPropertyName = "ProviderTypeCode";
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn13.HeaderText = "Loại tài khoản";
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
@@ -307,8 +308,8 @@ namespace LeMaiDesktop
             // 
             this.col_FK_ProviderAccount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.col_FK_ProviderAccount.DataPropertyName = "FK_ProviderAccount";
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_FK_ProviderAccount.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_FK_ProviderAccount.DefaultCellStyle = dataGridViewCellStyle4;
             this.col_FK_ProviderAccount.HeaderText = "Mã tài khoản";
             this.col_FK_ProviderAccount.Name = "col_FK_ProviderAccount";
             this.col_FK_ProviderAccount.ReadOnly = true;
@@ -330,9 +331,9 @@ namespace LeMaiDesktop
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "BT3COD";
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle38.Format = "N0";
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N0";
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn3.HeaderText = "Tổng thu hộ";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -340,9 +341,9 @@ namespace LeMaiDesktop
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "BT3TotalPaid";
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle39.Format = "N0";
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTextBoxColumn4.HeaderText = "Đã thanh toán";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -350,9 +351,9 @@ namespace LeMaiDesktop
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "BT3TotalDiscount";
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle40.Format = "N0";
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N0";
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTextBoxColumn5.HeaderText = "Giảm giá";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -360,9 +361,9 @@ namespace LeMaiDesktop
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "BT3TotalFee";
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle41.Format = "N0";
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N0";
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewTextBoxColumn6.HeaderText = "Tổng phí";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -370,9 +371,9 @@ namespace LeMaiDesktop
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "MoneyReturn";
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle42.Format = "N0";
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N0";
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewTextBoxColumn7.HeaderText = "Tiền hoàn trả";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
@@ -388,9 +389,9 @@ namespace LeMaiDesktop
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "DateReturn";
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle43.Format = "dd/MM/yy HH:mm";
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.Format = "dd/MM/yy HH:mm";
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewTextBoxColumn8.HeaderText = "Ngày nhập";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
@@ -696,22 +697,23 @@ namespace LeMaiDesktop
             // gridChild
             // 
             this.gridChild.AllowUserToAddRows = false;
-            dataGridViewCellStyle47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(233)))), ((int)(((byte)(248)))));
-            this.gridChild.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(233)))), ((int)(((byte)(248)))));
+            this.gridChild.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
             this.gridChild.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle48.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridChild.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridChild.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.gridChild.ColumnHeadersHeight = 25;
             this.gridChild.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
+            this.col_Session,
             this.col_BT3Code,
             this.col_BillCode,
             this.col_SendMan,
@@ -737,14 +739,14 @@ namespace LeMaiDesktop
             this.col_MoneyReturnStatusName,
             this.col_ProviderName,
             this.col_ProviderTypeCode});
-            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle64.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle64.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle64.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle64.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle64.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle64.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridChild.DefaultCellStyle = dataGridViewCellStyle64;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridChild.DefaultCellStyle = dataGridViewCellStyle31;
             this.gridChild.EnableHeadersVisualStyles = false;
             this.gridChild.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.gridChild.HighlightSelectedColumnHeaders = false;
@@ -752,272 +754,22 @@ namespace LeMaiDesktop
             this.gridChild.MultiSelect = false;
             this.gridChild.Name = "gridChild";
             this.gridChild.PaintEnhancedSelection = false;
-            dataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle65.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle65.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle65.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle65.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridChild.RowHeadersDefaultCellStyle = dataGridViewCellStyle65;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridChild.RowHeadersDefaultCellStyle = dataGridViewCellStyle32;
             this.gridChild.RowHeadersVisible = false;
-            dataGridViewCellStyle66.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(106)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle66.SelectionForeColor = System.Drawing.Color.White;
-            this.gridChild.RowsDefaultCellStyle = dataGridViewCellStyle66;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(106)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.White;
+            this.gridChild.RowsDefaultCellStyle = dataGridViewCellStyle33;
             this.gridChild.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridChild.RowTemplate.Height = 25;
             this.gridChild.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.gridChild.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridChild.Size = new System.Drawing.Size(1291, 422);
             this.gridChild.TabIndex = 1442;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // col_BT3Code
-            // 
-            this.col_BT3Code.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_BT3Code.DataPropertyName = "BT3Code";
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_BT3Code.DefaultCellStyle = dataGridViewCellStyle49;
-            this.col_BT3Code.HeaderText = "Mã BT3";
-            this.col_BT3Code.MinimumWidth = 120;
-            this.col_BT3Code.Name = "col_BT3Code";
-            this.col_BT3Code.ReadOnly = true;
-            // 
-            // col_BillCode
-            // 
-            this.col_BillCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_BillCode.DataPropertyName = "BillCode";
-            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_BillCode.DefaultCellStyle = dataGridViewCellStyle50;
-            this.col_BillCode.HeaderText = "Mã LM";
-            this.col_BillCode.Name = "col_BillCode";
-            this.col_BillCode.ReadOnly = true;
-            this.col_BillCode.Width = 90;
-            // 
-            // col_SendMan
-            // 
-            this.col_SendMan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_SendMan.DataPropertyName = "SendMan";
-            this.col_SendMan.HeaderText = "Người gửi";
-            this.col_SendMan.Name = "col_SendMan";
-            this.col_SendMan.ReadOnly = true;
-            this.col_SendMan.Width = 90;
-            // 
-            // col_SendManPhone
-            // 
-            this.col_SendManPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_SendManPhone.DataPropertyName = "SendManPhone";
-            this.col_SendManPhone.HeaderText = "SĐT gửi";
-            this.col_SendManPhone.Name = "col_SendManPhone";
-            this.col_SendManPhone.ReadOnly = true;
-            this.col_SendManPhone.Width = 90;
-            // 
-            // col_AcceptMan
-            // 
-            this.col_AcceptMan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_AcceptMan.DataPropertyName = "AcceptMan";
-            this.col_AcceptMan.HeaderText = "Người nhận";
-            this.col_AcceptMan.Name = "col_AcceptMan";
-            this.col_AcceptMan.ReadOnly = true;
-            this.col_AcceptMan.Width = 90;
-            // 
-            // col_AcceptManPhone
-            // 
-            this.col_AcceptManPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_AcceptManPhone.DataPropertyName = "AcceptManPhone";
-            this.col_AcceptManPhone.HeaderText = "SĐT Nhận";
-            this.col_AcceptManPhone.Name = "col_AcceptManPhone";
-            this.col_AcceptManPhone.ReadOnly = true;
-            this.col_AcceptManPhone.Width = 90;
-            // 
-            // col_AcceptProvince
-            // 
-            this.col_AcceptProvince.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_AcceptProvince.DataPropertyName = "AcceptProvince";
-            this.col_AcceptProvince.HeaderText = "Tỉnh nhận";
-            this.col_AcceptProvince.Name = "col_AcceptProvince";
-            this.col_AcceptProvince.ReadOnly = true;
-            this.col_AcceptProvince.Width = 90;
-            // 
-            // col_COD
-            // 
-            this.col_COD.DataPropertyName = "COD";
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle51.Format = "N0";
-            this.col_COD.DefaultCellStyle = dataGridViewCellStyle51;
-            this.col_COD.HeaderText = "Thu hộ LM";
-            this.col_COD.Name = "col_COD";
-            this.col_COD.ReadOnly = true;
-            // 
-            // col_BT3COD
-            // 
-            this.col_BT3COD.DataPropertyName = "BT3COD";
-            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle52.Format = "N0";
-            this.col_BT3COD.DefaultCellStyle = dataGridViewCellStyle52;
-            this.col_BT3COD.HeaderText = "Thu hộ BT3";
-            this.col_BT3COD.Name = "col_BT3COD";
-            this.col_BT3COD.ReadOnly = true;
-            // 
-            // col_Freight
-            // 
-            this.col_Freight.DataPropertyName = "Freight";
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle53.Format = "N0";
-            this.col_Freight.DefaultCellStyle = dataGridViewCellStyle53;
-            this.col_Freight.HeaderText = "Phí LM";
-            this.col_Freight.Name = "col_Freight";
-            this.col_Freight.ReadOnly = true;
-            // 
-            // col_BT3TotalFee
-            // 
-            this.col_BT3TotalFee.DataPropertyName = "BT3TotalFee";
-            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle54.Format = "N0";
-            this.col_BT3TotalFee.DefaultCellStyle = dataGridViewCellStyle54;
-            this.col_BT3TotalFee.HeaderText = "Phí BT3";
-            this.col_BT3TotalFee.Name = "col_BT3TotalFee";
-            this.col_BT3TotalFee.ReadOnly = true;
-            // 
-            // col_FeeWeight
-            // 
-            this.col_FeeWeight.DataPropertyName = "FeeWeight";
-            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle55.Format = "N0";
-            this.col_FeeWeight.DefaultCellStyle = dataGridViewCellStyle55;
-            this.col_FeeWeight.HeaderText = "Cân nặng LM";
-            this.col_FeeWeight.Name = "col_FeeWeight";
-            this.col_FeeWeight.ReadOnly = true;
-            // 
-            // col_CanNangBT3
-            // 
-            this.col_CanNangBT3.DataPropertyName = "BillWeight";
-            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle56.Format = "N0";
-            this.col_CanNangBT3.DefaultCellStyle = dataGridViewCellStyle56;
-            this.col_CanNangBT3.HeaderText = "Cân nặng BT3";
-            this.col_CanNangBT3.Name = "col_CanNangBT3";
-            this.col_CanNangBT3.ReadOnly = true;
-            // 
-            // col_BT3TotalDiscount
-            // 
-            this.col_BT3TotalDiscount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_BT3TotalDiscount.DataPropertyName = "BT3TotalDiscount";
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle57.Format = "N0";
-            this.col_BT3TotalDiscount.DefaultCellStyle = dataGridViewCellStyle57;
-            this.col_BT3TotalDiscount.HeaderText = "Giảm giá BT3";
-            this.col_BT3TotalDiscount.Name = "col_BT3TotalDiscount";
-            this.col_BT3TotalDiscount.ReadOnly = true;
-            this.col_BT3TotalDiscount.Width = 90;
-            // 
-            // col_BT3TotalPaid
-            // 
-            this.col_BT3TotalPaid.DataPropertyName = "BT3TotalPaid";
-            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle58.Format = "N0";
-            this.col_BT3TotalPaid.DefaultCellStyle = dataGridViewCellStyle58;
-            this.col_BT3TotalPaid.HeaderText = "Đã TT BT3";
-            this.col_BT3TotalPaid.Name = "col_BT3TotalPaid";
-            this.col_BT3TotalPaid.ReadOnly = true;
-            // 
-            // col_PayType
-            // 
-            this.col_PayType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_PayType.DataPropertyName = "PayType";
-            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_PayType.DefaultCellStyle = dataGridViewCellStyle59;
-            this.col_PayType.HeaderText = "PayType";
-            this.col_PayType.Name = "col_PayType";
-            this.col_PayType.ReadOnly = true;
-            // 
-            // col_Status
-            // 
-            this.col_Status.DataPropertyName = "Status";
-            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle60.Format = "N0";
-            this.col_Status.DefaultCellStyle = dataGridViewCellStyle60;
-            this.col_Status.HeaderText = "Status";
-            this.col_Status.Name = "col_Status";
-            this.col_Status.ReadOnly = true;
-            this.col_Status.Visible = false;
-            // 
-            // col_MoneyReturn
-            // 
-            this.col_MoneyReturn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_MoneyReturn.DataPropertyName = "MoneyReturn";
-            dataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle61.Format = "N0";
-            this.col_MoneyReturn.DefaultCellStyle = dataGridViewCellStyle61;
-            this.col_MoneyReturn.HeaderText = "Đối soát BT3";
-            this.col_MoneyReturn.Name = "col_MoneyReturn";
-            this.col_MoneyReturn.ReadOnly = true;
-            // 
-            // col_DateReturn
-            // 
-            this.col_DateReturn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_DateReturn.DataPropertyName = "DateReturn";
-            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle62.Format = "dd/MM/yyyy";
-            this.col_DateReturn.DefaultCellStyle = dataGridViewCellStyle62;
-            this.col_DateReturn.HeaderText = "Ngày ký nhận/hoàn trả";
-            this.col_DateReturn.Name = "col_DateReturn";
-            this.col_DateReturn.ReadOnly = true;
-            this.col_DateReturn.Width = 80;
-            // 
-            // col_IsPayCustomer
-            // 
-            this.col_IsPayCustomer.DataPropertyName = "IsPayCustomer";
-            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.col_IsPayCustomer.DefaultCellStyle = dataGridViewCellStyle63;
-            this.col_IsPayCustomer.HeaderText = "IsPayCustomer";
-            this.col_IsPayCustomer.Name = "col_IsPayCustomer";
-            this.col_IsPayCustomer.ReadOnly = true;
-            this.col_IsPayCustomer.Visible = false;
-            // 
-            // col_ShopName
-            // 
-            this.col_ShopName.DataPropertyName = "ShopName";
-            this.col_ShopName.HeaderText = "ShopName";
-            this.col_ShopName.Name = "col_ShopName";
-            this.col_ShopName.ReadOnly = true;
-            this.col_ShopName.Visible = false;
-            // 
-            // col_UserApi
-            // 
-            this.col_UserApi.DataPropertyName = "UserApi";
-            this.col_UserApi.HeaderText = "UserApi";
-            this.col_UserApi.Name = "col_UserApi";
-            this.col_UserApi.ReadOnly = true;
-            this.col_UserApi.Visible = false;
-            // 
-            // col_MoneyReturnStatusName
-            // 
-            this.col_MoneyReturnStatusName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_MoneyReturnStatusName.DataPropertyName = "MoneyReturnStatusName";
-            this.col_MoneyReturnStatusName.HeaderText = "Tình trạng";
-            this.col_MoneyReturnStatusName.Name = "col_MoneyReturnStatusName";
-            this.col_MoneyReturnStatusName.ReadOnly = true;
-            this.col_MoneyReturnStatusName.Width = 120;
-            // 
-            // col_ProviderName
-            // 
-            this.col_ProviderName.DataPropertyName = "ProviderName";
-            this.col_ProviderName.HeaderText = "Tên tài khoản";
-            this.col_ProviderName.Name = "col_ProviderName";
-            this.col_ProviderName.ReadOnly = true;
-            // 
-            // col_ProviderTypeCode
-            // 
-            this.col_ProviderTypeCode.DataPropertyName = "ProviderTypeCode";
-            this.col_ProviderTypeCode.HeaderText = "Loại tài khoản";
-            this.col_ProviderTypeCode.Name = "col_ProviderTypeCode";
-            this.col_ProviderTypeCode.ReadOnly = true;
             // 
             // txtNote
             // 
@@ -1263,6 +1015,263 @@ namespace LeMaiDesktop
             this.backgroundWorkerLuu.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerLuu_ProgressChanged);
             this.backgroundWorkerLuu.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerLuu_RunWorkerCompleted);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // col_Session
+            // 
+            this.col_Session.DataPropertyName = "Session";
+            this.col_Session.HeaderText = "Kỳ đối soát";
+            this.col_Session.Name = "col_Session";
+            this.col_Session.ReadOnly = true;
+            // 
+            // col_BT3Code
+            // 
+            this.col_BT3Code.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_BT3Code.DataPropertyName = "BT3Code";
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_BT3Code.DefaultCellStyle = dataGridViewCellStyle16;
+            this.col_BT3Code.HeaderText = "Mã BT3";
+            this.col_BT3Code.MinimumWidth = 120;
+            this.col_BT3Code.Name = "col_BT3Code";
+            this.col_BT3Code.ReadOnly = true;
+            // 
+            // col_BillCode
+            // 
+            this.col_BillCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_BillCode.DataPropertyName = "BillCode";
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_BillCode.DefaultCellStyle = dataGridViewCellStyle17;
+            this.col_BillCode.HeaderText = "Mã LM";
+            this.col_BillCode.Name = "col_BillCode";
+            this.col_BillCode.ReadOnly = true;
+            this.col_BillCode.Width = 90;
+            // 
+            // col_SendMan
+            // 
+            this.col_SendMan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_SendMan.DataPropertyName = "SendMan";
+            this.col_SendMan.HeaderText = "Người gửi";
+            this.col_SendMan.Name = "col_SendMan";
+            this.col_SendMan.ReadOnly = true;
+            this.col_SendMan.Width = 90;
+            // 
+            // col_SendManPhone
+            // 
+            this.col_SendManPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_SendManPhone.DataPropertyName = "SendManPhone";
+            this.col_SendManPhone.HeaderText = "SĐT gửi";
+            this.col_SendManPhone.Name = "col_SendManPhone";
+            this.col_SendManPhone.ReadOnly = true;
+            this.col_SendManPhone.Width = 90;
+            // 
+            // col_AcceptMan
+            // 
+            this.col_AcceptMan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_AcceptMan.DataPropertyName = "AcceptMan";
+            this.col_AcceptMan.HeaderText = "Người nhận";
+            this.col_AcceptMan.Name = "col_AcceptMan";
+            this.col_AcceptMan.ReadOnly = true;
+            this.col_AcceptMan.Width = 90;
+            // 
+            // col_AcceptManPhone
+            // 
+            this.col_AcceptManPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_AcceptManPhone.DataPropertyName = "AcceptManPhone";
+            this.col_AcceptManPhone.HeaderText = "SĐT Nhận";
+            this.col_AcceptManPhone.Name = "col_AcceptManPhone";
+            this.col_AcceptManPhone.ReadOnly = true;
+            this.col_AcceptManPhone.Width = 90;
+            // 
+            // col_AcceptProvince
+            // 
+            this.col_AcceptProvince.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_AcceptProvince.DataPropertyName = "AcceptProvince";
+            this.col_AcceptProvince.HeaderText = "Tỉnh nhận";
+            this.col_AcceptProvince.Name = "col_AcceptProvince";
+            this.col_AcceptProvince.ReadOnly = true;
+            this.col_AcceptProvince.Width = 90;
+            // 
+            // col_COD
+            // 
+            this.col_COD.DataPropertyName = "COD";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "N0";
+            this.col_COD.DefaultCellStyle = dataGridViewCellStyle18;
+            this.col_COD.HeaderText = "Thu hộ LM";
+            this.col_COD.Name = "col_COD";
+            this.col_COD.ReadOnly = true;
+            // 
+            // col_BT3COD
+            // 
+            this.col_BT3COD.DataPropertyName = "BT3COD";
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "N0";
+            this.col_BT3COD.DefaultCellStyle = dataGridViewCellStyle19;
+            this.col_BT3COD.HeaderText = "Thu hộ BT3";
+            this.col_BT3COD.Name = "col_BT3COD";
+            this.col_BT3COD.ReadOnly = true;
+            // 
+            // col_Freight
+            // 
+            this.col_Freight.DataPropertyName = "Freight";
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle20.Format = "N0";
+            this.col_Freight.DefaultCellStyle = dataGridViewCellStyle20;
+            this.col_Freight.HeaderText = "Phí LM";
+            this.col_Freight.Name = "col_Freight";
+            this.col_Freight.ReadOnly = true;
+            // 
+            // col_BT3TotalFee
+            // 
+            this.col_BT3TotalFee.DataPropertyName = "BT3TotalFee";
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle21.Format = "N0";
+            this.col_BT3TotalFee.DefaultCellStyle = dataGridViewCellStyle21;
+            this.col_BT3TotalFee.HeaderText = "Phí BT3";
+            this.col_BT3TotalFee.Name = "col_BT3TotalFee";
+            this.col_BT3TotalFee.ReadOnly = true;
+            // 
+            // col_FeeWeight
+            // 
+            this.col_FeeWeight.DataPropertyName = "FeeWeight";
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle22.Format = "N0";
+            this.col_FeeWeight.DefaultCellStyle = dataGridViewCellStyle22;
+            this.col_FeeWeight.HeaderText = "Cân nặng LM";
+            this.col_FeeWeight.Name = "col_FeeWeight";
+            this.col_FeeWeight.ReadOnly = true;
+            // 
+            // col_CanNangBT3
+            // 
+            this.col_CanNangBT3.DataPropertyName = "BillWeight";
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle23.Format = "N0";
+            this.col_CanNangBT3.DefaultCellStyle = dataGridViewCellStyle23;
+            this.col_CanNangBT3.HeaderText = "Cân nặng BT3";
+            this.col_CanNangBT3.Name = "col_CanNangBT3";
+            this.col_CanNangBT3.ReadOnly = true;
+            // 
+            // col_BT3TotalDiscount
+            // 
+            this.col_BT3TotalDiscount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_BT3TotalDiscount.DataPropertyName = "BT3TotalDiscount";
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle24.Format = "N0";
+            this.col_BT3TotalDiscount.DefaultCellStyle = dataGridViewCellStyle24;
+            this.col_BT3TotalDiscount.HeaderText = "Giảm giá BT3";
+            this.col_BT3TotalDiscount.Name = "col_BT3TotalDiscount";
+            this.col_BT3TotalDiscount.ReadOnly = true;
+            this.col_BT3TotalDiscount.Width = 90;
+            // 
+            // col_BT3TotalPaid
+            // 
+            this.col_BT3TotalPaid.DataPropertyName = "BT3TotalPaid";
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle25.Format = "N0";
+            this.col_BT3TotalPaid.DefaultCellStyle = dataGridViewCellStyle25;
+            this.col_BT3TotalPaid.HeaderText = "Đã TT BT3";
+            this.col_BT3TotalPaid.Name = "col_BT3TotalPaid";
+            this.col_BT3TotalPaid.ReadOnly = true;
+            // 
+            // col_PayType
+            // 
+            this.col_PayType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_PayType.DataPropertyName = "PayType";
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_PayType.DefaultCellStyle = dataGridViewCellStyle26;
+            this.col_PayType.HeaderText = "PayType";
+            this.col_PayType.Name = "col_PayType";
+            this.col_PayType.ReadOnly = true;
+            // 
+            // col_Status
+            // 
+            this.col_Status.DataPropertyName = "Status";
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle27.Format = "N0";
+            this.col_Status.DefaultCellStyle = dataGridViewCellStyle27;
+            this.col_Status.HeaderText = "Status";
+            this.col_Status.Name = "col_Status";
+            this.col_Status.ReadOnly = true;
+            this.col_Status.Visible = false;
+            // 
+            // col_MoneyReturn
+            // 
+            this.col_MoneyReturn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_MoneyReturn.DataPropertyName = "MoneyReturn";
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle28.Format = "N0";
+            this.col_MoneyReturn.DefaultCellStyle = dataGridViewCellStyle28;
+            this.col_MoneyReturn.HeaderText = "Đối soát BT3";
+            this.col_MoneyReturn.Name = "col_MoneyReturn";
+            this.col_MoneyReturn.ReadOnly = true;
+            // 
+            // col_DateReturn
+            // 
+            this.col_DateReturn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_DateReturn.DataPropertyName = "DateReturn";
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.Format = "dd/MM/yyyy";
+            this.col_DateReturn.DefaultCellStyle = dataGridViewCellStyle29;
+            this.col_DateReturn.HeaderText = "Ngày ký nhận/hoàn trả";
+            this.col_DateReturn.Name = "col_DateReturn";
+            this.col_DateReturn.ReadOnly = true;
+            this.col_DateReturn.Width = 80;
+            // 
+            // col_IsPayCustomer
+            // 
+            this.col_IsPayCustomer.DataPropertyName = "IsPayCustomer";
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.col_IsPayCustomer.DefaultCellStyle = dataGridViewCellStyle30;
+            this.col_IsPayCustomer.HeaderText = "IsPayCustomer";
+            this.col_IsPayCustomer.Name = "col_IsPayCustomer";
+            this.col_IsPayCustomer.ReadOnly = true;
+            this.col_IsPayCustomer.Visible = false;
+            // 
+            // col_ShopName
+            // 
+            this.col_ShopName.DataPropertyName = "ShopName";
+            this.col_ShopName.HeaderText = "ShopName";
+            this.col_ShopName.Name = "col_ShopName";
+            this.col_ShopName.ReadOnly = true;
+            this.col_ShopName.Visible = false;
+            // 
+            // col_UserApi
+            // 
+            this.col_UserApi.DataPropertyName = "UserApi";
+            this.col_UserApi.HeaderText = "UserApi";
+            this.col_UserApi.Name = "col_UserApi";
+            this.col_UserApi.ReadOnly = true;
+            this.col_UserApi.Visible = false;
+            // 
+            // col_MoneyReturnStatusName
+            // 
+            this.col_MoneyReturnStatusName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.col_MoneyReturnStatusName.DataPropertyName = "MoneyReturnStatusName";
+            this.col_MoneyReturnStatusName.HeaderText = "Tình trạng";
+            this.col_MoneyReturnStatusName.Name = "col_MoneyReturnStatusName";
+            this.col_MoneyReturnStatusName.ReadOnly = true;
+            this.col_MoneyReturnStatusName.Width = 120;
+            // 
+            // col_ProviderName
+            // 
+            this.col_ProviderName.DataPropertyName = "ProviderName";
+            this.col_ProviderName.HeaderText = "Tên tài khoản";
+            this.col_ProviderName.Name = "col_ProviderName";
+            this.col_ProviderName.ReadOnly = true;
+            // 
+            // col_ProviderTypeCode
+            // 
+            this.col_ProviderTypeCode.DataPropertyName = "ProviderTypeCode";
+            this.col_ProviderTypeCode.HeaderText = "Loại tài khoản";
+            this.col_ProviderTypeCode.Name = "col_ProviderTypeCode";
+            this.col_ProviderTypeCode.ReadOnly = true;
+            // 
             // frmNhapDoiSoatBT3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1337,7 +1346,26 @@ namespace LeMaiDesktop
         private System.ComponentModel.BackgroundWorker backgroundWorkerLuu;
         private DevComponents.DotNetBar.Controls.DataGridViewX gridChild;
         private DevComponents.DotNetBar.Controls.DataGridViewX gridParrent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_ParrentId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_FK_ProviderAccount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_FK_AccountRefer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_FullName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Note;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Post;
+		private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Session;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_BT3Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_BillCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_SendMan;
@@ -1363,23 +1391,5 @@ namespace LeMaiDesktop
         private System.Windows.Forms.DataGridViewTextBoxColumn col_MoneyReturnStatusName;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_ProviderName;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_ProviderTypeCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_ParrentId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_FK_ProviderAccount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_FK_AccountRefer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_FullName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Note;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Post;
-		private System.Windows.Forms.ProgressBar progressBar;
-	}
+    }
 }

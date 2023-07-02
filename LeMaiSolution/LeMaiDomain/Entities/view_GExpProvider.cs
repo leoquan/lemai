@@ -64,6 +64,7 @@ namespace LeMaiDomain
 		public System.Boolean IsPickup { get; set; }
 		public System.String LinkCustomerLogin { get; set; }
 		public System.Boolean AlwayReceivePay { get; set; }
+		public System.Int32? ConvertWeight { get; set; }
 		public view_GExpProvider(){}
 	}
 }

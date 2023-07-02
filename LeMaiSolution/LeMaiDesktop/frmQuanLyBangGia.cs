@@ -414,7 +414,7 @@ namespace LeMaiDesktop
             cmbHuyen.ValueMember = "DistrictID";
 
         }
-        private void LoadData(string searchText = "")
+        private async void LoadData(string searchText = "")
         {
             IDataContext dc = PCommon.getDataContext();
             try
@@ -429,6 +429,9 @@ namespace LeMaiDesktop
                 {
                     gridParrent.DataSource = dc.GetData("select * FROM " + PBean.SCHEMA + ".[view_GExpFee] WHERE FK_Post='" + PBean.USER.CardId + "' AND FeeName like N'%" + searchText + "%' order by DefaultFee desc, FeeName asc");
                 }
+                cmbBangGia.DataSource = await _logic.GetFeeList(PBean.USER.CardId);
+                cmbBangGia.DisplayMember = "FeeName";
+                cmbBangGia.ValueMember = "Id";
             }
             catch (Exception ex)
             {

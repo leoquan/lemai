@@ -23,7 +23,7 @@ namespace LeMaiLogic.Logic
                 dc.Open();
                 List<GExpProvider> list = new List<GExpProvider>();
                 list.Add(new GExpProvider { Id = "9999", ProviderName = "Vui lòng chọn tài khoản BT3" });
-                list.AddRange(dc.GExpprovider.GetListObjectCon(base.ConnectionData.Schema, "WHERE Post=@Post ORDER BY SelectIndex", "@Post", post));
+                list.AddRange(dc.GExpprovider.GetListObjectCon(base.ConnectionData.Schema, "WHERE Post=@Post AND IsDelete=@IsDelete AND ManualSign=@ManualSign AND IsOwner<2 ORDER BY SelectIndex", "@Post", post, "@IsDelete", false, "@ManualSign", false));
                 return list;
             }
             catch (Exception ex)
@@ -44,7 +44,7 @@ namespace LeMaiLogic.Logic
                 dc.Open();
                 List<GExpProvider> list = new List<GExpProvider>();
                 list.Add(new GExpProvider { Id = "9999", ProviderName = "Tất cả" });
-                list.AddRange(dc.GExpprovider.GetListObjectCon(base.ConnectionData.Schema, "WHERE Post=@Post ORDER BY SelectIndex", "@Post", post));
+                list.AddRange(dc.GExpprovider.GetListObjectCon(base.ConnectionData.Schema, "WHERE Post=@Post AND IsDelete=@IsDelete AND ManualSign=@ManualSign AND IsOwner<2 ORDER BY SelectIndex", "@Post", post, "@IsDelete", false, "@ManualSign", false));
                 return list;
             }
             catch (Exception ex)
@@ -160,6 +160,8 @@ namespace LeMaiLogic.Logic
                 else
                 {
                     return "Không tìm thấy dữ liệu cần xóa.";
+                    // Kiểm tra bên Debit
+
                 }
             }
             catch (Exception ex)

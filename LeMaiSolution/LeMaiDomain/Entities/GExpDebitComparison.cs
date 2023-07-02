@@ -17,6 +17,8 @@ namespace LeMaiDomain
 		public System.Decimal COD { get; set; }
 		public System.Decimal ReturnCOD { get; set; }
 		public System.String FK_Provider { get; set; }
+		public System.String FK_AccountRefer { get; set; }
+		public System.String FK_Post { get; set; }
 		public GExpDebitComparison(){}
 	}
 }

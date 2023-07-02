@@ -84,6 +84,8 @@ namespace LeMaiDomain
 		public System.String TrackLink { get; set; }
 		public System.String NamePickup { get; set; }
 		public System.String PhonePickup { get; set; }
+		public System.Int32? ConvertWeight { get; set; }
+		public System.Boolean AlwayReceivePay { get; set; }
 		public view_GExpBillGHNApi(){}
 	}
 }

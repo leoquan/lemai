@@ -337,6 +337,7 @@ namespace LeMaiLogic.Logic
                 item.LinkCustomerLogin = input.LinkCustomerLogin;
                 item.PercentConfig = 100;
                 item.AlwayReceivePay = input.IsAlwayReceive;
+                item.IsOwner = 0;
                 //Change Database
                 dc.GExpprovider.InsertOnSubmit(base.ConnectionData.Schema, item);
                 dc.SubmitChanges();

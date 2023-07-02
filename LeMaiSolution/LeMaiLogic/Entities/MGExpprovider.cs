@@ -286,7 +286,7 @@ namespace LeMaiLogic
 					}
 					if (dr["IsOwner"] != null && dr["IsOwner"] != DBNull.Value)
 					{
-						item.IsOwner = Convert.ToBoolean(dr["IsOwner"]);
+						item.IsOwner = Convert.ToInt32(dr["IsOwner"]);
 					}
 					if (dr["PercentConfig"] != null && dr["PercentConfig"] != DBNull.Value)
 					{
@@ -295,6 +295,10 @@ namespace LeMaiLogic
 					if (dr["AlwayReceivePay"] != null && dr["AlwayReceivePay"] != DBNull.Value)
 					{
 						item.AlwayReceivePay = Convert.ToBoolean(dr["AlwayReceivePay"]);
+					}
+					if (dr["ConvertWeight"] != null && dr["ConvertWeight"] != DBNull.Value)
+					{
+						item.ConvertWeight = Convert.ToInt32(dr["ConvertWeight"]);
 					}
 					items.Add(item);
 				}
@@ -541,7 +545,7 @@ namespace LeMaiLogic
 					}
 					if (dr["IsOwner"] != null && dr["IsOwner"] != DBNull.Value)
 					{
-						item.IsOwner = Convert.ToBoolean(dr["IsOwner"]);
+						item.IsOwner = Convert.ToInt32(dr["IsOwner"]);
 					}
 					if (dr["PercentConfig"] != null && dr["PercentConfig"] != DBNull.Value)
 					{
@@ -550,6 +554,10 @@ namespace LeMaiLogic
 					if (dr["AlwayReceivePay"] != null && dr["AlwayReceivePay"] != DBNull.Value)
 					{
 						item.AlwayReceivePay = Convert.ToBoolean(dr["AlwayReceivePay"]);
+					}
+					if (dr["ConvertWeight"] != null && dr["ConvertWeight"] != DBNull.Value)
+					{
+						item.ConvertWeight = Convert.ToInt32(dr["ConvertWeight"]);
 					}
 					items.Add(item);
 				}
@@ -819,7 +827,7 @@ namespace LeMaiLogic
 						}
 						if (dr["IsOwner"] != null && dr["IsOwner"] != DBNull.Value)
 						{
-							item.IsOwner = Convert.ToBoolean(dr["IsOwner"]);
+							item.IsOwner = Convert.ToInt32(dr["IsOwner"]);
 						}
 						if (dr["PercentConfig"] != null && dr["PercentConfig"] != DBNull.Value)
 						{
@@ -828,6 +836,10 @@ namespace LeMaiLogic
 						if (dr["AlwayReceivePay"] != null && dr["AlwayReceivePay"] != DBNull.Value)
 						{
 							item.AlwayReceivePay = Convert.ToBoolean(dr["AlwayReceivePay"]);
+						}
+						if (dr["ConvertWeight"] != null && dr["ConvertWeight"] != DBNull.Value)
+						{
+							item.ConvertWeight = Convert.ToInt32(dr["ConvertWeight"]);
 						}
 
 						break;
@@ -1080,7 +1092,7 @@ namespace LeMaiLogic
 						}
 						if (dr["IsOwner"] != null && dr["IsOwner"] != DBNull.Value)
 						{
-							item.IsOwner = Convert.ToBoolean(dr["IsOwner"]);
+							item.IsOwner = Convert.ToInt32(dr["IsOwner"]);
 						}
 						if (dr["PercentConfig"] != null && dr["PercentConfig"] != DBNull.Value)
 						{
@@ -1089,6 +1101,10 @@ namespace LeMaiLogic
 						if (dr["AlwayReceivePay"] != null && dr["AlwayReceivePay"] != DBNull.Value)
 						{
 							item.AlwayReceivePay = Convert.ToBoolean(dr["AlwayReceivePay"]);
+						}
+						if (dr["ConvertWeight"] != null && dr["ConvertWeight"] != DBNull.Value)
+						{
+							item.ConvertWeight = Convert.ToInt32(dr["ConvertWeight"]);
 						}
 
 						break;
@@ -1132,7 +1148,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpProvider](Id, ProviderName, Token, UserApi, PassApi, ShopId, ClientId, Post, Address, Email, ShopName, ShopPhone, ProviderTypeCode, IsDelete, AutoSelect, InitWeightSelect, InitWeightSelectMax, SelectIndex, InitPrice, InitWeight, StepWeight, StepPrice, WardCode, DistrictCode, ProvinceCode, WardName, DistrictName, ProvinceName, ServiceId, PostBT3Id, RunMode, TrackLink, WhiteListProvince, BlackListProvince, GroupProvider, InsuranceValue, ExpiresDate, ClientSecrect, PrintLable, DeliveryInitPrice, DeliveryInitWeight, DeliveryStepWeight, DeliveryStepPrice, SysInitPrice, SysInitWeight, SysStepWeight, SysStepPrice, TranInitPrice, TranInitWeight, TranStepWeight, TranStepPrice, DistrictWhiteList, ManualSign, IsPickup, LinkCustomerLogin, IsOwner, PercentConfig, AlwayReceivePay) VALUES(@Id, @ProviderName, @Token, @UserApi, @PassApi, @ShopId, @ClientId, @Post, @Address, @Email, @ShopName, @ShopPhone, @ProviderTypeCode, @IsDelete, @AutoSelect, @InitWeightSelect, @InitWeightSelectMax, @SelectIndex, @InitPrice, @InitWeight, @StepWeight, @StepPrice, @WardCode, @DistrictCode, @ProvinceCode, @WardName, @DistrictName, @ProvinceName, @ServiceId, @PostBT3Id, @RunMode, @TrackLink, @WhiteListProvince, @BlackListProvince, @GroupProvider, @InsuranceValue, @ExpiresDate, @ClientSecrect, @PrintLable, @DeliveryInitPrice, @DeliveryInitWeight, @DeliveryStepWeight, @DeliveryStepPrice, @SysInitPrice, @SysInitWeight, @SysStepWeight, @SysStepPrice, @TranInitPrice, @TranInitWeight, @TranStepWeight, @TranStepPrice, @DistrictWhiteList, @ManualSign, @IsPickup, @LinkCustomerLogin, @IsOwner, @PercentConfig, @AlwayReceivePay)", 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[GExpProvider](Id, ProviderName, Token, UserApi, PassApi, ShopId, ClientId, Post, Address, Email, ShopName, ShopPhone, ProviderTypeCode, IsDelete, AutoSelect, InitWeightSelect, InitWeightSelectMax, SelectIndex, InitPrice, InitWeight, StepWeight, StepPrice, WardCode, DistrictCode, ProvinceCode, WardName, DistrictName, ProvinceName, ServiceId, PostBT3Id, RunMode, TrackLink, WhiteListProvince, BlackListProvince, GroupProvider, InsuranceValue, ExpiresDate, ClientSecrect, PrintLable, DeliveryInitPrice, DeliveryInitWeight, DeliveryStepWeight, DeliveryStepPrice, SysInitPrice, SysInitWeight, SysStepWeight, SysStepPrice, TranInitPrice, TranInitWeight, TranStepWeight, TranStepPrice, DistrictWhiteList, ManualSign, IsPickup, LinkCustomerLogin, IsOwner, PercentConfig, AlwayReceivePay, ConvertWeight) VALUES(@Id, @ProviderName, @Token, @UserApi, @PassApi, @ShopId, @ClientId, @Post, @Address, @Email, @ShopName, @ShopPhone, @ProviderTypeCode, @IsDelete, @AutoSelect, @InitWeightSelect, @InitWeightSelectMax, @SelectIndex, @InitPrice, @InitWeight, @StepWeight, @StepPrice, @WardCode, @DistrictCode, @ProvinceCode, @WardName, @DistrictName, @ProvinceName, @ServiceId, @PostBT3Id, @RunMode, @TrackLink, @WhiteListProvince, @BlackListProvince, @GroupProvider, @InsuranceValue, @ExpiresDate, @ClientSecrect, @PrintLable, @DeliveryInitPrice, @DeliveryInitWeight, @DeliveryStepWeight, @DeliveryStepPrice, @SysInitPrice, @SysInitWeight, @SysStepWeight, @SysStepPrice, @TranInitPrice, @TranInitWeight, @TranStepWeight, @TranStepPrice, @DistrictWhiteList, @ManualSign, @IsPickup, @LinkCustomerLogin, @IsOwner, @PercentConfig, @AlwayReceivePay, @ConvertWeight)", 
 					"@Id",  _GExpProvider.Id, 
 					"@ProviderName",  _GExpProvider.ProviderName, 
 					"@Token",  _GExpProvider.Token, 
@@ -1190,7 +1206,8 @@ namespace LeMaiLogic
 					"@LinkCustomerLogin",  _GExpProvider.LinkCustomerLogin, 
 					"@IsOwner",  _GExpProvider.IsOwner, 
 					"@PercentConfig",  _GExpProvider.PercentConfig, 
-					"@AlwayReceivePay",  _GExpProvider.AlwayReceivePay);
+					"@AlwayReceivePay",  _GExpProvider.AlwayReceivePay, 
+					"@ConvertWeight",  _GExpProvider.ConvertWeight);
 				return true;
 			}
 			catch
@@ -1218,7 +1235,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpProvider] SET Id=@Id, ProviderName=@ProviderName, Token=@Token, UserApi=@UserApi, PassApi=@PassApi, ShopId=@ShopId, ClientId=@ClientId, Post=@Post, Address=@Address, Email=@Email, ShopName=@ShopName, ShopPhone=@ShopPhone, ProviderTypeCode=@ProviderTypeCode, IsDelete=@IsDelete, AutoSelect=@AutoSelect, InitWeightSelect=@InitWeightSelect, InitWeightSelectMax=@InitWeightSelectMax, SelectIndex=@SelectIndex, InitPrice=@InitPrice, InitWeight=@InitWeight, StepWeight=@StepWeight, StepPrice=@StepPrice, WardCode=@WardCode, DistrictCode=@DistrictCode, ProvinceCode=@ProvinceCode, WardName=@WardName, DistrictName=@DistrictName, ProvinceName=@ProvinceName, ServiceId=@ServiceId, PostBT3Id=@PostBT3Id, RunMode=@RunMode, TrackLink=@TrackLink, WhiteListProvince=@WhiteListProvince, BlackListProvince=@BlackListProvince, GroupProvider=@GroupProvider, InsuranceValue=@InsuranceValue, ExpiresDate=@ExpiresDate, ClientSecrect=@ClientSecrect, PrintLable=@PrintLable, DeliveryInitPrice=@DeliveryInitPrice, DeliveryInitWeight=@DeliveryInitWeight, DeliveryStepWeight=@DeliveryStepWeight, DeliveryStepPrice=@DeliveryStepPrice, SysInitPrice=@SysInitPrice, SysInitWeight=@SysInitWeight, SysStepWeight=@SysStepWeight, SysStepPrice=@SysStepPrice, TranInitPrice=@TranInitPrice, TranInitWeight=@TranInitWeight, TranStepWeight=@TranStepWeight, TranStepPrice=@TranStepPrice, DistrictWhiteList=@DistrictWhiteList, ManualSign=@ManualSign, IsPickup=@IsPickup, LinkCustomerLogin=@LinkCustomerLogin, IsOwner=@IsOwner, PercentConfig=@PercentConfig, AlwayReceivePay=@AlwayReceivePay WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpProvider] SET Id=@Id, ProviderName=@ProviderName, Token=@Token, UserApi=@UserApi, PassApi=@PassApi, ShopId=@ShopId, ClientId=@ClientId, Post=@Post, Address=@Address, Email=@Email, ShopName=@ShopName, ShopPhone=@ShopPhone, ProviderTypeCode=@ProviderTypeCode, IsDelete=@IsDelete, AutoSelect=@AutoSelect, InitWeightSelect=@InitWeightSelect, InitWeightSelectMax=@InitWeightSelectMax, SelectIndex=@SelectIndex, InitPrice=@InitPrice, InitWeight=@InitWeight, StepWeight=@StepWeight, StepPrice=@StepPrice, WardCode=@WardCode, DistrictCode=@DistrictCode, ProvinceCode=@ProvinceCode, WardName=@WardName, DistrictName=@DistrictName, ProvinceName=@ProvinceName, ServiceId=@ServiceId, PostBT3Id=@PostBT3Id, RunMode=@RunMode, TrackLink=@TrackLink, WhiteListProvince=@WhiteListProvince, BlackListProvince=@BlackListProvince, GroupProvider=@GroupProvider, InsuranceValue=@InsuranceValue, ExpiresDate=@ExpiresDate, ClientSecrect=@ClientSecrect, PrintLable=@PrintLable, DeliveryInitPrice=@DeliveryInitPrice, DeliveryInitWeight=@DeliveryInitWeight, DeliveryStepWeight=@DeliveryStepWeight, DeliveryStepPrice=@DeliveryStepPrice, SysInitPrice=@SysInitPrice, SysInitWeight=@SysInitWeight, SysStepWeight=@SysStepWeight, SysStepPrice=@SysStepPrice, TranInitPrice=@TranInitPrice, TranInitWeight=@TranInitWeight, TranStepWeight=@TranStepWeight, TranStepPrice=@TranStepPrice, DistrictWhiteList=@DistrictWhiteList, ManualSign=@ManualSign, IsPickup=@IsPickup, LinkCustomerLogin=@LinkCustomerLogin, IsOwner=@IsOwner, PercentConfig=@PercentConfig, AlwayReceivePay=@AlwayReceivePay, ConvertWeight=@ConvertWeight WHERE Id=@Id", 
 					"@Id",  _GExpProvider.Id, 
 					"@ProviderName",  _GExpProvider.ProviderName, 
 					"@Token",  _GExpProvider.Token, 
@@ -1277,6 +1294,7 @@ namespace LeMaiLogic
 					"@IsOwner",  _GExpProvider.IsOwner, 
 					"@PercentConfig",  _GExpProvider.PercentConfig, 
 					"@AlwayReceivePay",  _GExpProvider.AlwayReceivePay, 
+					"@ConvertWeight",  _GExpProvider.ConvertWeight, 
 					"@Id", Id);
 			}
 			catch
@@ -1292,7 +1310,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpProvider] SET ProviderName=@ProviderName, Token=@Token, UserApi=@UserApi, PassApi=@PassApi, ShopId=@ShopId, ClientId=@ClientId, Post=@Post, Address=@Address, Email=@Email, ShopName=@ShopName, ShopPhone=@ShopPhone, ProviderTypeCode=@ProviderTypeCode, IsDelete=@IsDelete, AutoSelect=@AutoSelect, InitWeightSelect=@InitWeightSelect, InitWeightSelectMax=@InitWeightSelectMax, SelectIndex=@SelectIndex, InitPrice=@InitPrice, InitWeight=@InitWeight, StepWeight=@StepWeight, StepPrice=@StepPrice, WardCode=@WardCode, DistrictCode=@DistrictCode, ProvinceCode=@ProvinceCode, WardName=@WardName, DistrictName=@DistrictName, ProvinceName=@ProvinceName, ServiceId=@ServiceId, PostBT3Id=@PostBT3Id, RunMode=@RunMode, TrackLink=@TrackLink, WhiteListProvince=@WhiteListProvince, BlackListProvince=@BlackListProvince, GroupProvider=@GroupProvider, InsuranceValue=@InsuranceValue, ExpiresDate=@ExpiresDate, ClientSecrect=@ClientSecrect, PrintLable=@PrintLable, DeliveryInitPrice=@DeliveryInitPrice, DeliveryInitWeight=@DeliveryInitWeight, DeliveryStepWeight=@DeliveryStepWeight, DeliveryStepPrice=@DeliveryStepPrice, SysInitPrice=@SysInitPrice, SysInitWeight=@SysInitWeight, SysStepWeight=@SysStepWeight, SysStepPrice=@SysStepPrice, TranInitPrice=@TranInitPrice, TranInitWeight=@TranInitWeight, TranStepWeight=@TranStepWeight, TranStepPrice=@TranStepPrice, DistrictWhiteList=@DistrictWhiteList, ManualSign=@ManualSign, IsPickup=@IsPickup, LinkCustomerLogin=@LinkCustomerLogin, IsOwner=@IsOwner, PercentConfig=@PercentConfig, AlwayReceivePay=@AlwayReceivePay WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpProvider] SET ProviderName=@ProviderName, Token=@Token, UserApi=@UserApi, PassApi=@PassApi, ShopId=@ShopId, ClientId=@ClientId, Post=@Post, Address=@Address, Email=@Email, ShopName=@ShopName, ShopPhone=@ShopPhone, ProviderTypeCode=@ProviderTypeCode, IsDelete=@IsDelete, AutoSelect=@AutoSelect, InitWeightSelect=@InitWeightSelect, InitWeightSelectMax=@InitWeightSelectMax, SelectIndex=@SelectIndex, InitPrice=@InitPrice, InitWeight=@InitWeight, StepWeight=@StepWeight, StepPrice=@StepPrice, WardCode=@WardCode, DistrictCode=@DistrictCode, ProvinceCode=@ProvinceCode, WardName=@WardName, DistrictName=@DistrictName, ProvinceName=@ProvinceName, ServiceId=@ServiceId, PostBT3Id=@PostBT3Id, RunMode=@RunMode, TrackLink=@TrackLink, WhiteListProvince=@WhiteListProvince, BlackListProvince=@BlackListProvince, GroupProvider=@GroupProvider, InsuranceValue=@InsuranceValue, ExpiresDate=@ExpiresDate, ClientSecrect=@ClientSecrect, PrintLable=@PrintLable, DeliveryInitPrice=@DeliveryInitPrice, DeliveryInitWeight=@DeliveryInitWeight, DeliveryStepWeight=@DeliveryStepWeight, DeliveryStepPrice=@DeliveryStepPrice, SysInitPrice=@SysInitPrice, SysInitWeight=@SysInitWeight, SysStepWeight=@SysStepWeight, SysStepPrice=@SysStepPrice, TranInitPrice=@TranInitPrice, TranInitWeight=@TranInitWeight, TranStepWeight=@TranStepWeight, TranStepPrice=@TranStepPrice, DistrictWhiteList=@DistrictWhiteList, ManualSign=@ManualSign, IsPickup=@IsPickup, LinkCustomerLogin=@LinkCustomerLogin, IsOwner=@IsOwner, PercentConfig=@PercentConfig, AlwayReceivePay=@AlwayReceivePay, ConvertWeight=@ConvertWeight WHERE Id=@Id", 
 					"@ProviderName",  _GExpProvider.ProviderName, 
 					"@Token",  _GExpProvider.Token, 
 					"@UserApi",  _GExpProvider.UserApi, 
@@ -1350,6 +1368,7 @@ namespace LeMaiLogic
 					"@IsOwner",  _GExpProvider.IsOwner, 
 					"@PercentConfig",  _GExpProvider.PercentConfig, 
 					"@AlwayReceivePay",  _GExpProvider.AlwayReceivePay, 
+					"@ConvertWeight",  _GExpProvider.ConvertWeight, 
 					"@Id", _GExpProvider.Id);
 			}
 			catch
@@ -1376,7 +1395,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpProvider] SET Id=@Id, ProviderName=@ProviderName, Token=@Token, UserApi=@UserApi, PassApi=@PassApi, ShopId=@ShopId, ClientId=@ClientId, Post=@Post, Address=@Address, Email=@Email, ShopName=@ShopName, ShopPhone=@ShopPhone, ProviderTypeCode=@ProviderTypeCode, IsDelete=@IsDelete, AutoSelect=@AutoSelect, InitWeightSelect=@InitWeightSelect, InitWeightSelectMax=@InitWeightSelectMax, SelectIndex=@SelectIndex, InitPrice=@InitPrice, InitWeight=@InitWeight, StepWeight=@StepWeight, StepPrice=@StepPrice, WardCode=@WardCode, DistrictCode=@DistrictCode, ProvinceCode=@ProvinceCode, WardName=@WardName, DistrictName=@DistrictName, ProvinceName=@ProvinceName, ServiceId=@ServiceId, PostBT3Id=@PostBT3Id, RunMode=@RunMode, TrackLink=@TrackLink, WhiteListProvince=@WhiteListProvince, BlackListProvince=@BlackListProvince, GroupProvider=@GroupProvider, InsuranceValue=@InsuranceValue, ExpiresDate=@ExpiresDate, ClientSecrect=@ClientSecrect, PrintLable=@PrintLable, DeliveryInitPrice=@DeliveryInitPrice, DeliveryInitWeight=@DeliveryInitWeight, DeliveryStepWeight=@DeliveryStepWeight, DeliveryStepPrice=@DeliveryStepPrice, SysInitPrice=@SysInitPrice, SysInitWeight=@SysInitWeight, SysStepWeight=@SysStepWeight, SysStepPrice=@SysStepPrice, TranInitPrice=@TranInitPrice, TranInitWeight=@TranInitWeight, TranStepWeight=@TranStepWeight, TranStepPrice=@TranStepPrice, DistrictWhiteList=@DistrictWhiteList, ManualSign=@ManualSign, IsPickup=@IsPickup, LinkCustomerLogin=@LinkCustomerLogin, IsOwner=@IsOwner, PercentConfig=@PercentConfig, AlwayReceivePay=@AlwayReceivePay "+ condition, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[GExpProvider] SET Id=@Id, ProviderName=@ProviderName, Token=@Token, UserApi=@UserApi, PassApi=@PassApi, ShopId=@ShopId, ClientId=@ClientId, Post=@Post, Address=@Address, Email=@Email, ShopName=@ShopName, ShopPhone=@ShopPhone, ProviderTypeCode=@ProviderTypeCode, IsDelete=@IsDelete, AutoSelect=@AutoSelect, InitWeightSelect=@InitWeightSelect, InitWeightSelectMax=@InitWeightSelectMax, SelectIndex=@SelectIndex, InitPrice=@InitPrice, InitWeight=@InitWeight, StepWeight=@StepWeight, StepPrice=@StepPrice, WardCode=@WardCode, DistrictCode=@DistrictCode, ProvinceCode=@ProvinceCode, WardName=@WardName, DistrictName=@DistrictName, ProvinceName=@ProvinceName, ServiceId=@ServiceId, PostBT3Id=@PostBT3Id, RunMode=@RunMode, TrackLink=@TrackLink, WhiteListProvince=@WhiteListProvince, BlackListProvince=@BlackListProvince, GroupProvider=@GroupProvider, InsuranceValue=@InsuranceValue, ExpiresDate=@ExpiresDate, ClientSecrect=@ClientSecrect, PrintLable=@PrintLable, DeliveryInitPrice=@DeliveryInitPrice, DeliveryInitWeight=@DeliveryInitWeight, DeliveryStepWeight=@DeliveryStepWeight, DeliveryStepPrice=@DeliveryStepPrice, SysInitPrice=@SysInitPrice, SysInitWeight=@SysInitWeight, SysStepWeight=@SysStepWeight, SysStepPrice=@SysStepPrice, TranInitPrice=@TranInitPrice, TranInitWeight=@TranInitWeight, TranStepWeight=@TranStepWeight, TranStepPrice=@TranStepPrice, DistrictWhiteList=@DistrictWhiteList, ManualSign=@ManualSign, IsPickup=@IsPickup, LinkCustomerLogin=@LinkCustomerLogin, IsOwner=@IsOwner, PercentConfig=@PercentConfig, AlwayReceivePay=@AlwayReceivePay, ConvertWeight=@ConvertWeight "+ condition, 
 					"@Id",  _GExpProvider.Id, 
 					"@ProviderName",  _GExpProvider.ProviderName, 
 					"@Token",  _GExpProvider.Token, 
@@ -1434,7 +1453,8 @@ namespace LeMaiLogic
 					"@LinkCustomerLogin",  _GExpProvider.LinkCustomerLogin, 
 					"@IsOwner",  _GExpProvider.IsOwner, 
 					"@PercentConfig",  _GExpProvider.PercentConfig, 
-					"@AlwayReceivePay",  _GExpProvider.AlwayReceivePay);
+					"@AlwayReceivePay",  _GExpProvider.AlwayReceivePay, 
+					"@ConvertWeight",  _GExpProvider.ConvertWeight);
 			}
 			catch
 			{

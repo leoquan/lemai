@@ -1,0 +1,568 @@
+﻿@{
+    ViewData["Title"] = "Tạo đơn hàng";
+    Layout = "_LayoutPost";
+}
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Config
+@model LeMaiModelWebApi.Order.CreateOrderModel
+@section css
+    {
+    <link href="~/Admin/vendors/css/select2.min.css" rel="stylesheet">
+    <link href="~/Admin/vendors/css/toastr.min.css" rel="stylesheet">
+}
+<main class="main">
+    <!-- Breadcrumb -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item"><a href="#">Tạo đơn hàng</a></li>
+    </ol>
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+            <div class="row">
+                <!-- Thông tin người gửi -->
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Thông tin người gửi</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Số điện thoại người gửi</label>
+                                        <input type="text" class="form-control" id="SendManPhone" value="@Model.SendManPhone" placeholder="Số điện thoại người gửi">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Tên người gửi</label>
+                                        <input type="text" class="form-control" id="SendMan" value="@Model.SendMan" placeholder="Tên người gửi">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="name">Địa chỉ người gửi</label>
+                                        <input type="text" class="form-control" id="SendAddress" value="@Model.SendAddress" placeholder="Địa chỉ người gửi">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group" style="padding-left:20px">
+                                        <input class="form-check-input" type="checkbox" id="IsPickup" value="@Model.IsPickup">
+                                        <label class="form-check-label" for="inline-checkbox1">Bên thứ 3 nhận hàng</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row panelPickup" style="display:none">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Số điện thoại lấy hàng</label>
+                                        <input type="text" class="form-control" id="PickupManPhone" value="@Model.PickupManPhone" placeholder="Số điện thoại lấy hàng">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Tên người lấy hàng</label>
+                                        <input type="text" class="form-control" id="PickupMan" value="@Model.PickupMan" placeholder="Tên người lấy hàng">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row panelPickup">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="name">Tỉnh/Tp</label>
+                                        <select id="PickupProvince" class="form-control select2-single">
+                                            @foreach (var item in Model.PickupProvinceList)
+                                            {
+                                                if (item.ProvinceID.ToString() == Model.PickupProvinceSelected)
+                                                {
+                                                    <option value="@item.ProvinceID" selected>@item.ProvinceName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.ProvinceID">@item.ProvinceName</option>
+                                                }
+
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="name">Quận/Huyện</label>
+                                        <select id="PickupDistrict" class="form-control">
+                                            @foreach (var item in Model.PickupDistrictList)
+                                            {
+                                                if (item.DistrictID.ToString() == Model.PickupDistrictSelected)
+                                                {
+                                                    <option value="@item.DistrictID" selected>@item.DistrictName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.DistrictID">@item.DistrictName</option>
+                                                }
+
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="name">Phường/xã</label>
+                                        <select id="PickupWard" class="form-control">
+                                            @foreach (var item in Model.PickupWardList)
+                                            {
+                                                if (item.WardId == Model.PickupWardSelected)
+                                                {
+                                                    <option value="@item.WardId" selected>@item.WardName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.WardId">@item.WardName</option>
+                                                }
+
+                                            }
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row panelPickup">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="PickupAddress">Địa chỉ lấy hàng</label>
+                                        <input type="text" class="form-control" id="PickupAddress" value="@Model.PickupAddress" placeholder="Địa chỉ lấy hàng">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--Thông tin người nhận-->
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Thông tin người nhận</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Số điện thoại người nhận</label>
+                                        <input type="text" class="form-control" id="AcceptManPhone" value="@Model.AcceptManPhone" placeholder="Số điện thoại người nhận">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Tên người nhận</label>
+                                        <input type="text" class="form-control" id="AcceptMan" value="@Model.AcceptMan" placeholder="Tên người nhận">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="name">Tỉnh/Tp</label>
+                                        <select id="AcceptProvince" class="form-control select2-single">
+                                            @foreach (var item in Model.AcceptProvinceList)
+                                            {
+                                                if (item.ProvinceID.ToString() == Model.AcceptProvinceSelected)
+                                                {
+                                                    <option value="@item.ProvinceID" selected>@item.ProvinceName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.ProvinceID">@item.ProvinceName</option>
+                                                }
+
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="name">Quận/Huyện</label>
+                                        <select id="AcceptDistrict" class="form-control select2-single">
+                                            @foreach (var item in Model.AcceptDistrictList)
+                                            {
+                                                if (item.DistrictID.ToString() == Model.AcceptDistrictSelected)
+                                                {
+                                                    <option value="@item.DistrictID" selected>@item.DistrictName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.DistrictID">@item.DistrictName</option>
+                                                }
+
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="name">Phường/xã</label>
+                                        <select id="AcceptWard" class="form-control select2-single">
+                                            @foreach (var item in Model.AcceptWardList)
+                                            {
+                                                if (item.WardId == Model.AcceptWardSelected)
+                                                {
+                                                    <option value="@item.WardId" selected>@item.WardName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.WardId">@item.WardName</option>
+                                                }
+
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="name">Địa chỉ người nhận</label>
+                                        <input type="text" class="form-control" id="AcceptAddress" value="@Model.AcceptAddress" placeholder="Địa chỉ người nhận">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Tên hàng hóa</label>
+                                        <input type="text" class="form-control" id="GoodName" value="@Model.GoodName" placeholder="Tên hàng hóa ví dụ: Quần áo">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="name">TL tính phí KH</label>
+                                        <input type="text" class="form-control" id="FeeWeight" value="@Model.FeeWeight" placeholder="Cân nặng tính KH (gram)">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="name">TL BT3</label>
+                                        <input type="text" class="form-control" id="BillWeigt" value="@Model.BillWeigt" placeholder="Cân nặng lên đơn (gram)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="name">Nhà vận chuyển</label>
+                                        <select id="Provider" name="Provider" class="form-control">
+                                            @foreach (var item in Model.ProviderList)
+                                            {
+                                                if (item.Id == Model.ProviderSelected)
+                                                {
+                                                    <option value="@item.Id" selected>@item.ProviderName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id">@item.ProviderName</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label for="name">Dài</label>
+                                        <input type="text" class="form-control" id="DIM_L" value="@Model.DIM_L" placeholder="Dài (cm)">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label for="name">Rộng</label>
+                                        <input type="text" class="form-control" id="DIM_W" value="@Model.DIM_W" placeholder="Rộng (cm)">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label for="name">Cao</label>
+                                        <input type="text" class="form-control" id="DIM_H" value="@Model.DIM_H" placeholder="Cao (cm)">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label for="name">TLTT</label>
+                                        <input type="text" class="form-control" value="@Model.DIM" id="DIM" placeholder="Kg" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="Freight">Cước phí</label>
+                                        <input type="text" class="form-control" value="@Model.Freight" id="Freight" placeholder="Cước phí">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="COD">Thu hộ</label>
+                                        <input type="text" class="form-control" id="COD" value="@Model.COD" placeholder="Số tiền thu hộ">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="name">Loại TT:</label>
+                                        <select id="PayType" class="form-control">
+                                            @foreach (var item in Model.PayTypeList)
+                                            {
+                                                if (item.Id == Model.PayTypeSelected)
+                                                {
+                                                    <option value="@item.Id" selected>@item.PaymentTypeName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id">@item.PaymentTypeName</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="ShipeType">Cho xem hàng</label>
+                                        <select id="ShipeType" class="form-control">
+                                            @foreach (var item in Model.ShipTypeList)
+                                            {
+                                                if (item.Id == Model.ShipTypeSelected)
+                                                {
+                                                    <option value="@item.Id" selected>@item.ShipNoteType</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id">@item.ShipNoteType</option>
+                                                }
+
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="Note">Ghi chú</label>
+                                        <input type="text" class="form-control" id="Note" value="@Model.Note" placeholder="Ghi chú giao hàng">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <button type="submit" id="btnSave" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp; Lưu đơn hàng</button>
+                                        <button type="button" id="btnPrintReceipt" class="btn btn-secondary"><i class="fa fa-print"></i>&nbsp; In phiếu thu</button>
+                                        <button type="button" id="btnSaveAndSend" class="btn btn-warning"><i class="fa fa-send"></i>&nbsp; Lưu và gửi</button>
+                                        <button type="button" id="btnPrint" class="btn btn-secondary"><i class="fa fa-print"></i>&nbsp; In tem dán</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="display:none">
+                <!-- Danh sách đơn hàng vừa tạo -->
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Danh sách đơn hàng trong ngày</strong>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Người gửi</th>
+                                        <th>Người nhận</th>
+                                        <th>Tỉnh thành</th>
+                                        <th>Tình trạng</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Anh Nguyên</td>
+                                        <td>Sỹ hùng</td>
+                                        <td>Đồng Tháp</td>
+                                        <td>
+                                            <span class="badge badge-success">Mới tạo</span>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-success" href="#">
+                                                <i class="fa fa-search-plus "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="#">
+                                                <i class="fa fa-edit "></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="#">
+                                                <i class="fa fa-trash-o "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Anh Thắng</td>
+                                        <td>Kiên</td>
+                                        <td>Hà Nội</td>
+                                        <td>
+                                            <span class="badge badge-success">Đã nạp đơn</span>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-success" href="#">
+                                                <i class="fa fa-search-plus "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="#">
+                                                <i class="fa fa-edit "></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="#">
+                                                <i class="fa fa-trash-o "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Anh Thắng</td>
+                                        <td>Kiên</td>
+                                        <td>Hà Nội</td>
+                                        <td>
+                                            <span class="badge badge-secondary">Inactive</span>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-success" href="#">
+                                                <i class="fa fa-search-plus "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="#">
+                                                <i class="fa fa-edit "></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="#">
+                                                <i class="fa fa-trash-o "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Anh Thắng</td>
+                                        <td>Kiên</td>
+                                        <td>Hà Nội</td>
+                                        <td>
+                                            <span class="badge badge-warning">Pending</span>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-success" href="#">
+                                                <i class="fa fa-search-plus "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="#">
+                                                <i class="fa fa-edit "></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="#">
+                                                <i class="fa fa-trash-o "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Anh Thắng</td>
+                                        <td>Kiên</td>
+                                        <td>Hà Nội</td>
+                                        <td>
+                                            <span class="badge badge-success">Active</span>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-success" href="#">
+                                                <i class="fa fa-search-plus "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="#">
+                                                <i class="fa fa-edit "></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="#">
+                                                <i class="fa fa-trash-o "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Tạo đơn từ file excel -->
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Tạo đơn từ file excel</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Số điện thoại người gửi</label>
+                                        <input type="text" class="form-control" id="SendManPhone" placeholder="Số điện thoại người gửi">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Tên người gửi</label>
+                                        <input type="text" class="form-control" id="SendManPhone" placeholder="Tên người gửi">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <label for="name">File excel</label>
+                                    <input type="file" id="file-input" name="file-input">
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp; Lưu đơn hàng</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Người gửi</th>
+                                            <th>Người nhận</th>
+                                            <th>Tỉnh thành</th>
+                                            <th>Tình trạng</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.conainer-fluid -->
+</main>
+<input type="hidden" id="IsNew" />
+<input type="hidden" id="CustomerId" />
+<input type="hidden" id="UserId" value="@Model.UserId" />
+<input type="hidden" id="PostId" value="@Model.PostId" />
+@section js
+    {
+    <!-- Plugins and scripts required by this views -->
+
+    <script src="~/Admin/vendors/js/jquery.maskedinput.min.js"></script>
+    <script src="~/Admin/vendors/js/moment.min.js"></script>
+    <script src="~/Admin/vendors/js/select2.min.js"></script>
+    <script src="~/Admin/vendors/js/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="~/Admin/vendors/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        var _urlApi = '@(Config["UrlAPi"])';
+    </script>
+    <script src="~/Admin/js/csviews/create-forms.js"></script>
+
+}

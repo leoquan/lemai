@@ -307,6 +307,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LeMaiDomain\LeMaiDomain.csproj" />
     <ProjectReference Include="..\LeMaiLogic\LeMaiLogic.csproj" />
+    <ProjectReference Include="..\LeMaiModelWebApi\LeMaiModelWebApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>
