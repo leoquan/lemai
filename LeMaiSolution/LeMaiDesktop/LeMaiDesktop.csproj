@@ -175,6 +175,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiBAMBOO.cs" />
     <Compile Include="ApiGHTK.cs" />
     <Compile Include="ApiViettel.cs" />
     <Compile Include="DebitComprisonExcel.cs" />

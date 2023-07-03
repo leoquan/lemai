@@ -13,6 +13,8 @@ using LeMaiDomain;
 using LeMaiLogic.Logic;
 using System;
 using System.Linq;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 
 namespace LeMaiWebPublic.Controllers
 {
@@ -121,6 +123,112 @@ namespace LeMaiWebPublic.Controllers
             model.IsPickup = false;
 
             return View(model);
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> GetCalculator(string IdTinh, string IdHuyen, string? Weight, string Post, string CustomerId)
+        {
+            string w = Weight == null ? "0" : Weight.ToString();
+            var customer = _logic.GetCustomerDetail(CustomerId);
+            string FeeId = string.Empty;
+            if (customer != null)
+            {
+                FeeId = customer.FK_GiaCuoc;
+            }
+            string result = await _logicbill.GetCalculatorFee(w, FeeId, IdTinh, Post, IdHuyen);
+            return Json(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> GetSuggestProvider(string IdTinh, string IdHuyen, string? Weight, string Post)
+        {
+            string w = Weight == null ? "0" : Weight.ToString();
+            var providers = await _logicbill.GetDanhSachProvider(Post);
+            GExpProvider pro = providers.Where(u => string.IsNullOrEmpty(u.WhiteListProvince) == false && u.WhiteListProvince.Contains(IdTinh)).FirstOrDefault();
+            if (pro == null)
+            {
+                int weight = 0;
+                if (Int32.TryParse(w, NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out weight))
+                {
+                    // Select Provider
+                    foreach (var item in providers)
+                    {
+                        if (weight > item.InitWeightSelect && weight <= item.InitWeightSelectMax)
+                        {
+                            pro = item;
+                            break;
+                        }
+                    }
+                }
+            }
+            // Check cuối cùng
+            if (pro == null)
+            {
+                pro = providers.FirstOrDefault();
+            }
+            return Json(pro.Id);
+        }
+        [HttpPost]
+        public async Task<IActionResult> GetSender(string Phone, string Post)
+        {
+            ObjectMan result = new ObjectMan();
+            var customer = _logicbill.GetThongTinKhachHang(Phone, Post);
+            if (customer != null)
+            {
+                result.Found = true;
+                result.CustomerId = customer.Id;
+                result.Phone = customer.CustomerPhone;
+                result.Name = customer.CustomerName;
+                result.Address = customer.DiaChi;
+                var provinces = await _logicbill.GetDanhSachTinh();
+                result.ProvinceList = provinces.Select(h => new DictionInt { Key = h.ProvinceID, Name = h.ProvinceName }).ToList();
+
+                result.SelectProvince = customer.ProvinceId.GetValueOrDefault(0);
+
+                var districts = await _logicbill.GetDanhSachHuyen(result.SelectProvince.ToString());
+                result.DistrictList = districts.Select(h => new DictionInt { Key = h.DistrictID, Name = h.DistrictName }).ToList();
+                result.SelectDistrict = customer.DistrictId.GetValueOrDefault(0);
+
+                var wards = await _logicbill.GetDanhSachXa(result.SelectDistrict.ToString());
+                result.WardList = wards.Select(h => new DictionString { Key = h.WardId, Name = h.WardName }).ToList();
+                result.SelectWard = customer.WardId;
+            }
+            else
+            {
+                result.Found = false;
+            }
+            return Json(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> GetAccept(string Phone)
+        {
+            ObjectMan result = new ObjectMan();
+            var accept = _logicbill.GetThongTinNguoiNhan(Phone);
+            if (accept != null)
+            {
+                result.Found = true;
+                result.CustomerId = accept.Id;
+                result.Phone = accept.AcceptPhone;
+                result.Name = accept.AcceptMan;
+                result.Address = accept.AcceptAddress;
+                var provinces = await _logicbill.GetDanhSachTinh();
+                result.ProvinceList = provinces.Select(h => new DictionInt { Key = h.ProvinceID, Name = h.ProvinceName }).ToList();
+                result.SelectProvince = accept.AcceptProvince;
+
+                var districts = await _logicbill.GetDanhSachHuyen(result.SelectProvince.ToString());
+                result.DistrictList = districts.Select(h => new DictionInt { Key = h.DistrictID, Name = h.DistrictName }).ToList();
+                result.SelectDistrict = accept.AcceptDistrict;
+
+                var wards = await _logicbill.GetDanhSachXa(result.SelectDistrict.ToString());
+                result.WardList = wards.Select(h => new DictionString { Key = h.WardId, Name = h.WardName }).ToList();
+                result.SelectWard = accept.AcceptWard;
+            }
+            else
+            {
+                result.Found = false;
+            }
+            return Json(result);
         }
     }
 }

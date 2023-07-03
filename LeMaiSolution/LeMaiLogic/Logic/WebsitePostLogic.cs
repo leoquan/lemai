@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeMaiLogic.Logic
 {
-    public class WebsitePostLogic: BaseLogic
+    public class WebsitePostLogic : BaseLogic
     {
         public WebsitePostLogic(BaseLogicConnectionData data) : base(data)
         {
@@ -22,6 +22,23 @@ namespace LeMaiLogic.Logic
                 return dc.ACcountobject.GetObjectCon(base.ConnectionData.Schema, "WHERE UserName=@UserName AND PassWord=@PassWord",
                     "@UserName", customerCode,
                     "@PassWord", passcode);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                dc.Close();
+            }
+        }
+        public ExpCustomer GetCustomerDetail(string Id)
+        {
+            IDataContext dc = new dcDataContextM(base.ConnectionData.ConnectionString);
+            try
+            {
+                dc.Open();
+                return dc.EXpcustomer.GetObject(base.ConnectionData.Schema, Id);
             }
             catch (Exception ex)
             {

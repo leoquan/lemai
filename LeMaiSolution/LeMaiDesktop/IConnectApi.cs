@@ -465,6 +465,10 @@ namespace LeMaiDesktop
                 }
                 return new ApiViettel();
             }
+            else if (typeCode.Contains("BAMBOO"))
+            {
+                return new ApiBAMBOO();
+            }
             else
             {
                 return new ApiNull();

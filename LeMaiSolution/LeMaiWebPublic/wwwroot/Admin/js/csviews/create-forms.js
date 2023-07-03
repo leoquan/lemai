@@ -8,7 +8,7 @@ $(document).ready($(function () {
     $('.panelPickup').hide();
 
     $('#FeeWeight').mask("000,000", { reverse: true, selectOnFocus: true });
-    $('#BillWeigt').mask("000,000", { reverse: true, selectOnFocus: true }); 
+    $('#BillWeigt').mask("000,000", { reverse: true, selectOnFocus: true });
     $('#COD').mask("00,000,000", { reverse: true, selectOnFocus: true });
     $('#Freight').mask("00,000,000", { reverse: true, selectOnFocus: true });
     $('#DIM_W').mask("000", { reverse: true, selectOnFocus: true });
@@ -20,23 +20,108 @@ $(document).ready($(function () {
 
     // Tìm người gửi
     $("#SendManPhone").on("focusout", function () {
-        alert("Tìm số điện thoại của bạn");
+        var _Phone = $('#SendManPhone').val();
+        var _Post = $('#PostId').val();
+
+        $.ajax({
+            type: "POST",
+            url: _urlApi + "Post/GetSender",
+            data: { Phone: _Phone, Post: _Post },
+            success: function (rs) {
+                // Set giá
+                if (rs.found == true) {
+                    $('#PickupManPhone').val(rs.phone);
+
+                    $('#SendMan').val(rs.name);
+                    $('#PickupMan').val(rs.name);
+
+                    $('#SendAddress').val(rs.address);
+                    $('#PickupAddress').val(rs.address);
+                    
+                    $('#CustomerId').val(rs.customerId);
+                    $('#AcceptManPhone').focus();
+                }
+                else {
+                    $('#CustomerId').val('');
+                    $('#SendMan').focus();
+                }
+
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
     });
     // Tìm người nhận
     $("#AcceptManPhone").on("focusout", function () {
-        alert("Tìm số điện thoại người nhận");
-    });
-    $("#FeeWeight").on("focusout", function () {
-        var _Tinh = $('#AcceptProvince').val();
-        var _Huyen = $('#AcceptDistrict').val();
-        var _Weight = $('#Weight').val();
+        var _Phone = $('#AcceptManPhone').val();
+
         $.ajax({
             type: "POST",
-            url: '@Url.Action("GetCalculator", "KhachHang")',
-            data: { IdTinh: _Tinh, IdHuyen: _Huyen, Weight: _Weight },
+            url: _urlApi + "Post/GetAccept",
+            data: { Phone: _Phone},
+            success: function (rs) {
+                // Set giá
+                console.log(rs);
+                if (rs.found == true) {
+                    $('#AcceptMan').val(rs.name);
+                    $('#AcceptAddress').val(rs.address);
+                    // Tỉnh
+                    $('#AcceptProvince').html('');
+                    for (let i = 0; i < rs.provinceList.length; i++) {
+                        var emlHTML = '<option value="' + rs.provinceList[i].key + '">' + rs.provinceList[i].name + '</option>';
+                        if (rs.provinceList[i].key == rs.selectProvince) {
+                            emlHTML = '<option value="' + rs.provinceList[i].key + '" selected>' + rs.provinceList[i].name + '</option>';
+                        }
+                        $("#AcceptProvince").append(emlHTML);
+                    }
+                    // Huyện
+                    $('#AcceptDistrict').html('');
+                    for (let i = 0; i < rs.districtList.length; i++) {
+                        var emlHTML = '<option value="' + rs.districtList[i].key + '">' + rs.districtList[i].name + '</option>';
+                        if (rs.districtList[i].key == rs.selectDistrict) {
+                            emlHTML = '<option value="' + rs.districtList[i].key + '" selected>' + rs.districtList[i].name + '</option>';
+                        }
+                        $("#AcceptDistrict").append(emlHTML);
+                    }
+                    // Xã
+                    $('#AcceptWard').html('');
+                    for (let i = 0; i < rs.wardList.length; i++) {
+                        var emlHTML = '<option value="' + rs.wardList[i].key + '">' + rs.wardList[i].name + '</option>';
+                        if (rs.wardList[i].key == rs.selectWard) {
+                            emlHTML = '<option value="' + rs.wardList[i].key + '" selected>' + rs.wardList[i].name + '</option>';
+                        }
+                        $("#AcceptWard").append(emlHTML);
+                    }
+
+                    $('#GoodName').focus();
+                }
+                else {
+                    $('#AcceptMan').focus();
+                }
+
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+    $("#FeeWeight").on("focusout", function () {
+        // Viết lại cái hàm này
+        var _Tinh = $('#AcceptProvince').val();
+        var _Huyen = $('#AcceptDistrict').val();
+
+        var _Weight = $('#FeeWeight').val();
+
+        var _Post = $('#PostId').val();
+        var _CustomerId = $('#CustomerId').val();
+        $.ajax({
+            type: "POST",
+            url: _urlApi + "Post/GetCalculator",
+            data: { IdTinh: _Tinh, IdHuyen: _Huyen, Weight: _Weight, Post: _Post, CustomerId: _CustomerId },
             success: function (json) {
                 // Set giá
-                $('#feeOut').val(json);
+                $('#Freight').val(json);
             },
             error: function (err) {
                 console.log(err);
@@ -44,6 +129,25 @@ $(document).ready($(function () {
         });
     });
 
+    $("#BillWeigt").on("focusout", function () {
+        // Viết lại cái hàm này
+        var _Tinh = $('#AcceptProvince').val();
+        var _Huyen = $('#AcceptDistrict').val();
+        var _Weight = $('#BillWeigt').val();
+        var _Post = $('#PostId').val();
+        $.ajax({
+            type: "POST",
+            url: _urlApi + "Post/GetSuggestProvider",
+            data: { IdTinh: _Tinh, IdHuyen: _Huyen, Weight: _Weight, Post: _Post},
+            success: function (json) {
+                // Set giáy
+                $('#Provider').val(json);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
     $("#AcceptProvince").on("change", function () {
         var _Tinh = $('#AcceptProvince').val();
         $.ajax({
@@ -51,7 +155,6 @@ $(document).ready($(function () {
             url: _urlApi + "KhachHang/GetHuyen",
             data: { IdTinh: _Tinh },
             success: function (json) {
-                console.log(json);
                 $('#AcceptDistrict').html('');
                 for (let i = 0; i < json.dist.length; i++) {
                     var emlHTML = '<option value="' + json.dist[i].districtID + '">' + json.dist[i].districtName + '</option>';
@@ -143,7 +246,7 @@ $(document).ready($(function () {
     });
 
     $("#btnSave").on("click", function () {
-       
+
     });
     $("#btnPrintReceipt").on("click", function () {
         alert("In phiếu thu");
@@ -161,14 +264,14 @@ $(document).ready($(function () {
         var _dimH = $('#DIM_H').val();
         if (_dimW > 0 && _dimL > 0 && _dimH) {
             var TLTT = _dimW * _dimL * _dimH;
-            $('#DIM').val(TLTT/5000);
+            $('#DIM').val(TLTT / 5000);
         }
         else {
             $('#DIM').val(0);
         }
     };
     function showToast(title, content, type) {
-        
+
     };
 
 }));
