@@ -723,6 +723,18 @@ namespace LeMaiLogic
 			get { return _GExpdebitcomparisondetail; }
 		}
 
+		private IGExpdebitsession _GExpdebitsession;
+		public IGExpdebitsession GExpdebitsession
+		{
+			get { return _GExpdebitsession; }
+		}
+
+		private IGExpdebitsessiondetail _GExpdebitsessiondetail;
+		public IGExpdebitsessiondetail GExpdebitsessiondetail
+		{
+			get { return _GExpdebitsessiondetail; }
+		}
+
 		private IGExpdistrict _GExpdistrict;
 		public IGExpdistrict GExpdistrict
 		{
@@ -793,6 +805,12 @@ namespace LeMaiLogic
 		public IGExpfee GExpfee
 		{
 			get { return _GExpfee; }
+		}
+
+		private IGExpfeedebitsession _GExpfeedebitsession;
+		public IGExpfeedebitsession GExpfeedebitsession
+		{
+			get { return _GExpfeedebitsession; }
 		}
 
 		private IGExpfeedetail _GExpfeedetail;
@@ -2199,6 +2217,12 @@ namespace LeMaiLogic
 			get { return _VIewgexpfee; }
 		}
 
+		private IVIewgexpfeedebitsession _VIewgexpfeedebitsession;
+		public IVIewgexpfeedebitsession VIewgexpfeedebitsession
+		{
+			get { return _VIewgexpfeedebitsession; }
+		}
+
 		private IVIewgexpfeedetails _VIewgexpfeedetails;
 		public IVIewgexpfeedetails VIewgexpfeedetails
 		{
@@ -2803,6 +2827,8 @@ namespace LeMaiLogic
 			this._GExpcode = new MGExpcode(this);
 			this._GExpdebitcomparison = new MGExpdebitcomparison(this);
 			this._GExpdebitcomparisondetail = new MGExpdebitcomparisondetail(this);
+			this._GExpdebitsession = new MGExpdebitsession(this);
+			this._GExpdebitsessiondetail = new MGExpdebitsessiondetail(this);
 			this._GExpdistrict = new MGExpdistrict(this);
 			this._GExpdistrictghsv = new MGExpdistrictghsv(this);
 			this._GExpdistrictjnt = new MGExpdistrictjnt(this);
@@ -2815,6 +2841,7 @@ namespace LeMaiLogic
 			this._GExpdoisoathistory = new MGExpdoisoathistory(this);
 			this._GExperror = new MGExperror(this);
 			this._GExpfee = new MGExpfee(this);
+			this._GExpfeedebitsession = new MGExpfeedebitsession(this);
 			this._GExpfeedetail = new MGExpfeedetail(this);
 			this._GExpfeemaster = new MGExpfeemaster(this);
 			this._GExpfeeprovincedetail = new MGExpfeeprovincedetail(this);
@@ -3049,6 +3076,7 @@ namespace LeMaiLogic
 			this._VIewgexpdebitcomparisondetail = new MVIewgexpdebitcomparisondetail(this);
 			this._VIewgexpdoisoatchitiet = new MVIewgexpdoisoatchitiet(this);
 			this._VIewgexpfee = new MVIewgexpfee(this);
+			this._VIewgexpfeedebitsession = new MVIewgexpfeedebitsession(this);
 			this._VIewgexpfeedetails = new MVIewgexpfeedetails(this);
 			this._VIewgexpfeedetailspro = new MVIewgexpfeedetailspro(this);
 			this._VIewgexpmoneyreturn = new MVIewgexpmoneyreturn(this);

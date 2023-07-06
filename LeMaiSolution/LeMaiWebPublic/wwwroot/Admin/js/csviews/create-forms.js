@@ -1,6 +1,24 @@
 ﻿
 $(document).ready($(function () {
-
+    // Cấu hình Toast
+    toastr.options = {
+        closeButton: false,
+        debug: false,
+        newestOnTop: false,
+        progressBar: false,
+        positionClass: "toast-top-right",
+        preventDuplicates: false,
+        onclick: null,
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "5000",
+        extendedTimeOut: "1000",
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut"
+    };
+    // Select 2
     $('#AcceptProvince, #PickupProvince').select2({
         theme: "bootstrap"
     });
@@ -37,7 +55,7 @@ $(document).ready($(function () {
 
                     $('#SendAddress').val(rs.address);
                     $('#PickupAddress').val(rs.address);
-                    
+
                     $('#CustomerId').val(rs.customerId);
                     $('#AcceptManPhone').focus();
                 }
@@ -45,7 +63,7 @@ $(document).ready($(function () {
                     $('#CustomerId').val('');
                     $('#SendMan').focus();
                 }
-
+                checkValid();
             },
             error: function (err) {
                 console.log(err);
@@ -59,7 +77,7 @@ $(document).ready($(function () {
         $.ajax({
             type: "POST",
             url: _urlApi + "Post/GetAccept",
-            data: { Phone: _Phone},
+            data: { Phone: _Phone },
             success: function (rs) {
                 // Set giá
                 console.log(rs);
@@ -95,11 +113,12 @@ $(document).ready($(function () {
                     }
 
                     $('#GoodName').focus();
+
                 }
                 else {
                     $('#AcceptMan').focus();
                 }
-
+                checkValid();
             },
             error: function (err) {
                 console.log(err);
@@ -138,7 +157,7 @@ $(document).ready($(function () {
         $.ajax({
             type: "POST",
             url: _urlApi + "Post/GetSuggestProvider",
-            data: { IdTinh: _Tinh, IdHuyen: _Huyen, Weight: _Weight, Post: _Post},
+            data: { IdTinh: _Tinh, IdHuyen: _Huyen, Weight: _Weight, Post: _Post },
             success: function (json) {
                 // Set giáy
                 $('#Provider').val(json);
@@ -246,13 +265,101 @@ $(document).ready($(function () {
     });
 
     $("#btnSave").on("click", function () {
-
+        var resultCheck = checkValid();
+        if (resultCheck) {
+            var _SendManPhone = $('#SendManPhone').val();
+            var _SendMan = $('#SendMan').val();
+            var _SendAddress = $('#SendAddress').val();
+            var _IsPickup = $("#IsPickup").is(":checked");
+            var _PickupManPhone = $('#PickupManPhone').val();
+            var _PickupMan = $('#PickupMan').val();
+            var _PickupProvinceSelected = $('#PickupProvince').val();
+            var _PickupDistrictSelected = $('#PickupDistrict').val();
+            var _PickupWardSelected = $('#PickupWard').val();
+            var _PickupAddress = $('#PickupAddress').val();
+            var _AcceptManPhone = $('#AcceptManPhone').val();
+            var _AcceptMan = $('#AcceptMan').val();
+            var _AcceptProvinceSelected = $('#AcceptProvince').val();
+            var _AcceptDistrictSelected = $('#AcceptDistrict').val();
+            var _AcceptWardSelected = $('#AcceptWard').val();
+            var _AcceptAddress = $('#AcceptAddress').val();
+            var _GoodName = $('#GoodName').val();
+            var _FeeWeight = $('#FeeWeight').val();
+            _FeeWeight = _FeeWeight.replace(',', '');
+            var _BillWeigt = $('#BillWeigt').val();
+            _BillWeigt = _BillWeigt.replace(',', '');
+            var _ProviderSelected = $('#Provider').val();
+            var _DIM_L = $('#DIM_L').val();
+            var _DIM_W = $('#DIM_W').val();
+            var _DIM_H = $('#DIM_H').val();
+            var _DIM = $('#DIM').val();
+            var _Freight = $('#Freight').val();
+            _Freight = _Freight.replace(/\,/g, '');
+            var _COD = $('#COD').val();
+            _COD = _COD.replace(/\,/g, '');
+            var _PayTypeSelected = $('#PayType').val();
+            var _ShipTypeSelected = $('#ShipeType').val();
+            var _Note = $('#Note').val();
+            var _UserId = $('#UserId').val();
+            var _PostId = $('#PostId').val();
+            var _SiteCode = $('#SiteCode').val();
+            var _CustomerId = $('#CustomerId').val();
+            var _SaveAndSend = false;
+            $.ajax({
+                type: "POST",
+                url: _urlApi + "Post/TaoDonHang",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    SendManPhone: _SendManPhone,
+                    SendMan: _SendMan,
+                    SendAddress: _SendAddress,
+                    IsPickup: _IsPickup,
+                    PickupManPhone: _PickupManPhone,
+                    PickupMan: _PickupMan,
+                    PickupProvinceSelected: _PickupProvinceSelected,
+                    PickupDistrictSelected: _PickupDistrictSelected,
+                    PickupWardSelected: _PickupWardSelected,
+                    PickupAddress: _PickupAddress,
+                    AcceptManPhone: _AcceptManPhone,
+                    AcceptMan: _AcceptMan,
+                    AcceptProvinceSelected: _AcceptProvinceSelected,
+                    AcceptDistrictSelected: _AcceptDistrictSelected,
+                    AcceptWardSelected: _AcceptWardSelected,
+                    AcceptAddress: _AcceptAddress,
+                    GoodName: _GoodName,
+                    FeeWeight: _FeeWeight,
+                    BillWeigt: _BillWeigt,
+                    ProviderSelected: _ProviderSelected,
+                    DIM_L: _DIM_L,
+                    DIM_W: _DIM_W,
+                    DIM_H: _DIM_H,
+                    DIM: _DIM,
+                    Freight: _Freight,
+                    COD: _COD,
+                    PayTypeSelected: _PayTypeSelected,
+                    ShipTypeSelected: _ShipTypeSelected,
+                    Note: _Note,
+                    UserId: _UserId,
+                    PostId: _PostId,
+                    SiteCode: _SiteCode,
+                    CustomerId: _CustomerId,
+                    SaveAndSend: _SaveAndSend
+                }),
+                success: function (result) {
+                    console.log(result);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
     });
     $("#btnPrintReceipt").on("click", function () {
-        alert("In phiếu thu");
+        
+        toastr["success"]("Nội dung tin nhắn", "Tiêu đề"); 
     });
     $("#btnSaveAndSend").on("click", function () {
-        alert("Lưu và nạp bên thứ 3");
+        var resultCheck = checkValid();
     });
     $("#btnPrint").on("click", function () {
         alert("In tem dán");
@@ -272,6 +379,147 @@ $(document).ready($(function () {
     };
     function showToast(title, content, type) {
 
+    };
+    function checkValid() {
+        var resultValid = true;
+        var _SendManPhone = $('#SendManPhone').val();
+        var _SendMan = $('#SendMan').val();
+        var _SendAddress = $('#SendAddress').val();
+        var _IsPickup = $("#IsPickup").is(":checked");
+        var _PickupManPhone = $('#PickupManPhone').val();
+        var _PickupMan = $('#PickupMan').val();
+        var _PickupAddress = $('#PickupAddress').val();
+        var _AcceptManPhone = $('#AcceptManPhone').val();
+        var _AcceptMan = $('#AcceptMan').val();
+        var _AcceptAddress = $('#AcceptAddress').val();
+        var _GoodName = $('#GoodName').val();
+        var _FeeWeight = $('#FeeWeight').val();
+        _FeeWeight = _FeeWeight.replace(',', '');
+        var _BillWeigt = $('#BillWeigt').val();
+        _BillWeigt = _BillWeigt.replace(',', '');
+        var _ProviderSelected = $('#Provider').val();
+        var _DIM_L = $('#DIM_L').val();
+        var _DIM_W = $('#DIM_W').val();
+        var _DIM_H = $('#DIM_H').val();
+        var _DIM = $('#DIM').val();
+        var _Freight = $('#Freight').val();
+        _Freight = _Freight.replace(/\,/g, '');
+        var _COD = $('#COD').val();
+        _COD = _COD.replace(/\,/g, '');
+        // Thông tin người gửi
+        if (_SendMan == '') {
+            $('#SendMan').addClass('is-invalid').removeClass('is-valid');
+            resultValid = false;
+        }
+        else {
+            $('#SendMan').removeClass('is-invalid').addClass('is-valid');
+        }
+
+        if (_SendManPhone == '' || _SendManPhone.length < 10 || _SendManPhone.length > 11) {
+            $('#SendManPhone').addClass('is-invalid').removeClass('is-valid');
+            resultValid = false;
+        }
+        else {
+            $('#SendManPhone').removeClass('is-invalid').addClass('is-valid');
+        }
+        if (_SendAddress == '') {
+            $('#SendAddress').addClass('is-invalid').removeClass('is-valid');
+            resultValid = false;
+        }
+        else {
+            $('#SendAddress').removeClass('is-invalid').addClass('is-valid');
+        }
+        if (_IsPickup) {
+            if (_PickupMan == '') {
+                $('#PickupMan').addClass('is-invalid').removeClass('is-valid');
+                resultValid = false;
+            }
+            else {
+                $('#PickupMan').removeClass('is-invalid').addClass('is-valid');
+            }
+
+            if (_PickupManPhone == '' || _PickupManPhone.length < 10 || _PickupManPhone.length > 11) {
+                $('#PickupManPhone').addClass('is-invalid').removeClass('is-valid');
+                resultValid = false;
+            }
+            else {
+                $('#PickupManPhone').removeClass('is-invalid').addClass('is-valid');
+            }
+            if (_PickupAddress == '') {
+                $('#PickupAddress').addClass('is-invalid').removeClass('is-valid');
+                resultValid = false;
+            }
+            else {
+                $('#PickupAddress').removeClass('is-invalid').addClass('is-valid');
+            }
+        }
+        // Thông tin người nhận
+        if (_AcceptMan == '') {
+            $('#AcceptMan').addClass('is-invalid').removeClass('is-valid');
+            resultValid = false;
+        }
+        else {
+            $('#AcceptMan').removeClass('is-invalid').addClass('is-valid');
+        }
+
+        if (_AcceptManPhone == '' || _AcceptManPhone.length < 10 || _AcceptManPhone.length > 11) {
+            $('#AcceptManPhone').addClass('is-invalid').removeClass('is-valid');
+            resultValid = false;
+        }
+        else {
+            $('#AcceptManPhone').removeClass('is-invalid').addClass('is-valid');
+        }
+        if (_AcceptAddress == '') {
+            $('#AcceptAddress').addClass('is-invalid').removeClass('is-valid');
+            resultValid = false;
+        }
+        else {
+            $('#AcceptAddress').removeClass('is-invalid').addClass('is-valid');
+        }
+        // Thông tin đơn hàng
+        if (_GoodName == '') {
+            $('#GoodName').addClass('is-invalid').removeClass('is-valid');
+            resultValid = false;
+        }
+        else {
+            $('#GoodName').removeClass('is-invalid').addClass('is-valid');
+        }
+
+        if (_FeeWeight == '' || _FeeWeight == 0) {
+            $('#FeeWeight').addClass('is-invalid').removeClass('is-valid');
+            resultValid = false;
+        }
+        else {
+            $('#FeeWeight').removeClass('is-invalid').addClass('is-valid');
+        }
+
+        if (_BillWeigt == '' || _BillWeigt == 0) {
+            $('#BillWeigt').addClass('is-invalid').removeClass('is-valid');
+            resultValid = false;
+        }
+        else {
+            $('#BillWeigt').removeClass('is-invalid').addClass('is-valid');
+        }
+
+        if (_Freight == '' || _Freight == 0) {
+            $('#Freight').addClass('is-invalid').removeClass('is-valid');
+            resultValid = false;
+        }
+        else {
+            $('#Freight').removeClass('is-invalid').addClass('is-valid');
+        }
+
+        if (_COD == '') {
+            $('#COD').addClass('is-invalid').removeClass('is-valid');
+            resultValid = false;
+        }
+        else {
+            $('#COD').removeClass('is-invalid').addClass('is-valid');
+        }
+        if (resultValid == false) {
+            toastr["error"]("Lỗi dữ liệu cần kiểm tra lại!"); 
+        }
+        return resultValid;
     };
 
 }));

@@ -623,6 +623,15 @@ namespace LeMaiDesktop
         private async void btnSave_Click(object sender, EventArgs e)
         {
             //Kiểm tra dữ liệu nhập
+
+            if (txtSoDienThoaiNguoiGui.Text.Length > 10)
+            {
+                MessageBox.Show("Số điện thoại người gửi có 11 số, có phải là số điện thoại bàn không? vui lòng kiểm tra lại", PBean.MESSAGE_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            if (txtSoDienThoaiNguoiNhan.Text.Length > 10)
+            {
+                MessageBox.Show("Số điện thoại người nhận có 11 số, có phải là số điện thoại bàn không? vui lòng kiểm tra lại", PBean.MESSAGE_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             if (String.IsNullOrEmpty(txtTenHang.Text))
             {
                 MessageBox.Show("Tên hàng không được trống?", PBean.MESSAGE_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -685,9 +694,15 @@ namespace LeMaiDesktop
                 txtSoDienThoaiNguoiNhan.Focus();
                 return;
             }
-            if (txtSoDienThoaiNguoiNhan.Text.Length != 10)
+            if (txtSoDienThoaiNguoiGui.Text.Length < 10)
             {
-                MessageBox.Show("Số điện thoại không đúng!", PBean.MESSAGE_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Sai số điện thoại người gửi", PBean.MESSAGE_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSoDienThoaiNguoiGui.Focus();
+                return;
+            }
+            if (txtSoDienThoaiNguoiNhan.Text.Length < 10)
+            {
+                MessageBox.Show("Sai số điện thoại người nhận", PBean.MESSAGE_TITLE, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSoDienThoaiNguoiNhan.Focus();
                 return;
             }
@@ -1514,8 +1529,10 @@ namespace LeMaiDesktop
             {
                 int index = gridBills.SelectedRows[0].Index;
                 string billCode = Convert.ToString(gridBills.Rows[index].Cells["col_BillCode"].Value);
-                bool result = await _logic.CreateDuplicate(billCode, PBean.USER.Id);
-                if (result == true)
+                frmCreateSameOrder frm = new frmCreateSameOrder();
+                frm.BillCode = billCode;
+                frm.ShowDialog();
+                if (frm.UpdateSuccess == true)
                 {
                     LoadData();
                 }

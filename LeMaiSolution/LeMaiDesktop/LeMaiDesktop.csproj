@@ -198,6 +198,12 @@
     <Compile Include="frmQuanLyDonHangGiao.Designer.cs">
       <DependentUpon>frmQuanLyDonHangGiao.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmQuanLyGiaGoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanLyGiaGoc.Designer.cs">
+      <DependentUpon>frmQuanLyGiaGoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQuanLyKyNhanTuDong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,12 @@
     </Compile>
     <Compile Include="frmDevExpressReportView.Designer.cs">
       <DependentUpon>frmDevExpressReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCreateSameOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateSameOrder.Designer.cs">
+      <DependentUpon>frmCreateSameOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="frmXacNhanRutTien.cs">
       <SubType>Form</SubType>
@@ -855,6 +867,9 @@
     <EmbeddedResource Include="frmQuanLyDonHangGiao.resx">
       <DependentUpon>frmQuanLyDonHangGiao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanLyGiaGoc.resx">
+      <DependentUpon>frmQuanLyGiaGoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyKyNhanTuDong.resx">
       <DependentUpon>frmQuanLyKyNhanTuDong.cs</DependentUpon>
     </EmbeddedResource>
@@ -872,6 +887,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDevExpressReportView.resx">
       <DependentUpon>frmDevExpressReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreateSameOrder.resx">
+      <DependentUpon>frmCreateSameOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmXacNhanRutTien.resx">
       <DependentUpon>frmXacNhanRutTien.cs</DependentUpon>

@@ -121,14 +121,7 @@ namespace LeMaiDesktop
                             dr.Status = 1;
                             dr.MoneyReturnStatusName = "Giao hàng thành công";
                         }
-                        string ngay = item["Kỳ thanh toán"].ToString();
-                        if (!string.IsNullOrEmpty(ngay))
-                        {
-                            string temp = ngay.Split('_')[1];
-                            temp = temp.Split('.')[0];
-                            DateTime date = DateTime.ParseExact(temp, "yyyyMMdd", CultureInfo.InvariantCulture);
-                            dr.DateDeliveryReturn = date;
-                        }
+                        dr.DateDeliveryReturn = DateTime.Now;
                         dr.BT3COD = decimal.Parse(item["Tiền COD"].ToString());
                         dr.BT3Paid = 0;
                         dr.Discount = decimal.Parse(item["Chiết khấu"].ToString());

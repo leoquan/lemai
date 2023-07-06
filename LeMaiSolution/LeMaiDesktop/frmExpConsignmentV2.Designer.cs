@@ -727,7 +727,7 @@ namespace LeMaiDesktop
             this.txtSoDienThoaiNguoiGui.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtSoDienThoaiNguoiGui, true);
             this.txtSoDienThoaiNguoiGui.Location = new System.Drawing.Point(80, 309);
-            this.txtSoDienThoaiNguoiGui.MaxLength = 10;
+            this.txtSoDienThoaiNguoiGui.MaxLength = 11;
             this.txtSoDienThoaiNguoiGui.Name = "txtSoDienThoaiNguoiGui";
             this.txtSoDienThoaiNguoiGui.Size = new System.Drawing.Size(114, 22);
             this.txtSoDienThoaiNguoiGui.TabIndex = 0;
@@ -768,7 +768,7 @@ namespace LeMaiDesktop
             this.txtSoDienThoaiNguoiNhan.Font = new System.Drawing.Font("Tahoma", 8.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highlighter.SetHighlightOnFocus(this.txtSoDienThoaiNguoiNhan, true);
             this.txtSoDienThoaiNguoiNhan.Location = new System.Drawing.Point(80, 365);
-            this.txtSoDienThoaiNguoiNhan.MaxLength = 10;
+            this.txtSoDienThoaiNguoiNhan.MaxLength = 11;
             this.txtSoDienThoaiNguoiNhan.Name = "txtSoDienThoaiNguoiNhan";
             this.txtSoDienThoaiNguoiNhan.Size = new System.Drawing.Size(114, 22);
             this.txtSoDienThoaiNguoiNhan.TabIndex = 3;

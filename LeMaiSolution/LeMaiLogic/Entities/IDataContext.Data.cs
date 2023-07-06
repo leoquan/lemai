@@ -246,6 +246,10 @@ namespace LeMaiLogic
 
 		IGExpdebitcomparisondetail GExpdebitcomparisondetail { get; }
 
+		IGExpdebitsession GExpdebitsession { get; }
+
+		IGExpdebitsessiondetail GExpdebitsessiondetail { get; }
+
 		IGExpdistrict GExpdistrict { get; }
 
 		IGExpdistrictghsv GExpdistrictghsv { get; }
@@ -269,6 +273,8 @@ namespace LeMaiLogic
 		IGExperror GExperror { get; }
 
 		IGExpfee GExpfee { get; }
+
+		IGExpfeedebitsession GExpfeedebitsession { get; }
 
 		IGExpfeedetail GExpfeedetail { get; }
 
@@ -737,6 +743,8 @@ namespace LeMaiLogic
 		IVIewgexpdoisoatchitiet VIewgexpdoisoatchitiet { get; }
 
 		IVIewgexpfee VIewgexpfee { get; }
+
+		IVIewgexpfeedebitsession VIewgexpfeedebitsession { get; }
 
 		IVIewgexpfeedetails VIewgexpfeedetails { get; }
 

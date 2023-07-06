@@ -692,7 +692,7 @@ namespace LeMaiLogic.Logic
                 if (item != null)
                 {
                     DateTime currentDate = dc.CurrentTime();
-                    item.BillCode = string.Format("{0:yyMM}", currentDate) + ExpGetCode(item.RegisterSiteCode);
+                    item.BillCode = string.Format("{0:yy}", currentDate) + ExpGetCode(item.RegisterSiteCode);
                     item.RegisterUser = userId;
                     item.RegisterDate = currentDate;
                     item.LastUpdateDate = currentDate;
@@ -736,7 +736,7 @@ namespace LeMaiLogic.Logic
                 GExpBill item = new GExpBill();
                 DateTime currentDate = dc.CurrentTime();
                 // Mapping Prop
-                item.BillCode = string.Format("{0:yyMM}", currentDate) + ExpGetCode(input.RegisterSiteCode);
+                item.BillCode = string.Format("{0:yy}", currentDate) + ExpGetCode(input.RegisterSiteCode);
                 item.BillWeight = input.BillWeight;
                 item.FeeWeight = input.FeeWeight;
                 item.RegisterUser = input.RegisterUser;
@@ -901,7 +901,7 @@ namespace LeMaiLogic.Logic
                 dc.Open();
                 DateTime currentDate = dc.CurrentTime();
                 GExpBill item = new GExpBill();
-                item.BillCode = string.Format("{0:yyMM}", currentDate) + ExpGetCode(post);
+                item.BillCode = string.Format("{0:yy}", currentDate) + ExpGetCode(post);
                 item.RegisterSiteCode = post;
                 item.BillProcessStatus = 0;
                 item.RegisterDate = currentDate;
@@ -1177,7 +1177,7 @@ namespace LeMaiLogic.Logic
                     item.AddressPickup = input.AddressPickup;
                     item.ShopIdPickup = input.ShopIdPickup;
                     item.IsReceiveBill = input.IsReceiveBill;
-                    item.NamePickup= input.NamePickup;
+                    item.NamePickup = input.NamePickup;
                     item.PhonePickup = input.PhonePickup;
                     //Change Database
                     dc.GExpbill.Update(base.ConnectionData.Schema, item);
@@ -1325,7 +1325,7 @@ namespace LeMaiLogic.Logic
                     dc.GExpcode.Update(ConnectionData.Schema, queueNumber);
                 }
                 dc.SubmitChanges();
-                return queueNumber.Post + queueNumber.CurrentValue.ToString().PadLeft(6, '0');
+                return queueNumber.Post.PadLeft(3, '0') + queueNumber.CurrentValue.ToString().PadLeft(6, '0');
             }
             catch (Exception)
             {
@@ -2230,7 +2230,7 @@ namespace LeMaiLogic.Logic
                 dc.Close();
             }
         }
-        
+
         /// <summary>
         /// Thêm kiện vấn đề cho đơn hàng
         /// </summary>

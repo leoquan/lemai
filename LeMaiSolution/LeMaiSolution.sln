@@ -16,8 +16,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeMaiWebPublic", "LeMaiWebP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeMaiModelWebApi", "LeMaiModelWebApi\LeMaiModelWebApi.csproj", "{AB77E9EC-DBBE-4346-BD96-1949138771DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCMS", "WebCMS\WebCMS.csproj", "{D0DB178E-ADD5-44D5-9AE8-DB90095E164A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,10 +50,6 @@ Global
 		{AB77E9EC-DBBE-4346-BD96-1949138771DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB77E9EC-DBBE-4346-BD96-1949138771DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB77E9EC-DBBE-4346-BD96-1949138771DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0DB178E-ADD5-44D5-9AE8-DB90095E164A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0DB178E-ADD5-44D5-9AE8-DB90095E164A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0DB178E-ADD5-44D5-9AE8-DB90095E164A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0DB178E-ADD5-44D5-9AE8-DB90095E164A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
