@@ -245,66 +245,76 @@ namespace LeMaiWebPublic.Controllers
                 return BadRequest();
             }
             BaseOutput result = new BaseOutput();
-            GExpBillLogicInputDto item = new GExpBillLogicInputDto();
-            item.BillWeight = input.BillWeigt;
-            item.FeeWeight = input.FeeWeight;
-            item.RegisterUser = input.UserId;
-
-            item.RegisterSiteCode = input.PostId;
-            item.Freight = input.Freight;
-            item.PayType = input.PayTypeSelected;
-            item.COD = input.COD;
-            item.SendMan = input.SendMan;
-            item.SendManPhone = input.SendManPhone;
-            item.SendManAddress = input.SendAddress;
-
-            item.AcceptProvinceCode = Int32.Parse(input.AcceptProvinceSelected);
-            item.AcceptDistrictCode = Int32.Parse(input.AcceptDistrictSelected);
-            item.AcceptWardCode = input.AcceptWardSelected;
-
-            item.AcceptMan = input.AcceptMan;
-            item.AcceptManPhone = input.AcceptManPhone;
-            item.AcceptManAddress = input.AcceptAddress;
-            item.AcceptProvince = input.AcceptProvinceSelected;
-            item.AcceptDistrict = input.AcceptDistrictSelected;
-            item.AcceptWard = input.AcceptWardSelected;
-            item.LastUpdateUser = input.UserId;
-            item.Note = input.Note;
-            item.BT3Type = input.ProviderSelected;
-            item.GoodsName = input.GoodName;
-
-            item.IsReceiveBill = false;
-            item.GoodsNumber = 1;
-            item.GoodsCode = "CODE";
-
-            item.GoodsW = input.DIM_W;
-            item.GoodsH = input.DIM_H;
-            item.GoodsL = input.DIM_L;
-            item.FK_Customer = string.IsNullOrEmpty(input.CustomerId) ? "0000" : input.CustomerId;
-
-            item.FK_ProviderAccount = input.ProviderSelected;
-            item.FK_PaymentType = input.PayTypeSelected;
-            item.FK_ShipType = input.ShipTypeSelected;
-            var user = await _logicUser.GetAccountObject(input.UserId);
-            item.FullName = user.FullName;
-            item.SiteCode = user.IdAccountIntro;
-            // Get pickupAddress
-            item.Pickup = input.IsPickup;
-            item.AddressPickup = input.PickupAddress;
-            item.ProvincePickup = input.PickupProvinceSelected;
-            item.DistricPickup = input.PickupDistrictSelected;
-            item.WardPickup = input.PickupWardSelected;
-            item.NamePickup = input.PickupMan;
-            item.PhonePickup = input.PickupManPhone;
-
-
-            GExpBill insert = await _logicbill.Create(item);
-            if(input.SaveAndSend)
+            try
             {
-                // Gửi đơn qua bên đơn vị thứ 3
-            }    
-            result.ResultString = insert.BillCode;
+                GExpBillLogicInputDto item = new GExpBillLogicInputDto();
+                item.BillWeight = input.BillWeigt;
+                item.FeeWeight = input.FeeWeight;
+                item.RegisterUser = input.UserId;
 
+                item.RegisterSiteCode = input.PostId;
+                item.Freight = input.Freight;
+                item.PayType = input.PayTypeSelected;
+                item.COD = input.COD;
+                item.SendMan = input.SendMan;
+                item.SendManPhone = input.SendManPhone;
+                item.SendManAddress = input.SendAddress;
+
+                item.AcceptProvinceCode = Int32.Parse(input.AcceptProvinceSelected);
+                item.AcceptDistrictCode = Int32.Parse(input.AcceptDistrictSelected);
+                item.AcceptWardCode = input.AcceptWardSelected;
+
+                item.AcceptMan = input.AcceptMan;
+                item.AcceptManPhone = input.AcceptManPhone;
+                item.AcceptManAddress = input.AcceptAddress;
+
+                item.AcceptProvince = input.AcceptProvinceName;
+                item.AcceptDistrict = input.AcceptDistrictName;
+                item.AcceptWard = input.AcceptWardName;
+
+                item.LastUpdateUser = input.UserId;
+                item.Note = input.Note;
+                item.BT3Type = input.ProviderSelected;
+                item.GoodsName = input.GoodName;
+
+                item.IsReceiveBill = false;
+                item.GoodsNumber = 1;
+                item.GoodsCode = "CODE";
+
+                item.GoodsW = input.DIM_W;
+                item.GoodsH = input.DIM_H;
+                item.GoodsL = input.DIM_L;
+                item.FK_Customer = string.IsNullOrEmpty(input.CustomerId) ? "0000" : input.CustomerId;
+
+                item.FK_ProviderAccount = input.ProviderSelected;
+                item.FK_PaymentType = input.PayTypeSelected;
+                item.FK_ShipType = input.ShipTypeSelected;
+                var user = await _logicUser.GetAccountObject(input.UserId);
+                item.FullName = user.FullName;
+                item.SiteCode = user.IdAccountIntro;
+                // Get pickupAddress
+                item.Pickup = input.IsPickup;
+                item.AddressPickup = input.PickupAddress;
+                item.ProvincePickup = input.PickupProvinceSelected;
+                item.DistricPickup = input.PickupDistrictSelected;
+                item.WardPickup = input.PickupWardSelected;
+                item.NamePickup = input.PickupMan;
+                item.PhonePickup = input.PickupManPhone;
+
+
+                GExpBill insert = await _logicbill.Create(item);
+                if (input.SaveAndSend)
+                {
+                    // Gửi đơn qua bên đơn vị thứ 3
+                }
+                result.ResultString = insert.BillCode;
+                result.Code = 200;
+            }
+            catch (Exception ex)
+            {
+                result.Code = 0;
+                result.Error = ex.Message; 
+            }
             return Json(result);
         }
     }

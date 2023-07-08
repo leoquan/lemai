@@ -39,6 +39,11 @@ namespace LeMaiModelWebApi.Order
         public string AcceptProvinceSelected { get; set; }
         public string AcceptDistrictSelected { get; set; }
         public string AcceptWardSelected { get; set; }
+
+        public string AcceptProvinceName { get; set; }
+        public string AcceptDistrictName { get; set; }
+        public string AcceptWardName { get; set; }
+
         public string AcceptAddress { get; set; }
         public string GoodName { get; set; }
         public int FeeWeight { get; set; }

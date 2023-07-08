@@ -311,6 +311,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Reports\" />
     <Folder Include="wwwroot\files\" />
   </ItemGroup>
 

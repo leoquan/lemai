@@ -63,6 +63,7 @@ $(document).ready($(function () {
                     $('#CustomerId').val('');
                     $('#SendMan').focus();
                 }
+				$('#Note').val('Đơn hàng có vấn đề vui lòng liên hệ số điện thoại ' + _Phone+' để được giải quyết, xin cảm ơn!');
                 checkValid();
             },
             error: function (err) {
@@ -305,6 +306,11 @@ $(document).ready($(function () {
             var _SiteCode = $('#SiteCode').val();
             var _CustomerId = $('#CustomerId').val();
             var _SaveAndSend = false;
+
+            var _AcceptProvinceName = $("#AcceptProvince option:selected").text();
+            var _AcceptDistrictName = $("#AcceptDistrict option:selected").text();
+            var _AcceptWardName = $("#AcceptWard option:selected").text();
+
             $.ajax({
                 type: "POST",
                 url: _urlApi + "Post/TaoDonHang",
@@ -325,6 +331,9 @@ $(document).ready($(function () {
                     AcceptProvinceSelected: _AcceptProvinceSelected,
                     AcceptDistrictSelected: _AcceptDistrictSelected,
                     AcceptWardSelected: _AcceptWardSelected,
+                    AcceptProvinceName: _AcceptProvinceName,
+                    AcceptDistrictName: _AcceptDistrictName,
+                    AcceptWardName : _AcceptWardName,
                     AcceptAddress: _AcceptAddress,
                     GoodName: _GoodName,
                     FeeWeight: _FeeWeight,
@@ -346,7 +355,12 @@ $(document).ready($(function () {
                     SaveAndSend: _SaveAndSend
                 }),
                 success: function (result) {
-                    console.log(result);
+                    if (result.code == 200) {
+                        toastr["success"]("Tạo đơn hàng thành công: " + result.resultString, "Thành công");
+                    }
+                    else {
+                        toastr["error"](result.error, "Lỗi");
+                    }
                 },
                 error: function (err) {
                     console.log(err);
@@ -355,8 +369,8 @@ $(document).ready($(function () {
         }
     });
     $("#btnPrintReceipt").on("click", function () {
-        
-        toastr["success"]("Nội dung tin nhắn", "Tiêu đề"); 
+
+        toastr["success"]("Nội dung tin nhắn", "Tiêu đề");
     });
     $("#btnSaveAndSend").on("click", function () {
         var resultCheck = checkValid();
@@ -517,7 +531,7 @@ $(document).ready($(function () {
             $('#COD').removeClass('is-invalid').addClass('is-valid');
         }
         if (resultValid == false) {
-            toastr["error"]("Lỗi dữ liệu cần kiểm tra lại!"); 
+            toastr["error"]("Lỗi dữ liệu cần kiểm tra lại!");
         }
         return resultValid;
     };
