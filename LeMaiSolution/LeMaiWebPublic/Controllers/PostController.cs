@@ -16,6 +16,9 @@ using System.Linq;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.VariantTypes;
+using System.IO;
+using System.Drawing;
 
 namespace LeMaiWebPublic.Controllers
 {
@@ -313,9 +316,305 @@ namespace LeMaiWebPublic.Controllers
             catch (Exception ex)
             {
                 result.Code = 0;
-                result.Error = ex.Message; 
+                result.Error = ex.Message;
             }
             return Json(result);
         }
+       
+        //public IActionResult PrintBill(string billCode)
+        //{
+        //    if (!string.IsNullOrEmpty(billCode))
+        //    {
+        //        billCode = billCode.Replace(",", "','");
+        //        billCode = "'" + billCode + "'";
+        //    }
+        //    else
+        //    {
+        //        billCode = "''";
+        //    }
+        //    var bills = _logicbill.GetBills(billCode);
+
+        //    var document = new PdfDocument();
+        //    document.Info.Title = "Bill 76x130";
+        //    var drawFormatCenter = XStringFormats.Center;
+        //    var drawFormatLeft = XStringFormats.CenterLeft;
+        //    var drawFormatRight = XStringFormats.CenterRight;
+
+        //    var drawBrush = XBrushes.Black;
+
+        //    XFont fontTimeNewRoman12Bold = new XFont("Arial", 12, XFontStyle.Bold);
+        //    XFont fontTimeNewRoman10Bold = new XFont("Time New Roman", 10, XFontStyle.Bold);
+        //    XFont fontTimeNewRoman8Bold = new XFont("Time New Roman", 8, XFontStyle.Bold);
+        //    XFont fontTimeNewRoman7 = new XFont("Time New Roman", 7);
+        //    XFont fontTimeNewRoman8 = new XFont("Time New Roman", 8);
+        //    XFont fontTimeNewRoman30Bold = new XFont("Time New Roman", 30, XFontStyle.Bold);
+        //    XFont fontTimeNewRoman20Bold = new XFont("Time New Roman", 20, XFontStyle.Bold);
+        //    var drawRect = new XRect();
+        //    int trucdung = 0;
+        //    int trucngang = 0;
+        //    foreach (var expCon in bills)
+        //    {
+        //        trucdung = 0;
+        //        trucngang = 0;
+        //        var page = document.AddPage();
+        //        page.Width = 299;
+        //        page.Height = 511;
+        //        XGraphics e = XGraphics.FromPdfPage(page);
+        //        var tf = new XTextFormatter(e);
+        //        // Line Đứng 1
+        //        e.DrawLine(XPens.Black, trucdung, 5, trucdung, 505);
+        //        // Line Đứng 2
+        //        trucdung = 143;
+        //        e.DrawLine(XPens.Black, trucdung, 164, trucdung, 340);
+        //        // Line Đứng 3
+        //        trucdung = 295;
+        //        e.DrawLine(XPens.Black, trucdung, 5, trucdung, 505);
+        //        // Line Ngang 1
+        //        trucngang = 62;
+        //        e.DrawLine(XPens.Black, 0, trucngang, 295, trucngang);
+        //        // Line Ngang 2
+        //        trucngang = 124;
+        //        e.DrawLine(XPens.Black, 0, trucngang, 295, trucngang);
+        //        // Line Ngang 3
+        //        trucngang = 164;
+        //        e.DrawLine(XPens.Black, 0, trucngang, 295, trucngang);
+        //        // Line Ngang 4
+        //        trucngang = 226;
+        //        e.DrawLine(XPens.Black, 0, trucngang, 295, trucngang);
+        //        // Line Ngang 5
+        //        trucngang = 340;
+        //        e.DrawLine(XPens.Black, 0, trucngang, 295, trucngang);
+
+        //        drawRect = new XRect(143, 15, 140, fontTimeNewRoman8.Height);
+        //        e.DrawString("Tổng tiền thu", fontTimeNewRoman8, drawBrush, drawRect, drawFormatRight);
+        //        // In Số tiền phải thu
+        //        drawRect = new XRect(143, 35, 143, 20);
+        //        if (expCon.FK_PaymentType == "GTT")
+        //        {
+        //            e.DrawString(expCon.COD.ToString("N0") + " đ", fontTimeNewRoman12Bold, drawBrush, drawRect, drawFormatRight);
+        //        }
+        //        else
+        //        {
+        //            e.DrawString((expCon.COD + expCon.Freight).ToString("N0") + " đ", fontTimeNewRoman12Bold, drawBrush, drawRect, drawFormatRight);
+        //        }
+        //        // In logo
+
+        //        drawRect = new XRect(5, 50, 140, fontTimeNewRoman7.Height);
+        //        e.DrawString(string.Format("{0:HH:mm dd/MM/yyyy}", expCon.RegisterDate) + " " + (expCon.FeeWeight - 2000), fontTimeNewRoman7, drawBrush, drawRect, drawFormatLeft);
+
+        //        if (!string.IsNullOrEmpty(expCon.BT3Code))
+        //        {
+        //            // Barcode mã vận đơn 
+        //            drawRect = new XRect(0, 62, 287, 40);
+        //            //var myImage = Code128Rendering.MakeBarcodeImage(expCon.BillCode, 2, true);
+        //            //MemoryStream ms128s = new MemoryStream();
+        //            //myImage.Save(ms128s, System.Drawing.Imaging.ImageFormat.Png);
+
+        //            //XImage image128s = XImage.FromStream(ms128s);
+        //            //e.DrawImage(image128s, 70, 70, 150, 30);
+
+        //            // In dòng mã vận đơn bên dưới
+        //            drawRect = new XRect(0, 105, 287, fontTimeNewRoman10Bold.Height);
+        //            e.DrawString(expCon.BillCode, fontTimeNewRoman10Bold, drawBrush, drawRect, drawFormatCenter);
+        //        }
+        //        else if (expCon.RunMode == 0)
+        //        {
+        //            // Barcode mã vận đơn 
+        //            //var myImage = Code128Rendering.MakeBarcodeImage(expCon.BillCode, 2, true);
+        //            //MemoryStream ms128s = new MemoryStream();
+        //            //myImage.Save(ms128s, System.Drawing.Imaging.ImageFormat.Png);
+
+        //            //XImage image128s = XImage.FromStream(ms128s);
+        //            //e.DrawImage(image128s, 70, 70, 150, 30);
+
+        //            // In dòng mã vận đơn bên dưới
+        //            drawRect = new XRect(0, 105, 287, fontTimeNewRoman10Bold.Height);
+        //            e.DrawString(expCon.BillCode, fontTimeNewRoman10Bold, drawBrush, drawRect, drawFormatCenter);
+        //        }
+        //        if (string.IsNullOrEmpty(expCon.PrintData))
+        //        {
+        //            // In dòng tên nhà cung cấp DV BT3
+        //            drawRect = new XRect(0, 135, 287, fontTimeNewRoman12Bold.Height);
+        //            e.DrawString(expCon.PrintLable, fontTimeNewRoman12Bold, drawBrush, drawRect, drawFormatCenter);
+        //        }
+        //        else
+        //        {
+        //            // Line Đứng X2
+        //            trucdung = 90;
+        //            e.DrawLine(XPens.Black, trucdung, 124, trucdung, 164);
+        //            // Line Đứng X3
+        //            trucdung = 220;
+        //            e.DrawLine(XPens.Black, trucdung, 124, trucdung, 164);
+        //            string[] split = expCon.PrintData.Split(';');
+        //            if (split.Length >= 3)
+        //            {
+        //                // Tên dịch vụ print data
+        //                drawRect = new XRect(0, 125, 90, fontTimeNewRoman20Bold.Height);
+        //                e.DrawString(split[0], fontTimeNewRoman20Bold, drawBrush, drawRect, drawFormatCenter);
+        //                drawRect = new XRect(80, 125, 140, fontTimeNewRoman20Bold.Height);
+        //                e.DrawString(split[1], fontTimeNewRoman20Bold, drawBrush, drawRect, drawFormatCenter);
+        //                drawRect = new XRect(220, 125, 60, fontTimeNewRoman20Bold.Height);
+        //                e.DrawString(split[2], fontTimeNewRoman20Bold, drawBrush, drawRect, drawFormatCenter);
+        //            }
+        //        }
+
+        //        // In dòng vật phẩm
+        //        drawRect = new XRect(5, 165, 140, fontTimeNewRoman8Bold.Height);
+        //        tf.DrawString("Tên vật phẩm:", fontTimeNewRoman8Bold, drawBrush, drawRect);
+        //        // In tên vật phẩm
+        //        drawRect = new XRect(10, 180, 140, 30);
+        //        e.DrawString(expCon.GoodsName, fontTimeNewRoman8Bold, drawBrush, drawRect, drawFormatLeft);
+
+        //        drawRect = new XRect(10, 200, 140, fontTimeNewRoman8Bold.Height);
+        //        e.DrawString(expCon.ShipNoteType, fontTimeNewRoman8Bold, drawBrush, drawRect, drawFormatCenter);
+        //        // In dòng trọng lượng
+        //        drawRect = new XRect(148, 165, 140, fontTimeNewRoman8Bold.Height);
+        //        e.DrawString("Trọng lượng: " + expCon.BillWeight.ToString("N0") + " Gr", fontTimeNewRoman8, drawBrush, drawRect, drawFormatLeft);
+        //        // In dòng phương thức thanh toán
+        //        drawRect = new XRect(148, 182, 140, fontTimeNewRoman8Bold.Height);
+        //        e.DrawString("Phương thức thanh toán", fontTimeNewRoman8, drawBrush, drawRect, drawFormatLeft);
+        //        // In nội dung phương thức thanh toán
+        //        drawRect = new XRect(143, 200, 140, fontTimeNewRoman8Bold.Height + 5);
+        //        e.DrawString(expCon.PaymentTypeName, fontTimeNewRoman8Bold, drawBrush, drawRect, drawFormatCenter);
+
+        //        // In dòng NHẬN
+        //        int row = 230;
+        //        drawRect = new XRect(5, row, 140, fontTimeNewRoman8Bold.Height);
+        //        e.DrawString("NHẬN", fontTimeNewRoman8Bold, drawBrush, drawRect, drawFormatLeft);
+
+        //        // IN TÊN NHẬN
+        //        drawRect = new XRect(0, row + 12, 140, fontTimeNewRoman8Bold.Height);
+        //        e.DrawString(expCon.AcceptMan.ToUpper(), fontTimeNewRoman8Bold, drawBrush, drawRect, drawFormatRight);
+
+        //        // In dòng chữ GỬI
+        //        drawRect = new XRect(148, row, 140, fontTimeNewRoman8Bold.Height);
+        //        e.DrawString("GỬI", fontTimeNewRoman8Bold, drawBrush, drawRect, drawFormatLeft);
+        //        // IN TÊN GỬI
+        //        drawRect = new XRect(143, row + 12, 140, fontTimeNewRoman8Bold.Height);
+        //        e.DrawString(expCon.SendMan.ToUpper(), fontTimeNewRoman8Bold, drawBrush, drawRect, drawFormatRight);
+
+        //        row = 255;
+        //        // In Số điện thoại nhận
+        //        drawRect = new XRect(5, row, 140, fontTimeNewRoman8.Height);
+        //        e.DrawString(expCon.AcceptManPhone, fontTimeNewRoman8, drawBrush, drawRect, drawFormatLeft);
+
+        //        if (expCon.RunMode == 0)
+        //        {
+        //            // In số điện thoại gửi
+        //            drawRect = new XRect(148, row, 140, fontTimeNewRoman8.Height);
+        //            e.DrawString(expCon.SendManPhone, fontTimeNewRoman8, drawBrush, drawRect, drawFormatLeft);
+        //        }
+        //        else
+        //        {
+        //            // In số điện thoại gửi
+        //            drawRect = new XRect(148, row, 140, fontTimeNewRoman8.Height);
+        //            e.DrawString(expCon.SendManPhone.Replace("0", "*").Replace("9", "*").Replace("7", "*"), fontTimeNewRoman8, drawBrush, drawRect, drawFormatLeft);
+        //        }
+
+        //        row = 275;
+        //        //In địa chỉ nhận
+        //        drawRect = new XRect(5, row, 140, 65);
+        //        tf.DrawString(expCon.FullAddress, fontTimeNewRoman8, drawBrush, drawRect);
+
+        //        // In địa chỉ gửi
+        //        drawRect = new XRect(148, row, 140, 65);
+        //        tf.DrawString(expCon.SendManAddress, fontTimeNewRoman8, drawBrush, drawRect);
+        //        // In chữ [GHI CHÚ]
+
+        //        row = 342;
+        //        drawRect = new XRect(5, row, 140, fontTimeNewRoman8.Height);
+        //        e.DrawString("GHI CHÚ:", fontTimeNewRoman8, drawBrush, drawRect, drawFormatLeft);
+
+
+        //        // In dòng ghi chú
+        //        row = 355;
+        //        drawRect = new XRect(5, row, 287, 50);
+        //        //e.DrawString(expCon.Note, fontTimeNewRoman8, drawBrush, drawRect, drawFormatLeft);
+        //        tf.DrawString(expCon.Note, fontTimeNewRoman8, drawBrush, drawRect);
+        //        string codePrint = expCon.BT3Code;
+
+        //        if (!string.IsNullOrEmpty(expCon.BT3Code))
+        //        {
+        //            codePrint = expCon.BT3Code;
+        //            // IN MÃ VẠCH VẬN ĐƠN BT3
+        //            Bitmap bimap = RenderQrCode(codePrint);
+        //            MemoryStream ms = new MemoryStream();
+        //            bimap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+
+        //            XImage image = XImage.FromStream(ms);
+
+        //            e.DrawImage(image, 110, 390);
+
+        //            // IN MÃ VẬN ĐƠN BT3
+        //            row = 455;
+        //            drawRect = new XRect(0, row, 287, fontTimeNewRoman10Bold.Height);
+        //            e.DrawString(codePrint, fontTimeNewRoman10Bold, drawBrush, drawRect, drawFormatCenter);
+        //        }
+        //        else
+        //        {
+        //            codePrint = expCon.BillCode;
+        //            // IN MÃ VẠCH VẬN ĐƠN BT3
+        //            //Bitmap bimap = RenderQrCode(codePrint);
+        //            //MemoryStream ms = new MemoryStream();
+        //            //bimap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+
+        //            //XImage image = XImage.FromStream(ms);
+
+        //            //e.DrawImage(image, 110, 390);
+        //            // IN MÃ VẬN ĐƠN BT3
+        //            row = 455;
+        //            drawRect = new XRect(0, row, 287, fontTimeNewRoman10Bold.Height);
+        //            e.DrawString(codePrint, fontTimeNewRoman10Bold, drawBrush, drawRect, drawFormatCenter);
+        //        }
+
+        //        // IN DÒNG TỈNH NHẬN HÀNG
+        //        row = 470;
+        //        drawRect = new XRect(0, row, 287, fontTimeNewRoman12Bold.Height);
+        //        e.DrawString(expCon.AcceptProvince, fontTimeNewRoman12Bold, drawBrush, drawRect, drawFormatCenter);
+        //        // In dòng số lượng
+        //        row = 490;
+        //        drawRect = new XRect(5, row, 140, fontTimeNewRoman8.Height);
+        //        e.DrawString("Số lượng: " + expCon.GoodsNumber.ToString(), fontTimeNewRoman8, drawBrush, drawRect, drawFormatLeft);
+        //        // In dòng kích thước
+        //        drawRect = new XRect(143, row, 140, fontTimeNewRoman8Bold.Height);
+        //        e.DrawString("Kích thước: " + expCon.GoodsW.ToString() + " x " + expCon.GoodsH.ToString() + " x " + expCon.GoodsL.ToString(), fontTimeNewRoman8Bold, drawBrush, drawRect, drawFormatRight);
+
+        //    }
+
+        //    //drawRect = new XRect(143, 35, 143, 20);
+        //    //g.DrawString("Nội dung ghi nhận lại", fontTimeNewRoman12Bold, XBrushes.Black, drawRect, XStringFormats.Center);
+
+        //    //Bitmap bimap = RenderQrCode("23001231564");
+        //    //MemoryStream ms = new MemoryStream();
+        //    //bimap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+
+        //    //XImage image = XImage.FromStream(ms);
+
+        //    //g.DrawImage(image, 100, 35);
+
+        //    //var myImage = Code128Rendering.MakeBarcodeImage("23001231564", 1, true);
+        //    //ms = new MemoryStream();
+        //    //myImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+
+        //    //image = XImage.FromStream(ms);
+        //    //g.DrawImage(image, 100, 75);
+        //    if (document.PageCount == 0)
+        //    {
+        //        document.AddPage();
+        //    }
+        //    MemoryStream stream = new MemoryStream();
+        //    document.Save(stream);
+        //    return File(stream, "application/pdf");
+        //}
+        //private Bitmap RenderQrCode(string text)
+        //{
+        //    QRCodeGenerator.ECCLevel eccLevel = QRCodeGenerator.ECCLevel.L;
+        //    using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+        //    using (QRCodeData qrCodeData = qrGenerator.CreateQrCode(text, eccLevel))
+        //    using (QRCode qrCode = new QRCode(qrCodeData))
+        //    {
+        //        return qrCode.GetGraphic(3, System.Drawing.Color.Black, System.Drawing.Color.White, null, 0);
+        //    }
+        //}
     }
 }

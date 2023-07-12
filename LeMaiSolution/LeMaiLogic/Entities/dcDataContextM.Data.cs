@@ -741,6 +741,12 @@ namespace LeMaiLogic
 			get { return _GExpdistrict; }
 		}
 
+		private IGExpdistrictbamboo _GExpdistrictbamboo;
+		public IGExpdistrictbamboo GExpdistrictbamboo
+		{
+			get { return _GExpdistrictbamboo; }
+		}
+
 		private IGExpdistrictghsv _GExpdistrictghsv;
 		public IGExpdistrictghsv GExpdistrictghsv
 		{
@@ -921,6 +927,12 @@ namespace LeMaiLogic
 			get { return _GExpprovince; }
 		}
 
+		private IGExpprovincebamboo _GExpprovincebamboo;
+		public IGExpprovincebamboo GExpprovincebamboo
+		{
+			get { return _GExpprovincebamboo; }
+		}
+
 		private IGExpprovincefeez _GExpprovincefeez;
 		public IGExpprovincefeez GExpprovincefeez
 		{
@@ -1069,6 +1081,12 @@ namespace LeMaiLogic
 		public IGExpward GExpward
 		{
 			get { return _GExpward; }
+		}
+
+		private IGExpwardbamboo _GExpwardbamboo;
+		public IGExpwardbamboo GExpwardbamboo
+		{
+			get { return _GExpwardbamboo; }
 		}
 
 		private IGExpwardghsv _GExpwardghsv;
@@ -2830,6 +2848,7 @@ namespace LeMaiLogic
 			this._GExpdebitsession = new MGExpdebitsession(this);
 			this._GExpdebitsessiondetail = new MGExpdebitsessiondetail(this);
 			this._GExpdistrict = new MGExpdistrict(this);
+			this._GExpdistrictbamboo = new MGExpdistrictbamboo(this);
 			this._GExpdistrictghsv = new MGExpdistrictghsv(this);
 			this._GExpdistrictjnt = new MGExpdistrictjnt(this);
 			this._GExpdistrictvn = new MGExpdistrictvn(this);
@@ -2860,6 +2879,7 @@ namespace LeMaiLogic
 			this._GExpprovidersub = new MGExpprovidersub(this);
 			this._GExpprovidertype = new MGExpprovidertype(this);
 			this._GExpprovince = new MGExpprovince(this);
+			this._GExpprovincebamboo = new MGExpprovincebamboo(this);
 			this._GExpprovincefeez = new MGExpprovincefeez(this);
 			this._GExpprovinceghsv = new MGExpprovinceghsv(this);
 			this._GExpprovincejnt = new MGExpprovincejnt(this);
@@ -2885,6 +2905,7 @@ namespace LeMaiLogic
 			this._GExpshippercashdetail = new MGExpshippercashdetail(this);
 			this._GExpshipperdevivery = new MGExpshipperdevivery(this);
 			this._GExpward = new MGExpward(this);
+			this._GExpwardbamboo = new MGExpwardbamboo(this);
 			this._GExpwardghsv = new MGExpwardghsv(this);
 			this._GExpwardjnt = new MGExpwardjnt(this);
 			this._GExpwardvn = new MGExpwardvn(this);

@@ -252,6 +252,8 @@ namespace LeMaiLogic
 
 		IGExpdistrict GExpdistrict { get; }
 
+		IGExpdistrictbamboo GExpdistrictbamboo { get; }
+
 		IGExpdistrictghsv GExpdistrictghsv { get; }
 
 		IGExpdistrictjnt GExpdistrictjnt { get; }
@@ -312,6 +314,8 @@ namespace LeMaiLogic
 
 		IGExpprovince GExpprovince { get; }
 
+		IGExpprovincebamboo GExpprovincebamboo { get; }
+
 		IGExpprovincefeez GExpprovincefeez { get; }
 
 		IGExpprovinceghsv GExpprovinceghsv { get; }
@@ -361,6 +365,8 @@ namespace LeMaiLogic
 		IGExpshipperdevivery GExpshipperdevivery { get; }
 
 		IGExpward GExpward { get; }
+
+		IGExpwardbamboo GExpwardbamboo { get; }
 
 		IGExpwardghsv GExpwardghsv { get; }
 

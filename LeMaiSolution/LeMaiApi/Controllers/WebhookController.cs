@@ -65,6 +65,19 @@ namespace LeMaiApi.Controllers
             return Ok();
         }
 
-
+        [HttpPost(nameof(WebhookBamboo))]
+        public async Task<IActionResult> WebhookBamboo([FromBody] WHBambooInput input)
+        {
+            var bodyjson = JsonConvert.SerializeObject(input);
+            Task.Run(async () => { await ProcessWebhook(bodyjson, "BAMBOO"); }).ConfigureAwait(false);
+            return Ok();
+        }
+        [HttpPost(nameof(WebhookBambooWeight))]
+        public async Task<IActionResult> WebhookBambooWeight([FromBody] WHBambooWeightInput input)
+        {
+            var bodyjson = JsonConvert.SerializeObject(input);
+            Task.Run(async () => { await ProcessWebhook(bodyjson, "BAMBOOW"); }).ConfigureAwait(false);
+            return Ok();
+        }
     }
 }

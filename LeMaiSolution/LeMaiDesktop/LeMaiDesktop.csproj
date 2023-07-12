@@ -234,6 +234,12 @@
     <Compile Include="frmQuanLyVungPhat.Designer.cs">
       <DependentUpon>frmQuanLyVungPhat.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSetUpdateProvinceBamboo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetUpdateProvinceBamboo.Designer.cs">
+      <DependentUpon>frmSetUpdateProvinceBamboo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmThongKeDoanhSo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -881,6 +887,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyVungPhat.resx">
       <DependentUpon>frmQuanLyVungPhat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetUpdateProvinceBamboo.resx">
+      <DependentUpon>frmSetUpdateProvinceBamboo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmThongKeDoanhSo.resx">
       <DependentUpon>frmThongKeDoanhSo.cs</DependentUpon>

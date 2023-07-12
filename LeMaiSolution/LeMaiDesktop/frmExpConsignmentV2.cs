@@ -1057,6 +1057,12 @@ namespace LeMaiDesktop
             List<view_GExpBill> ls = await _logic.GetListByListIds(ids, false);
             if (ls.Count > 0)
             {
+                // Expport schema
+                //DataTable data = MapperExtensionClass.ToDataTable(ls);
+                //System.IO.StreamWriter xmlSW = new System.IO.StreamWriter("D:\\BillReport.xml");
+                //data.TableName = "Bill";
+                //data.WriteXml(xmlSW, XmlWriteMode.WriteSchema);
+                //xmlSW.Close();
 
                 PrintDialog printDialog = new PrintDialog();
                 if (!string.IsNullOrEmpty(PBean.LOCAL_OPTIONS.PRINTER_RECEPT))

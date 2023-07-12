@@ -14,15 +14,15 @@ namespace LeMaiDesktop
     public class ApiBAMBOO : IConnectApi
     {
         //https://{partner-code}-gateway.bambooship.vn
-        private const string url = "https://{parter-code}-gateway.bambooship.vn";
-        private string GetToken(string clientId, string clientSecrect, string Token, string IdProvider, DateTime? expires)
+        private const string url = "https://stg-shop-gateway.bambooship.vn";
+        private string GetToken(string user, string password, string Token, string IdProvider, DateTime? expires)
         {
             string token = Token;
             if (expires.HasValue == false || expires <= DateTime.Now)
             {
                 var client = new RestClient(url + "/api/login");
                 var request = new RestRequest(Method.POST);
-                string bodyjson = JsonConvert.SerializeObject(new { email = clientId, password = clientSecrect });
+                string bodyjson = JsonConvert.SerializeObject(new { email = user, password = password });
                 request.AddParameter("application/json", bodyjson, ParameterType.RequestBody);
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 var response = client.Execute(request);
@@ -32,7 +32,7 @@ namespace LeMaiDesktop
                     if (result != null)
                     {
                         // Xử lý update Provider
-                        ApiConnectUlti.UpdateToken(IdProvider, result.access_token, DateTime.Now.AddMinutes(60));
+                        ApiConnectUlti.UpdateToken(IdProvider, result.access_token, DateTime.Now.AddDays(60));
                         return result.access_token;
                     }
                     else
@@ -72,13 +72,25 @@ namespace LeMaiDesktop
             var request = new RestRequest(Method.POST);
             request.AddHeader("Authorization", "Bearer " + token);
             request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Accept", "application/json");
             JsonBambooCreateOrderInput jsonObject = new JsonBambooCreateOrderInput();
-            jsonObject.code = bill.BillCode;
-
-            if (bill.IsPickup)
-            {
-
-            }
+            jsonObject.code = "BBS" + bill.BillCode;
+            jsonObject.cod = (int)bill.COD;
+            jsonObject.weight = (int)bill.BillWeight;
+            jsonObject.size_h = bill.GoodsH;
+            jsonObject.size_l = bill.GoodsL;
+            jsonObject.size_w = bill.GoodsW;
+            jsonObject.product = bill.GoodsName;
+            jsonObject.product_value = (int)bill.COD;
+            jsonObject.sender_port_code = bill.ProvinceCode;
+            jsonObject.sender_address = bill.Address;
+            jsonObject.receiver_address = bill.AcceptManAddress;
+            jsonObject.receiver_port_code = bill.AcceptProvinceCodeS;
+            jsonObject.receiver_phone = bill.AcceptManPhone;
+            jsonObject.quantity = 1;
+            jsonObject.notes = "(" + bill.ShipNoteType + ") " + bill.Note;
+            jsonObject.is_insurance_fee = false;
+            jsonObject.insurance_fee = 0;
 
             var bodyjson = JsonConvert.SerializeObject(jsonObject);
             request.AddParameter("application/json", bodyjson, ParameterType.RequestBody);
