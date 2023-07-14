@@ -467,6 +467,31 @@ namespace LeMaiDesktop
             }
             else if (typeCode.Contains("BAMBOO"))
             {
+                IDataContext dc = new dcDataContextM(PBean.CONNECTION_STRING);
+                try
+                {
+                    dc.Open();
+                    
+                    GExpWardBamboo ward = dc.GExpwardbamboo.GetObjectCon(PBean.SCHEMA, "WHERE WardId=@WardId",
+                        "@WardId", bill.AcceptWardCode);
+                    if (ward != null)
+                    {
+                        bill.AcceptWardCode = ward.communeCode;
+                        bill.AcceptWardCodeS = ward.PortCode;
+                        bill.AcceptWard = ward.communeName;
+                    }
+                    ward = dc.GExpwardbamboo.GetObjectCon(PBean.SCHEMA, "WHERE WardId=@WardId",
+                   "@WardId", bill.WardCode);
+                    if (ward != null)
+                    {
+                        bill.WardName = ward.communeName;
+                        bill.WardCode = ward.PortCode;
+                    }
+                }
+                finally
+                {
+                    dc.Close();
+                }
                 return new ApiBAMBOO();
             }
             else

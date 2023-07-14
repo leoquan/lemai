@@ -43,7 +43,7 @@ $(document).ready($(function () {
 
         $.ajax({
             type: "POST",
-            url: _urlApi + "Post/GetSender",
+            url: _urlApi + "POrder/GetSender",
             data: { Phone: _Phone, Post: _Post },
             success: function (rs) {
                 // Set giá
@@ -63,8 +63,8 @@ $(document).ready($(function () {
                     $('#CustomerId').val('');
                     $('#SendMan').focus();
                 }
-				$('#Note').val('Đơn hàng có vấn đề vui lòng liên hệ số điện thoại ' + _Phone+' để được giải quyết, xin cảm ơn!');
-                checkValid();
+                $('#Note').val('Đơn hàng có vấn đề vui lòng liên hệ số điện thoại ' + _Phone + ' để được giải quyết, xin cảm ơn!');
+                checkValid(false);
             },
             error: function (err) {
                 console.log(err);
@@ -77,7 +77,7 @@ $(document).ready($(function () {
 
         $.ajax({
             type: "POST",
-            url: _urlApi + "Post/GetAccept",
+            url: _urlApi + "POrder/GetAccept",
             data: { Phone: _Phone },
             success: function (rs) {
                 // Set giá
@@ -119,7 +119,7 @@ $(document).ready($(function () {
                 else {
                     $('#AcceptMan').focus();
                 }
-                checkValid();
+                checkValid(false);
             },
             error: function (err) {
                 console.log(err);
@@ -137,7 +137,7 @@ $(document).ready($(function () {
         var _CustomerId = $('#CustomerId').val();
         $.ajax({
             type: "POST",
-            url: _urlApi + "Post/GetCalculator",
+            url: _urlApi + "POrder/GetCalculator",
             data: { IdTinh: _Tinh, IdHuyen: _Huyen, Weight: _Weight, Post: _Post, CustomerId: _CustomerId },
             success: function (json) {
                 // Set giá
@@ -266,7 +266,7 @@ $(document).ready($(function () {
     });
 
     $("#btnSave").on("click", function () {
-        var resultCheck = checkValid();
+        var resultCheck = checkValid(true);
         if (resultCheck) {
             var _SendManPhone = $('#SendManPhone').val();
             var _SendMan = $('#SendMan').val();
@@ -313,7 +313,7 @@ $(document).ready($(function () {
 
             $.ajax({
                 type: "POST",
-                url: _urlApi + "Post/TaoDonHang",
+                url: _urlApi + "POrder/TaoDonHang",
                 contentType: "application/json",
                 data: JSON.stringify({
                     SendManPhone: _SendManPhone,
@@ -333,7 +333,7 @@ $(document).ready($(function () {
                     AcceptWardSelected: _AcceptWardSelected,
                     AcceptProvinceName: _AcceptProvinceName,
                     AcceptDistrictName: _AcceptDistrictName,
-                    AcceptWardName : _AcceptWardName,
+                    AcceptWardName: _AcceptWardName,
                     AcceptAddress: _AcceptAddress,
                     GoodName: _GoodName,
                     FeeWeight: _FeeWeight,
@@ -357,6 +357,7 @@ $(document).ready($(function () {
                 success: function (result) {
                     if (result.code == 200) {
                         toastr["success"]("Tạo đơn hàng thành công: " + result.resultString, "Thành công");
+                        $('#BillCode').val(result.resultString);
                     }
                     else {
                         toastr["error"](result.error, "Lỗi");
@@ -369,11 +370,11 @@ $(document).ready($(function () {
         }
     });
     $("#btnPrintReceipt").on("click", function () {
-
-        toastr["success"]("Nội dung tin nhắn", "Tiêu đề");
+        var url = _urlApi + "POrder/PrintBill?billcode=" + $('#BillCode').val();
+        window.open(url, "MsgWindow", "width=1024,height=700");
     });
     $("#btnSaveAndSend").on("click", function () {
-        var resultCheck = checkValid();
+        var resultCheck = checkValid(true);
     });
     $("#btnPrint").on("click", function () {
         alert("In tem dán");
@@ -394,7 +395,7 @@ $(document).ready($(function () {
     function showToast(title, content, type) {
 
     };
-    function checkValid() {
+    function checkValid(showMessage) {
         var resultValid = true;
         var _SendManPhone = $('#SendManPhone').val();
         var _SendMan = $('#SendMan').val();
@@ -530,7 +531,7 @@ $(document).ready($(function () {
         else {
             $('#COD').removeClass('is-invalid').addClass('is-valid');
         }
-        if (resultValid == false) {
+        if (resultValid == false && showMessage == true) {
             toastr["error"]("Lỗi dữ liệu cần kiểm tra lại!");
         }
         return resultValid;

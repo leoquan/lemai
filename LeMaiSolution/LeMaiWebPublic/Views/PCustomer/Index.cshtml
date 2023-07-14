@@ -1,0 +1,341 @@
+﻿@using LeMaiModelWebApi.Order;
+@{
+    ViewData["Title"] = "Danh sách khách hàng";
+    Layout = "_LayoutPost";
+}
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Config
+@model BaseBillFilter
+@section css
+    {
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css">
+    <link href="~/Admin/vendors/css/toastr.min.css" rel="stylesheet">
+}
+
+<main class="main">
+    <!-- Breadcrumb -->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item"><a href="#">Quản lý khách hàng</a></li>
+    </ol>
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Quản lý khách hàng</strong>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label for="name">Từ ngày</label>
+                                        <input type="date" name="datefrom" class="form-control" value="@Model.FromDate" id="TuNgay" placeholder="dd-mm-yyyy">
+                                        <em id="TuNgay-error" class="error invalid-feedback">Từ ngày tạo đơn</em>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label for="name">Đến ngày</label>
+                                        <input type="date" name="dateto" class="form-control" value="@Model.ToDate" id="DenNgay" placeholder="dd-mm-yyyy">
+                                        <em id="DenNgay-error" class="error invalid-feedback">Đến ngày tạo đơn</em>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="name">Bảng giá</label>
+                                    <select class="form-control" id="Status">
+                                        @foreach (var item in Model.ListStatus)
+                                        {
+                                            <option value="@item.Value">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-sm-5">
+                                    <label for="name">Tìm kiếm</label>
+                                    <input type="text" class="form-control" id="KeySearch" placeholder="SĐT, Mã vận đơn, BT3">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <button type="button" id="btnAdd" data-toggle="modal" data-target="#CreateUpdateModal" class="btn btn-primary"><i class="fa fa-hacker-news"></i>&nbsp; Thêm mới</button>
+                                </div>
+                                <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-3">
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="form-group" style="text-align:right;">
+                                        <button type="submit" id="btnFilter" class="btn btn-primary"><i class="fa fa-filter"></i>&nbsp; Lọc danh sách</button>
+                                        <button type="button" id="btnExport" class="btn btn-success"><i class="fa fa-file-export"></i>&nbsp; Xuất excel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+
+                            <table id="datatablesSimple" data-mobile-responsive="true" data-check-on-init="true"
+                                   data-pagination="true" data-search="true" data-show-columns="true" data-page-list="[10, 25, 50, 100, 200, All]">
+                                <thead>
+                                    <tr>
+                                        <th>Mã khách hàng</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>SĐT</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Số TK</th>
+                                        <th>Chủ TK</th>
+                                        <th>Ngân hàng</th>
+                                        <th>Bảng giá</th>
+                                        <th style="width:100px !important">Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CustomerCode</td>
+                                        <td>CustomerName</td>
+                                        <td>CustomerPhone</td>
+                                        <td>Address</td>
+                                        <td>AccountNumber</td>
+                                        <td>AccountHolder</td>
+                                        <td>BankName</td>
+                                        <td>FK_Fee</td>
+                                        <td>
+                                            <a class="btn btn-success SubView" data-itemkey="230300213">
+                                                <i class="fa fa-search-plus "></i>
+                                            </a>
+                                            <a class="btn btn-info SubEdit">
+                                                <i class="fa fa-edit "></i>
+                                            </a>
+                                            <a class="btn btn-danger SubDelete">
+                                                <i class="fa fa-trash-o "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CustomerCode</td>
+                                        <td>CustomerName</td>
+                                        <td>CustomerPhone</td>
+                                        <td>Address</td>
+                                        <td>AccountNumbẻ</td>
+                                        <td>AccountHolder</td>
+                                        <td>BankName</td>
+                                        <td>FK_Fee</td>
+                                        <td>
+                                            <a class="btn btn-success" href="#">
+                                                <i class="fa fa-search-plus "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="#">
+                                                <i class="fa fa-edit "></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="#">
+                                                <i class="fa fa-trash-o "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CustomerCode</td>
+                                        <td>CustomerName</td>
+                                        <td>CustomerPhone</td>
+                                        <td>Address</td>
+                                        <td>AccountNumbẻ</td>
+                                        <td>AccountHolder</td>
+                                        <td>BankName</td>
+                                        <td>FK_Fee</td>
+                                        <td>
+                                            <a class="btn btn-success" href="#">
+                                                <i class="fa fa-search-plus "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="#">
+                                                <i class="fa fa-edit "></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="#">
+                                                <i class="fa fa-trash-o "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CustomerCode</td>
+                                        <td>CustomerName</td>
+                                        <td>CustomerPhone</td>
+                                        <td>Address</td>
+                                        <td>AccountNumbẻ</td>
+                                        <td>AccountHolder</td>
+                                        <td>BankName</td>
+                                        <td>FK_Fee</td>
+                                        <td>
+                                            <a class="btn btn-success" href="#">
+                                                <i class="fa fa-search-plus "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="#">
+                                                <i class="fa fa-edit "></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="#">
+                                                <i class="fa fa-trash-o "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CustomerCode</td>
+                                        <td>CustomerName</td>
+                                        <td>CustomerPhone</td>
+                                        <td>Address</td>
+                                        <td>AccountNumbẻ</td>
+                                        <td>AccountHolder</td>
+                                        <td>BankName</td>
+                                        <td>FK_Fee</td>
+                                        <td>
+                                            <a class="btn btn-success" href="#">
+                                                <i class="fa fa-search-plus "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="#">
+                                                <i class="fa fa-edit "></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="#">
+                                                <i class="fa fa-trash-o "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CustomerCode</td>
+                                        <td>CustomerName</td>
+                                        <td>CustomerPhone</td>
+                                        <td>Address</td>
+                                        <td>AccountNumbẻ</td>
+                                        <td>AccountHolder</td>
+                                        <td>BankName</td>
+                                        <td>FK_Fee</td>
+                                        <td>
+                                            <a class="btn btn-success" href="#">
+                                                <i class="fa fa-search-plus "></i>
+                                            </a>
+                                            <a class="btn btn-info" href="#">
+                                                <i class="fa fa-edit "></i>
+                                            </a>
+                                            <a class="btn btn-danger" href="#">
+                                                <i class="fa fa-trash-o "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!--Popup-->
+<div class="modal fade" id="CreateUpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thông tin khách hàng</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Tên khách hàng <span style="color:red;">*</span></label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Số điện thoại <span style="color:red;">*</span></label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Địa chỉ <span style="color:red;">*</span></label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Tỉnh</label>
+                        <select class="form-control" id="Status">
+                            @foreach (var item in Model.ListStatus)
+                            {
+                                <option value="@item.Value">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Huyện</label>
+                        <select class="form-control" id="Status">
+                            @foreach (var item in Model.ListStatus)
+                            {
+                                <option value="@item.Value">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Xã</label>
+                        <select class="form-control" id="Status">
+                            @foreach (var item in Model.ListStatus)
+                            {
+                                <option value="@item.Value">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Chủ tài khoản</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Số tài khoản</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Ngân hàng</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Tên hàng thường gửi</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Bảng giá</label>
+                        <select class="form-control" id="Status">
+                            @foreach (var item in Model.ListStatus)
+                            {
+                                <option value="@item.Value">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div style="padding-left:10px;">
+                            <input class="form-check-input" type="checkbox" id="IsPickup">
+                            <label class="form-check-label" for="inline-checkbox1">Bên thứ 3 nhận hàng</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Ghi chú:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" id="btnSave" class="btn btn-primary">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section js
+    {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.rawgit.com/unconditional/jquery-table2excel/master/src/jquery.table2excel.js"></script>
+    <script src="~/Admin/vendors/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        $('#datatablesSimple').bootstrapTable();
+        var _urlApi = '@(Config["UrlAPi"])';
+    </script>
+    <script src="~/Admin/js/csviews/customer/index.js"></script>
+}

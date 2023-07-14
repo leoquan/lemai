@@ -111,7 +111,7 @@ namespace LeMaiWebPublic
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Post}/{action=DangNhap}");
+                    pattern: "{controller=POrder}/{action=DangNhap}");
             });
         }
     }

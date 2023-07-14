@@ -1,0 +1,94 @@
+[
+	{
+		"code": "Planned_for_pickup",
+		"name": "Planned_for_pickup"
+	},
+	{
+		"code": "In_pickup",
+		"name": "In_pickup"
+	},
+	{
+		"code": "Pickup_successful",
+		"name": "Pickup_successful"
+	},
+	{
+		"code": "Pickup_failed",
+		"name": "Pickup_failed"
+	},
+	{
+		"code": "Pickup_failed_attempt",
+		"name": "Pickup_failed_attempt"
+	},
+	{
+		"code": "Shop_canceled",
+		"name": "Shop_canceled"
+	},
+	{
+		"code": "Waiting_for_delivery",
+		"name": "Waiting_for_delivery"
+	},
+	{
+		"code": "Waiting_for_linehaul",
+		"name": "Waiting_for_linehaul"
+	},
+	{
+		"code": "In_delivery",
+		"name": "In_delivery"
+	},
+	{
+		"code": "Delivery_successful",
+		"name": "Delivery_successful"
+	},
+	{
+		"code": "Delivery_failed",
+		"name": "Delivery_failed"
+	},
+	{
+		"code": "Waiting_for_return",
+		"name": "Waiting_for_return"
+	},
+	{
+		"code": "Returned",
+		"name": "Returned"
+	},
+	{
+		"code": "Return_failed",
+		"name": "Return_failed"
+	},
+	{
+		"code": "Delivery_failed_attempt",
+		"name": "Delivery_failed_attempt"
+	},
+	{
+		"code": "Return_failed_attempt",
+		"name": "Return_failed_attempt"
+	},
+	{
+		"code": "In_return",
+		"name": "In_return"
+	},
+	{
+		"code": "Shop_lost_claimed",
+		"name": "Shop_lost_claimed"
+	},
+	{
+		"code": "Lost_collection_approved",
+		"name": "Lost_collection_approved"
+	},
+	{
+		"code": "3pl_cancelled",
+		"name": "3pl_cancelled"
+	},
+	{
+		"code": "Waiting_for_approval",
+		"name": "Waiting_for_approval"
+	},
+	{
+		"code": "Cancelled",
+		"name": "Cancelled"
+	},
+	{
+		"code": "Cancel_failed",
+		"name": "Cancel_failed"
+	}
+]

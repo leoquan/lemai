@@ -1,4 +1,4 @@
-using LeMaiDomain;
+﻿using LeMaiDomain;
 using LeMaiDomain.Models;
 using System;
 using System.Collections.Generic;
@@ -27,6 +27,26 @@ namespace LeMaiLogic.Logic
             {
                 dc.Close();
             }
+        }
+        public List<GExpBillStatus> GetGExpBillStatusAndAll()
+        {
+            List<GExpBillStatus> ls = new List<GExpBillStatus>();
+            ls.Add(new GExpBillStatus { Id = -1, StatusName = "Tất cả" });
+            IDataContext dc = new dcDataContextM(ConnectionData.ConnectionString);
+            try
+            {
+                dc.Open();
+                ls.AddRange(dc.GExpbillstatus.GetListObjectCon(ConnectionData.Schema, "ORDER BY Id"));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                dc.Close();
+            }
+            return ls;
         }
     }
 }

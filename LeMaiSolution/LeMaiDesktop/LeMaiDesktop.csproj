@@ -1153,6 +1153,9 @@
     <EmbeddedResource Include="ucBill.resx">
       <DependentUpon>ucBill.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="apidata\bamboo.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="apidata\ninjaStatus.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -1163,7 +1166,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Database.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Compile Include="PermissionExtension.cs" />
     <Compile Include="Program.cs" />

@@ -13,11 +13,12 @@ namespace LeMaiDesktop
 {
     public class ApiNinja : IConnectApi
     {
-        private const string url = "https://api.ninjavan.co/VN"; // Product
-        //private const string url = "https://api-sandbox.ninjavan.co/sg";//Sandbox
+        //private const string url = "https://api.ninjavan.co/VN"; // Product
+        private const string url = "https://api-sandbox.ninjavan.co/sg";//Sandbox
         private string GetToken(string clientId, string clientSecrect, string Token, string IdProvider, DateTime? expires)
         {
             string token = Token;
+            // Audit if (expires.HasValue == false || expires <= DateTime.Now)
             if (expires.HasValue == false || expires <= DateTime.Now)
             {
                 var client = new RestClient(url + "/2.0/oauth/access_token");
@@ -77,10 +78,12 @@ namespace LeMaiDesktop
             jsonObject.requested_tracking_number = bill.BillCode;
             jsonObject.service_type = "Parcel";
             jsonObject.service_level = "Standard";
+
             // from
             if (bill.Pickup.GetValueOrDefault(false))
             {
                 // Nhờ bên thứ 3 Pickup
+                jsonObject.parcel_job.is_pickup_required = true;
                 jsonObject.from.name = bill.SendMan;
                 jsonObject.from.phone_number = bill.SendManPhone;
                 jsonObject.from.address = new NinjaAddress();
@@ -95,6 +98,7 @@ namespace LeMaiDesktop
             else
             {
                 // Gửi hàng tại shop
+                jsonObject.parcel_job.is_pickup_required = false;
                 jsonObject.from.name = bill.ShopName;
                 jsonObject.from.phone_number = bill.ShopPhone;
                 jsonObject.from.address = new NinjaAddress();
@@ -129,11 +133,15 @@ namespace LeMaiDesktop
             jsonObject.parcel_job.delivery_timeslot.start_time = "09:00";
             jsonObject.parcel_job.delivery_timeslot.end_time = "18:00";
             jsonObject.parcel_job.delivery_timeslot.timezone = "Asia/Ho_Chi_Minh";
-            
+
             jsonObject.parcel_job.items = new List<NinjaItem>();
             jsonObject.parcel_job.items.Add(new NinjaItem { is_dangerous_good = false, item_description = bill.GoodsName, quantity = 1 });
+            //Audit Only
+            //jsonObject.parcel_job.items.Add(new NinjaItem { is_dangerous_good = false, item_description = "Quần áo", quantity = 2 });
             jsonObject.parcel_job.dimensions = new NinjaDimensions();
             jsonObject.parcel_job.dimensions.weight = (double)(bill.BillWeight / 1000);
+
+
 
             if (bill.FK_PaymentType == "GTT")
             {
@@ -143,15 +151,34 @@ namespace LeMaiDesktop
             {
                 jsonObject.parcel_job.cash_on_delivery = (double)(bill.COD + bill.Freight);
             }
+            // Insuren Value
+            //if (bill.COD > bill.InsuranceValue || bill.COD == 0)
+            //{
+            //    jsonObject.parcel_job.insured_value = bill.InsuranceValue;
+            //}
+            //else
+            //{
+            //    jsonObject.parcel_job.insured_value = (int)bill.COD;
+            //}
+            // Audit Only
+            jsonObject.parcel_job.is_pickup_required = true;
+            jsonObject.parcel_job.pickup_date = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
+            jsonObject.parcel_job.pickup_timeslot = new NinjaPickupTimeslot();
+            jsonObject.parcel_job.pickup_timeslot.start_time = "09:00";
+            jsonObject.parcel_job.pickup_timeslot.end_time = "18:00";
+            jsonObject.parcel_job.pickup_timeslot.timezone = "Asia/Ho_Chi_Minh";
+            jsonObject.parcel_job.pickup_service_type = "Scheduled";
+            jsonObject.parcel_job.pickup_service_level = "Standard";
+
             // Pickup
-            if(bill.Pickup.GetValueOrDefault(false))
+            if (bill.Pickup.GetValueOrDefault(false))
             {
                 // Nhận hàng BT3
                 jsonObject.parcel_job.is_pickup_required = true;
                 jsonObject.parcel_job.pickup_service_type = "Scheduled";
                 jsonObject.parcel_job.pickup_service_level = "Standard";
                 jsonObject.parcel_job.pickup_date = String.Format("{0:yyyy-MM-dd}", DateTime.Now);
-                
+
                 jsonObject.parcel_job.pickup_address = new NinjaPickupAddress();
                 jsonObject.parcel_job.pickup_address.name = bill.SendMan;
                 jsonObject.parcel_job.pickup_address.phone_number = bill.SendManPhone;
@@ -170,7 +197,7 @@ namespace LeMaiDesktop
 
                 jsonObject.parcel_job.pickup_instructions = "Vui lòng nhận hàng sớm xin cảm ơn";
 
-            }    
+            }
             var bodyjson = JsonConvert.SerializeObject(jsonObject);
             request.AddParameter("application/json", bodyjson, ParameterType.RequestBody);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -401,6 +428,7 @@ namespace LeMaiDesktop
         public string pickup_service_level { get; set; }
         public string pickup_date { get; set; }
         public double cash_on_delivery { get; set; }
+        public double insured_value { get; set; }
         public NinjaPickupTimeslot pickup_timeslot { get; set; }
         public string pickup_instructions { get; set; }
         public string delivery_instructions { get; set; }

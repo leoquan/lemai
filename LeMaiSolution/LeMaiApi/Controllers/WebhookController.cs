@@ -64,6 +64,13 @@ namespace LeMaiApi.Controllers
             Task.Run(async () => { await ProcessWebhook(bodyjson, "VIETTEL"); }).ConfigureAwait(false);
             return Ok();
         }
+        [HttpPost(nameof(WebhookViettelForward))]
+        public async Task<IActionResult> WebhookViettelForward([FromBody] WHViettelInput input)
+        {
+            var bodyjson = JsonConvert.SerializeObject(input);
+            
+            return Ok();
+        }
 
         [HttpPost(nameof(WebhookBamboo))]
         public async Task<IActionResult> WebhookBamboo([FromBody] WHBambooInput input)

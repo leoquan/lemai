@@ -29,14 +29,14 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="name">Số điện thoại người gửi</label>
+                                        <label for="name">Số điện thoại người gửi <span style="color:red;">*</span></label>
                                             <input type="text" class="form-control" id="SendManPhone" value="@Model.SendManPhone" placeholder="Số điện thoại người gửi" >
                                             <em id="SendManPhone-error" class="error invalid-feedback">Nhập số điện thoại người gửi</em>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="name">Tên người gửi</label>
+                                            <label for="name">Tên người gửi <span style="color:red;">*</span></label>
                                             <input type="text" class="form-control" id="SendMan" value="@Model.SendMan" placeholder="Tên người gửi">
                                             <em id="SendMan-error" class="error invalid-feedback">Nhập tên người gửi</em>
                                         </div>
@@ -45,7 +45,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label for="name">Địa chỉ người gửi</label>
+                                        <label for="name">Địa chỉ người gửi <span style="color:red;">*</span></label>
                                             <input type="text" class="form-control" id="SendAddress" value="@Model.SendAddress" placeholder="Địa chỉ người gửi">
                                             <em id="SendAddress-error" class="error invalid-feedback">Địa chỉ người gửi</em>
                                         </div>
@@ -158,14 +158,14 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="name">Số điện thoại người nhận</label>
+                                        <label for="name">Số điện thoại người nhận <span style="color:red;">*</span></label>
                                             <input type="text" class="form-control" id="AcceptManPhone" value="@Model.AcceptManPhone" placeholder="Số điện thoại người nhận">
                                             <em id="AcceptManPhone-error" class="error invalid-feedback">Số điện thoại người nhận</em>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="name">Tên người nhận</label>
+                                        <label for="name">Tên người nhận <span style="color:red;">*</span></label>
                                             <input type="text" class="form-control" id="AcceptMan" value="@Model.AcceptMan" placeholder="Tên người nhận">
                                             <em id="AcceptMan-error" class="error invalid-feedback">Tên người nhận</em>
                                         </div>
@@ -234,7 +234,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label for="name">Địa chỉ người nhận</label>
+                                        <label for="name">Địa chỉ người nhận <span style="color:red;">*</span></label>
                                             <input type="text" class="form-control" id="AcceptAddress" value="@Model.AcceptAddress" placeholder="Địa chỉ người nhận">
                                             <em id="AcceptAddress-error" class="error invalid-feedback">Địa chỉ người nhận</em>
                                         </div>
@@ -243,7 +243,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="name">Tên hàng hóa</label>
+                                        <label for="name">Tên hàng hóa <span style="color:red;">*</span></label>
                                             <input type="text" class="form-control" id="GoodName" value="@Model.GoodName" placeholder="Tên hàng hóa ví dụ: Quần áo">
                                             <em id="GoodName-error" class="error invalid-feedback">Nội dung hàng hóa</em>
                                         </div>
@@ -310,7 +310,7 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label for="Freight">Cước phí</label>
+                                        <label for="Freight">Cước phí <span style="color:red;">*</span></label>
                                             <input type="text" class="form-control" value="@Model.Freight" id="Freight" placeholder="Cước phí">
                                             <em id="Freight-error" class="error invalid-feedback">Cước phí</em>
                                         </div>
@@ -396,6 +396,7 @@
 <input type="hidden" id="UserId" value="@Model.UserId" />
 <input type="hidden" id="PostId" value="@Model.PostId" />
 <input type="hidden" id="SiteCode" value="@Model.SiteCode" />
+<input type="hidden" id="BillCode" value="23001013922" />
 @section js
     {
     <!-- Plugins and scripts required by this views -->
@@ -410,6 +411,6 @@
     <script type="text/javascript">
         var _urlApi = '@(Config["UrlAPi"])';
     </script>
-    <script src="~/Admin/js/csviews/create-forms.js"></script>
+    <script src="~/Admin/js/csviews/order/create-order.js"></script>
 
 }
