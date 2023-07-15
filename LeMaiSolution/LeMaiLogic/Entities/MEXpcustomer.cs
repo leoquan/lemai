@@ -176,6 +176,10 @@ namespace LeMaiLogic
 					{
 						item.WardId = Convert.ToString(dr["WardId"]);
 					}
+					if (dr["IsDelete"] != null && dr["IsDelete"] != DBNull.Value)
+					{
+						item.IsDelete = Convert.ToBoolean(dr["IsDelete"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -310,6 +314,10 @@ namespace LeMaiLogic
 					if (dr["WardId"] != null && dr["WardId"] != DBNull.Value)
 					{
 						item.WardId = Convert.ToString(dr["WardId"]);
+					}
+					if (dr["IsDelete"] != null && dr["IsDelete"] != DBNull.Value)
+					{
+						item.IsDelete = Convert.ToBoolean(dr["IsDelete"]);
 					}
 					items.Add(item);
 				}
@@ -469,6 +477,10 @@ namespace LeMaiLogic
 						{
 							item.WardId = Convert.ToString(dr["WardId"]);
 						}
+						if (dr["IsDelete"] != null && dr["IsDelete"] != DBNull.Value)
+						{
+							item.IsDelete = Convert.ToBoolean(dr["IsDelete"]);
+						}
 
 						break;
 					}
@@ -610,6 +622,10 @@ namespace LeMaiLogic
 						{
 							item.WardId = Convert.ToString(dr["WardId"]);
 						}
+						if (dr["IsDelete"] != null && dr["IsDelete"] != DBNull.Value)
+						{
+							item.IsDelete = Convert.ToBoolean(dr["IsDelete"]);
+						}
 
 						break;
 					}
@@ -652,7 +668,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[ExpCustomer](Id, CustomerName, CustomerPhone, BankName, AccountName, AccountCode, GoogleMap, FK_Post, CustomerCode, ContractCustomer, UnsigName, FK_Group, SoHopDong, NgayHopDong, TenHopDong, DiaChi, FK_GiaCuoc, DonVi, MaSoThue, CustomerCodePass, TenSanPham, Token, ShopIDPickup, IsPickup, SecrectId, ProvinceId, DistrictId, WardId) VALUES(@Id, @CustomerName, @CustomerPhone, @BankName, @AccountName, @AccountCode, @GoogleMap, @FK_Post, @CustomerCode, @ContractCustomer, @UnsigName, @FK_Group, @SoHopDong, @NgayHopDong, @TenHopDong, @DiaChi, @FK_GiaCuoc, @DonVi, @MaSoThue, @CustomerCodePass, @TenSanPham, @Token, @ShopIDPickup, @IsPickup, @SecrectId, @ProvinceId, @DistrictId, @WardId)", 
+				this._dataContext.ExecuteNonQuery("INSERT INTO " + schema + ".[ExpCustomer](Id, CustomerName, CustomerPhone, BankName, AccountName, AccountCode, GoogleMap, FK_Post, CustomerCode, ContractCustomer, UnsigName, FK_Group, SoHopDong, NgayHopDong, TenHopDong, DiaChi, FK_GiaCuoc, DonVi, MaSoThue, CustomerCodePass, TenSanPham, Token, ShopIDPickup, IsPickup, SecrectId, ProvinceId, DistrictId, WardId, IsDelete) VALUES(@Id, @CustomerName, @CustomerPhone, @BankName, @AccountName, @AccountCode, @GoogleMap, @FK_Post, @CustomerCode, @ContractCustomer, @UnsigName, @FK_Group, @SoHopDong, @NgayHopDong, @TenHopDong, @DiaChi, @FK_GiaCuoc, @DonVi, @MaSoThue, @CustomerCodePass, @TenSanPham, @Token, @ShopIDPickup, @IsPickup, @SecrectId, @ProvinceId, @DistrictId, @WardId, @IsDelete)", 
 					"@Id",  _ExpCustomer.Id, 
 					"@CustomerName",  _ExpCustomer.CustomerName, 
 					"@CustomerPhone",  _ExpCustomer.CustomerPhone, 
@@ -680,7 +696,8 @@ namespace LeMaiLogic
 					"@SecrectId",  _ExpCustomer.SecrectId, 
 					"@ProvinceId",  _ExpCustomer.ProvinceId, 
 					"@DistrictId",  _ExpCustomer.DistrictId, 
-					"@WardId",  _ExpCustomer.WardId);
+					"@WardId",  _ExpCustomer.WardId, 
+					"@IsDelete",  _ExpCustomer.IsDelete);
 				return true;
 			}
 			catch
@@ -708,7 +725,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[ExpCustomer] SET Id=@Id, CustomerName=@CustomerName, CustomerPhone=@CustomerPhone, BankName=@BankName, AccountName=@AccountName, AccountCode=@AccountCode, GoogleMap=@GoogleMap, FK_Post=@FK_Post, CustomerCode=@CustomerCode, ContractCustomer=@ContractCustomer, UnsigName=@UnsigName, FK_Group=@FK_Group, SoHopDong=@SoHopDong, NgayHopDong=@NgayHopDong, TenHopDong=@TenHopDong, DiaChi=@DiaChi, FK_GiaCuoc=@FK_GiaCuoc, DonVi=@DonVi, MaSoThue=@MaSoThue, CustomerCodePass=@CustomerCodePass, TenSanPham=@TenSanPham, Token=@Token, ShopIDPickup=@ShopIDPickup, IsPickup=@IsPickup, SecrectId=@SecrectId, ProvinceId=@ProvinceId, DistrictId=@DistrictId, WardId=@WardId WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[ExpCustomer] SET Id=@Id, CustomerName=@CustomerName, CustomerPhone=@CustomerPhone, BankName=@BankName, AccountName=@AccountName, AccountCode=@AccountCode, GoogleMap=@GoogleMap, FK_Post=@FK_Post, CustomerCode=@CustomerCode, ContractCustomer=@ContractCustomer, UnsigName=@UnsigName, FK_Group=@FK_Group, SoHopDong=@SoHopDong, NgayHopDong=@NgayHopDong, TenHopDong=@TenHopDong, DiaChi=@DiaChi, FK_GiaCuoc=@FK_GiaCuoc, DonVi=@DonVi, MaSoThue=@MaSoThue, CustomerCodePass=@CustomerCodePass, TenSanPham=@TenSanPham, Token=@Token, ShopIDPickup=@ShopIDPickup, IsPickup=@IsPickup, SecrectId=@SecrectId, ProvinceId=@ProvinceId, DistrictId=@DistrictId, WardId=@WardId, IsDelete=@IsDelete WHERE Id=@Id", 
 					"@Id",  _ExpCustomer.Id, 
 					"@CustomerName",  _ExpCustomer.CustomerName, 
 					"@CustomerPhone",  _ExpCustomer.CustomerPhone, 
@@ -737,6 +754,7 @@ namespace LeMaiLogic
 					"@ProvinceId",  _ExpCustomer.ProvinceId, 
 					"@DistrictId",  _ExpCustomer.DistrictId, 
 					"@WardId",  _ExpCustomer.WardId, 
+					"@IsDelete",  _ExpCustomer.IsDelete, 
 					"@Id", Id);
 			}
 			catch
@@ -752,7 +770,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[ExpCustomer] SET CustomerName=@CustomerName, CustomerPhone=@CustomerPhone, BankName=@BankName, AccountName=@AccountName, AccountCode=@AccountCode, GoogleMap=@GoogleMap, FK_Post=@FK_Post, CustomerCode=@CustomerCode, ContractCustomer=@ContractCustomer, UnsigName=@UnsigName, FK_Group=@FK_Group, SoHopDong=@SoHopDong, NgayHopDong=@NgayHopDong, TenHopDong=@TenHopDong, DiaChi=@DiaChi, FK_GiaCuoc=@FK_GiaCuoc, DonVi=@DonVi, MaSoThue=@MaSoThue, CustomerCodePass=@CustomerCodePass, TenSanPham=@TenSanPham, Token=@Token, ShopIDPickup=@ShopIDPickup, IsPickup=@IsPickup, SecrectId=@SecrectId, ProvinceId=@ProvinceId, DistrictId=@DistrictId, WardId=@WardId WHERE Id=@Id", 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[ExpCustomer] SET CustomerName=@CustomerName, CustomerPhone=@CustomerPhone, BankName=@BankName, AccountName=@AccountName, AccountCode=@AccountCode, GoogleMap=@GoogleMap, FK_Post=@FK_Post, CustomerCode=@CustomerCode, ContractCustomer=@ContractCustomer, UnsigName=@UnsigName, FK_Group=@FK_Group, SoHopDong=@SoHopDong, NgayHopDong=@NgayHopDong, TenHopDong=@TenHopDong, DiaChi=@DiaChi, FK_GiaCuoc=@FK_GiaCuoc, DonVi=@DonVi, MaSoThue=@MaSoThue, CustomerCodePass=@CustomerCodePass, TenSanPham=@TenSanPham, Token=@Token, ShopIDPickup=@ShopIDPickup, IsPickup=@IsPickup, SecrectId=@SecrectId, ProvinceId=@ProvinceId, DistrictId=@DistrictId, WardId=@WardId, IsDelete=@IsDelete WHERE Id=@Id", 
 					"@CustomerName",  _ExpCustomer.CustomerName, 
 					"@CustomerPhone",  _ExpCustomer.CustomerPhone, 
 					"@BankName",  _ExpCustomer.BankName, 
@@ -780,6 +798,7 @@ namespace LeMaiLogic
 					"@ProvinceId",  _ExpCustomer.ProvinceId, 
 					"@DistrictId",  _ExpCustomer.DistrictId, 
 					"@WardId",  _ExpCustomer.WardId, 
+					"@IsDelete",  _ExpCustomer.IsDelete, 
 					"@Id", _ExpCustomer.Id);
 			}
 			catch
@@ -806,7 +825,7 @@ namespace LeMaiLogic
 		{
 			try
 			{
-				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[ExpCustomer] SET Id=@Id, CustomerName=@CustomerName, CustomerPhone=@CustomerPhone, BankName=@BankName, AccountName=@AccountName, AccountCode=@AccountCode, GoogleMap=@GoogleMap, FK_Post=@FK_Post, CustomerCode=@CustomerCode, ContractCustomer=@ContractCustomer, UnsigName=@UnsigName, FK_Group=@FK_Group, SoHopDong=@SoHopDong, NgayHopDong=@NgayHopDong, TenHopDong=@TenHopDong, DiaChi=@DiaChi, FK_GiaCuoc=@FK_GiaCuoc, DonVi=@DonVi, MaSoThue=@MaSoThue, CustomerCodePass=@CustomerCodePass, TenSanPham=@TenSanPham, Token=@Token, ShopIDPickup=@ShopIDPickup, IsPickup=@IsPickup, SecrectId=@SecrectId, ProvinceId=@ProvinceId, DistrictId=@DistrictId, WardId=@WardId "+ condition, 
+				return this._dataContext.ExecuteNonQuery("UPDATE " + schema + ".[ExpCustomer] SET Id=@Id, CustomerName=@CustomerName, CustomerPhone=@CustomerPhone, BankName=@BankName, AccountName=@AccountName, AccountCode=@AccountCode, GoogleMap=@GoogleMap, FK_Post=@FK_Post, CustomerCode=@CustomerCode, ContractCustomer=@ContractCustomer, UnsigName=@UnsigName, FK_Group=@FK_Group, SoHopDong=@SoHopDong, NgayHopDong=@NgayHopDong, TenHopDong=@TenHopDong, DiaChi=@DiaChi, FK_GiaCuoc=@FK_GiaCuoc, DonVi=@DonVi, MaSoThue=@MaSoThue, CustomerCodePass=@CustomerCodePass, TenSanPham=@TenSanPham, Token=@Token, ShopIDPickup=@ShopIDPickup, IsPickup=@IsPickup, SecrectId=@SecrectId, ProvinceId=@ProvinceId, DistrictId=@DistrictId, WardId=@WardId, IsDelete=@IsDelete "+ condition, 
 					"@Id",  _ExpCustomer.Id, 
 					"@CustomerName",  _ExpCustomer.CustomerName, 
 					"@CustomerPhone",  _ExpCustomer.CustomerPhone, 
@@ -834,7 +853,8 @@ namespace LeMaiLogic
 					"@SecrectId",  _ExpCustomer.SecrectId, 
 					"@ProvinceId",  _ExpCustomer.ProvinceId, 
 					"@DistrictId",  _ExpCustomer.DistrictId, 
-					"@WardId",  _ExpCustomer.WardId);
+					"@WardId",  _ExpCustomer.WardId, 
+					"@IsDelete",  _ExpCustomer.IsDelete);
 			}
 			catch
 			{

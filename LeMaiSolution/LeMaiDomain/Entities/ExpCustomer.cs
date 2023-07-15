@@ -35,6 +35,7 @@ namespace LeMaiDomain
 		public System.Int32? ProvinceId { get; set; }
 		public System.Int32? DistrictId { get; set; }
 		public System.String WardId { get; set; }
+		public System.Boolean IsDelete { get; set; }
 		public ExpCustomer(){}
 	}
 }

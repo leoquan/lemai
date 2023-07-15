@@ -24,6 +24,7 @@ using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using GenCode128;
 using QRCoder;
+using System.Data;
 
 namespace LeMaiWebPublic.Controllers
 {
@@ -81,7 +82,7 @@ namespace LeMaiWebPublic.Controllers
 #if DEBUG
             return RedirectToAction("CreateOrder", "POrder");
 #else
-    return RedirectToAction("Index", "Post");
+    return RedirectToAction("Index", "POrder");
 #endif
         }
         public IActionResult Index()
@@ -615,15 +616,16 @@ namespace LeMaiWebPublic.Controllers
             BaseBillFilter model = new BaseBillFilter();
             var lsStatus = _logicbill.GetGExpBillStatusAndAll();
             model.ListStatus = lsStatus.Select(h => new BaseStatusFilter { Value = h.Id.ToString(), Name = h.StatusName }).ToList();
-            model.FromDate = string.Format("{0:yyyy-MM-dd}", DateTime.Now.AddDays(-7));
-            model.Status = "-1";
+            model.FromDate = string.Format("{0:yyyy-MM-dd}", DateTime.Now.AddDays(-15));
+            model.Status = "-1,";
             model.ToDate = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-
-            model.ListBill = new List<view_GExpBill>();
+            string postId = GetPost();
+            model.KeySearch = string.Empty;
+            model.ListBill = await _logicbill.GetList(model.KeySearch, postId, "9999", DateTime.Now.AddDays(-15), DateTime.Now, "9999", string.Empty);
             return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> BillManager([FromBody] BaseFilter filter)
+        public async Task<IActionResult> BillManager(BaseFilter filter)
         {
             BaseBillFilter model = new BaseBillFilter();
             var lsStatus = _logicbill.GetGExpBillStatusAndAll();
@@ -631,19 +633,59 @@ namespace LeMaiWebPublic.Controllers
             model.Status = filter.Status;
 
             string userId = GetUserId();
-
-            if (string.IsNullOrEmpty(filter.FromDate))
+            DateTime fromDate = DateTime.Now.AddDays(-15);
+            DateTime toDate = DateTime.Now;
+            if (!DateTime.TryParseExact(filter.FromDate, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fromDate))
             {
-                filter.FromDate = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
-            }
-            if (string.IsNullOrEmpty(filter.ToDate))
-            {
-                filter.ToDate = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
+                fromDate = DateTime.Now.AddDays(-15);
             }
 
-            model.ListBill = new List<view_GExpBill>();
+            model.FromDate = string.Format("{0:yyyy-MM-dd}", fromDate);
+
+            if (!DateTime.TryParseExact(filter.ToDate, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out toDate))
+            {
+                toDate = DateTime.Now;
+            }
+            model.ToDate = string.Format("{0:yyyy-MM-dd}", toDate);
+            string postId = GetPost();
+            model.KeySearch = filter.KeySearch;
+            model.Status = filter.Status;
+            if (string.IsNullOrEmpty(model.Status))
+            {
+                model.Status = string.Empty;
+            }
+            else
+            {
+                model.Status = model.Status.TrimEnd(',');
+            }
+            model.ListBill = await _logicbill.GetList(model.KeySearch, postId, "9999", fromDate, toDate, "9999", model.Status).ConfigureAwait(true);
             return View(model);
         }
+        [HttpPost]
+        public async Task<IActionResult> Export([FromBody] BaseFilter input)
+        {
+            string userId = GetUserId();
+            if (input.FromDate == null)
+            {
+                input.FromDate = string.Format("{0:yyyy-MM-dd}", DateTime.Now.AddDays(-7));
+            }
 
+            if (input.ToDate == null)
+            {
+                input.ToDate = string.Format("{0:yyyy-MM-dd}", DateTime.Now);
+            }
+            //var listData = await _logicbill.GetBillList(userId, input.datefrom, input.dateto, input.status);
+            var listData = new List<string>();// Logic fill ở đây
+            DataTable dtable = MapperExtensionClass.ToDataTable(listData);
+            Dictionary<string, string> lsReplace = new Dictionary<string, string>();
+            Dictionary<string, string> format = new Dictionary<string, string>();
+            //format.Add("RegisterDate", "{0:dd/MM/yyyy HH:mm}");
+            Dictionary<string, string> lsTitile = new Dictionary<string, string>();
+            List<string> lsKeyString = new List<string>();
+            //lsKeyString.Add("BillCode");
+            byte[] fileArray = ExportExcel("TEMP.xlsx", 1, dtable, lsTitile, lsReplace, format, true, lsKeyString);
+            var bytesdata = File(fileArray, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            return Json(Convert.ToBase64String(fileArray, 0, fileArray.Length));
+        }
     }
 }

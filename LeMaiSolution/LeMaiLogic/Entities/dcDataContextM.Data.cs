@@ -1125,6 +1125,12 @@ namespace LeMaiLogic
 			get { return _GExpwebhook; }
 		}
 
+		private IGExpwebhookport _GExpwebhookport;
+		public IGExpwebhookport GExpwebhookport
+		{
+			get { return _GExpwebhookport; }
+		}
+
 		private IGExpwithdrawmoney _GExpwithdrawmoney;
 		public IGExpwithdrawmoney GExpwithdrawmoney
 		{
@@ -2912,6 +2918,7 @@ namespace LeMaiLogic
 			this._GExpwardvnp = new MGExpwardvnp(this);
 			this._GExpwardvtp = new MGExpwardvtp(this);
 			this._GExpwebhook = new MGExpwebhook(this);
+			this._GExpwebhookport = new MGExpwebhookport(this);
 			this._GExpwithdrawmoney = new MGExpwithdrawmoney(this);
 			this._GSbank = new MGSbank(this);
 			this._GScategory = new MGScategory(this);

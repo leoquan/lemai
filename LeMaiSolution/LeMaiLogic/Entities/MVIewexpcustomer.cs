@@ -176,6 +176,18 @@ namespace LeMaiLogic
 					{
 						item.WardId = Convert.ToString(dr["WardId"]);
 					}
+					if (dr["IsDelete"] != null && dr["IsDelete"] != DBNull.Value)
+					{
+						item.IsDelete = Convert.ToBoolean(dr["IsDelete"]);
+					}
+					if (dr["FeeName"] != null && dr["FeeName"] != DBNull.Value)
+					{
+						item.FeeName = Convert.ToString(dr["FeeName"]);
+					}
+					if (dr["TenNhom"] != null && dr["TenNhom"] != DBNull.Value)
+					{
+						item.TenNhom = Convert.ToString(dr["TenNhom"]);
+					}
 					items.Add(item);
 				}
 				return items;
@@ -310,6 +322,18 @@ namespace LeMaiLogic
 					if (dr["WardId"] != null && dr["WardId"] != DBNull.Value)
 					{
 						item.WardId = Convert.ToString(dr["WardId"]);
+					}
+					if (dr["IsDelete"] != null && dr["IsDelete"] != DBNull.Value)
+					{
+						item.IsDelete = Convert.ToBoolean(dr["IsDelete"]);
+					}
+					if (dr["FeeName"] != null && dr["FeeName"] != DBNull.Value)
+					{
+						item.FeeName = Convert.ToString(dr["FeeName"]);
+					}
+					if (dr["TenNhom"] != null && dr["TenNhom"] != DBNull.Value)
+					{
+						item.TenNhom = Convert.ToString(dr["TenNhom"]);
 					}
 					items.Add(item);
 				}
@@ -467,6 +491,18 @@ namespace LeMaiLogic
 						if (dr["WardId"] != null && dr["WardId"] != DBNull.Value)
 						{
 							item.WardId = Convert.ToString(dr["WardId"]);
+						}
+						if (dr["IsDelete"] != null && dr["IsDelete"] != DBNull.Value)
+						{
+							item.IsDelete = Convert.ToBoolean(dr["IsDelete"]);
+						}
+						if (dr["FeeName"] != null && dr["FeeName"] != DBNull.Value)
+						{
+							item.FeeName = Convert.ToString(dr["FeeName"]);
+						}
+						if (dr["TenNhom"] != null && dr["TenNhom"] != DBNull.Value)
+						{
+							item.TenNhom = Convert.ToString(dr["TenNhom"]);
 						}
 
 						break;

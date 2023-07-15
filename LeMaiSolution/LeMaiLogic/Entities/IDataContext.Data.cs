@@ -380,6 +380,8 @@ namespace LeMaiLogic
 
 		IGExpwebhook GExpwebhook { get; }
 
+		IGExpwebhookport GExpwebhookport { get; }
+
 		IGExpwithdrawmoney GExpwithdrawmoney { get; }
 
 		IGSbank GSbank { get; }

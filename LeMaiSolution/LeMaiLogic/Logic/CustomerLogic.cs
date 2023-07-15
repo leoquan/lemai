@@ -405,7 +405,7 @@ namespace LeMaiLogic.Logic
                     GExpBill bill = dc.GExpbill.GetObjectCon(base.ConnectionData.Schema, "WHERE FK_Customer=@FK_Customer", "@FK_Customer", item.Id);
                     if (bill == null)
                     {
-                        dc.EXpcustomer.DeleteOnSubmit(base.ConnectionData.Schema, Id);
+                       
                         dc.SubmitChanges();
                         return true;
                     }

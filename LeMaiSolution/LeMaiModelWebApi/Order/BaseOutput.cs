@@ -9,5 +9,6 @@ namespace LeMaiModelWebApi.Order
         public int Code { get; set; } = 200;
         public string? ResultString { get; set; }
         public string? Error { get; set; }
+        public object? Data { get; set; }
     }
 }

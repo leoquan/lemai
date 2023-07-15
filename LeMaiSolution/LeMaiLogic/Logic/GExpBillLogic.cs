@@ -128,7 +128,7 @@ namespace LeMaiLogic.Logic
                 {
                     condition += " FK_ProviderAccount='" + loaiKienId + "' &";
                 }
-                if (!string.IsNullOrEmpty(status))
+                if (!string.IsNullOrEmpty(status) && !status.Contains("-1"))
                 {
                     condition += " BillStatus IN (" + status + ") &";
                 }
@@ -140,7 +140,7 @@ namespace LeMaiLogic.Logic
                 condition = condition.Trim();
                 condition = condition.TrimEnd('&');
                 condition = condition.Replace("&", "AND");
-                condition = condition + " ORDER BY BillCode desc";
+                condition = condition + " ORDER BY RegisterDate desc";
                 return dc.VIewgexpbill.GetListObjectCon(base.ConnectionData.Schema, condition);
             }
             catch (Exception ex)

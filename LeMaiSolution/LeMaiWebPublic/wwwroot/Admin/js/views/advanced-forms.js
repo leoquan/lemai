@@ -1,4 +1,4 @@
-$(function (){
+﻿$(function (){
   $("#date").mask("99/99/9999");
   $("#phone").mask("(999) 999-9999");
   $("#tin").mask("99-9999999");
@@ -19,12 +19,12 @@ $(function (){
   $('input[name="daterange"]').daterangepicker({
     opens: 'left',
     ranges: {
-      'Today': [moment(), moment()],
-      'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-      'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-      'This Month': [moment().startOf('month'), moment().endOf('month')],
-      'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+      'Hôm nay': [moment(), moment()],
+      'Hôm qua': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+      '7 Ngày gần nhất': [moment().subtract(6, 'days'), moment()],
+      '30 Ngày gần nhất': [moment().subtract(29, 'days'), moment()],
+      'Tháng này': [moment().startOf('month'), moment().endOf('month')],
+      'Tháng trước': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
     }
   });
 

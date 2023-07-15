@@ -10,6 +10,8 @@
     {
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css">
     <link href="~/Admin/vendors/css/toastr.min.css" rel="stylesheet">
+    <link href="~/Admin/vendors/css/daterangepicker.min.css" rel="stylesheet">
+    <link href="~/Admin/vendors/css/select2.min.css" rel="stylesheet">
 }
 
 <main class="main">
@@ -27,50 +29,50 @@
                             <strong>Quản lý đơn hàng</strong>
                         </div>
                         <div class="card-body">
-
-                            <div class="row">
-                                <div class="col-sm-2">
-                                    <div class="form-group">
-                                        <label for="name">Từ ngày</label>
-                                        <input type="date" name="datefrom" class="form-control" value="@Model.FromDate" id="TuNgay" placeholder="dd-mm-yyyy">
-                                        <em id="TuNgay-error" class="error invalid-feedback">Từ ngày tạo đơn</em>
+                            <form asp-action="BillManager" asp-controller="POrder" method="post">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label for="name">Từ ngày</label>
+                                            <input type="date" name="FromDate" class="form-control" value="@Model.FromDate" placeholder="Từ ngày">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label for="name">Đến ngày</label>
+                                            <input type="date" name="ToDate" class="form-control" value="@Model.ToDate" placeholder="Đến ngày">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="name">Tình trạng</label>
+                                        <input type="hidden" id="Status" name="Status" value="@Model.Status" />
+                                        <select id="SelectStatus" class="form-control select2-multiple" multiple="" >
+                                            @foreach (var item in Model.ListStatus)
+                                            {
+                                                <option value="@item.Value">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <label for="name">Tìm kiếm</label>
+                                        <input type="text" class="form-control" name="KeySearch" value="@Model.KeySearch" placeholder="SĐT, Mã vận đơn, BT3">
                                     </div>
                                 </div>
-                                <div class="col-sm-2">
-                                    <div class="form-group">
-                                        <label for="name">Đến ngày</label>
-                                        <input type="date" name="dateto" class="form-control" value="@Model.ToDate" id="DenNgay" placeholder="dd-mm-yyyy">
-                                        <em id="DenNgay-error" class="error invalid-feedback">Đến ngày tạo đơn</em>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-3">
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <div class="form-group" style="text-align:right;">
+                                            <button type="submit" id="btnFilter" class="btn btn-primary"><i class="fa fa-filter"></i>&nbsp; Lọc danh sách</button>
+                                            <button type="button" id="btnExport" class="btn btn-success"><i class="fa fa-file-export"></i>&nbsp; Xuất excel</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
-                                    <label for="name">Tình trạng</label>
-                                    <select class="form-control" id="Status">
-                                        @foreach (var item in Model.ListStatus)
-                                        {
-                                            <option value="@item.Value">@item.Name</option>
-                                        }
-                                    </select>
-                                </div>
-                                <div class="col-sm-5">
-                                    <label for="name">Tìm kiếm</label>
-                                    <input type="text" class="form-control" id="KeySearch" placeholder="SĐT, Mã vận đơn, BT3">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2">
-                                </div>
-                                <div class="col-sm-2">
-                                </div>
-                                <div class="col-sm-3">
-                                </div>
-                                <div class="col-sm-5">
-                                    <div class="form-group" style="text-align:right;">
-                                        <button type="submit" id="btnFilter" class="btn btn-primary"><i class="fa fa-filter"></i>&nbsp; Lọc danh sách</button>
-                                        <button type="button" id="btnExport" class="btn btn-success"><i class="fa fa-file-export"></i>&nbsp; Xuất excel</button>
-                                    </div>
-                                </div>
-                            </div>
+                            </form>
                         </div>
 
                         <div class="card-body">
@@ -80,157 +82,54 @@
                                 <thead>
                                     <tr>
                                         <th>Mã đơn</th>
+                                        <th>Mã BT3</th>
+                                        <th>Ngày gửi</th>
                                         <th>Người gửi</th>
                                         <th>SĐT Gửi</th>
                                         <th>Người nhận</th>
                                         <th>SĐT nhận</th>
-                                        <th>Địa chỉ</th>
                                         <th>Tỉnh nhận</th>
+                                        <th>COD</th>
+                                        <th>Phí VC</th>
+                                        <th>TL</th>
+                                        <th>TL-KH</th>
                                         <th>Tình trạng</th>
                                         <th style="width:100px !important">Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>BillCode</td>
-                                        <td>SendMan</td>
-                                        <td>SendManPhone</td>
-                                        <td>AcceptMan</td>
-                                        <td>AcceptManPhone</td>
-                                        <td>AcceptManAddress</td>
-                                        <td>AcceptProvinece</td>
-                                        <td>
-                                            <span class="badge badge-success">StatusName</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success" href="#">
-                                                <i class="fa fa-search-plus "></i>
-                                            </a>
-                                            <a class="btn btn-info" href="#">
-                                                <i class="fa fa-edit "></i>
-                                            </a>
-                                            <a class="btn btn-danger" href="#">
-                                                <i class="fa fa-trash-o "></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>BillCode</td>
-                                        <td>SendMan</td>
-                                        <td>SendManPhone</td>
-                                        <td>AcceptMan</td>
-                                        <td>AcceptManPhone</td>
-                                        <td>AcceptManAddress</td>
-                                        <td>AcceptProvinece</td>
-                                        <td>
-                                            <span class="badge badge-success">StatusName</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success" href="#">
-                                                <i class="fa fa-search-plus "></i>
-                                            </a>
-                                            <a class="btn btn-info" href="#">
-                                                <i class="fa fa-edit "></i>
-                                            </a>
-                                            <a class="btn btn-danger" href="#">
-                                                <i class="fa fa-trash-o "></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>BillCode</td>
-                                        <td>SendMan</td>
-                                        <td>SendManPhone</td>
-                                        <td>AcceptMan</td>
-                                        <td>AcceptManPhone</td>
-                                        <td>AcceptManAddress</td>
-                                        <td>AcceptProvinece</td>
-                                        <td>
-                                            <span class="badge badge-success">StatusName</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success" href="#">
-                                                <i class="fa fa-search-plus "></i>
-                                            </a>
-                                            <a class="btn btn-info" href="#">
-                                                <i class="fa fa-edit "></i>
-                                            </a>
-                                            <a class="btn btn-danger" href="#">
-                                                <i class="fa fa-trash-o "></i>
-                                            </a>
-                                        </td>
+                                    @foreach (var item in Model.ListBill)
+                                    {
+                                        <tr>
+                                            <td>@item.BillCode</td>
+                                            <td>@item.BT3Code</td>
+                                            <td>@string.Format("{0:dd/MM/yyyy}", item.RegisterDate)</td>
+                                            <td>@item.SendMan</td>
+                                            <td>@item.SendManPhone</td>
+                                            <td>@item.AcceptMan</td>
+                                            <td>@item.AcceptManPhone</td>
+                                            <td>@item.AcceptProvince</td>
+                                            <td>@item.COD.ToString("N0")</td>
+                                            <td>@item.Freight.ToString("N0")</td>
+                                            <td>@((item.BillWeight / 1000).ToString("N1")) Kg</td>
+                                            <td>@((item.FeeWeight / 1000).ToString("N1")) Kg</td>
+                                            <td>
+                                                <span class="badge" style="background-color:@item.StatusBackgroundColor;color:@item.StatusTextColor">@item.StatusName</span>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-success SubView" data-itemid="@item.BillCode">
+                                                    <i class="fa fa-search-plus "></i>
+                                                </a>
+                                                <a class="btn btn-info SubEdit" data-itemid="@item.BillCode">
+                                                    <i class="fa fa-edit "></i>
+                                                </a>
+                                                <a class="btn btn-danger SubDelete" data-itemid="@item.BillCode">
+                                                    <i class="fa fa-trash-o "></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
 
-                                    </tr>
-                                    <tr>
-                                        <td>BillCode</td>
-                                        <td>SendMan</td>
-                                        <td>SendManPhone</td>
-                                        <td>AcceptMan</td>
-                                        <td>AcceptManPhone</td>
-                                        <td>AcceptManAddress</td>
-                                        <td>AcceptProvinece</td>
-                                        <td>
-                                            <span class="badge badge-danger">StatusName</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success" href="#">
-                                                <i class="fa fa-search-plus "></i>
-                                            </a>
-                                            <a class="btn btn-info" href="#">
-                                                <i class="fa fa-edit "></i>
-                                            </a>
-                                            <a class="btn btn-danger" href="#">
-                                                <i class="fa fa-trash-o "></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>BillCode</td>
-                                        <td>SendMan</td>
-                                        <td>SendManPhone</td>
-                                        <td>AcceptMan</td>
-                                        <td>AcceptManPhone</td>
-                                        <td>AcceptManAddress</td>
-                                        <td>AcceptProvinece</td>
-                                        <td>
-                                            <span class="badge badge-danger">StatusName</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success" href="#">
-                                                <i class="fa fa-search-plus "></i>
-                                            </a>
-                                            <a class="btn btn-info" href="#">
-                                                <i class="fa fa-edit "></i>
-                                            </a>
-                                            <a class="btn btn-danger" href="#">
-                                                <i class="fa fa-trash-o "></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>BillCode</td>
-                                        <td>SendMan</td>
-                                        <td>SendManPhone</td>
-                                        <td>AcceptMan</td>
-                                        <td>AcceptManPhone</td>
-                                        <td>AcceptManAddress</td>
-                                        <td>AcceptProvinece</td>
-                                        <td>
-                                            <span class="badge badge-dark">StatusName</span>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success" href="#">
-                                                <i class="fa fa-search-plus "></i>
-                                            </a>
-                                            <a class="btn btn-info" href="#">
-                                                <i class="fa fa-edit "></i>
-                                            </a>
-                                            <a class="btn btn-danger" href="#">
-                                                <i class="fa fa-trash-o "></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    
                                 </tbody>
                             </table>
                         </div>
@@ -249,6 +148,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdn.rawgit.com/unconditional/jquery-table2excel/master/src/jquery.table2excel.js"></script>
     <script src="~/Admin/vendors/js/toastr.min.js"></script>
+    <script src="~/Admin/vendors/js/jquery.maskedinput.min.js"></script>
+    <script src="~/Admin/vendors/js/moment.min.js"></script>
+    <script src="~/Admin/vendors/js/select2.min.js"></script>
+    <script src="~/Admin/vendors/js/daterangepicker.min.js"></script>
     <script type="text/javascript">
         $('#datatablesSimple').bootstrapTable();
         var _urlApi = '@(Config["UrlAPi"])';
